@@ -2,185 +2,223 @@
 
 [![Discord](https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white)](https://discord.com/invite/WVBeWsNXK4)
 
-**A free, open source, and extensible speech-to-text application that works completely offline.**
+**Darmowa, otwartoźródłowa i rozszerzalna aplikacja mowa-na-tekst, działająca w pełni offline.**
 
-Handy is a cross-platform desktop application that provides simple, privacy-focused speech transcription. Press a shortcut, speak, and have your words appear in any text field. This happens on your own computer without sending any information to the cloud.
+Handy to wieloplatformowa aplikacja desktopowa zapewniająca prostą, dbającą o prywatność transkrypcję mowy. Naciśnij skrót klawiszowy, mów, a Twoje słowa pojawią się w dowolnym polu tekstowym — wszystko lokalnie na Twoim komputerze, bez wysyłania danych do chmury.
 
-## Why Handy?
+> **Ten fork** ([kuba7528/handy](https://github.com/kuba7528/handy)) rozszerza oryginalne [Handy](https://github.com/cjpais/Handy) o funkcję **ciągłego nasłuchiwania** — aplikacja może automatycznie nasłuchiwać mikrofonu i transkrybować wykryte wypowiedzi bez konieczności wciskania skrótu klawiszowego.
 
-Handy was created to fill the gap for a truly open source, extensible speech-to-text tool. As stated on [handy.computer](https://handy.computer):
+## Ciągłe nasłuchiwanie
 
-- **Free**: Accessibility tooling belongs in everyone's hands, not behind a paywall
-- **Open Source**: Together we can build further. Extend Handy for yourself and contribute to something bigger
-- **Private**: Your voice stays on your computer. Get transcriptions without sending audio to the cloud
-- **Simple**: One tool, one job. Transcribe what you say and put it into a text box
+Ta wersja repozytorium dodaje tryb **ciągłego nasłuchiwania**, który ułatwia dyktowanie bez ciągłego trzymania skrótu:
 
-Handy isn't trying to be the best speech-to-text app—it's trying to be the most forkable one.
+1. Włącz opcję w **Ustawienia → Debugowanie → Ciągłe nasłuchiwanie** (domyślnie włączone w tym forku).
+2. Aplikacja otwiera mikrofon i nasłuchuje w tle aż do zamknięcia programu lub wyłączenia funkcji.
+3. Wykryte segmenty mowy są automatycznie transkrybowane i wklejane do aktywnego pola tekstowego.
+4. Ręczna transkrypcja skrótem klawiszowym pozostaje dostępna, gdy ciągłe nasłuchiwanie jest wyłączone.
 
-## How It Works
+Funkcja wykorzystuje detekcję aktywności głosowej (VAD), aby rozpoznawać początek i koniec wypowiedzi, a następnie przetwarza je lokalnie modelem Whisper lub Parakeet.
 
-1. **Press** a configurable keyboard shortcut to start/stop recording (or use push-to-talk mode)
-2. **Speak** your words while the shortcut is active
-3. **Release** and Handy processes your speech using Whisper
-4. **Get** your transcribed text pasted directly into whatever app you're using
+## Dlaczego Handy?
 
-The process is entirely local:
+Handy powstało, aby wypełnić lukę po naprawdę otwartoźródłowym i rozszerzalnym narzędziu mowa-na-tekst. Jak podkreśla [handy.computer](https://handy.computer):
 
-- Silence is filtered using VAD (Voice Activity Detection) with Silero
-- Transcription uses your choice of models:
-  - **Whisper models** (Small/Medium/Turbo/Large) with GPU acceleration when available
-  - **Parakeet V3** - CPU-optimized model with excellent performance and automatic language detection
-- Works on Windows, macOS, and Linux
+- **Darmowe**: narzędzia dostępności powinny być w rękach wszystkich, a nie za paywallem
+- **Otwarte źródło**: razem możemy budować dalej — rozszerzaj Handy dla siebie i współtwórz coś większego
+- **Prywatne**: Twój głos zostaje na komputerze — transkrypcja bez wysyłania audio do chmury
+- **Proste**: jedno narzędzie, jedno zadanie — transkrybuj to, co mówisz, i wklejaj do pola tekstowego
 
-## Quick Start
+Handy nie stara się być najlepszą aplikacją mowa-na-tekst — stara się być najbardziej „forkowalną”.
 
-### Installation
+## Jak to działa
 
-1. Download the latest release from the [releases page](https://github.com/cjpais/Handy/releases) or the [website](https://handy.computer)
-   - **macOS**: Also available via [Homebrew cask](https://formulae.brew.sh/cask/handy): `brew install --cask handy`
-   - **Windows**: Also available via [winget](https://github.com/microsoft/winget-pkgs): `winget install cjpais.Handy` \
-     **Note:** The Homebrew cask and winget package are not maintained by the Handy developers.
-2. Install the application
-3. Launch Handy and grant necessary system permissions (microphone, accessibility)
-4. Configure your preferred keyboard shortcuts in Settings
-5. Start transcribing!
+### Tryb skrótu klawiszowego (domyślny w oryginalnym Handy)
 
-### Development Setup
+1. **Naciśnij** konfigurowalny skrót klawiszowy, aby rozpocząć/zatrzymać nagrywanie (lub użyj trybu push-to-talk)
+2. **Mów**, gdy skrót jest aktywny
+3. **Puść** skrót — Handy przetwarza mowę za pomocą Whisper
+4. **Otrzymaj** transkrybowany tekst wklejony bezpośrednio do aplikacji, której używasz
 
-For detailed build instructions including platform-specific requirements, see [BUILD.md](BUILD.md).
+### Tryb ciągłego nasłuchiwania (ten fork)
 
-## Integrations
+1. **Włącz** ciągłe nasłuchiwanie w ustawieniach
+2. **Mów** naturalnie — aplikacja wykrywa wypowiedzi automatycznie
+3. **Otrzymaj** transkrypcje w miarę kończenia segmentów mowy
+
+Cały proces odbywa się lokalnie:
+
+- Cisza jest filtrowana przez VAD (Voice Activity Detection) z Silero
+- Transkrypcja korzysta z wybranego modelu:
+  - **Modele Whisper** (Small/Medium/Turbo/Large) z akceleracją GPU, gdy dostępna
+  - **Parakeet V3** — model zoptymalizowany pod CPU, z doskonałą wydajnością i automatycznym wykrywaniem języka
+- Działa na Windows, macOS i Linux
+
+## Szybki start
+
+### Instalacja
+
+1. Pobierz najnowsze wydanie ze [strony releases](https://github.com/kuba7528/handy/releases) lub zbuduj ze źródeł (patrz poniżej)
+   - **macOS**: dostępne także przez [Homebrew cask](https://formulae.brew.sh/cask/handy): `brew install --cask handy`
+   - **Windows**: dostępne także przez [winget](https://github.com/microsoft/winget-pkgs): `winget install cjpais.Handy` \
+     **Uwaga:** pakiet Homebrew cask i winget nie są utrzymywane przez deweloperów Handy.
+2. Zainstaluj aplikację
+3. Uruchom Handy i nadaj wymagane uprawnienia systemowe (mikrofon, dostępność)
+4. Skonfiguruj preferowane skróty klawiszowe w Ustawieniach
+5. (Opcjonalnie) Włącz **Ciągłe nasłuchiwanie** w Ustawienia → Debugowanie
+6. Zacznij transkrybować!
+
+### Budowanie ze źródeł
+
+**Wymagania:** [Rust](https://rustup.rs/), [Bun](https://bun.sh/), [zależności Tauri](https://tauri.app/start/prerequisites/)
+
+```bash
+git clone https://github.com/kuba7528/handy.git
+cd handy
+bun install
+bun tauri dev          # tryb deweloperski
+bun run tauri build    # build produkcyjny
+```
+
+Szczegółowe instrukcje budowania, w tym wymagania specyficzne dla platform, znajdują się w [BUILD.md](BUILD.md).
+
+**Windows (skrypt pomocniczy):**
+
+```powershell
+.\build-windows.ps1
+```
+
+## Integracje
 
 <a href="https://www.raycast.com/mattiacolombomc/handy" title="Install Handy Raycast Extension"><img src="https://www.raycast.com/mattiacolombomc/handy/install_button@2x.png?v=1.1" height="64" style="height: 64px;" alt="Install handy Raycast Extension" /></a>
 
-Control Handy from [Raycast](https://www.raycast.com) — start/stop recording, browse transcript history, manage dictionary, switch models and languages.
+Steruj Handy z poziomu [Raycast](https://www.raycast.com) — uruchamiaj/zatrzymuj nagrywanie, przeglądaj historię transkrypcji, zarządzaj słownikiem, przełączaj modele i języki.
 
-[Source](https://github.com/mattiacolombomc/raycast-handy) · by [@mattiacolombomc](https://github.com/mattiacolombomc)
+[Źródło](https://github.com/mattiacolombomc/raycast-handy) · autor: [@mattiacolombomc](https://github.com/mattiacolombomc)
 
-## Architecture
+## Architektura
 
-Handy is built as a Tauri application combining:
+Handy jest zbudowane jako aplikacja Tauri łącząca:
 
-- **Frontend**: React + TypeScript with Tailwind CSS for the settings UI
-- **Backend**: Rust for system integration, audio processing, and ML inference
-- **Core Libraries**:
-  - `whisper-rs`: Local speech recognition with Whisper models
-  - `transcribe-rs`: CPU-optimized speech recognition with Parakeet models
-  - `cpal`: Cross-platform audio I/O
-  - `vad-rs`: Voice Activity Detection
-  - `rdev`: Global keyboard shortcuts and system events
-  - `rubato`: Audio resampling
+- **Frontend**: React + TypeScript z Tailwind CSS dla interfejsu ustawień
+- **Backend**: Rust do integracji systemowej, przetwarzania audio i inferencji ML
+- **Kluczowe biblioteki**:
+  - `whisper-rs`: lokalne rozpoznawanie mowy z modelami Whisper
+  - `transcribe-rs`: rozpoznawanie mowy zoptymalizowane pod CPU z modelami Parakeet
+  - `cpal`: wieloplatformowe I/O audio
+  - `vad-rs`: detekcja aktywności głosowej (VAD)
+  - `rdev`: globalne skróty klawiszowe i zdarzenia systemowe
+  - `rubato`: resampling audio
 
-### Debug Mode
+### Tryb debugowania
 
-Handy includes an advanced debug mode for development and troubleshooting. Access it by pressing:
+Handy zawiera zaawansowany tryb debugowania do rozwoju i rozwiązywania problemów. Dostęp:
 
 - **macOS**: `Cmd+Shift+D`
 - **Windows/Linux**: `Ctrl+Shift+D`
 
-### CLI Parameters
+### Parametry CLI
 
-Handy supports command-line flags for controlling a running instance and customizing startup behavior. These work on all platforms (macOS, Windows, Linux).
+Handy obsługuje flagi wiersza poleceń do sterowania działającą instancją i dostosowywania startu. Działają na wszystkich platformach (macOS, Windows, Linux).
 
-**Remote control flags** (sent to an already-running instance via the single-instance plugin):
-
-```bash
-handy --toggle-transcription    # Toggle recording on/off
-handy --toggle-post-process     # Toggle recording with post-processing on/off
-handy --cancel                  # Cancel the current operation
-```
-
-**Startup flags:**
+**Flagi zdalnego sterowania** (wysyłane do już działającej instancji przez plugin single-instance):
 
 ```bash
-handy --start-hidden            # Start without showing the main window
-handy --no-tray                 # Start without the system tray icon
-handy --debug                   # Enable debug mode with verbose logging
-handy --help                    # Show all available flags
+handy --toggle-transcription    # Przełącz nagrywanie wł/wył
+handy --toggle-post-process     # Przełącz nagrywanie z postprocesem wł/wył
+handy --cancel                  # Anuluj bieżącą operację
 ```
 
-Flags can be combined for autostart scenarios:
+**Flagi startu:**
+
+```bash
+handy --start-hidden            # Uruchom bez pokazywania głównego okna
+handy --no-tray                 # Uruchom bez ikony w zasobniku systemowym
+handy --debug                   # Włącz tryb debugowania z pełnym logowaniem
+handy --help                    # Pokaż wszystkie dostępne flagi
+```
+
+Flagi można łączyć, np. przy autostarcie:
 
 ```bash
 handy --start-hidden --no-tray
 ```
 
-> **macOS tip:** When Handy is installed as an app bundle, invoke the binary directly:
+> **Wskazówka dla macOS:** Gdy Handy jest zainstalowane jako pakiet .app, wywołuj binarkę bezpośrednio:
 >
 > ```bash
 > /Applications/Handy.app/Contents/MacOS/Handy --toggle-transcription
 > ```
 
-## Known Issues & Current Limitations
+## Znane problemy i ograniczenia
 
-This project is actively being developed and has some [known issues](https://github.com/cjpais/Handy/issues). We believe in transparency about the current state:
+Projekt jest aktywnie rozwijany i ma [znane problemy](https://github.com/cjpais/Handy/issues). Wierzymy w transparentność co do obecnego stanu:
 
-### Major Issues (Help Wanted)
+### Główne problemy (szukamy pomocy)
 
-**Whisper Model Crashes:**
+**Awarię modeli Whisper:**
 
-- Whisper models crash on certain system configurations (Windows and Linux)
-- Does not affect all systems - issue is configuration-dependent
-  - If you experience crashes and are a developer, please help to fix and provide debug logs!
+- Modele Whisper mogą się wyłączać na niektórych konfiguracjach systemowych (Windows i Linux)
+- Nie dotyczy wszystkich systemów — problem zależy od konfiguracji
+  - Jeśli doświadczasz awarii i jesteś deweloperem, pomóż naprawić problem i dostarcz logi debugowania!
 
-**Wayland Support (Linux):**
+**Obsługa Wayland (Linux):**
 
-- Limited support for Wayland display server
-- Requires [`wtype`](https://github.com/atx/wtype) or [`dotool`](https://sr.ht/~geb/dotool/) for text input to work correctly (see [Linux Notes](#linux-notes) below for installation)
+- Ograniczona obsługa serwera wyświetlania Wayland
+- Wymaga [`wtype`](https://github.com/atx/wtype) lub [`dotool`](https://sr.ht/~geb/dotool/) do poprawnego wklejania tekstu (patrz [Uwagi dla Linuxa](#uwagi-dla-linuxa) poniżej)
 
-### Linux Notes
+### Uwagi dla Linuxa
 
-**Text Input Tools:**
+**Narzędzia do wprowadzania tekstu:**
 
-For reliable text input on Linux, install the appropriate tool for your display server:
+Aby niezawodnie wklejać tekst na Linuxie, zainstaluj odpowiednie narzędzie dla swojego serwera wyświetlania:
 
-| Display Server | Recommended Tool | Install Command                                    |
-| -------------- | ---------------- | -------------------------------------------------- |
-| X11            | `xdotool`        | `sudo apt install xdotool`                         |
-| Wayland        | `wtype`          | `sudo apt install wtype`                           |
-| Both           | `dotool`         | `sudo apt install dotool` (requires `input` group) |
+| Serwer wyświetlania | Zalecane narzędzie | Polecenie instalacji                               |
+| ------------------- | ------------------ | -------------------------------------------------- |
+| X11                 | `xdotool`          | `sudo apt install xdotool`                         |
+| Wayland             | `wtype`            | `sudo apt install wtype`                           |
+| Oba                 | `dotool`           | `sudo apt install dotool` (wymaga grupy `input`)   |
 
-- **X11**: Install `xdotool` for both direct typing and clipboard paste shortcuts
-- **Wayland**: Install `wtype` (preferred) or `dotool` for text input to work correctly
-- **dotool setup**: Requires adding your user to the `input` group: `sudo usermod -aG input $USER` (then log out and back in)
+- **X11**: zainstaluj `xdotool` do bezpośredniego wpisywania i wklejania ze schowka
+- **Wayland**: zainstaluj `wtype` (preferowane) lub `dotool` do poprawnego wprowadzania tekstu
+- **Konfiguracja dotool**: wymaga dodania użytkownika do grupy `input`: `sudo usermod -aG input $USER` (następnie wyloguj się i zaloguj ponownie)
 
-Without these tools, Handy falls back to enigo which may have limited compatibility, especially on Wayland.
+Bez tych narzędzi Handy korzysta z enigo, co może mieć ograniczoną kompatybilność, zwłaszcza na Wayland.
 
-**Other Notes:**
+**Inne uwagi:**
 
-- **Runtime library dependency (`libgtk-layer-shell.so.0`)**:
-  - Handy links `gtk-layer-shell` on Linux. If startup fails with `error while loading shared libraries: libgtk-layer-shell.so.0`, install the runtime package for your distro:
+- **Zależność biblioteki runtime (`libgtk-layer-shell.so.0`)**:
+  - Handy linkuje `gtk-layer-shell` na Linuxie. Jeśli start kończy się błędem `error while loading shared libraries: libgtk-layer-shell.so.0`, zainstaluj pakiet runtime dla swojej dystrybucji:
 
-    | Distro        | Package to install    | Example command                        |
+    | Dystrybucja   | Pakiet do instalacji  | Przykładowe polecenie                  |
     | ------------- | --------------------- | -------------------------------------- |
     | Ubuntu/Debian | `libgtk-layer-shell0` | `sudo apt install libgtk-layer-shell0` |
     | Fedora/RHEL   | `gtk-layer-shell`     | `sudo dnf install gtk-layer-shell`     |
     | Arch Linux    | `gtk-layer-shell`     | `sudo pacman -S gtk-layer-shell`       |
 
-  - For building from source on Ubuntu/Debian, you may also need `libgtk-layer-shell-dev`.
+  - Przy budowaniu ze źródeł na Ubuntu/Debian może być też potrzebny `libgtk-layer-shell-dev`.
 
-- The recording overlay is disabled by default on Linux (`Overlay Position: None`) because certain compositors treat it as the active window. When the overlay is visible it can steal focus, which prevents Handy from pasting back into the application that triggered transcription. If you enable the overlay anyway, be aware that clipboard-based pasting might fail or end up in the wrong window.
-- If you are having trouble with the app, running with the environment variable `WEBKIT_DISABLE_DMABUF_RENDERER=1` may help
-- If Handy fails to start reliably on Linux, see [Troubleshooting → Linux Startup Crashes or Instability](#linux-startup-crashes-or-instability).
-- **Global keyboard shortcuts (Wayland):** On Wayland, system-level shortcuts must be configured through your desktop environment or window manager. Use the [CLI flags](#cli-parameters) as the command for your custom shortcut.
+- Nakładka nagrywania jest domyślnie wyłączona na Linuxie (`Pozycja nakładki: Brak`), ponieważ niektóre kompository traktują ją jak aktywne okno. Gdy nakładka jest widoczna, może przejąć fokus i uniemożliwić wklejenie tekstu do aplikacji, która wywołała transkrypcję. Jeśli mimo to włączysz nakładkę, wklejanie ze schowka może się nie powieść lub trafić do niewłaściwego okna.
+- Przy problemach z aplikacją pomocne może być uruchomienie ze zmienną środowiskową `WEBKIT_DISABLE_DMABUF_RENDERER=1`
+- Jeśli Handy nie startuje niezawodnie na Linuxie, patrz [Rozwiązywanie problemów → Awarie lub niestabilność startu na Linuxie](#awarie-lub-niestabilność-startu-na-linuxie).
+- **Globalne skróty klawiszowe (Wayland):** Na Wayland skróty systemowe konfiguruje się przez środowisko pulpitu lub menedżer okien. Użyj [flag CLI](#parametry-cli) jako polecenia dla własnego skrótu.
 
   **GNOME:**
-  1. Open **Settings > Keyboard > Keyboard Shortcuts > Custom Shortcuts**
-  2. Click the **+** button to add a new shortcut
-  3. Set the **Name** to `Toggle Handy Transcription`
-  4. Set the **Command** to `handy --toggle-transcription`
-  5. Click **Set Shortcut** and press your desired key combination (e.g., `Super+O`)
+  1. Otwórz **Ustawienia > Klawiatura > Skróty klawiszowe > Własne skróty**
+  2. Kliknij **+**, aby dodać nowy skrót
+  3. Ustaw **Nazwę** na `Przełącz transkrypcję Handy`
+  4. Ustaw **Polecenie** na `handy --toggle-transcription`
+  5. Kliknij **Ustaw skrót** i naciśnij kombinację klawiszy (np. `Super+O`)
 
   **KDE Plasma:**
-  1. Open **System Settings > Shortcuts > Custom Shortcuts**
-  2. Click **Edit > New > Global Shortcut > Command/URL**
-  3. Name it `Toggle Handy Transcription`
-  4. In the **Trigger** tab, set your desired key combination
-  5. In the **Action** tab, set the command to `handy --toggle-transcription`
+  1. Otwórz **Ustawienia systemu > Skróty > Własne skróty**
+  2. Kliknij **Edytuj > Nowy > Skrót globalny > Polecenie/URL**
+  3. Nazwij go `Przełącz transkrypcję Handy`
+  4. W zakładce **Wyzwalacz** ustaw kombinację klawiszy
+  5. W zakładce **Akcja** ustaw polecenie `handy --toggle-transcription`
 
   **Sway / i3:**
 
-  Add to your config file (`~/.config/sway/config` or `~/.config/i3/config`):
+  Dodaj do pliku konfiguracyjnego (`~/.config/sway/config` lub `~/.config/i3/config`):
 
   ```ini
   bindsym $mod+o exec handy --toggle-transcription
@@ -188,98 +226,97 @@ Without these tools, Handy falls back to enigo which may have limited compatibil
 
   **Hyprland:**
 
-  Add to your config file (`~/.config/hypr/hyprland.conf`):
+  Dodaj do pliku konfiguracyjnego (`~/.config/hypr/hyprland.conf`):
 
   ```ini
   bind = $mainMod, O, exec, handy --toggle-transcription
   ```
 
-- You can also manage global shortcuts outside of Handy via Unix signals, which lets Wayland window managers or other hotkey daemons keep ownership of keybindings:
+- Globalne skróty można też obsługiwać poza Handy przez sygnały Unix, co pozwala menedżerom okien Wayland lub daemonom hotkey zachować własność skrótów:
 
-  | Signal    | Action                                    | Example                |
-  | --------- | ----------------------------------------- | ---------------------- |
-  | `SIGUSR2` | Toggle transcription                      | `pkill -USR2 -n handy` |
-  | `SIGUSR1` | Toggle transcription with post-processing | `pkill -USR1 -n handy` |
+  | Sygnał    | Akcja                                      | Przykład               |
+  | --------- | ------------------------------------------ | ---------------------- |
+  | `SIGUSR2` | Przełącz transkrypcję                        | `pkill -USR2 -n handy` |
+  | `SIGUSR1` | Przełącz transkrypcję z postprocesem       | `pkill -USR1 -n handy` |
 
-  Example Sway config:
+  Przykład konfiguracji Sway:
 
   ```ini
   bindsym $mod+o exec pkill -USR2 -n handy
   bindsym $mod+p exec pkill -USR1 -n handy
   ```
 
-  `pkill` here simply delivers the signal—it does not terminate the process.
+  `pkill` tutaj tylko dostarcza sygnał — nie kończy procesu.
 
-**Overlay & Pasting Issues (Linux):**
+**Problemy z nakładką i wklejaniem (Linux):**
 
-- The recording overlay window can interfere with pasting transcribed text into target applications on Linux (X11)
-- **Solution:** Open **Settings > Advanced** and set **"Overlay Position"** to **"None"** to disable the overlay
-- Enable **"Audio Feedback"** (also in Advanced) if you still want audible confirmation of recording state
-- Users who upgrade from older versions or import settings from other platforms may need to manually apply this change
+- Okno nakładki nagrywania może zakłócać wklejanie transkrybowanego tekstu do docelowych aplikacji na Linuxie (X11)
+- **Rozwiązanie:** Otwórz **Ustawienia > Zaawansowane** i ustaw **„Pozycja nakładki”** na **„Brak”**, aby wyłączyć nakładkę
+- Włącz **„Informacja dźwiękowa”** (także w Zaawansowanych), jeśli nadal chcesz słyszeć potwierdzenie stanu nagrywania
+- Użytkownicy aktualizujący ze starszych wersji lub importujący ustawienia z innych platform mogą musieć ręcznie zastosować tę zmianę
 
+### Obsługiwane platformy
 
-### Platform Support
+- **macOS** (Intel i Apple Silicon)
+- **Windows x64**
+- **Linux x64**
 
-- **macOS (both Intel and Apple Silicon)**
-- **x64 Windows**
-- **x64 Linux**
+### Wymagania systemowe / zalecenia
 
-### System Requirements/Recommendations
+Poniżej zalecenia dotyczące uruchamiania Handy na własnym komputerze. Jeśli nie spełniasz wymagań, wydajność aplikacji może być obniżona. Pracujemy nad poprawą wydajności na różnych konfiguracjach sprzętowych.
 
-The following are recommendations for running Handy on your own machine. If you don't meet the system requirements, the performance of the application may be degraded. We are working on improving the performance across all kinds of computers and hardware.
+**Dla modeli Whisper:**
 
-**For Whisper Models:**
-
-- **macOS**: M series Mac, Intel Mac
-- **Windows**: Intel, AMD, or NVIDIA GPU
-- **Linux**: Intel, AMD, or NVIDIA GPU
+- **macOS**: Mac z serią M, Mac Intel
+- **Windows**: GPU Intel, AMD lub NVIDIA
+- **Linux**: GPU Intel, AMD lub NVIDIA
   - Ubuntu 22.04, 24.04
 
-**For Parakeet V3 Model:**
+**Dla modelu Parakeet V3:**
 
-- **CPU-only operation** - runs on a wide variety of hardware
-- **Minimum**: Intel Skylake (6th gen) or equivalent AMD processors
-- **Performance**: ~5x real-time speed on mid-range hardware (tested on i5)
-- **Automatic language detection** - no manual language selection required
+- **Tylko CPU** — działa na szerokiej gamie sprzętu
+- **Minimum**: Intel Skylake (6. gen) lub równoważne procesory AMD
+- **Wydajność**: ~5× szybciej niż czas rzeczywisty na sprzęcie średniej klasy (testowane na i5)
+- **Automatyczne wykrywanie języka** — bez ręcznego wyboru języka
 
-## Roadmap & Active Development
+## Plan rozwoju i aktywny development
 
-We're actively working on several features and improvements. Contributions and feedback are welcome!
+Aktywnie pracujemy nad wieloma funkcjami i ulepszeniami. Wkład i opinie są mile widziane!
 
-### In Progress
+### W trakcie prac
 
-**Debug Logging:**
+**Logowanie debugowania:**
 
-- Adding debug logging to a file to help diagnose issues
+- Dodawanie logów debugowania do pliku w celu diagnozowania problemów
 
-**macOS Keyboard Improvements:**
+**Ulepszenia klawiatury na macOS:**
 
-- Support for Globe key as transcription trigger
-- A rewrite of global shortcut handling for MacOS, and potentially other OS's too.
+- Obsługa klawisza Globe jako wyzwalacza transkrypcji
+- Przepisanie obsługi globalnych skrótów dla macOS i potencjalnie innych systemów
 
-**Opt-in Analytics:**
+**Analityka opcjonalna:**
 
-- Collect anonymous usage data to help improve Handy
-- Privacy-first approach with clear opt-in
+- Zbieranie anonimowych danych użycia w celu ulepszania Handy
+- Podejście zorientowane na prywatność z wyraźną zgodą użytkownika
 
-**Settings Refactoring:**
+**Refaktoryzacja ustawień:**
 
-- Cleanup and refactor settings system which is becoming bloated and messy
-- Implement better abstractions for settings management
+- Porządkowanie i refaktoryzacja systemu ustawień, który staje się rozbudowany
+- Lepsze abstrakcje zarządzania ustawieniami
 
-**Tauri Commands Cleanup:**
+**Uporządkowanie poleceń Tauri:**
 
-- Abstract and organize Tauri command patterns
-- Investigate tauri-specta for improved type safety and organization
+- Abstrakcja i organizacja wzorców poleceń Tauri
+- Badanie tauri-specta dla lepszej type safety i organizacji
 
-## Verify Release Signatures
+## Weryfikacja podpisów wydań
 
-Handy release artifacts are signed with Tauri's updater signature format. The public key is stored in [`src-tauri/tauri.conf.json`](src-tauri/tauri.conf.json) under `plugins.updater.pubkey`.
+Artefakty wydań Handy są podpisywane w formacie podpisu aktualizatora Tauri. Klucz publiczny znajduje się w [`src-tauri/tauri.conf.json`](src-tauri/tauri.conf.json) pod `plugins.updater.pubkey`.
 
-To verify a release manually, set `ARTIFACT` to the filename you downloaded, save the `pubkey` value from `src-tauri/tauri.conf.json` to `handy.pub.b64`, then decode the public key and matching `.sig` file from base64 and verify the artifact with `minisign`:
+Aby ręcznie zweryfikować wydanie, ustaw `ARTIFACT` na nazwę pobranego pliku, zapisz wartość `pubkey` z `src-tauri/tauri.conf.json` do `handy.pub.b64`, następnie zdekoduj klucz publiczny i plik `.sig` z base64 i zweryfikuj artefakt za pomocą `minisign`:
 
 ```bash
-# Replace with the file you downloaded
+# Zamień na pobrany plik
 ARTIFACT="Handy_0.8.1_amd64.AppImage"
 
 python3 - "$ARTIFACT" <<'PY'
@@ -299,37 +336,37 @@ minisign -Vm "$ARTIFACT" \
   -x "$ARTIFACT.minisig"
 ```
 
-On success, `minisign` prints:
+Po sukcesie `minisign` wyświetli:
 
 ```text
 Signature and comment signature verified
 ```
 
-Do not use `gpg` for these `.sig` files.
+Nie używaj `gpg` do plików `.sig`.
 
-## Troubleshooting
+## Rozwiązywanie problemów
 
-### Manual Model Installation (For Proxy Users or Network Restrictions)
+### Ręczna instalacja modeli (proxy / ograniczenia sieci)
 
-If you're behind a proxy, firewall, or in a restricted network environment where Handy cannot download models automatically, you can manually download and install them. The URLs are publicly accessible from any browser.
+Jeśli jesteś za proxy, firewallem lub w ograniczonym środowisku sieciowym, gdzie Handy nie może automatycznie pobrać modeli, możesz zainstalować je ręcznie. Adresy URL są publicznie dostępne z dowolnej przeglądarki.
 
-#### Step 1: Find Your App Data Directory
+#### Krok 1: Znajdź katalog danych aplikacji
 
-1. Open Handy settings
-2. Navigate to the **About** section
-3. Copy the "App Data Directory" path shown there, or use the shortcuts:
-   - **macOS**: `Cmd+Shift+D` to open debug menu
-   - **Windows/Linux**: `Ctrl+Shift+D` to open debug menu
+1. Otwórz ustawienia Handy
+2. Przejdź do sekcji **O programie**
+3. Skopiuj ścieżkę „Katalog danych aplikacji” lub użyj skrótów:
+   - **macOS**: `Cmd+Shift+D` — menu debugowania
+   - **Windows/Linux**: `Ctrl+Shift+D` — menu debugowania
 
-The typical paths are:
+Typowe ścieżki:
 
 - **macOS**: `~/Library/Application Support/com.pais.handy/`
 - **Windows**: `C:\Users\{username}\AppData\Roaming\com.pais.handy\`
 - **Linux**: `~/.config/com.pais.handy/`
 
-#### Step 2: Create Models Directory
+#### Krok 2: Utwórz katalog modeli
 
-Inside your app data directory, create a `models` folder if it doesn't already exist:
+W katalogu danych aplikacji utwórz folder `models`, jeśli jeszcze nie istnieje:
 
 ```bash
 # macOS/Linux
@@ -339,27 +376,27 @@ mkdir -p ~/Library/Application\ Support/com.pais.handy/models
 New-Item -ItemType Directory -Force -Path "$env:APPDATA\com.pais.handy\models"
 ```
 
-#### Step 3: Download Model Files
+#### Krok 3: Pobierz pliki modeli
 
-Download the models you want from below
+Pobierz potrzebne modele z poniższych adresów.
 
-**Whisper Models (single .bin files):**
+**Modele Whisper (pojedyncze pliki .bin):**
 
 - Small (487 MB): `https://blob.handy.computer/ggml-small.bin`
 - Medium (492 MB): `https://blob.handy.computer/whisper-medium-q4_1.bin`
 - Turbo (1600 MB): `https://blob.handy.computer/ggml-large-v3-turbo.bin`
 - Large (1100 MB): `https://blob.handy.computer/ggml-large-v3-q5_0.bin`
 
-**Parakeet Models (compressed archives):**
+**Modele Parakeet (archiwa skompresowane):**
 
 - V2 (473 MB): `https://blob.handy.computer/parakeet-v2-int8.tar.gz`
 - V3 (478 MB): `https://blob.handy.computer/parakeet-v3-int8.tar.gz`
 
-#### Step 4: Install Models
+#### Krok 4: Zainstaluj modele
 
-**For Whisper Models (.bin files):**
+**Modele Whisper (pliki .bin):**
 
-Simply place the `.bin` file directly into the `models` directory:
+Umieść plik `.bin` bezpośrednio w katalogu `models`:
 
 ```
 {app_data_dir}/models/
@@ -369,112 +406,112 @@ Simply place the `.bin` file directly into the `models` directory:
 └── ggml-large-v3-q5_0.bin
 ```
 
-**For Parakeet Models (.tar.gz archives):**
+**Modele Parakeet (archiwa .tar.gz):**
 
-1. Extract the `.tar.gz` file
-2. Place the **extracted directory** into the `models` folder
-3. The directory must be named exactly as follows:
+1. Rozpakuj plik `.tar.gz`
+2. Umieść **rozpakowany katalog** w folderze `models`
+3. Katalog musi mieć dokładnie taką nazwę:
    - **Parakeet V2**: `parakeet-tdt-0.6b-v2-int8`
    - **Parakeet V3**: `parakeet-tdt-0.6b-v3-int8`
 
-Final structure should look like:
+Docelowa struktura:
 
 ```
 {app_data_dir}/models/
-├── parakeet-tdt-0.6b-v2-int8/     (directory with model files inside)
-│   ├── (model files)
-│   └── (config files)
-└── parakeet-tdt-0.6b-v3-int8/     (directory with model files inside)
-    ├── (model files)
-    └── (config files)
+├── parakeet-tdt-0.6b-v2-int8/     (katalog z plikami modelu)
+│   ├── (pliki modelu)
+│   └── (pliki konfiguracyjne)
+└── parakeet-tdt-0.6b-v3-int8/     (katalog z plikami modelu)
+    ├── (pliki modelu)
+    └── (pliki konfiguracyjne)
 ```
 
-**Important Notes:**
+**Ważne uwagi:**
 
-- For Parakeet models, the extracted directory name **must** match exactly as shown above
-- Do not rename the `.bin` files for Whisper models—use the exact filenames from the download URLs
-- After placing the files, restart Handy to detect the new models
+- Dla modeli Parakeet nazwa rozpakowanego katalogu **musi** dokładnie odpowiadać powyższym
+- Nie zmieniaj nazw plików `.bin` dla modeli Whisper — używaj dokładnych nazw z adresów pobierania
+- Po umieszczeniu plików uruchom ponownie Handy, aby wykryło nowe modele
 
-#### Step 5: Verify Installation
+#### Krok 5: Zweryfikuj instalację
 
-1. Restart Handy
-2. Open Settings → Models
-3. Your manually installed models should now appear as "Downloaded"
-4. Select the model you want to use and test transcription
+1. Uruchom ponownie Handy
+2. Otwórz Ustawienia → Modele
+3. Ręcznie zainstalowane modele powinny pojawić się jako „Pobrane”
+4. Wybierz model i przetestuj transkrypcję
 
-### Custom Whisper Models
+### Własne modele Whisper
 
-Handy can auto-discover custom Whisper GGML models placed in the `models` directory. This is useful for users who want to use fine-tuned or community models not included in the default model list.
+Handy może automatycznie wykrywać własne modele Whisper GGML umieszczone w katalogu `models`. Przydatne dla użytkowników chcących korzystać z modeli fine-tuned lub społecznościowych spoza domyślnej listy.
 
-**How to use:**
+**Jak używać:**
 
-1. Obtain a Whisper model in GGML `.bin` format (e.g., from [Hugging Face](https://huggingface.co/models?search=whisper%20ggml))
-2. Place the `.bin` file in your `models` directory (see paths above)
-3. Restart Handy to discover the new model
-4. The model will appear in the "Custom Models" section of the Models settings page
+1. Uzyskaj model Whisper w formacie GGML `.bin` (np. z [Hugging Face](https://huggingface.co/models?search=whisper%20ggml))
+2. Umieść plik `.bin` w katalogu `models` (patrz ścieżki powyżej)
+3. Uruchom ponownie Handy, aby wykryło nowy model
+4. Model pojawi się w sekcji „Własne modele” na stronie ustawień modeli
 
-**Important:**
+**Ważne:**
 
-- Community models are user-provided and may not receive troubleshooting assistance
-- The model must be a valid Whisper GGML format (`.bin` file)
-- Model name is derived from the filename (e.g., `my-custom-model.bin` → "My Custom Model")
+- Modele społecznościowe są dostarczane przez użytkowników i mogą nie mieć wsparcia przy rozwiązywaniu problemów
+- Model musi być poprawnym formatem Whisper GGML (plik `.bin`)
+- Nazwa modelu pochodzi z nazwy pliku (np. `my-custom-model.bin` → „My Custom Model”)
 
-### Linux Startup Crashes or Instability
+### Awarie lub niestabilność startu na Linuxie
 
-If Handy fails to start reliably on Linux — for example, it crashes shortly after launch, never shows its window, or reports a Wayland protocol error — try the steps below in order.
+Jeśli Handy nie startuje niezawodnie na Linuxie — np. zamyka się zaraz po uruchomieniu, nie pokazuje okna lub zgłasza błąd protokołu Wayland — wypróbuj poniższe kroki po kolei.
 
-**1. Install (or reinstall) `gtk-layer-shell`**
+**1. Zainstaluj (lub przeinstaluj) `gtk-layer-shell`**
 
-Handy uses `gtk-layer-shell` for its recording overlay and links against it at runtime. A missing or broken installation is the most common cause of startup failures and can manifest as a crash or a hang well before any window is shown. Make sure the runtime package is installed for your distro:
+Handy używa `gtk-layer-shell` dla nakładki nagrywania i linkuje się z nią w runtime. Brakująca lub uszkodzona instalacja to najczęstsza przyczyna problemów ze startem. Upewnij się, że pakiet runtime jest zainstalowany:
 
-| Distro        | Package to install    | Example command                        |
+| Dystrybucja   | Pakiet do instalacji  | Przykładowe polecenie                  |
 | ------------- | --------------------- | -------------------------------------- |
 | Ubuntu/Debian | `libgtk-layer-shell0` | `sudo apt install libgtk-layer-shell0` |
 | Fedora/RHEL   | `gtk-layer-shell`     | `sudo dnf install gtk-layer-shell`     |
 | Arch Linux    | `gtk-layer-shell`     | `sudo pacman -S gtk-layer-shell`       |
 
-If it is already installed and you still see startup problems, try reinstalling it (e.g. `sudo pacman -S gtk-layer-shell` again) in case the library files were corrupted by a partial upgrade.
+Jeśli jest zainstalowany, a problemy trwają, spróbuj przeinstalować (np. `sudo pacman -S gtk-layer-shell`), gdy pliki biblioteki mogły ulec uszkodzeniu przy częściowej aktualizacji.
 
-**2. Disable the GTK layer shell overlay (`HANDY_NO_GTK_LAYER_SHELL`)**
+**2. Wyłącz nakładkę GTK layer shell (`HANDY_NO_GTK_LAYER_SHELL`)**
 
-If installing the library does not help, you can skip `gtk-layer-shell` initialization entirely as a workaround. On some compositors (notably KDE Plasma under Wayland) it has been reported to interact poorly with the recording overlay. With this variable set, the overlay falls back to a regular always-on-top window:
+Jeśli instalacja biblioteki nie pomaga, możesz całkowicie pominąć inicjalizację `gtk-layer-shell`. Na niektórych compositorach (np. KDE Plasma pod Wayland) zgłaszano złe interakcje z nakładką nagrywania. Przy tej zmiennej nakładka używa zwykłego okna always-on-top:
 
 ```bash
 HANDY_NO_GTK_LAYER_SHELL=1 handy
 ```
 
-**3. Disable WebKit DMA-BUF renderer (`WEBKIT_DISABLE_DMABUF_RENDERER`)**
+**3. Wyłącz renderer WebKit DMA-BUF (`WEBKIT_DISABLE_DMABUF_RENDERER`)**
 
-On some GPU/driver combinations the WebKitGTK DMA-BUF renderer can cause the window to fail to render or to crash. Try:
+Na niektórych kombinacjach GPU/sterowników renderer WebKitGTK DMA-BUF może powodować brak renderowania okna lub awarię. Spróbuj:
 
 ```bash
 WEBKIT_DISABLE_DMABUF_RENDERER=1 handy
 ```
 
-**Making a workaround permanent**
+**Trwałe zastosowanie obejścia**
 
-Once you've found a flag that helps, export it from your shell profile (`~/.bashrc`, `~/.zshenv`, …) or from the desktop autostart entry that launches Handy. If you launch Handy from a `.desktop` file, you can prefix the `Exec=` line, e.g.:
+Gdy znajdziesz działającą flagę, wyeksportuj ją w profilu powłoki (`~/.bashrc`, `~/.zshenv`, …) lub w wpisie autostartu pulpitu. Przy uruchamianiu z pliku `.desktop` możesz dodać prefiks do linii `Exec=`, np.:
 
 ```ini
 Exec=env HANDY_NO_GTK_LAYER_SHELL=1 handy
 ```
 
-If a workaround helps you, please [open an issue](https://github.com/cjpais/Handy/issues) describing your distro, desktop environment, and session type — that information helps us narrow down the underlying bug.
+Jeśli obejście pomogło, [zgłoś issue](https://github.com/cjpais/Handy/issues) z opisem dystrybucji, środowiska pulpitu i typu sesji — pomoże to zawęzić źródło błędu.
 
-### How to Contribute
+### Jak współtworzyć
 
-1. **Check existing issues** at [github.com/cjpais/Handy/issues](https://github.com/cjpais/Handy/issues)
-2. **Fork the repository** and create a feature branch
-3. **Test thoroughly** on your target platform
-4. **Submit a pull request** with clear description of changes
-5. **Join the discussion** - reach out at [contact@handy.computer](mailto:contact@handy.computer)
+1. **Sprawdź istniejące zgłoszenia** na [github.com/cjpais/Handy/issues](https://github.com/cjpais/Handy/issues)
+2. **Sforkuj repozytorium** i utwórz branch funkcji
+3. **Testuj dokładnie** na docelowej platformie
+4. **Wyślij pull request** z jasnym opisem zmian
+5. **Dołącz do dyskusji** — napisz na [contact@handy.computer](mailto:contact@handy.computer)
 
-The goal is to create both a useful tool and a foundation for others to build upon—a well-patterned, simple codebase that serves the community.
+Celem jest stworzenie zarówno użytecznego narzędzia, jak i fundamentu do dalszego rozwoju — przejrzystej, prostej bazy kodu służącej społeczności.
 
-## Sponsors
+## Sponsorzy
 
 <div align="center">
-  We're grateful for the support of our sponsors who help make Handy possible:
+  Jesteśmy wdzięczni sponsorom, którzy pomagają uczynić Handy możliwym:
   <br><br>
   <a href="https://wordcab.com">
     <img src="sponsor-images/wordcab.png" alt="Wordcab" width="120" height="120">
@@ -489,19 +526,20 @@ The goal is to create both a useful tool and a foundation for others to build up
   </a>
 </div>
 
-## Related Projects
+## Powiązane projekty
 
-- **[Handy CLI](https://github.com/cjpais/handy-cli)** - The original Python command-line version
-- **[handy.computer](https://handy.computer)** - Project website with demos and documentation
+- **[Handy CLI](https://github.com/cjpais/handy-cli)** — oryginalna wersja wiersza poleceń w Pythonie
+- **[handy.computer](https://handy.computer)** — strona projektu z demo i dokumentacją
+- **[cjpais/Handy](https://github.com/cjpais/Handy)** — upstream, od którego pochodzi ten fork
 
-## License
+## Licencja
 
-MIT License - see [LICENSE](LICENSE) file for details.
+Licencja MIT — szczegóły w pliku [LICENSE](LICENSE).
 
-## Acknowledgments
+## Podziękowania
 
-- **Whisper** by OpenAI for the speech recognition model
-- **whisper.cpp and ggml** for amazing cross-platform whisper inference/acceleration
-- **Silero** for great lightweight VAD
-- **Tauri** team for the excellent Rust-based app framework
-- **Community contributors** helping make Handy better
+- **Whisper** (OpenAI) za model rozpoznawania mowy
+- **whisper.cpp i ggml** za wieloplatformową inferencję/accelerację Whisper
+- **Silero** za lekki i skuteczny VAD
+- Zespół **Tauri** za doskonały framework aplikacji w Rust
+- **Współtwórcy społeczności**, którzy pomagają ulepszać Handy
