@@ -1,7 +1,9 @@
 use crate::input::{self, EnigoState};
 #[cfg(target_os = "linux")]
 use crate::settings::TypingTool;
+use crate::cursor_context::should_capitalize_pasted_text;
 use crate::settings::{get_settings, AutoSubmitKey, ClipboardHandling, PasteMethod};
+use crate::text_postprocess::adjust_first_letter_case;
 use enigo::{Direction, Enigo, Key, Keyboard};
 use log::info;
 use std::process::Command;
@@ -592,6 +594,9 @@ pub fn paste(text: String, app_handle: AppHandle) -> Result<(), String> {
     let settings = get_settings(&app_handle);
     let paste_method = settings.paste_method;
     let paste_delay_ms = settings.paste_delay_ms;
+
+    // Smart capitalization based on cursor context in the active field
+    let text = adjust_first_letter_case(&text, should_capitalize_pasted_text());
 
     // Append trailing space if setting is enabled
     let text = if settings.append_trailing_space {

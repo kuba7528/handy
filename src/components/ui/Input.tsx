@@ -18,8 +18,10 @@ export const Input: React.FC<InputProps> = ({
     : "hover:bg-logo-primary/10 hover:border-logo-primary focus:outline-none focus:bg-logo-primary/20 focus:border-logo-primary";
 
   const variantClasses = {
-    default: "px-3 py-2",
-    compact: "px-2 py-1",
+    default:
+      "px-[calc(12px*var(--control-scale))] py-[calc(8px*var(--control-scale))]",
+    compact:
+      "px-[calc(8px*var(--control-scale))] py-[calc(4px*var(--control-scale))]",
   } as const;
 
   return (

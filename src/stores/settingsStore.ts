@@ -6,6 +6,9 @@ import type {
   AudioDevice,
   WhisperAcceleratorSetting,
   OrtAcceleratorSetting,
+  FontSizeScale,
+  ControlDensity,
+  ColorScheme,
 } from "@/bindings";
 import { commands } from "@/bindings";
 
@@ -139,6 +142,10 @@ const settingUpdaters: {
     commands.changeMuteWhileRecordingSetting(value as boolean),
   append_trailing_space: (value) =>
     commands.changeAppendTrailingSpaceSetting(value as boolean),
+  convert_spoken_numbers: (value) =>
+    commands.changeConvertSpokenNumbersSetting(value as boolean),
+  convert_spoken_symbols: (value) =>
+    commands.changeConvertSpokenSymbolsSetting(value as boolean),
   log_level: (value) => commands.setLogLevel(value as any),
   app_language: (value) => commands.changeAppLanguageSetting(value as string),
   experimental_enabled: (value) =>
@@ -157,6 +164,18 @@ const settingUpdaters: {
     commands.changeWhisperGpuDevice(value as number),
   extra_recording_buffer_ms: (value) =>
     commands.changeExtraRecordingBufferSetting(value as number),
+  appearance_accent_color: (value) =>
+    commands.changeAppearanceAccentColor(value as string | null),
+  appearance_background_color: (value) =>
+    commands.changeAppearanceBackgroundColor(value as string | null),
+  appearance_text_color: (value) =>
+    commands.changeAppearanceTextColor(value as string | null),
+  appearance_font_scale: (value) =>
+    commands.changeAppearanceFontScale(value as FontSizeScale),
+  appearance_control_density: (value) =>
+    commands.changeAppearanceControlDensity(value as ControlDensity),
+  appearance_color_scheme: (value) =>
+    commands.changeAppearanceColorScheme(value as ColorScheme),
 };
 
 export const useSettingsStore = create<SettingsStore>()(

@@ -51,7 +51,7 @@ const neutralBorder =
 const selectStyles: StylesConfig<SelectOption, false> = {
   control: (base, state) => ({
     ...base,
-    minHeight: 40,
+    minHeight: "calc(40px * var(--control-scale))",
     borderRadius: 6,
     borderColor: state.isFocused ? "var(--color-logo-primary)" : neutralBorder,
     boxShadow: state.isFocused ? "0 0 0 1px var(--color-logo-primary)" : "none",

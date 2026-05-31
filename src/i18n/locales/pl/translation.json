@@ -15,6 +15,7 @@
     "postProcessing": "Postproces",
     "history": "Historia",
     "debug": "Debugowanie",
+    "appearance": "Wygląd",
     "about": "O programie"
   },
   "onboarding": {
@@ -173,6 +174,47 @@
       "yourModels": "Pobrane modele",
       "availableModels": "Dostępne do pobrania"
     },
+    "appearance": {
+      "title": "Wygląd",
+      "resetAll": "Przywróć domyślne",
+      "colorScheme": {
+        "title": "Motyw kolorystyczny",
+        "description": "Wybierz jasny, ciemny lub automatyczny motyw zgodny z ustawieniami systemu.",
+        "auto": "Automatyczny (system)",
+        "light": "Jasny",
+        "dark": "Ciemny"
+      },
+      "colors": {
+        "hexPlaceholder": "#000000",
+        "resetColor": "Przywróć domyślny kolor",
+        "accent": {
+          "title": "Kolor akcentu",
+          "description": "Główny kolor interfejsu używany w przyciskach, podświetleniach i logo."
+        },
+        "background": {
+          "title": "Kolor tła",
+          "description": "Kolor tła głównego okna aplikacji."
+        },
+        "text": {
+          "title": "Kolor tekstu",
+          "description": "Kolor głównego tekstu w interfejsie."
+        }
+      },
+      "fontScale": {
+        "title": "Rozmiar czcionki",
+        "description": "Skaluje rozmiar tekstu w całej aplikacji.",
+        "small": "Mały",
+        "medium": "Średni",
+        "large": "Duży"
+      },
+      "controlDensity": {
+        "title": "Gęstość elementów",
+        "description": "Zmienia rozmiar przycisków, pól tekstowych i innych kontrolek.",
+        "compact": "Kompaktowy",
+        "normal": "Normalny",
+        "comfortable": "Komfortowy"
+      }
+    },
     "general": {
       "title": "Ogólne",
       "shortcut": {
@@ -250,6 +292,16 @@
       "experimentalToggle": {
         "label": "Funkcje Eksperymentalne",
         "description": "Włącz funkcje eksperymentalne, które są jeszcze w fazie rozwoju."
+      },
+      "formatting": {
+        "numbers": {
+          "label": "Zapisuj liczby cyframi",
+          "description": "Zamienia wypowiedziane liczby na cyfry, np. \"one two three\" → \"123\" lub \"sto dwadzieścia trzy\" → \"123\"."
+        },
+        "symbols": {
+          "label": "Zapisuj symbole znakami",
+          "description": "Zamienia wypowiedziane nazwy symboli na znaki, np. \"at\" → \"@\", \"kropka\" → \".\", \"procent\" → \"%\"."
+        }
       },
       "lazyStreamClose": {
         "label": "Pozostaw mikrofon otwarty między transkrypcjami",

@@ -6,6 +6,7 @@ pub mod audio_toolkit;
 pub mod cli;
 mod clipboard;
 mod commands;
+mod cursor_context;
 mod helpers;
 mod input;
 mod llm_client;
@@ -16,6 +17,7 @@ mod settings;
 mod shortcut;
 mod signal_handle;
 mod transcription_coordinator;
+mod text_postprocess;
 mod tray;
 mod tray_i18n;
 mod utils;
@@ -362,6 +364,8 @@ pub fn run(cli_args: CliArgs) {
             shortcut::resume_binding,
             shortcut::change_mute_while_recording_setting,
             shortcut::change_append_trailing_space_setting,
+            shortcut::change_convert_spoken_numbers_setting,
+            shortcut::change_convert_spoken_symbols_setting,
             shortcut::change_lazy_stream_close_setting,
             shortcut::change_app_language_setting,
             shortcut::change_update_checks_setting,
@@ -389,6 +393,13 @@ pub fn run(cli_args: CliArgs) {
             commands::check_apple_intelligence_available,
             commands::initialize_enigo,
             commands::initialize_shortcuts,
+            commands::appearance::change_appearance_accent_color,
+            commands::appearance::change_appearance_background_color,
+            commands::appearance::change_appearance_text_color,
+            commands::appearance::change_appearance_font_scale,
+            commands::appearance::change_appearance_control_density,
+            commands::appearance::change_appearance_color_scheme,
+            commands::appearance::reset_appearance_settings,
             commands::models::get_available_models,
             commands::models::get_model_info,
             commands::models::download_model,

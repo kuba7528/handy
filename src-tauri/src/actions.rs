@@ -6,6 +6,9 @@ use crate::managers::audio::AudioRecordingManager;
 use crate::managers::history::HistoryManager;
 use crate::managers::transcription::TranscriptionManager;
 use crate::settings::{get_settings, AppSettings, APPLE_INTELLIGENCE_PROVIDER_ID};
+use crate::text_postprocess::{
+    apply_spoken_numbers, apply_spoken_symbols, resolve_speech_language,
+};
 use crate::shortcut;
 use crate::tray::{change_tray_icon, TrayIconState};
 use crate::utils::{
@@ -358,6 +361,15 @@ pub(crate) async fn process_transcription_output(
 
     if let Some(converted_text) = maybe_convert_chinese_variant(&settings, transcription).await {
         final_text = converted_text;
+    }
+
+    let speech_language =
+        resolve_speech_language(&settings.selected_language, &settings.app_language);
+    if settings.convert_spoken_numbers {
+        final_text = apply_spoken_numbers(&final_text, speech_language);
+    }
+    if settings.convert_spoken_symbols {
+        final_text = apply_spoken_symbols(&final_text, speech_language);
     }
 
     if post_process {

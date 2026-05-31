@@ -15,6 +15,7 @@
     "postProcessing": "Post Process",
     "history": "History",
     "debug": "Debug",
+    "appearance": "Appearance",
     "about": "About"
   },
   "onboarding": {
@@ -155,6 +156,47 @@
       "title": "{{model}} Settings",
       "noSettingsNeeded": "This model works automatically with no configuration needed."
     },
+    "appearance": {
+      "title": "Appearance",
+      "resetAll": "Reset to defaults",
+      "colorScheme": {
+        "title": "Color scheme",
+        "description": "Choose light, dark, or follow your system preference.",
+        "auto": "Automatic (system)",
+        "light": "Light",
+        "dark": "Dark"
+      },
+      "colors": {
+        "hexPlaceholder": "#000000",
+        "resetColor": "Reset to default color",
+        "accent": {
+          "title": "Accent color",
+          "description": "Primary UI color used for buttons, highlights, and the logo."
+        },
+        "background": {
+          "title": "Background color",
+          "description": "Main window background color."
+        },
+        "text": {
+          "title": "Text color",
+          "description": "Primary text color across the interface."
+        }
+      },
+      "fontScale": {
+        "title": "Font size",
+        "description": "Scales text size throughout the app.",
+        "small": "Small",
+        "medium": "Medium",
+        "large": "Large"
+      },
+      "controlDensity": {
+        "title": "Control density",
+        "description": "Adjusts the size of buttons, inputs, and other controls.",
+        "compact": "Compact",
+        "normal": "Normal",
+        "comfortable": "Comfortable"
+      }
+    },
     "general": {
       "title": "General",
       "shortcut": {
@@ -250,6 +292,16 @@
       "experimentalToggle": {
         "label": "Experimental Features",
         "description": "Enable experimental features that are still in development."
+      },
+      "formatting": {
+        "numbers": {
+          "label": "Write numbers as digits",
+          "description": "Convert spoken numbers to digits, e.g. \"one two three\" → \"123\" or \"sto dwadzieścia trzy\" → \"123\"."
+        },
+        "symbols": {
+          "label": "Write symbols as characters",
+          "description": "Convert spoken symbol names to characters, e.g. \"at\" → \"@\", \"kropka\" → \".\", \"procent\" → \"%\"."
+        }
       },
       "lazyStreamClose": {
         "label": "Keep Mic Open Between Transcriptions",

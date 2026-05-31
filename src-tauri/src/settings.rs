@@ -305,6 +305,48 @@ impl Default for OrtAcceleratorSetting {
     }
 }
 
+#[derive(Serialize, Deserialize, Debug, Clone, Copy, PartialEq, Eq, Type)]
+#[serde(rename_all = "snake_case")]
+pub enum FontSizeScale {
+    Small,
+    Medium,
+    Large,
+}
+
+impl Default for FontSizeScale {
+    fn default() -> Self {
+        FontSizeScale::Medium
+    }
+}
+
+#[derive(Serialize, Deserialize, Debug, Clone, Copy, PartialEq, Eq, Type)]
+#[serde(rename_all = "snake_case")]
+pub enum ControlDensity {
+    Compact,
+    Normal,
+    Comfortable,
+}
+
+impl Default for ControlDensity {
+    fn default() -> Self {
+        ControlDensity::Normal
+    }
+}
+
+#[derive(Serialize, Deserialize, Debug, Clone, Copy, PartialEq, Eq, Type)]
+#[serde(rename_all = "snake_case")]
+pub enum ColorScheme {
+    Auto,
+    Light,
+    Dark,
+}
+
+impl Default for ColorScheme {
+    fn default() -> Self {
+        ColorScheme::Auto
+    }
+}
+
 #[derive(Clone, Serialize, Deserialize, Type)]
 #[serde(transparent)]
 pub(crate) struct SecretMap(HashMap<String, String>);
@@ -435,6 +477,24 @@ pub struct AppSettings {
     pub whisper_gpu_device: i32,
     #[serde(default)]
     pub extra_recording_buffer_ms: u64,
+    #[serde(default)]
+    pub appearance_accent_color: Option<String>,
+    #[serde(default)]
+    pub appearance_background_color: Option<String>,
+    #[serde(default)]
+    pub appearance_text_color: Option<String>,
+    #[serde(default)]
+    pub appearance_font_scale: FontSizeScale,
+    #[serde(default)]
+    pub appearance_control_density: ControlDensity,
+    #[serde(default)]
+    pub appearance_color_scheme: ColorScheme,
+    /// Convert spoken number words (e.g. "one two three", "sto dwadzieścia trzy") to digits.
+    #[serde(default)]
+    pub convert_spoken_numbers: bool,
+    /// Convert spoken symbol names (e.g. "at", "małpa", "kropka") to punctuation/symbols.
+    #[serde(default)]
+    pub convert_spoken_symbols: bool,
 }
 
 fn default_model() -> String {
@@ -824,6 +884,14 @@ pub fn get_default_settings() -> AppSettings {
         ort_accelerator: OrtAcceleratorSetting::default(),
         whisper_gpu_device: default_whisper_gpu_device(),
         extra_recording_buffer_ms: 0,
+        appearance_accent_color: None,
+        appearance_background_color: None,
+        appearance_text_color: None,
+        appearance_font_scale: FontSizeScale::default(),
+        appearance_control_density: ControlDensity::default(),
+        appearance_color_scheme: ColorScheme::default(),
+        convert_spoken_numbers: false,
+        convert_spoken_symbols: false,
     }
 }
 
