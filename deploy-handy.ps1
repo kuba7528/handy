@@ -1,6 +1,8 @@
 # Deploy a portable Handy release folder (exe + DLLs + resources only).
+# Default Cargo target: short path under Pobrane (not C:\ht on drive root).
+# If MSVC/whisper hits MAX_PATH, use -TargetDir "C:\Users\Kuba\Pobrane\Moj_Handy\ht" instead.
 param(
-    [string]$TargetDir = "C:\ht",
+    [string]$TargetDir = "C:\Users\Kuba\Pobrane\Moj_Handy\h",
     [string]$DestDir = "C:\Users\Kuba\Pobrane\Moj_Handy\Handy\My_handy",
     [string]$ProjectRoot = $PSScriptRoot
 )
