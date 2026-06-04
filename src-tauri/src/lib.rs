@@ -167,6 +167,22 @@ fn initialize_core_logic(app_handle: &AppHandle) {
     app_handle.manage(transcription_manager.clone());
     app_handle.manage(history_manager.clone());
 
+    // Pre-load the selected ASR model in the background so the first transcription
+    // is not delayed. Continuous listening also triggers a load, but only after
+    // the microphone opens successfully — if that fails, startup preload still
+    // ensures the model is ready in memory.
+    {
+        let settings = settings::get_settings(app_handle);
+        if !settings.selected_model.is_empty()
+            && model_manager
+                .get_model_info(&settings.selected_model)
+                .map(|m| m.is_downloaded)
+                .unwrap_or(false)
+        {
+            transcription_manager.initiate_model_load();
+        }
+    }
+
     // Note: Shortcuts are NOT initialized here.
     // The frontend is responsible for calling the `initialize_shortcuts` command
     // after permissions are confirmed (on macOS) or after onboarding completes.

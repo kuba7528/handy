@@ -2,7 +2,7 @@ use regex::Regex;
 use std::collections::HashMap;
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
-enum SpeechLanguage {
+pub(crate) enum SpeechLanguage {
     English,
     Polish,
 }
