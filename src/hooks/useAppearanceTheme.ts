@@ -1,37 +1,57 @@
 import { useEffect } from "react";
-import type { AppSettings } from "@/bindings";
+import type { AppSettings, ColorScheme } from "@/bindings";
 import {
   CONTROL_SCALE_VALUES,
   FONT_SCALE_VALUES,
   accentToUiColor,
+  paletteForScheme,
+  resolveEffectiveColorScheme,
 } from "@/lib/constants/appearance";
 
-const COLOR_VARS = [
-  "--color-logo-primary",
-  "--color-background-ui",
-  "--color-background",
+const THEME_COLOR_VARS = [
   "--color-text",
+  "--color-background",
+  "--color-logo-primary",
+  "--color-logo-stroke",
+  "--color-background-ui",
 ] as const;
 
-function clearCustomColors(root: HTMLElement) {
-  for (const varName of COLOR_VARS) {
+function clearThemeColorVars(root: HTMLElement) {
+  for (const varName of THEME_COLOR_VARS) {
     root.style.removeProperty(varName);
   }
 }
 
-function applyColorScheme(root: HTMLElement, scheme: AppSettings["appearance_color_scheme"]) {
+function applyColorSchemeAttribute(
+  root: HTMLElement,
+  scheme: ColorScheme | undefined,
+) {
   if (scheme === "light" || scheme === "dark") {
-    root.dataset.colorScheme = scheme;
+    root.setAttribute("data-color-scheme", scheme);
   } else {
-    delete root.dataset.colorScheme;
+    root.removeAttribute("data-color-scheme");
   }
 }
 
-function applyAppearanceSettings(settings: AppSettings) {
-  const root = document.documentElement;
+function applyPalette(root: HTMLElement, palette: ReturnType<typeof paletteForScheme>) {
+  root.style.setProperty("--color-text", palette.text);
+  root.style.setProperty("--color-background", palette.background);
+  root.style.setProperty("--color-logo-primary", palette.logoPrimary);
+  root.style.setProperty("--color-logo-stroke", palette.logoStroke);
+  root.style.setProperty("--color-background-ui", palette.backgroundUi);
+}
 
-  clearCustomColors(root);
-  applyColorScheme(root, settings.appearance_color_scheme ?? "auto");
+export function applyAppearanceSettings(settings: AppSettings) {
+  const root = document.documentElement;
+  const scheme = settings.appearance_color_scheme ?? "auto";
+  const effective = resolveEffectiveColorScheme(scheme);
+
+  clearThemeColorVars(root);
+  applyColorSchemeAttribute(root, scheme);
+  root.style.colorScheme = effective;
+
+  const palette = paletteForScheme(effective);
+  applyPalette(root, palette);
 
   const accent = settings.appearance_accent_color?.trim();
   if (accent) {
@@ -39,14 +59,17 @@ function applyAppearanceSettings(settings: AppSettings) {
     root.style.setProperty("--color-background-ui", accentToUiColor(accent));
   }
 
-  const background = settings.appearance_background_color?.trim();
-  if (background) {
-    root.style.setProperty("--color-background", background);
-  }
+  // Custom background/text only apply in auto — forced light/dark use the palette above.
+  if (scheme === "auto") {
+    const background = settings.appearance_background_color?.trim();
+    if (background) {
+      root.style.setProperty("--color-background", background);
+    }
 
-  const text = settings.appearance_text_color?.trim();
-  if (text) {
-    root.style.setProperty("--color-text", text);
+    const text = settings.appearance_text_color?.trim();
+    if (text) {
+      root.style.setProperty("--color-text", text);
+    }
   }
 
   const fontScale =
@@ -73,5 +96,13 @@ export function useAppearanceTheme(settings: AppSettings | null) {
 
     media.addEventListener("change", handleSchemeChange);
     return () => media.removeEventListener("change", handleSchemeChange);
-  }, [settings]);
+  }, [
+    settings,
+    settings?.appearance_color_scheme,
+    settings?.appearance_accent_color,
+    settings?.appearance_background_color,
+    settings?.appearance_text_color,
+    settings?.appearance_font_scale,
+    settings?.appearance_control_density,
+  ]);
 }

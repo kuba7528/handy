@@ -44,6 +44,45 @@ export const TEXT_COLOR_PRESETS = [
   "#ffffff",
 ];
 
+/** Base palette tokens; kept in sync with App.css theme rules. */
+export type ThemePalette = {
+  text: string;
+  background: string;
+  logoPrimary: string;
+  logoStroke: string;
+  backgroundUi: string;
+};
+
+export const LIGHT_THEME_PALETTE: ThemePalette = {
+  text: "#0f0f0f",
+  background: "#fbfbfb",
+  logoPrimary: "#faa2ca",
+  logoStroke: "#382731",
+  backgroundUi: "#da5893",
+};
+
+export const DARK_THEME_PALETTE: ThemePalette = {
+  text: "#fbfbfb",
+  background: "#2c2b29",
+  logoPrimary: "#f28cbb",
+  logoStroke: "#fad1ed",
+  backgroundUi: "#da5893",
+};
+
+export function resolveEffectiveColorScheme(
+  scheme: ColorScheme | undefined,
+): "light" | "dark" {
+  if (scheme === "dark") return "dark";
+  if (scheme === "light") return "light";
+  return window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";
+}
+
+export function paletteForScheme(effective: "light" | "dark"): ThemePalette {
+  return effective === "dark" ? DARK_THEME_PALETTE : LIGHT_THEME_PALETTE;
+}
+
 export function isValidHexColor(value: string): boolean {
   return /^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/.test(value.trim());
 }
