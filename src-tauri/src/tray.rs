@@ -4,6 +4,7 @@ use crate::managers::transcription::TranscriptionManager;
 use crate::settings;
 use crate::tray_i18n::get_tray_translations;
 use log::{error, info, warn};
+use std::sync::{Mutex, OnceLock};
 use std::sync::Arc;
 use tauri::image::Image;
 use tauri::menu::{CheckMenuItem, Menu, MenuItem, PredefinedMenuItem, Submenu};
@@ -22,23 +23,14 @@ pub enum TrayIconState {
 pub enum AppTheme {
     Dark,
     Light,
-    Colored, // Pink/colored theme for Linux
+    /// Pink branded icons (`handy.png`, `recording.png`, `transcribing.png`) matching the UI logo.
+    Colored,
 }
 
-/// Tray contrast follows the **taskbar/shell** theme on Windows, not the in-app theme.
-/// `AppsUseLightTheme` / window theme can differ from `SystemUsesLightTheme` when the user
-/// sets "Default Windows mode" and "Default app mode" separately.
-#[cfg(target_os = "windows")]
-fn windows_system_prefers_light_taskbar() -> Option<bool> {
-    use winreg::enums::HKEY_CURRENT_USER;
-    use winreg::RegKey;
+static LAST_TRAY_ICON_STATE: OnceLock<Mutex<TrayIconState>> = OnceLock::new();
 
-    const PERSONALIZE: &str = r"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize";
-    let hkcu = RegKey::predef(HKEY_CURRENT_USER);
-    let key = hkcu.open_subkey(PERSONALIZE).ok()?;
-    // 1 = light taskbar, 0 = dark taskbar
-    let value: u32 = key.get_value("SystemUsesLightTheme").ok()?;
-    Some(value != 0)
+fn last_tray_icon_state() -> &'static Mutex<TrayIconState> {
+    LAST_TRAY_ICON_STATE.get_or_init(|| Mutex::new(TrayIconState::Idle))
 }
 
 fn theme_from_window(app: &AppHandle) -> AppTheme {
@@ -53,19 +45,68 @@ fn theme_from_window(app: &AppHandle) -> AppTheme {
     }
 }
 
-/// Gets the current tray contrast theme.
+/// Tray icons follow the **application** look, not the Windows taskbar light/dark mode.
+///
+/// Windows and Linux use the pink branded assets so the tray matches `logo-primary` in the UI.
+/// macOS keeps monochrome template icons that adapt to the menu bar via `set_icon_as_template`.
 pub fn get_current_theme(app: &AppHandle) -> AppTheme {
-    if cfg!(target_os = "linux") {
-        AppTheme::Colored
-    } else if cfg!(target_os = "windows") {
-        match windows_system_prefers_light_taskbar() {
-            Some(true) => AppTheme::Light,
-            Some(false) => AppTheme::Dark,
-            None => theme_from_window(app),
-        }
-    } else {
+    if cfg!(target_os = "macos") {
         theme_from_window(app)
+    } else {
+        AppTheme::Colored
     }
+}
+
+fn load_icon_image(app: &AppHandle, icon_path: &str) -> Option<Image<'static>> {
+    let path = app
+        .path()
+        .resolve(icon_path, tauri::path::BaseDirectory::Resource)
+        .ok()?;
+    Image::from_path(path).ok()
+}
+
+fn set_tray_icon_image(app: &AppHandle, state: &TrayIconState) {
+    let tray = app.state::<TrayIcon>();
+    let theme = get_current_theme(app);
+    let icon_path = get_icon_path(theme, state.clone());
+
+    if let Some(icon) = load_icon_image(app, icon_path) {
+        let _ = tray.set_icon(Some(icon));
+    }
+    apply_tray_icon_template(&tray);
+}
+
+/// Windows/Linux taskbar and title bar use the main window icon; keep it in sync with tray branding.
+fn set_main_window_icon(app: &AppHandle, state: &TrayIconState) {
+    let Some(window) = app.get_webview_window("main") else {
+        return;
+    };
+    let theme = get_current_theme(app);
+    let icon_path = get_icon_path(theme, state.clone());
+    if let Some(icon) = load_icon_image(app, icon_path) {
+        let _ = window.set_icon(icon);
+    }
+}
+
+/// Apply the current tray-state icon to the main window (taskbar / title bar on Windows).
+pub fn sync_main_window_icon(app: &AppHandle) {
+    let state = last_tray_icon_state()
+        .lock()
+        .map(|guard| guard.clone())
+        .unwrap_or(TrayIconState::Idle);
+    set_main_window_icon(app, &state);
+}
+
+/// Re-apply tray + window icons for the last known state.
+///
+/// Custom `appearance_accent_color` does not regenerate PNG/ICO assets; icons use default Handy pink.
+pub fn refresh_tray_theme(app: &AppHandle) {
+    let state = last_tray_icon_state()
+        .lock()
+        .map(|guard| guard.clone())
+        .unwrap_or(TrayIconState::Idle);
+    set_tray_icon_image(app, &state);
+    set_main_window_icon(app, &state);
 }
 
 fn apply_tray_icon_template(tray: &TrayIcon) {
@@ -79,10 +120,10 @@ fn apply_tray_icon_template(tray: &TrayIcon) {
     }
 }
 
-/// Icon path for tray state and shell background contrast.
+/// Icon path for tray state and theme.
 ///
-/// `AppTheme::Dark` = dark taskbar → light (white) glyphs.
-/// `AppTheme::Light` = light taskbar → dark (black) glyphs.
+/// `AppTheme::Colored` — pink Handy branding (Windows/Linux, matches UI accent).
+/// `AppTheme::Dark` / `Light` — monochrome glyphs for macOS menu bar template mode.
 pub fn get_icon_path(theme: AppTheme, state: TrayIconState) -> &'static str {
     match (theme, state) {
         (AppTheme::Dark, TrayIconState::Idle) => "resources/tray_idle.png",
@@ -91,7 +132,6 @@ pub fn get_icon_path(theme: AppTheme, state: TrayIconState) -> &'static str {
         (AppTheme::Light, TrayIconState::Idle) => "resources/tray_idle_dark.png",
         (AppTheme::Light, TrayIconState::Recording) => "resources/tray_recording_dark.png",
         (AppTheme::Light, TrayIconState::Transcribing) => "resources/tray_transcribing_dark.png",
-        // Colored theme uses pink icons (for Linux)
         (AppTheme::Colored, TrayIconState::Idle) => "resources/handy.png",
         (AppTheme::Colored, TrayIconState::Recording) => "resources/recording.png",
         (AppTheme::Colored, TrayIconState::Transcribing) => "resources/transcribing.png",
@@ -99,21 +139,11 @@ pub fn get_icon_path(theme: AppTheme, state: TrayIconState) -> &'static str {
 }
 
 pub fn change_tray_icon(app: &AppHandle, icon: TrayIconState) {
-    let tray = app.state::<TrayIcon>();
-    let theme = get_current_theme(app);
-
-    let icon_path = get_icon_path(theme, icon.clone());
-
-    let _ = tray.set_icon(Some(
-        Image::from_path(
-            app.path()
-                .resolve(icon_path, tauri::path::BaseDirectory::Resource)
-                .expect("failed to resolve"),
-        )
-        .expect("failed to set icon"),
-    ));
-
-    // Update menu based on state
+    if let Ok(mut guard) = last_tray_icon_state().lock() {
+        *guard = icon.clone();
+    }
+    set_tray_icon_image(app, &icon);
+    set_main_window_icon(app, &icon);
     update_tray_menu(app, &icon, None);
 }
 
@@ -313,7 +343,27 @@ mod tests {
     use crate::managers::history::HistoryEntry;
 
     #[test]
-    fn dark_taskbar_uses_light_idle_icon() {
+    fn colored_theme_uses_branded_idle_icon() {
+        assert_eq!(
+            get_icon_path(AppTheme::Colored, TrayIconState::Idle),
+            "resources/handy.png"
+        );
+    }
+
+    #[test]
+    fn colored_recording_and_transcribing_icons() {
+        assert_eq!(
+            get_icon_path(AppTheme::Colored, TrayIconState::Recording),
+            "resources/recording.png"
+        );
+        assert_eq!(
+            get_icon_path(AppTheme::Colored, TrayIconState::Transcribing),
+            "resources/transcribing.png"
+        );
+    }
+
+    #[test]
+    fn macos_dark_theme_uses_light_glyph_idle_icon() {
         assert_eq!(
             get_icon_path(AppTheme::Dark, TrayIconState::Idle),
             "resources/tray_idle.png"
@@ -321,22 +371,10 @@ mod tests {
     }
 
     #[test]
-    fn light_taskbar_uses_dark_idle_icon() {
+    fn macos_light_theme_uses_dark_glyph_idle_icon() {
         assert_eq!(
             get_icon_path(AppTheme::Light, TrayIconState::Idle),
             "resources/tray_idle_dark.png"
-        );
-    }
-
-    #[test]
-    fn recording_icons_follow_taskbar_contrast() {
-        assert_eq!(
-            get_icon_path(AppTheme::Dark, TrayIconState::Recording),
-            "resources/tray_recording.png"
-        );
-        assert_eq!(
-            get_icon_path(AppTheme::Light, TrayIconState::Recording),
-            "resources/tray_recording_dark.png"
         );
     }
 

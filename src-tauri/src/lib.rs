@@ -553,9 +553,23 @@ pub fn run(cli_args: CliArgs) {
                 win_builder = win_builder.data_directory(data_dir.join("webview"));
             }
 
-            win_builder.build()?;
+            let app_handle = app.handle().clone();
+            let initial_theme = tray::get_current_theme(&app_handle);
+            let initial_icon_path =
+                tray::get_icon_path(initial_theme, tray::TrayIconState::Idle);
+            if let Ok(path) = app.path().resolve(
+                initial_icon_path,
+                tauri::path::BaseDirectory::Resource,
+            ) {
+                if let Ok(icon) = tauri::image::Image::from_path(path) {
+                    win_builder = win_builder.icon(icon)?;
+                }
+            }
 
-            let mut settings = get_settings(&app.handle());
+            win_builder.build()?;
+            tray::sync_main_window_icon(&app_handle);
+
+            let mut settings = get_settings(&app_handle);
 
             // CLI --debug flag overrides debug_mode and log level (runtime-only, not persisted)
             if cli_args.debug {
@@ -567,7 +581,6 @@ pub fn run(cli_args: CliArgs) {
             let file_log_level: log::Level = tauri_log_level.into();
             // Store the file log level in the atomic for the filter to use
             FILE_LOG_LEVEL.store(file_log_level.to_level_filter() as u8, Ordering::Relaxed);
-            let app_handle = app.handle().clone();
             app.manage(TranscriptionCoordinator::new(app_handle.clone()));
 
             initialize_core_logic(&app_handle);
@@ -627,8 +640,8 @@ pub fn run(cli_args: CliArgs) {
             }
             tauri::WindowEvent::ThemeChanged(theme) => {
                 log::info!("Theme changed to: {:?}", theme);
-                // Update tray icon to match new theme, maintaining idle state
-                utils::change_tray_icon(&window.app_handle(), utils::TrayIconState::Idle);
+                // macOS: refresh template tray icon; Windows/Linux use fixed branded icons
+                tray::refresh_tray_theme(&window.app_handle());
             }
             _ => {}
         })

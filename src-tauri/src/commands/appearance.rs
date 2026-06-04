@@ -1,6 +1,7 @@
 use crate::settings::{
     get_default_settings, get_settings, write_settings, ColorScheme, ControlDensity, FontSizeScale,
 };
+use crate::tray;
 use tauri::AppHandle;
 
 fn normalize_color(color: Option<String>) -> Option<String> {
@@ -83,6 +84,7 @@ pub fn change_appearance_color_scheme(
     let mut settings = get_settings(&app);
     settings.appearance_color_scheme = scheme;
     write_settings(&app, settings);
+    tray::refresh_tray_theme(&app);
     Ok(())
 }
 
@@ -98,5 +100,6 @@ pub fn reset_appearance_settings(app: AppHandle) -> Result<(), String> {
     settings.appearance_control_density = defaults.appearance_control_density;
     settings.appearance_color_scheme = defaults.appearance_color_scheme;
     write_settings(&app, settings);
+    tray::refresh_tray_theme(&app);
     Ok(())
 }
