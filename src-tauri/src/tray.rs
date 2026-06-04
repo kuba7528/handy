@@ -25,33 +25,69 @@ pub enum AppTheme {
     Colored, // Pink/colored theme for Linux
 }
 
-/// Gets the current app theme, with Linux defaulting to Colored theme
-pub fn get_current_theme(app: &AppHandle) -> AppTheme {
-    if cfg!(target_os = "linux") {
-        // On Linux, always use the colored theme
-        AppTheme::Colored
-    } else {
-        // On other platforms, map system theme to our app theme
-        if let Some(main_window) = app.get_webview_window("main") {
-            match main_window.theme().unwrap_or(Theme::Dark) {
-                Theme::Light => AppTheme::Light,
-                Theme::Dark => AppTheme::Dark,
-                _ => AppTheme::Dark, // Default fallback
-            }
-        } else {
-            AppTheme::Dark
+/// Tray contrast follows the **taskbar/shell** theme on Windows, not the in-app theme.
+/// `AppsUseLightTheme` / window theme can differ from `SystemUsesLightTheme` when the user
+/// sets "Default Windows mode" and "Default app mode" separately.
+#[cfg(target_os = "windows")]
+fn windows_system_prefers_light_taskbar() -> Option<bool> {
+    use winreg::enums::HKEY_CURRENT_USER;
+    use winreg::RegKey;
+
+    const PERSONALIZE: &str = r"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize";
+    let hkcu = RegKey::predef(HKEY_CURRENT_USER);
+    let key = hkcu.open_subkey(PERSONALIZE).ok()?;
+    // 1 = light taskbar, 0 = dark taskbar
+    let value: u32 = key.get_value("SystemUsesLightTheme").ok()?;
+    Some(value != 0)
+}
+
+fn theme_from_window(app: &AppHandle) -> AppTheme {
+    if let Some(main_window) = app.get_webview_window("main") {
+        match main_window.theme().unwrap_or(Theme::Dark) {
+            Theme::Light => AppTheme::Light,
+            Theme::Dark => AppTheme::Dark,
+            _ => AppTheme::Dark,
         }
+    } else {
+        AppTheme::Dark
     }
 }
 
-/// Gets the appropriate icon path for the given theme and state
+/// Gets the current tray contrast theme.
+pub fn get_current_theme(app: &AppHandle) -> AppTheme {
+    if cfg!(target_os = "linux") {
+        AppTheme::Colored
+    } else if cfg!(target_os = "windows") {
+        match windows_system_prefers_light_taskbar() {
+            Some(true) => AppTheme::Light,
+            Some(false) => AppTheme::Dark,
+            None => theme_from_window(app),
+        }
+    } else {
+        theme_from_window(app)
+    }
+}
+
+fn apply_tray_icon_template(tray: &TrayIcon) {
+    #[cfg(target_os = "macos")]
+    {
+        let _ = tray.set_icon_as_template(true);
+    }
+    #[cfg(not(target_os = "macos"))]
+    {
+        let _ = tray.set_icon_as_template(false);
+    }
+}
+
+/// Icon path for tray state and shell background contrast.
+///
+/// `AppTheme::Dark` = dark taskbar → light (white) glyphs.
+/// `AppTheme::Light` = light taskbar → dark (black) glyphs.
 pub fn get_icon_path(theme: AppTheme, state: TrayIconState) -> &'static str {
     match (theme, state) {
-        // Dark theme uses light icons
         (AppTheme::Dark, TrayIconState::Idle) => "resources/tray_idle.png",
         (AppTheme::Dark, TrayIconState::Recording) => "resources/tray_recording.png",
         (AppTheme::Dark, TrayIconState::Transcribing) => "resources/tray_transcribing.png",
-        // Light theme uses dark icons
         (AppTheme::Light, TrayIconState::Idle) => "resources/tray_idle_dark.png",
         (AppTheme::Light, TrayIconState::Recording) => "resources/tray_recording_dark.png",
         (AppTheme::Light, TrayIconState::Transcribing) => "resources/tray_transcribing_dark.png",
@@ -219,7 +255,7 @@ pub fn update_tray_menu(app: &AppHandle, state: &TrayIconState, locale: Option<&
 
     let tray = app.state::<TrayIcon>();
     let _ = tray.set_menu(Some(menu));
-    let _ = tray.set_icon_as_template(true);
+    apply_tray_icon_template(&tray);
     let _ = tray.set_tooltip(Some(version_label));
 }
 
@@ -272,8 +308,37 @@ pub fn copy_last_transcript(app: &AppHandle) {
 
 #[cfg(test)]
 mod tests {
+    use super::{get_icon_path, AppTheme, TrayIconState};
     use super::last_transcript_text;
     use crate::managers::history::HistoryEntry;
+
+    #[test]
+    fn dark_taskbar_uses_light_idle_icon() {
+        assert_eq!(
+            get_icon_path(AppTheme::Dark, TrayIconState::Idle),
+            "resources/tray_idle.png"
+        );
+    }
+
+    #[test]
+    fn light_taskbar_uses_dark_idle_icon() {
+        assert_eq!(
+            get_icon_path(AppTheme::Light, TrayIconState::Idle),
+            "resources/tray_idle_dark.png"
+        );
+    }
+
+    #[test]
+    fn recording_icons_follow_taskbar_contrast() {
+        assert_eq!(
+            get_icon_path(AppTheme::Dark, TrayIconState::Recording),
+            "resources/tray_recording.png"
+        );
+        assert_eq!(
+            get_icon_path(AppTheme::Light, TrayIconState::Recording),
+            "resources/tray_recording_dark.png"
+        );
+    }
 
     fn build_entry(transcription: &str, post_processed: Option<&str>) -> HistoryEntry {
         HistoryEntry {
