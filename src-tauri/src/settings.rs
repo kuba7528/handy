@@ -452,6 +452,8 @@ pub struct AppSettings {
     pub mute_while_recording: bool,
     #[serde(default)]
     pub append_trailing_space: bool,
+    #[serde(default)]
+    pub append_trailing_period: bool,
     #[serde(default = "default_app_language")]
     pub app_language: String,
     #[serde(default)]
@@ -871,6 +873,7 @@ pub fn get_default_settings() -> AppSettings {
         post_process_selected_prompt_id: None,
         mute_while_recording: false,
         append_trailing_space: false,
+        append_trailing_period: false,
         app_language: default_app_language(),
         experimental_enabled: false,
         lazy_stream_close: false,

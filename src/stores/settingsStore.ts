@@ -142,6 +142,8 @@ const settingUpdaters: {
     commands.changeMuteWhileRecordingSetting(value as boolean),
   append_trailing_space: (value) =>
     commands.changeAppendTrailingSpaceSetting(value as boolean),
+  append_trailing_period: (value) =>
+    commands.changeAppendTrailingPeriodSetting(value as boolean),
   convert_spoken_numbers: (value) =>
     commands.changeConvertSpokenNumbersSetting(value as boolean),
   convert_spoken_symbols: (value) =>

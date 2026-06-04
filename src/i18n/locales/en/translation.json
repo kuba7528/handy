@@ -301,6 +301,10 @@
         "symbols": {
           "label": "Write symbols as characters",
           "description": "Convert spoken symbol names to characters, e.g. \"at\" → \"@\", \"kropka\" → \".\", \"procent\" → \"%\"."
+        },
+        "trailingPeriod": {
+          "label": "Add period at end of transcription",
+          "description": "Adds a period at the end of pasted transcription. When off, a trailing period from the speech model is removed."
         }
       },
       "lazyStreamClose": {

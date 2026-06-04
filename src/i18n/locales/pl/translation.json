@@ -301,6 +301,10 @@
         "symbols": {
           "label": "Zapisuj symbole znakami",
           "description": "Zamienia wypowiedziane nazwy symboli na znaki, np. \"at\" → \"@\", \"kropka\" → \".\", \"procent\" → \"%\"."
+        },
+        "trailingPeriod": {
+          "label": "Dodawaj kropkę na końcu transkrypcji",
+          "description": "Dodaje kropkę na końcu wklejanej transkrypcji. Wyłączone — końcowa kropka z modelu rozpoznawania mowy jest usuwana."
         }
       },
       "lazyStreamClose": {

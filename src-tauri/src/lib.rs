@@ -380,6 +380,7 @@ pub fn run(cli_args: CliArgs) {
             shortcut::resume_binding,
             shortcut::change_mute_while_recording_setting,
             shortcut::change_append_trailing_space_setting,
+            shortcut::change_append_trailing_period_setting,
             shortcut::change_convert_spoken_numbers_setting,
             shortcut::change_convert_spoken_symbols_setting,
             shortcut::change_lazy_stream_close_setting,

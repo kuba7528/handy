@@ -7,7 +7,7 @@ use crate::managers::history::HistoryManager;
 use crate::managers::transcription::TranscriptionManager;
 use crate::settings::{get_settings, AppSettings, APPLE_INTELLIGENCE_PROVIDER_ID};
 use crate::text_postprocess::{
-    apply_spoken_numbers, apply_spoken_symbols, resolve_speech_language,
+    apply_spoken_numbers, apply_spoken_symbols, apply_trailing_period, resolve_speech_language,
 };
 use crate::shortcut;
 use crate::tray::{change_tray_icon, TrayIconState};
@@ -388,6 +388,11 @@ pub(crate) async fn process_transcription_output(
             }
         }
     } else if final_text != transcription {
+        post_processed_text = Some(final_text.clone());
+    }
+
+    final_text = apply_trailing_period(&final_text, settings.append_trailing_period);
+    if post_processed_text.is_some() {
         post_processed_text = Some(final_text.clone());
     }
 

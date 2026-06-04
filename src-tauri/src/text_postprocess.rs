@@ -23,6 +23,32 @@ pub fn resolve_speech_language(selected_language: &str, app_language: &str) -> S
     }
 }
 
+/// When `append` is true, ensure the text ends with sentence-ending punctuation
+/// (adding `.` if missing). When false, remove a trailing `.` added by ASR models.
+pub fn apply_trailing_period(text: &str, append: bool) -> String {
+    let trimmed = text.trim_end();
+    if trimmed.is_empty() {
+        return String::new();
+    }
+
+    if append {
+        let ends_with_sentence_punct = trimmed
+            .chars()
+            .last()
+            .is_some_and(|c| matches!(c, '.' | '!' | '?'));
+        if ends_with_sentence_punct {
+            return trimmed.to_string();
+        }
+        return format!("{trimmed}.");
+    }
+
+    if trimmed.ends_with('.') && !trimmed.ends_with("..") {
+        return trimmed.trim_end_matches('.').to_string();
+    }
+
+    trimmed.to_string()
+}
+
 pub fn adjust_first_letter_case(text: &str, capitalize: bool) -> String {
     let mut chars = text.chars();
     let Some(first) = chars.next() else {
@@ -576,8 +602,6 @@ mod tests {
     }
 
     #[test]
-
-    #[test]
     fn converts_english_special_symbols() {
         let result = apply_spoken_symbols(
             "hash dollar percent caret ampersand asterisk underscore equals plus",
@@ -604,5 +628,23 @@ mod tests {
     fn adjusts_first_letter_case() {
         assert_eq!(adjust_first_letter_case("Hello", false), "hello");
         assert_eq!(adjust_first_letter_case("hello", true), "Hello");
+    }
+
+    #[test]
+    fn strips_trailing_period_when_disabled() {
+        assert_eq!(apply_trailing_period("hello world.", false), "hello world");
+        assert_eq!(apply_trailing_period("hello world", false), "hello world");
+    }
+
+    #[test]
+    fn adds_trailing_period_when_enabled() {
+        assert_eq!(apply_trailing_period("hello world", true), "hello world.");
+        assert_eq!(apply_trailing_period("hello world.", true), "hello world.");
+        assert_eq!(apply_trailing_period("really?", true), "really?");
+    }
+
+    #[test]
+    fn preserves_ellipsis_when_stripping_period() {
+        assert_eq!(apply_trailing_period("wait..", false), "wait..");
     }
 }
