@@ -194,7 +194,9 @@ impl AudioRecordingManager {
 
         // Always-on?  Open immediately.
         if matches!(mode, MicrophoneMode::AlwaysOn) {
-            manager.start_microphone_stream()?;
+            if let Err(e) = manager.start_microphone_stream() {
+                log::warn!("Could not open microphone at startup (always-on): {e}");
+            }
         }
 
         Ok(manager)
