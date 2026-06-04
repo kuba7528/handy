@@ -24,6 +24,7 @@ pub fn change_appearance_accent_color(
     let mut settings = get_settings(&app);
     settings.appearance_accent_color = normalize_color(color);
     write_settings(&app, settings);
+    tray::refresh_tray_theme(&app);
     Ok(())
 }
 

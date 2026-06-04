@@ -18,6 +18,7 @@ mod shortcut;
 mod signal_handle;
 mod transcription_coordinator;
 mod text_postprocess;
+mod icon_tint;
 mod tray;
 mod tray_i18n;
 mod utils;
@@ -38,7 +39,6 @@ use signal_hook::consts::{SIGUSR1, SIGUSR2};
 use signal_hook::iterator::Signals;
 use std::sync::atomic::{AtomicU8, Ordering};
 use std::sync::Arc;
-use tauri::image::Image;
 pub use transcription_coordinator::TranscriptionCoordinator;
 
 use tauri::tray::TrayIconBuilder;
@@ -206,19 +206,12 @@ fn initialize_core_logic(app_handle: &AppHandle) {
     // Get the current theme to set the appropriate initial icon
     let initial_theme = tray::get_current_theme(app_handle);
 
-    // Choose the appropriate initial icon based on theme
-    let initial_icon_path = tray::get_icon_path(initial_theme, tray::TrayIconState::Idle);
+    // Choose the appropriate initial icon based on theme (tinted to accent on Windows/Linux)
+    let initial_icon = tray::load_tray_icon(app_handle, initial_theme, tray::TrayIconState::Idle)
+        .expect("failed to load initial tray icon");
 
     let tray = TrayIconBuilder::new()
-        .icon(
-            Image::from_path(
-                app_handle
-                    .path()
-                    .resolve(initial_icon_path, tauri::path::BaseDirectory::Resource)
-                    .unwrap(),
-            )
-            .unwrap(),
-        )
+        .icon(initial_icon)
         .tooltip(tray::tray_tooltip())
         .show_menu_on_left_click(true)
         .icon_as_template(cfg!(target_os = "macos"))
@@ -555,15 +548,10 @@ pub fn run(cli_args: CliArgs) {
 
             let app_handle = app.handle().clone();
             let initial_theme = tray::get_current_theme(&app_handle);
-            let initial_icon_path =
-                tray::get_icon_path(initial_theme, tray::TrayIconState::Idle);
-            if let Ok(path) = app.path().resolve(
-                initial_icon_path,
-                tauri::path::BaseDirectory::Resource,
-            ) {
-                if let Ok(icon) = tauri::image::Image::from_path(path) {
-                    win_builder = win_builder.icon(icon)?;
-                }
+            if let Some(icon) =
+                tray::load_tray_icon(&app_handle, initial_theme, tray::TrayIconState::Idle)
+            {
+                win_builder = win_builder.icon(icon)?;
             }
 
             win_builder.build()?;

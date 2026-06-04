@@ -1,3 +1,4 @@
+use crate::icon_tint;
 use crate::managers::history::{HistoryEntry, HistoryManager};
 use crate::managers::model::ModelManager;
 use crate::managers::transcription::TranscriptionManager;
@@ -57,20 +58,53 @@ pub fn get_current_theme(app: &AppHandle) -> AppTheme {
     }
 }
 
-fn load_icon_image(app: &AppHandle, icon_path: &str) -> Option<Image<'static>> {
+fn accent_rgb_from_settings(app: &AppHandle) -> (u8, u8, u8) {
+    let settings = settings::get_settings(app);
+    settings
+        .appearance_accent_color
+        .as_deref()
+        .and_then(icon_tint::parse_hex_color)
+        .unwrap_or(icon_tint::DEFAULT_ACCENT)
+}
+
+fn load_icon_image(
+    app: &AppHandle,
+    icon_path: &str,
+    theme: AppTheme,
+) -> Option<Image<'static>> {
     let path = app
         .path()
         .resolve(icon_path, tauri::path::BaseDirectory::Resource)
         .ok()?;
-    Image::from_path(path).ok()
+    let image = Image::from_path(path).ok()?;
+
+    if theme != AppTheme::Colored {
+        return Some(image.to_owned());
+    }
+
+    let accent = accent_rgb_from_settings(app);
+    if !icon_tint::needs_tint(accent) {
+        return Some(image.to_owned());
+    }
+
+    Some(icon_tint::tint_image(image, accent))
+}
+
+/// Load a tray/window icon for the given theme and state (includes accent tint on Windows/Linux).
+pub fn load_tray_icon(
+    app: &AppHandle,
+    theme: AppTheme,
+    state: TrayIconState,
+) -> Option<Image<'static>> {
+    load_icon_image(app, get_icon_path(&theme, &state), theme)
 }
 
 fn set_tray_icon_image(app: &AppHandle, state: &TrayIconState) {
     let tray = app.state::<TrayIcon>();
     let theme = get_current_theme(app);
-    let icon_path = get_icon_path(theme, state.clone());
+    let icon_path = get_icon_path(&theme, state);
 
-    if let Some(icon) = load_icon_image(app, icon_path) {
+    if let Some(icon) = load_icon_image(app, icon_path, theme) {
         let _ = tray.set_icon(Some(icon));
     }
     apply_tray_icon_template(&tray);
@@ -82,8 +116,8 @@ fn set_main_window_icon(app: &AppHandle, state: &TrayIconState) {
         return;
     };
     let theme = get_current_theme(app);
-    let icon_path = get_icon_path(theme, state.clone());
-    if let Some(icon) = load_icon_image(app, icon_path) {
+    let icon_path = get_icon_path(&theme, state);
+    if let Some(icon) = load_icon_image(app, icon_path, theme) {
         let _ = window.set_icon(icon);
     }
 }
@@ -99,7 +133,7 @@ pub fn sync_main_window_icon(app: &AppHandle) {
 
 /// Re-apply tray + window icons for the last known state.
 ///
-/// Custom `appearance_accent_color` does not regenerate PNG/ICO assets; icons use default Handy pink.
+/// Re-tint branded tray/window icons from `appearance_accent_color` (Windows/Linux).
 pub fn refresh_tray_theme(app: &AppHandle) {
     let state = last_tray_icon_state()
         .lock()
@@ -124,7 +158,7 @@ fn apply_tray_icon_template(tray: &TrayIcon) {
 ///
 /// `AppTheme::Colored` — pink Handy branding (Windows/Linux, matches UI accent).
 /// `AppTheme::Dark` / `Light` — monochrome glyphs for macOS menu bar template mode.
-pub fn get_icon_path(theme: AppTheme, state: TrayIconState) -> &'static str {
+pub fn get_icon_path(theme: &AppTheme, state: &TrayIconState) -> &'static str {
     match (theme, state) {
         (AppTheme::Dark, TrayIconState::Idle) => "resources/tray_idle.png",
         (AppTheme::Dark, TrayIconState::Recording) => "resources/tray_recording.png",
@@ -345,7 +379,7 @@ mod tests {
     #[test]
     fn colored_theme_uses_branded_idle_icon() {
         assert_eq!(
-            get_icon_path(AppTheme::Colored, TrayIconState::Idle),
+            get_icon_path(&AppTheme::Colored, &TrayIconState::Idle),
             "resources/handy.png"
         );
     }
@@ -353,11 +387,11 @@ mod tests {
     #[test]
     fn colored_recording_and_transcribing_icons() {
         assert_eq!(
-            get_icon_path(AppTheme::Colored, TrayIconState::Recording),
+            get_icon_path(&AppTheme::Colored, &TrayIconState::Recording),
             "resources/recording.png"
         );
         assert_eq!(
-            get_icon_path(AppTheme::Colored, TrayIconState::Transcribing),
+            get_icon_path(&AppTheme::Colored, &TrayIconState::Transcribing),
             "resources/transcribing.png"
         );
     }
@@ -365,7 +399,7 @@ mod tests {
     #[test]
     fn macos_dark_theme_uses_light_glyph_idle_icon() {
         assert_eq!(
-            get_icon_path(AppTheme::Dark, TrayIconState::Idle),
+            get_icon_path(&AppTheme::Dark, &TrayIconState::Idle),
             "resources/tray_idle.png"
         );
     }
@@ -373,7 +407,7 @@ mod tests {
     #[test]
     fn macos_light_theme_uses_dark_glyph_idle_icon() {
         assert_eq!(
-            get_icon_path(AppTheme::Light, TrayIconState::Idle),
+            get_icon_path(&AppTheme::Light, &TrayIconState::Idle),
             "resources/tray_idle_dark.png"
         );
     }
