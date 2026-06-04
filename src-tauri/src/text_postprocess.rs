@@ -112,6 +112,55 @@ pub fn apply_spoken_numbers(text: &str, language: SpeechLanguage) -> String {
 }
 
 pub fn apply_spoken_symbols(text: &str, language: SpeechLanguage) -> String {
+    let text = strip_redundant_spoken_symbol_words(text, language);
+    apply_spoken_symbol_phrases(&text, language)
+}
+
+/// Removes spoken symbol names that STT left next to the symbol itself (`+ plus`, `+Plus`, `- minus`).
+fn strip_redundant_spoken_symbol_words(text: &str, language: SpeechLanguage) -> String {
+    let mut single_word_entries: Vec<(String, char)> = symbol_mappings(language)
+        .into_iter()
+        .filter(|(phrase, symbol)| !phrase.contains(' ') && symbol.chars().count() == 1)
+        .filter_map(|(phrase, symbol)| {
+            symbol.chars().next().map(|ch| (phrase, ch))
+        })
+        .collect();
+    single_word_entries.sort_by_key(|(phrase, _)| std::cmp::Reverse(phrase.len()));
+
+    let mut result = text.to_string();
+
+    // Phase 1: symbol glued to its spoken name (`+Plus`, `@at`).
+    for (phrase, symbol_char) in &single_word_entries {
+        let sym = regex::escape(&symbol_char.to_string());
+        let word = regex::escape(phrase);
+        let glued =
+            Regex::new(&format!(r"(?i){sym}{word}\b")).expect("valid glued duplicate regex");
+        result = glued
+            .replace_all(&result, symbol_char.to_string())
+            .into_owned();
+    }
+
+    // STT often emits "-Plus" when the user said "minus".
+    for pattern in [r"(?i)-\s*plus\b", r"(?i)-plus\b"] {
+        let re = Regex::new(pattern).expect("valid minus/plus confusion regex");
+        result = re.replace_all(&result, "-").into_owned();
+    }
+
+    // Phase 2: symbol followed by the same spoken name (`+ plus`, `- minus`, `% procent`).
+    for (phrase, symbol_char) in &single_word_entries {
+        let sym = regex::escape(&symbol_char.to_string());
+        let word = regex::escape(phrase);
+        let spaced =
+            Regex::new(&format!(r"(?i){sym}\s+{word}\b")).expect("valid spaced duplicate regex");
+        result = spaced
+            .replace_all(&result, symbol_char.to_string())
+            .into_owned();
+    }
+
+    result
+}
+
+fn apply_spoken_symbol_phrases(text: &str, language: SpeechLanguage) -> String {
     let mappings = symbol_mappings(language);
     let mut phrases: Vec<(&str, &str)> = mappings
         .iter()
@@ -120,10 +169,13 @@ pub fn apply_spoken_symbols(text: &str, language: SpeechLanguage) -> String {
     phrases.sort_by_key(|(phrase, _)| std::cmp::Reverse(phrase.len()));
 
     let word_re = Regex::new(r"(?i)[\p{L}]+").expect("valid word regex");
+    let word_matches: Vec<_> = word_re.find_iter(text).collect();
     let mut result = String::with_capacity(text.len());
     let mut last_end = 0;
+    let mut index = 0;
 
-    for m in word_re.find_iter(text) {
+    while index < word_matches.len() {
+        let m = &word_matches[index];
         result.push_str(&text[last_end..m.start()]);
 
         let mut replaced = false;
@@ -136,37 +188,33 @@ pub fn apply_spoken_symbols(text: &str, language: SpeechLanguage) -> String {
             if phrase_words.len() == 1 {
                 if tokens_equal(m.as_str(), phrase_words[0]) {
                     result.push_str(symbol);
+                    last_end = m.end();
                     replaced = true;
+                    index += 1;
                     break;
                 }
                 continue;
             }
 
-            let candidate = text[m.start()..]
-                .split_whitespace()
-                .take(phrase_words.len())
-                .collect::<Vec<_>>();
-            if candidate.len() == phrase_words.len()
-                && candidate
+            if index + phrase_words.len() <= word_matches.len() {
+                let phrase_matches = word_matches[index..index + phrase_words.len()]
                     .iter()
                     .zip(phrase_words.iter())
-                    .all(|(a, b)| tokens_equal(a, b))
-            {
-                result.push_str(symbol);
-                let consumed = candidate.join(" ");
-                let consumed_len = text[m.start()..]
-                    .find(&consumed)
-                    .map(|offset| offset + consumed.len())
-                    .unwrap_or(m.end() - m.start());
-                last_end = m.start() + consumed_len;
-                replaced = true;
-                break;
+                    .all(|(mat, word)| tokens_equal(mat.as_str(), *word));
+                if phrase_matches {
+                    result.push_str(symbol);
+                    last_end = word_matches[index + phrase_words.len() - 1].end();
+                    replaced = true;
+                    index += phrase_words.len();
+                    break;
+                }
             }
         }
 
         if !replaced {
             result.push_str(m.as_str());
             last_end = m.end();
+            index += 1;
         }
     }
 
@@ -513,6 +561,7 @@ fn polish_symbol_map() -> HashMap<String, String> {
         ("równa".into(), "=".into()),
         ("rowna".into(), "=".into()),
         ("znak plus".into(), "+".into()),
+        ("dodaj".into(), "+".into()),
         ("plus".into(), "+".into()),
         ("nawias kwadratowy otwierający".into(), "[".into()),
         ("nawias kwadratowy zamykający".into(), "]".into()),
@@ -623,6 +672,60 @@ mod tests {
     fn converts_polish_at_and_exclamation() {
         let result = apply_spoken_symbols("znak małpy test wykrzyknik", SpeechLanguage::Polish);
         assert_eq!(result, "@ test !");
+    }
+
+    #[test]
+    fn strips_symbol_followed_by_spoken_name() {
+        assert_eq!(
+            apply_spoken_symbols("+ plus 5", SpeechLanguage::English),
+            "+ 5"
+        );
+        assert_eq!(
+            apply_spoken_symbols("- minus three", SpeechLanguage::English),
+            "- three"
+        );
+    }
+
+    #[test]
+    fn strips_glued_stt_symbol_duplicates() {
+        assert_eq!(
+            apply_spoken_symbols("+Plus -Plus minus 24", SpeechLanguage::English),
+            "+ - 24"
+        );
+    }
+
+    #[test]
+    fn converts_standalone_symbol_words_case_insensitive() {
+        assert_eq!(
+            apply_spoken_symbols("PLUS minus", SpeechLanguage::English),
+            "+ -"
+        );
+    }
+
+    #[test]
+    fn converts_polish_plus_phrase_with_numbers() {
+        let with_numbers = apply_spoken_numbers("plus dwa trzy", SpeechLanguage::Polish);
+        assert_eq!(with_numbers, "plus 23");
+        let with_symbols = apply_spoken_symbols(&with_numbers, SpeechLanguage::Polish);
+        assert_eq!(with_symbols, "+ 23");
+    }
+
+    #[test]
+    fn polish_dodaj_maps_to_plus() {
+        assert_eq!(
+            apply_spoken_symbols("dodaj 10", SpeechLanguage::Polish),
+            "+ 10"
+        );
+    }
+
+    #[test]
+    fn spoken_numbers_still_work_with_symbols_enabled() {
+        let text = apply_spoken_numbers("plus five", SpeechLanguage::English);
+        assert_eq!(text, "plus 5");
+        assert_eq!(
+            apply_spoken_symbols(&text, SpeechLanguage::English),
+            "+ 5"
+        );
     }
 
     fn adjusts_first_letter_case() {
