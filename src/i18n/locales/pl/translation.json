@@ -6,7 +6,9 @@
     "unloadModel": "Zwolnij model",
     "model": "Model",
     "quit": "Zamknij",
-    "cancel": "Anuluj"
+    "cancel": "Anuluj",
+    "pauseContinuous": "Pauza",
+    "resumeContinuous": "Wznów"
   },
   "sidebar": {
     "general": "Ogólne",
@@ -239,6 +241,10 @@
           "transcribe_with_post_process": {
             "name": "Skrót postprocessingu",
             "description": "Opcjonalnie: Dedykowany skrót klawiszowy, który zawsze stosuje postprocessing AI do transkrypcji."
+          },
+          "pause_continuous": {
+            "name": "Pauza/Wznów ciągłe nasłuchiwanie",
+            "description": "Wstrzymuje lub wznawia ciągłe nasłuchiwanie bez wyłączania funkcji."
           }
         },
         "errors": {
@@ -258,6 +264,28 @@
       "pushToTalk": {
         "label": "Push To Talk",
         "description": "Przytrzymaj, aby nagrywać, puść, aby zatrzymać"
+      },
+      "continuousListening": {
+        "label": "Ciągłe nasłuchiwanie",
+        "description": "Nasłuchuje i transkrybuje automatycznie aż do zamknięcia aplikacji lub wyłączenia tej opcji"
+      },
+      "postProcessContinuous": {
+        "label": "Postprocess w trybie ciągłym",
+        "description": "Stosuj AI postprocess do każdego segmentu ciągłego nasłuchiwania (gdy wyłączone, używa globalnego ustawienia postprocess)"
+      },
+      "continuousVad": {
+        "silenceMs": {
+          "title": "Cisza przed końcem segmentu",
+          "description": "Jak długo czekać po zakończeniu mowy przed wysłaniem segmentu (milisekundy)."
+        },
+        "minSegmentMs": {
+          "title": "Minimalna długość segmentu",
+          "description": "Najkrótsza wypowiedź do transkrypcji w trybie ciągłym (milisekundy)."
+        },
+        "sensitivity": {
+          "title": "Czułość VAD",
+          "description": "Próg wykrywania mowy. Niższe wartości wykrywają cichszą mowę."
+        }
       }
     },
     "sound": {
@@ -490,7 +518,12 @@
       "retranscribe": "Transkrybuj ponownie",
       "retranscribeError": "Nie udało się ponownie transkrybować. Spróbuj ponownie.",
       "transcribing": "Transkrybuję...",
-      "transcriptionFailed": "Transkrypcja nie powiodła się. Możesz transkrybować ponownie za pomocą ikony ponowienia."
+      "transcriptionFailed": "Transkrypcja nie powiodła się. Możesz transkrybować ponownie za pomocą ikony ponowienia.",
+      "exportTxt": "Eksportuj do TXT",
+      "exportCsv": "Eksportuj do CSV",
+      "exportSuccess": "Historia wyeksportowana",
+      "exportError": "Nie udało się wyeksportować historii",
+      "exportEmpty": "Brak wpisów do eksportu"
     },
     "debug": {
       "title": "Debugowanie",
@@ -662,7 +695,9 @@
     "modelLoadFailed": "Nie udało się załadować modelu: {{model}}",
     "modelLoadFailedUnknown": "nieznany model",
     "pasteFailedTitle": "Nie udało się wkleić tekstu",
-    "pasteFailed": "Nie można było wkleić tekstu do aktywnej aplikacji."
+    "pasteFailed": "Nie można było wkleić tekstu do aktywnej aplikacji.",
+    "continuousMicFailureTitle": "Mikrofon niedostępny",
+    "continuousMicFailure": "Nie udało się uruchomić ciągłego nasłuchiwania po wielu próbach. Sprawdź uprawnienia mikrofonu i podłączenie urządzenia."
   },
   "appLanguage": {
     "title": "Język aplikacji",

@@ -12,7 +12,8 @@ use crate::text_postprocess::{
 use crate::shortcut;
 use crate::tray::{change_tray_icon, TrayIconState};
 use crate::utils::{
-    self, show_processing_overlay, show_recording_overlay, show_transcribing_overlay,
+    self, hide_recording_overlay, show_processing_overlay, show_recording_overlay,
+    show_transcribing_overlay,
 };
 use crate::TranscriptionCoordinator;
 use ferrous_opencc::{config::BuiltinConfig, OpenCC};
@@ -403,11 +404,26 @@ pub(crate) async fn process_transcription_output(
     }
 }
 
-/// Transcribe and output a single utterance captured in continuous listening
-/// mode. Runs entirely off the audio worker thread: transcription happens on
-/// the async runtime and pasting is dispatched to the main thread. Errors are
-/// logged but never interrupt the continuous listening loop.
+fn continuous_post_process_enabled(settings: &AppSettings) -> bool {
+    settings.post_process_continuous || settings.post_process_enabled
+}
+
+/// Enqueue a continuous-listening utterance for sequential processing.
 pub(crate) fn handle_continuous_segment(app: &AppHandle, samples: Vec<f32>) {
+    if samples.is_empty() {
+        return;
+    }
+
+    if let Some(queue) = app.try_state::<crate::continuous_queue::ContinuousSegmentQueue>() {
+        queue.enqueue(samples);
+    } else {
+        warn!("ContinuousSegmentQueue not initialized; dropping segment");
+    }
+}
+
+/// Process one continuous-listening segment (transcribe → post-process → paste).
+/// Called exclusively from the segment queue worker thread.
+pub(crate) async fn process_continuous_segment(app: &AppHandle, samples: Vec<f32>) {
     if samples.is_empty() {
         return;
     }
@@ -415,73 +431,73 @@ pub(crate) fn handle_continuous_segment(app: &AppHandle, samples: Vec<f32>) {
     let ah = app.clone();
     let tm = Arc::clone(&app.state::<Arc<TranscriptionManager>>());
     let hm = Arc::clone(&app.state::<Arc<HistoryManager>>());
+    let post_process = continuous_post_process_enabled(&get_settings(app));
 
-    tauri::async_runtime::spawn(async move {
-        let sample_count = samples.len();
-        let file_name = format!("handy-{}.wav", chrono::Utc::now().timestamp_millis());
-        let wav_path = hm.recordings_dir().join(&file_name);
-        let wav_path_for_verify = wav_path.clone();
-        let samples_for_wav = samples.clone();
-        let wav_handle = tauri::async_runtime::spawn_blocking(move || {
-            crate::audio_toolkit::save_wav_file(&wav_path, &samples_for_wav)
-        });
+    let sample_count = samples.len();
+    let file_name = format!("handy-{}.wav", chrono::Utc::now().timestamp_millis());
+    let wav_path = hm.recordings_dir().join(&file_name);
+    let wav_path_for_verify = wav_path.clone();
+    let samples_for_wav = samples.clone();
+    let wav_handle = tauri::async_runtime::spawn_blocking(move || {
+        crate::audio_toolkit::save_wav_file(&wav_path, &samples_for_wav)
+    });
 
-        // Ensure the ASR model is loaded. In push-to-talk mode the model load is
-        // kicked off when recording starts; continuous mode has no such trigger,
-        // so initiate it here. `transcribe` blocks until loading finishes.
-        tm.initiate_model_load();
-        let transcription_result = tm.transcribe(samples);
+    tm.initiate_model_load();
+    let transcription_result = tm.transcribe(samples);
 
-        let wav_saved = match wav_handle.await {
-            Ok(Ok(())) => {
-                crate::audio_toolkit::verify_wav_file(&wav_path_for_verify, sample_count).is_ok()
+    let wav_saved = match wav_handle.await {
+        Ok(Ok(())) => {
+            crate::audio_toolkit::verify_wav_file(&wav_path_for_verify, sample_count).is_ok()
+        }
+        Ok(Err(e)) => {
+            error!("Failed to save continuous WAV file: {}", e);
+            false
+        }
+        Err(e) => {
+            error!("Continuous WAV save task panicked: {}", e);
+            false
+        }
+    };
+
+    match transcription_result {
+        Ok(transcription) => {
+            if transcription.trim().is_empty() {
+                return;
             }
-            Ok(Err(e)) => {
-                error!("Failed to save continuous WAV file: {}", e);
-                false
-            }
-            Err(e) => {
-                error!("Continuous WAV save task panicked: {}", e);
-                false
-            }
-        };
 
-        match transcription_result {
-            Ok(transcription) => {
-                if transcription.trim().is_empty() {
-                    return;
+            if post_process {
+                show_processing_overlay(&ah);
+            }
+            let processed =
+                process_transcription_output(&ah, &transcription, post_process).await;
+
+            if wav_saved {
+                if let Err(err) = hm.save_entry(
+                    file_name,
+                    transcription,
+                    post_process,
+                    processed.post_processed_text.clone(),
+                    processed.post_process_prompt.clone(),
+                ) {
+                    error!("Failed to save continuous history entry: {}", err);
                 }
+            }
 
-                let processed = process_transcription_output(&ah, &transcription, false).await;
-
-                if wav_saved {
-                    if let Err(err) = hm.save_entry(
-                        file_name,
-                        transcription,
-                        false,
-                        processed.post_processed_text.clone(),
-                        processed.post_process_prompt.clone(),
-                    ) {
-                        error!("Failed to save continuous history entry: {}", err);
+            if !processed.final_text.is_empty() {
+                let ah_clone = ah.clone();
+                let final_text = processed.final_text;
+                let _ = ah.run_on_main_thread(move || {
+                    if let Err(e) = utils::paste(final_text, ah_clone.clone()) {
+                        error!("Failed to paste continuous transcription: {}", e);
+                        let _ = ah_clone.emit("paste-error", ());
                     }
-                }
-
-                if !processed.final_text.is_empty() {
-                    let ah_clone = ah.clone();
-                    let final_text = processed.final_text;
-                    let _ = ah.run_on_main_thread(move || {
-                        if let Err(e) = utils::paste(final_text, ah_clone.clone()) {
-                            error!("Failed to paste continuous transcription: {}", e);
-                            let _ = ah_clone.emit("paste-error", ());
-                        }
-                    });
-                }
-            }
-            Err(err) => {
-                debug!("Continuous transcription error: {}", err);
+                });
             }
         }
-    });
+        Err(err) => {
+            debug!("Continuous transcription error: {}", err);
+        }
+    }
 }
 
 impl ShortcutAction for TranscribeAction {
@@ -758,6 +774,34 @@ impl ShortcutAction for TranscribeAction {
     }
 }
 
+// Pause/resume continuous listening (does not change the continuous_listening setting)
+struct PauseContinuousAction;
+
+impl ShortcutAction for PauseContinuousAction {
+    fn start(&self, app: &AppHandle, _binding_id: &str, _shortcut_str: &str) {
+        let rm = app.state::<Arc<AudioRecordingManager>>();
+        let settings = get_settings(app);
+        if !settings.continuous_listening {
+            return;
+        }
+        if rm.is_continuous_paused() {
+            if let Err(e) = rm.resume_continuous_listening() {
+                error!("Failed to resume continuous listening: {}", e);
+                return;
+            }
+            show_recording_overlay(app);
+            change_tray_icon(app, TrayIconState::Recording);
+        } else if rm.is_continuous() {
+            rm.pause_continuous_listening();
+            hide_recording_overlay(app);
+            change_tray_icon(app, TrayIconState::Idle);
+        }
+        utils::update_tray_menu(app, &TrayIconState::Idle, None);
+    }
+
+    fn stop(&self, _app: &AppHandle, _binding_id: &str, _shortcut_str: &str) {}
+}
+
 // Cancel Action
 struct CancelAction;
 
@@ -806,6 +850,10 @@ pub static ACTION_MAP: Lazy<HashMap<String, Arc<dyn ShortcutAction>>> = Lazy::ne
     map.insert(
         "transcribe_with_post_process".to_string(),
         Arc::new(TranscribeAction { post_process: true }) as Arc<dyn ShortcutAction>,
+    );
+    map.insert(
+        "pause_continuous".to_string(),
+        Arc::new(PauseContinuousAction) as Arc<dyn ShortcutAction>,
     );
     map.insert(
         "cancel".to_string(),

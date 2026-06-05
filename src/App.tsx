@@ -114,6 +114,17 @@ function App() {
     };
   }, [t]);
 
+  useEffect(() => {
+    const unlisten = listen("continuous-mic-failure", () => {
+      toast.error(t("errors.continuousMicFailureTitle"), {
+        description: t("errors.continuousMicFailure"),
+      });
+    });
+    return () => {
+      unlisten.then((fn) => fn());
+    };
+  }, [t]);
+
   // Listen for model loading failures and show a toast
   useEffect(() => {
     const unlisten = listen<ModelStateEvent>("model-state-changed", (event) => {

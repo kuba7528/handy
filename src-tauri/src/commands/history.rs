@@ -1,8 +1,9 @@
 use crate::actions::process_transcription_output;
 use crate::managers::{
-    history::{HistoryManager, PaginatedHistory},
+    history::{HistoryEntry, HistoryManager, PaginatedHistory},
     transcription::TranscriptionManager,
 };
+use chrono::{DateTime, Local, TimeZone, Utc};
 use std::sync::Arc;
 use tauri::{AppHandle, State};
 
@@ -151,4 +152,74 @@ pub async fn update_recording_retention_period(
         .map_err(|e| e.to_string())?;
 
     Ok(())
+}
+
+fn format_entry_timestamp(timestamp: i64) -> String {
+    let dt: DateTime<Local> = Utc
+        .timestamp_opt(timestamp, 0)
+        .single()
+        .map(|utc| utc.with_timezone(&Local))
+        .unwrap_or_else(|| Local::now());
+    dt.format("%Y-%m-%d %H:%M:%S").to_string()
+}
+
+fn entry_display_text(entry: &HistoryEntry) -> &str {
+    entry
+        .post_processed_text
+        .as_deref()
+        .filter(|text| !text.trim().is_empty())
+        .unwrap_or(&entry.transcription_text)
+}
+
+fn export_as_txt(entries: &[HistoryEntry]) -> String {
+    entries
+        .iter()
+        .map(|entry| {
+            format!(
+                "[{}]\n{}\n",
+                format_entry_timestamp(entry.timestamp),
+                entry_display_text(entry)
+            )
+        })
+        .collect::<Vec<_>>()
+        .join("\n")
+}
+
+fn csv_escape(value: &str) -> String {
+    let escaped = value.replace('"', "\"\"");
+    format!("\"{escaped}\"")
+}
+
+fn export_as_csv(entries: &[HistoryEntry]) -> String {
+    let mut lines = vec!["id,timestamp,date,saved,text".to_string()];
+    for entry in entries {
+        lines.push(format!(
+            "{},{},{},{},{}",
+            entry.id,
+            entry.timestamp,
+            csv_escape(&format_entry_timestamp(entry.timestamp)),
+            entry.saved,
+            csv_escape(entry_display_text(entry)),
+        ));
+    }
+    lines.join("\n")
+}
+
+#[tauri::command]
+#[specta::specta]
+pub async fn export_history(
+    _app: AppHandle,
+    history_manager: State<'_, Arc<HistoryManager>>,
+    format: String,
+) -> Result<String, String> {
+    let paginated = history_manager
+        .get_history_entries(None, None)
+        .await
+        .map_err(|e| e.to_string())?;
+
+    match format.as_str() {
+        "txt" => Ok(export_as_txt(&paginated.entries)),
+        "csv" => Ok(export_as_csv(&paginated.entries)),
+        other => Err(format!("Unsupported export format: {other}")),
+    }
 }

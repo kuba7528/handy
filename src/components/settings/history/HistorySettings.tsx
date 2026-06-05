@@ -234,6 +234,35 @@ export const HistorySettings: React.FC = () => {
     }
   };
 
+  const downloadExport = (content: string, filename: string) => {
+    const blob = new Blob([content], { type: "text/plain;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = filename;
+    link.click();
+    URL.revokeObjectURL(url);
+  };
+
+  const exportHistory = async (format: "txt" | "csv") => {
+    try {
+      const result = await commands.exportHistory(format);
+      if (result.status !== "ok") {
+        throw new Error(String(result.error));
+      }
+      if (!result.data.trim()) {
+        toast.error(t("settings.history.exportEmpty"));
+        return;
+      }
+      const stamp = new Date().toISOString().slice(0, 10);
+      downloadExport(result.data, `handy-history-${stamp}.${format}`);
+      toast.success(t("settings.history.exportSuccess"));
+    } catch (error) {
+      console.error("Failed to export history:", error);
+      toast.error(t("settings.history.exportError"));
+    }
+  };
+
   let content: React.ReactNode;
 
   if (loading) {
@@ -279,10 +308,26 @@ export const HistorySettings: React.FC = () => {
               {t("settings.history.title")}
             </h2>
           </div>
-          <OpenRecordingsButton
-            onClick={openRecordingsFolder}
-            label={t("settings.history.openFolder")}
-          />
+          <div className="flex items-center gap-2">
+            <Button
+              onClick={() => exportHistory("txt")}
+              variant="secondary"
+              size="sm"
+            >
+              {t("settings.history.exportTxt")}
+            </Button>
+            <Button
+              onClick={() => exportHistory("csv")}
+              variant="secondary"
+              size="sm"
+            >
+              {t("settings.history.exportCsv")}
+            </Button>
+            <OpenRecordingsButton
+              onClick={openRecordingsFolder}
+              label={t("settings.history.openFolder")}
+            />
+          </div>
         </div>
         <div className="bg-background border border-mid-gray/20 rounded-lg overflow-visible">
           {content}

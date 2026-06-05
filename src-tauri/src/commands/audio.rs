@@ -193,7 +193,82 @@ pub fn set_continuous_listening(app: AppHandle, enabled: bool) -> Result<(), Str
         crate::utils::hide_recording_overlay(&app);
         crate::utils::change_tray_icon(&app, crate::tray::TrayIconState::Idle);
     }
+    crate::tray::update_tray_menu(&app, &crate::tray::TrayIconState::Idle, None);
 
+    Ok(())
+}
+
+#[tauri::command]
+#[specta::specta]
+pub fn pause_continuous_listening(app: AppHandle) -> Result<(), String> {
+    let rm = app.state::<Arc<AudioRecordingManager>>();
+    if !rm.is_continuous() {
+        return Ok(());
+    }
+    rm.pause_continuous_listening();
+    crate::utils::hide_recording_overlay(&app);
+    crate::utils::change_tray_icon(&app, crate::tray::TrayIconState::Idle);
+    crate::tray::update_tray_menu(&app, &crate::tray::TrayIconState::Idle, None);
+    Ok(())
+}
+
+#[tauri::command]
+#[specta::specta]
+pub fn resume_continuous_listening(app: AppHandle) -> Result<(), String> {
+    let rm = app.state::<Arc<AudioRecordingManager>>();
+    rm.resume_continuous_listening()?;
+    crate::utils::show_recording_overlay(&app);
+    crate::utils::change_tray_icon(&app, crate::tray::TrayIconState::Recording);
+    crate::tray::update_tray_menu(&app, &crate::tray::TrayIconState::Recording, None);
+    Ok(())
+}
+
+#[tauri::command]
+#[specta::specta]
+pub fn get_continuous_paused(app: AppHandle) -> Result<bool, String> {
+    let rm = app.state::<Arc<AudioRecordingManager>>();
+    Ok(rm.is_continuous_paused())
+}
+
+#[tauri::command]
+#[specta::specta]
+pub fn change_continuous_silence_ms_setting(app: AppHandle, ms: u64) -> Result<(), String> {
+    let mut settings = get_settings(&app);
+    settings.continuous_silence_ms = ms.clamp(200, 3000);
+    write_settings(&app, settings.clone());
+    let rm = app.state::<Arc<AudioRecordingManager>>();
+    rm.apply_continuous_vad_settings(&settings);
+    Ok(())
+}
+
+#[tauri::command]
+#[specta::specta]
+pub fn change_continuous_min_segment_ms_setting(app: AppHandle, ms: u64) -> Result<(), String> {
+    let mut settings = get_settings(&app);
+    settings.continuous_min_segment_ms = ms.clamp(100, 3000);
+    write_settings(&app, settings.clone());
+    let rm = app.state::<Arc<AudioRecordingManager>>();
+    rm.apply_continuous_vad_settings(&settings);
+    Ok(())
+}
+
+#[tauri::command]
+#[specta::specta]
+pub fn change_vad_sensitivity_setting(app: AppHandle, sensitivity: f32) -> Result<(), String> {
+    let mut settings = get_settings(&app);
+    settings.vad_sensitivity = sensitivity.clamp(0.05, 0.95);
+    write_settings(&app, settings);
+    let rm = app.state::<Arc<AudioRecordingManager>>();
+    rm.apply_vad_sensitivity(settings.vad_sensitivity)
+        .map_err(|e| e.to_string())
+}
+
+#[tauri::command]
+#[specta::specta]
+pub fn change_post_process_continuous_setting(app: AppHandle, enabled: bool) -> Result<(), String> {
+    let mut settings = get_settings(&app);
+    settings.post_process_continuous = enabled;
+    write_settings(&app, settings);
     Ok(())
 }
 

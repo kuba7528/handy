@@ -20,8 +20,8 @@ export const ContinuousListening: React.FC<ContinuousListeningProps> = React.mem
         checked={continuousListening}
         onChange={(enabled) => updateSetting("continuous_listening", enabled)}
         isUpdating={isUpdating("continuous_listening")}
-        label={t("settings.debug.continuousListening.label")}
-        description={t("settings.debug.continuousListening.description")}
+        label={t("settings.general.continuousListening.label")}
+        description={t("settings.general.continuousListening.description")}
         descriptionMode={descriptionMode}
         grouped={grouped}
       />

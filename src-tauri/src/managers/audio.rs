@@ -1,4 +1,7 @@
-use crate::audio_toolkit::{list_input_devices, vad::SmoothedVad, AudioRecorder, SileroVad};
+use crate::audio_toolkit::{
+    audio::recorder::ContinuousSegmentConfig, list_input_devices, vad::SmoothedVad, AudioRecorder,
+    SileroVad,
+};
 use crate::helpers::clamshell;
 use crate::settings::{get_settings, AppSettings};
 use crate::utils;
@@ -120,8 +123,10 @@ pub enum MicrophoneMode {
 fn create_audio_recorder(
     vad_path: &str,
     app_handle: &tauri::AppHandle,
+    continuous_config: Arc<Mutex<ContinuousSegmentConfig>>,
 ) -> Result<AudioRecorder, anyhow::Error> {
-    let silero = SileroVad::new(vad_path, 0.3)
+    let settings = get_settings(app_handle);
+    let silero = SileroVad::new(vad_path, settings.vad_sensitivity)
         .map_err(|e| anyhow::anyhow!("Failed to create SileroVad: {}", e))?;
     let smoothed_vad = SmoothedVad::new(Box::new(silero), 15, 15, 2);
 
@@ -129,6 +134,7 @@ fn create_audio_recorder(
     // the frontend.
     let recorder = AudioRecorder::new()
         .map_err(|e| anyhow::anyhow!("Failed to create AudioRecorder: {}", e))?
+        .with_continuous_config(continuous_config)
         .with_vad(Box::new(smoothed_vad))
         .with_level_callback({
             let app_handle = app_handle.clone();
@@ -162,6 +168,8 @@ pub struct AudioRecordingManager {
     did_mute: Arc<Mutex<bool>>,
     close_generation: Arc<AtomicU64>,
     continuous: Arc<Mutex<bool>>,
+    continuous_paused: Arc<Mutex<bool>>,
+    continuous_config: Arc<Mutex<ContinuousSegmentConfig>>,
 }
 
 /// Pseudo binding id used to mark the recording state while continuous
@@ -179,6 +187,11 @@ impl AudioRecordingManager {
             MicrophoneMode::OnDemand
         };
 
+        let continuous_config = Arc::new(Mutex::new(ContinuousSegmentConfig::from_silence_and_min_ms(
+            settings.continuous_silence_ms,
+            settings.continuous_min_segment_ms,
+        )));
+
         let manager = Self {
             state: Arc::new(Mutex::new(RecordingState::Idle)),
             mode: Arc::new(Mutex::new(mode.clone())),
@@ -190,6 +203,8 @@ impl AudioRecordingManager {
             did_mute: Arc::new(Mutex::new(false)),
             close_generation: Arc::new(AtomicU64::new(0)),
             continuous: Arc::new(Mutex::new(false)),
+            continuous_paused: Arc::new(Mutex::new(false)),
+            continuous_config,
         };
 
         // Always-on?  Open immediately.
@@ -293,9 +308,33 @@ impl AudioRecordingManager {
             *recorder_opt = Some(create_audio_recorder(
                 vad_path.to_str().unwrap(),
                 &self.app_handle,
+                self.continuous_config.clone(),
             )?);
         }
         Ok(())
+    }
+
+    pub fn apply_continuous_vad_settings(&self, settings: &AppSettings) {
+        if let Ok(mut guard) = self.continuous_config.lock() {
+            *guard = ContinuousSegmentConfig::from_silence_and_min_ms(
+                settings.continuous_silence_ms,
+                settings.continuous_min_segment_ms,
+            );
+        }
+        if let Some(rec) = self.recorder.lock().unwrap().as_ref() {
+            rec.set_continuous_config(ContinuousSegmentConfig::from_silence_and_min_ms(
+                settings.continuous_silence_ms,
+                settings.continuous_min_segment_ms,
+            ));
+        }
+    }
+
+    pub fn apply_vad_sensitivity(&self, _threshold: f32) -> Result<(), anyhow::Error> {
+        if *self.is_open.lock().unwrap() {
+            anyhow::bail!("Cannot change VAD sensitivity while microphone is open");
+        }
+        *self.recorder.lock().unwrap() = None;
+        self.preload_vad()
     }
 
     pub fn start_microphone_stream(&self) -> Result<(), anyhow::Error> {
@@ -435,6 +474,14 @@ impl AudioRecordingManager {
         *self.continuous.lock().unwrap()
     }
 
+    pub fn is_continuous_paused(&self) -> bool {
+        *self.continuous_paused.lock().unwrap()
+    }
+
+    pub fn is_continuous_enabled(&self) -> bool {
+        get_settings(&self.app_handle).continuous_listening
+    }
+
     /// Start continuous listening: open the microphone and keep recording until
     /// `stop_continuous_listening` is called (typically on app shutdown or when
     /// the user disables the feature). Detected utterances are delivered through
@@ -465,6 +512,7 @@ impl AudioRecordingManager {
             }
             *self.is_recording.lock().unwrap() = true;
             *self.continuous.lock().unwrap() = true;
+            *self.continuous_paused.lock().unwrap() = false;
             *state = RecordingState::Recording {
                 binding_id: CONTINUOUS_BINDING_ID.to_string(),
             };
@@ -475,14 +523,48 @@ impl AudioRecordingManager {
         }
     }
 
-    /// Stop continuous listening and release the microphone.
-    pub fn stop_continuous_listening(&self) {
+    /// Pause continuous listening without changing the `continuous_listening` setting.
+    pub fn pause_continuous_listening(&self) {
         if !*self.continuous.lock().unwrap() {
             return;
         }
 
         let mut state = self.state.lock().unwrap();
         *self.continuous.lock().unwrap() = false;
+        *self.continuous_paused.lock().unwrap() = true;
+        *state = RecordingState::Idle;
+        drop(state);
+
+        if let Some(rec) = self.recorder.lock().unwrap().as_ref() {
+            let _ = rec.stop();
+        }
+        *self.is_recording.lock().unwrap() = false;
+
+        self.close_generation.fetch_add(1, Ordering::SeqCst);
+        self.stop_microphone_stream();
+        info!("Continuous listening paused");
+    }
+
+    /// Resume continuous listening after a pause.
+    pub fn resume_continuous_listening(&self) -> Result<(), String> {
+        if !get_settings(&self.app_handle).continuous_listening {
+            return Err("Continuous listening is disabled in settings".to_string());
+        }
+        if !*self.continuous_paused.lock().unwrap() {
+            return Ok(());
+        }
+        self.start_continuous_listening()
+    }
+
+    /// Stop continuous listening and release the microphone.
+    pub fn stop_continuous_listening(&self) {
+        if !*self.continuous.lock().unwrap() && !*self.continuous_paused.lock().unwrap() {
+            return;
+        }
+
+        let mut state = self.state.lock().unwrap();
+        *self.continuous.lock().unwrap() = false;
+        *self.continuous_paused.lock().unwrap() = false;
         *state = RecordingState::Idle;
         drop(state);
 
@@ -574,7 +656,7 @@ impl AudioRecordingManager {
     /// Cancel any ongoing recording without returning audio samples
     pub fn cancel_recording(&self) {
         // Continuous listening owns the stream; tear it down coherently.
-        if *self.continuous.lock().unwrap() {
+        if *self.continuous.lock().unwrap() || *self.continuous_paused.lock().unwrap() {
             self.stop_continuous_listening();
             return;
         }

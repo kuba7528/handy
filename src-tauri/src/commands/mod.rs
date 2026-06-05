@@ -243,6 +243,11 @@ pub fn initialize_shortcuts(app: AppHandle) -> Result<(), String> {
             log::error!(
                 "Continuous listening could not start after {MAX_ATTEMPTS} attempts (no usable microphone?)"
             );
+            let app_notify = app_for_retry.clone();
+            let _ = app_for_retry.run_on_main_thread(move || {
+                let _ = app_notify.emit("continuous-mic-failure", ());
+                crate::tray::set_continuous_mic_failure_tooltip(&app_notify);
+            });
         });
     }
 

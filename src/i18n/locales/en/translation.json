@@ -6,7 +6,9 @@
     "unloadModel": "Unload Model",
     "model": "Model",
     "quit": "Quit",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "pauseContinuous": "Pause",
+    "resumeContinuous": "Resume"
   },
   "sidebar": {
     "general": "General",
@@ -221,6 +223,10 @@
           "transcribe_with_post_process": {
             "name": "Post-Processing Hotkey",
             "description": "Optional: A dedicated hotkey that always applies AI post-processing to your transcription."
+          },
+          "pause_continuous": {
+            "name": "Pause/Resume Continuous Listening",
+            "description": "Pause or resume continuous listening without disabling the feature."
           }
         },
         "errors": {
@@ -240,6 +246,28 @@
       "pushToTalk": {
         "label": "Push To Talk",
         "description": "Hold to record, release to stop"
+      },
+      "continuousListening": {
+        "label": "Continuous Listening",
+        "description": "Keeps listening and transcribes each utterance automatically until you close the app or disable this feature."
+      },
+      "postProcessContinuous": {
+        "label": "Post-process continuous segments",
+        "description": "Apply AI post-processing to each continuous listening segment (uses the global post-process setting when off)."
+      },
+      "continuousVad": {
+        "silenceMs": {
+          "title": "Silence before segment end",
+          "description": "How long to wait after speech stops before sending a segment (milliseconds)."
+        },
+        "minSegmentMs": {
+          "title": "Minimum segment length",
+          "description": "Shortest utterance length to transcribe in continuous mode (milliseconds)."
+        },
+        "sensitivity": {
+          "title": "VAD sensitivity",
+          "description": "Voice activity detection threshold. Lower values detect quieter speech."
+        }
       }
     },
     "models": {
@@ -490,7 +518,12 @@
       "retranscribe": "Re-transcribe",
       "retranscribeError": "Failed to re-transcribe. Please try again.",
       "transcribing": "Transcribing...",
-      "transcriptionFailed": "Transcription failed. You can re-transcribe using the retry icon."
+      "transcriptionFailed": "Transcription failed. You can re-transcribe using the retry icon.",
+      "exportTxt": "Export to TXT",
+      "exportCsv": "Export to CSV",
+      "exportSuccess": "History exported",
+      "exportError": "Failed to export history",
+      "exportEmpty": "No history entries to export"
     },
     "debug": {
       "title": "Debug",
@@ -662,7 +695,9 @@
     "modelLoadFailed": "Failed to load model: {{model}}",
     "modelLoadFailedUnknown": "unknown model",
     "pasteFailedTitle": "Failed to Paste Text",
-    "pasteFailed": "Text could not be pasted into the active application."
+    "pasteFailed": "Text could not be pasted into the active application.",
+    "continuousMicFailureTitle": "Microphone unavailable",
+    "continuousMicFailure": "Continuous listening could not start after multiple attempts. Check microphone permissions and device connection."
   },
   "appLanguage": {
     "title": "Application Language",

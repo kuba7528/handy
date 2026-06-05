@@ -34,12 +34,37 @@ enum AudioChunk {
     EndOfStream,
 }
 
-/// Number of consecutive silence frames (each ~30 ms) after speech that mark
-/// the end of an utterance in continuous mode (~24 frames ≈ 720 ms).
-const CONTINUOUS_SILENCE_FRAMES: usize = 24;
-/// Minimum number of 16 kHz samples an utterance must contain before it is
-/// emitted in continuous mode (~0.4 s). Shorter blips are discarded as noise.
-const CONTINUOUS_MIN_SEGMENT_SAMPLES: usize = (constants::WHISPER_SAMPLE_RATE as usize) * 2 / 5;
+const CONTINUOUS_FRAME_MS: u64 = 30;
+
+/// Tunable thresholds for splitting the continuous audio stream into utterances.
+#[derive(Clone, Debug)]
+pub struct ContinuousSegmentConfig {
+    pub silence_frames: usize,
+    pub min_segment_samples: usize,
+}
+
+impl Default for ContinuousSegmentConfig {
+    fn default() -> Self {
+        Self {
+            silence_frames: 24,
+            min_segment_samples: (constants::WHISPER_SAMPLE_RATE as usize) * 2 / 5,
+        }
+    }
+}
+
+impl ContinuousSegmentConfig {
+    pub fn from_silence_and_min_ms(silence_ms: u64, min_segment_ms: u64) -> Self {
+        let silence_frames = (silence_ms / CONTINUOUS_FRAME_MS).max(1) as usize;
+        let min_segment_samples = ((min_segment_ms as usize)
+            * constants::WHISPER_SAMPLE_RATE as usize
+            / 1000)
+            .max(1);
+        Self {
+            silence_frames,
+            min_segment_samples,
+        }
+    }
+}
 
 pub struct AudioRecorder {
     device: Option<Device>,
@@ -48,6 +73,7 @@ pub struct AudioRecorder {
     vad: Option<Arc<Mutex<Box<dyn vad::VoiceActivityDetector>>>>,
     level_cb: Option<Arc<dyn Fn(Vec<f32>) + Send + Sync + 'static>>,
     segment_cb: Option<Arc<dyn Fn(Vec<f32>) + Send + Sync + 'static>>,
+    continuous_config: Arc<Mutex<ContinuousSegmentConfig>>,
 }
 
 impl AudioRecorder {
@@ -59,7 +85,19 @@ impl AudioRecorder {
             vad: None,
             level_cb: None,
             segment_cb: None,
+            continuous_config: Arc::new(Mutex::new(ContinuousSegmentConfig::default())),
         })
+    }
+
+    pub fn with_continuous_config(mut self, config: Arc<Mutex<ContinuousSegmentConfig>>) -> Self {
+        self.continuous_config = config;
+        self
+    }
+
+    pub fn set_continuous_config(&self, config: ContinuousSegmentConfig) {
+        if let Ok(mut guard) = self.continuous_config.lock() {
+            *guard = config;
+        }
     }
 
     pub fn with_vad(mut self, vad: Box<dyn VoiceActivityDetector>) -> Self {
@@ -108,6 +146,7 @@ impl AudioRecorder {
         let level_cb = self.level_cb.clone();
         // Move the optional continuous-segment callback into the worker thread
         let segment_cb = self.segment_cb.clone();
+        let continuous_config = self.continuous_config.clone();
 
         let worker = std::thread::spawn(move || {
             let stop_flag = Arc::new(AtomicBool::new(false));
@@ -184,15 +223,16 @@ impl AudioRecorder {
                 Ok((stream, sample_rate)) => {
                     let _ = init_tx.send(Ok(()));
                     // Keep the stream alive while we process samples.
-                    run_consumer(
-                        sample_rate,
-                        vad,
-                        sample_rx,
-                        cmd_rx,
-                        level_cb,
-                        segment_cb,
-                        stop_flag,
-                    );
+            run_consumer(
+                sample_rate,
+                vad,
+                sample_rx,
+                cmd_rx,
+                level_cb,
+                segment_cb,
+                continuous_config,
+                stop_flag,
+            );
                     drop(stream);
                 }
                 Err(error_message) => {
@@ -441,6 +481,7 @@ fn run_consumer(
     cmd_rx: mpsc::Receiver<Cmd>,
     level_cb: Option<Arc<dyn Fn(Vec<f32>) + Send + Sync + 'static>>,
     segment_cb: Option<Arc<dyn Fn(Vec<f32>) + Send + Sync + 'static>>,
+    continuous_config: Arc<Mutex<ContinuousSegmentConfig>>,
     stop_flag: Arc<AtomicBool>,
 ) {
     let mut frame_resampler = FrameResampler::new(
@@ -526,8 +567,12 @@ fn run_consumer(
                     silence_run = 0;
                 } else if had_speech {
                     silence_run += 1;
-                    if silence_run >= CONTINUOUS_SILENCE_FRAMES {
-                        if processed_samples.len() >= CONTINUOUS_MIN_SEGMENT_SAMPLES {
+                    let (silence_frames, min_segment_samples) = continuous_config
+                        .lock()
+                        .map(|c| (c.silence_frames, c.min_segment_samples))
+                        .unwrap_or((24, 6400));
+                    if silence_run >= silence_frames {
+                        if processed_samples.len() >= min_segment_samples {
                             let segment = std::mem::take(&mut processed_samples);
                             if let Some(cb) = &segment_cb {
                                 cb(segment);

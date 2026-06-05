@@ -60,6 +60,14 @@ pub fn handle_shortcut_event(
         return;
     };
 
+    // Pause/resume continuous listening
+    if binding_id == "pause_continuous" {
+        if is_pressed {
+            action.start(app, binding_id, hotkey_string);
+        }
+        return;
+    }
+
     // Cancel binding: only fires when recording and key is pressed
     if binding_id == "cancel" {
         let audio_manager = app.state::<Arc<AudioRecordingManager>>();

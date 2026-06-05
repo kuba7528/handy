@@ -27,6 +27,10 @@ impl SileroVad {
             threshold,
         })
     }
+
+    pub fn set_threshold(&mut self, threshold: f32) {
+        self.threshold = threshold.clamp(0.0, 1.0);
+    }
 }
 
 impl VoiceActivityDetector for SileroVad {

@@ -1,4 +1,5 @@
 mod actions;
+mod continuous_queue;
 #[cfg(all(target_os = "macos", target_arch = "aarch64"))]
 mod apple_intelligence;
 mod audio_feedback;
@@ -168,6 +169,9 @@ fn initialize_core_logic(app_handle: &AppHandle) {
     app_handle.manage(model_manager.clone());
     app_handle.manage(transcription_manager.clone());
     app_handle.manage(history_manager.clone());
+    app_handle.manage(continuous_queue::ContinuousSegmentQueue::new(
+        app_handle.clone(),
+    ));
 
     // Pre-load the selected ASR model in the background so the first transcription
     // is not delayed. Continuous listening also triggers a load, but only after
@@ -247,6 +251,18 @@ fn initialize_core_logic(app_handle: &AppHandle) {
 
                 // Use centralized cancellation that handles all operations
                 cancel_current_operation(app);
+            }
+            "pause_continuous" => {
+                let rm = app.state::<Arc<AudioRecordingManager>>();
+                if rm.is_continuous() {
+                    let _ = commands::audio::pause_continuous_listening(app.clone());
+                }
+            }
+            "resume_continuous" => {
+                let rm = app.state::<Arc<AudioRecordingManager>>();
+                if rm.is_continuous_paused() {
+                    let _ = commands::audio::resume_continuous_listening(app.clone());
+                }
             }
             "quit" => {
                 app.exit(0);
@@ -428,6 +444,13 @@ pub fn run(cli_args: CliArgs) {
             commands::audio::get_microphone_mode,
             commands::audio::set_continuous_listening,
             commands::audio::get_continuous_listening,
+            commands::audio::pause_continuous_listening,
+            commands::audio::resume_continuous_listening,
+            commands::audio::get_continuous_paused,
+            commands::audio::change_continuous_silence_ms_setting,
+            commands::audio::change_continuous_min_segment_ms_setting,
+            commands::audio::change_vad_sensitivity_setting,
+            commands::audio::change_post_process_continuous_setting,
             commands::audio::get_windows_microphone_permission_status,
             commands::audio::open_microphone_privacy_settings,
             commands::audio::get_available_microphones,
@@ -451,6 +474,7 @@ pub fn run(cli_args: CliArgs) {
             commands::history::retry_history_entry_transcription,
             commands::history::update_history_limit,
             commands::history::update_recording_retention_period,
+            commands::history::export_history,
             helpers::clamshell::is_laptop,
         ])
         .events(collect_events![managers::history::HistoryUpdatePayload,]);

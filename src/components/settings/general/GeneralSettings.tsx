@@ -10,12 +10,16 @@ import { AudioFeedback } from "../AudioFeedback";
 import { useSettings } from "../../../hooks/useSettings";
 import { VolumeSlider } from "../VolumeSlider";
 import { MuteWhileRecording } from "../MuteWhileRecording";
+import { ContinuousListening } from "../ContinuousListening";
+import { ContinuousVadSettings } from "./ContinuousVadSettings";
 import { ModelSettingsCard } from "./ModelSettingsCard";
+import { PostProcessContinuous } from "./PostProcessContinuous";
 
 export const GeneralSettings: React.FC = () => {
   const { t } = useTranslation();
   const { audioFeedbackEnabled, getSetting } = useSettings();
   const pushToTalk = getSetting("push_to_talk");
+  const continuousListening = getSetting("continuous_listening") ?? true;
   const isLinux = type() === "linux";
   return (
     <div className="max-w-3xl w-full mx-auto space-y-6">
@@ -26,6 +30,16 @@ export const GeneralSettings: React.FC = () => {
         {!isLinux && !pushToTalk && (
           <ShortcutInput shortcutId="cancel" grouped={true} />
         )}
+      </SettingsGroup>
+      <SettingsGroup title={t("settings.general.continuousListening.label")}>
+        <ContinuousListening descriptionMode="tooltip" grouped={true} />
+        <ShortcutInput shortcutId="pause_continuous" grouped={true} />
+        <PostProcessContinuous descriptionMode="tooltip" grouped={true} />
+        <ContinuousVadSettings
+          descriptionMode="tooltip"
+          grouped={true}
+          disabled={!continuousListening}
+        />
       </SettingsGroup>
       <ModelSettingsCard />
       <SettingsGroup title={t("settings.sound.title")}>

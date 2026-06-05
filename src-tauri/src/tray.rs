@@ -1,4 +1,5 @@
 use crate::icon_tint;
+use crate::managers::audio::AudioRecordingManager;
 use crate::managers::history::{HistoryEntry, HistoryManager};
 use crate::managers::model::ModelManager;
 use crate::managers::transcription::TranscriptionManager;
@@ -277,44 +278,119 @@ pub fn update_tray_menu(app: &AppHandle, state: &TrayIconState, locale: Option<&
     )
     .expect("failed to create unload model item");
 
+    let audio_manager = app.try_state::<Arc<AudioRecordingManager>>();
+    let continuous_enabled = settings.continuous_listening;
+    let continuous_active = audio_manager
+        .as_ref()
+        .map(|rm| rm.is_continuous())
+        .unwrap_or(false);
+    let continuous_paused = audio_manager
+        .as_ref()
+        .map(|rm| rm.is_continuous_paused())
+        .unwrap_or(false);
+
+    let pause_continuous_i = MenuItem::with_id(
+        app,
+        "pause_continuous",
+        &strings.pause_continuous,
+        continuous_active,
+        None::<&str>,
+    )
+    .expect("failed to create pause continuous item");
+    let resume_continuous_i = MenuItem::with_id(
+        app,
+        "resume_continuous",
+        &strings.resume_continuous,
+        continuous_paused && continuous_enabled,
+        None::<&str>,
+    )
+    .expect("failed to create resume continuous item");
+
     let menu = match state {
         TrayIconState::Recording | TrayIconState::Transcribing => {
             let cancel_i = MenuItem::with_id(app, "cancel", &strings.cancel, true, None::<&str>)
                 .expect("failed to create cancel item");
-            Menu::with_items(
-                app,
-                &[
-                    &version_i,
-                    &separator(),
-                    &cancel_i,
-                    &separator(),
-                    &copy_last_transcript_i,
-                    &separator(),
-                    &settings_i,
-                    &check_updates_i,
-                    &separator(),
-                    &quit_i,
-                ],
-            )
-            .expect("failed to create menu")
+            if continuous_enabled {
+                Menu::with_items(
+                    app,
+                    &[
+                        &version_i,
+                        &separator(),
+                        &pause_continuous_i,
+                        &resume_continuous_i,
+                        &separator(),
+                        &cancel_i,
+                        &separator(),
+                        &copy_last_transcript_i,
+                        &separator(),
+                        &settings_i,
+                        &check_updates_i,
+                        &separator(),
+                        &quit_i,
+                    ],
+                )
+                .expect("failed to create menu")
+            } else {
+                Menu::with_items(
+                    app,
+                    &[
+                        &version_i,
+                        &separator(),
+                        &cancel_i,
+                        &separator(),
+                        &copy_last_transcript_i,
+                        &separator(),
+                        &settings_i,
+                        &check_updates_i,
+                        &separator(),
+                        &quit_i,
+                    ],
+                )
+                .expect("failed to create menu")
+            }
         }
-        TrayIconState::Idle => Menu::with_items(
-            app,
-            &[
-                &version_i,
-                &separator(),
-                &copy_last_transcript_i,
-                &separator(),
-                &model_submenu,
-                &unload_model_i,
-                &separator(),
-                &settings_i,
-                &check_updates_i,
-                &separator(),
-                &quit_i,
-            ],
-        )
-        .expect("failed to create menu"),
+        TrayIconState::Idle => {
+            if continuous_enabled {
+                Menu::with_items(
+                    app,
+                    &[
+                        &version_i,
+                        &separator(),
+                        &pause_continuous_i,
+                        &resume_continuous_i,
+                        &separator(),
+                        &copy_last_transcript_i,
+                        &separator(),
+                        &model_submenu,
+                        &unload_model_i,
+                        &separator(),
+                        &settings_i,
+                        &check_updates_i,
+                        &separator(),
+                        &quit_i,
+                    ],
+                )
+                .expect("failed to create menu")
+            } else {
+                Menu::with_items(
+                    app,
+                    &[
+                        &version_i,
+                        &separator(),
+                        &copy_last_transcript_i,
+                        &separator(),
+                        &model_submenu,
+                        &unload_model_i,
+                        &separator(),
+                        &settings_i,
+                        &check_updates_i,
+                        &separator(),
+                        &quit_i,
+                    ],
+                )
+                .expect("failed to create menu")
+            }
+        }
     };
 
     let tray = app.state::<TrayIcon>();
@@ -337,6 +413,13 @@ pub fn set_tray_visibility(app: &AppHandle, visible: bool) {
     } else {
         info!("Tray visibility set to: {}", visible);
     }
+}
+
+pub fn set_continuous_mic_failure_tooltip(app: &AppHandle) {
+    let tray = app.state::<TrayIcon>();
+    let _ = tray.set_tooltip(Some(
+        "Handy: nie udało się uruchomić mikrofonu. Sprawdź uprawnienia.".to_string(),
+    ));
 }
 
 pub fn copy_last_transcript(app: &AppHandle) {

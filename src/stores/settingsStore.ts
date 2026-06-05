@@ -83,6 +83,14 @@ const settingUpdaters: {
     commands.updateMicrophoneMode(value as boolean),
   continuous_listening: (value) =>
     commands.setContinuousListening(value as boolean),
+  post_process_continuous: (value) =>
+    commands.changePostProcessContinuousSetting(value as boolean),
+  continuous_silence_ms: (value) =>
+    commands.changeContinuousSilenceMsSetting(value as number),
+  continuous_min_segment_ms: (value) =>
+    commands.changeContinuousMinSegmentMsSetting(value as number),
+  vad_sensitivity: (value) =>
+    commands.changeVadSensitivitySetting(value as number),
   audio_feedback: (value) =>
     commands.changeAudioFeedbackSetting(value as boolean),
   audio_feedback_volume: (value) =>

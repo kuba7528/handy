@@ -746,6 +746,62 @@ async getContinuousListening() : Promise<Result<boolean, string>> {
     else return { status: "error", error: e  as any };
 }
 },
+async pauseContinuousListening() : Promise<Result<null, string>> {
+    try {
+    return { status: "ok", data: await TAURI_INVOKE("pause_continuous_listening") };
+} catch (e) {
+    if(e instanceof Error) throw e;
+    else return { status: "error", error: e  as any };
+}
+},
+async resumeContinuousListening() : Promise<Result<null, string>> {
+    try {
+    return { status: "ok", data: await TAURI_INVOKE("resume_continuous_listening") };
+} catch (e) {
+    if(e instanceof Error) throw e;
+    else return { status: "error", error: e  as any };
+}
+},
+async getContinuousPaused() : Promise<Result<boolean, string>> {
+    try {
+    return { status: "ok", data: await TAURI_INVOKE("get_continuous_paused") };
+} catch (e) {
+    if(e instanceof Error) throw e;
+    else return { status: "error", error: e  as any };
+}
+},
+async changeContinuousSilenceMsSetting(ms: number) : Promise<Result<null, string>> {
+    try {
+    return { status: "ok", data: await TAURI_INVOKE("change_continuous_silence_ms_setting", { ms }) };
+} catch (e) {
+    if(e instanceof Error) throw e;
+    else return { status: "error", error: e  as any };
+}
+},
+async changeContinuousMinSegmentMsSetting(ms: number) : Promise<Result<null, string>> {
+    try {
+    return { status: "ok", data: await TAURI_INVOKE("change_continuous_min_segment_ms_setting", { ms }) };
+} catch (e) {
+    if(e instanceof Error) throw e;
+    else return { status: "error", error: e  as any };
+}
+},
+async changeVadSensitivitySetting(sensitivity: number) : Promise<Result<null, string>> {
+    try {
+    return { status: "ok", data: await TAURI_INVOKE("change_vad_sensitivity_setting", { sensitivity }) };
+} catch (e) {
+    if(e instanceof Error) throw e;
+    else return { status: "error", error: e  as any };
+}
+},
+async changePostProcessContinuousSetting(enabled: boolean) : Promise<Result<null, string>> {
+    try {
+    return { status: "ok", data: await TAURI_INVOKE("change_post_process_continuous_setting", { enabled }) };
+} catch (e) {
+    if(e instanceof Error) throw e;
+    else return { status: "error", error: e  as any };
+}
+},
 async getWindowsMicrophonePermissionStatus() : Promise<WindowsMicrophonePermissionStatus> {
     return await TAURI_INVOKE("get_windows_microphone_permission_status");
 },
@@ -905,6 +961,14 @@ async updateRecordingRetentionPeriod(period: string) : Promise<Result<null, stri
     else return { status: "error", error: e  as any };
 }
 },
+async exportHistory(format: string) : Promise<Result<string, string>> {
+    try {
+    return { status: "ok", data: await TAURI_INVOKE("export_history", { format }) };
+} catch (e) {
+    if(e instanceof Error) throw e;
+    else return { status: "error", error: e  as any };
+}
+},
 /**
  * Checks if the Mac is a laptop by detecting battery presence
  * 
@@ -936,7 +1000,7 @@ historyUpdatePayload: "history-update-payload"
 
 /** user-defined types **/
 
-export type AppSettings = { bindings: Partial<{ [key in string]: ShortcutBinding }>; push_to_talk: boolean; audio_feedback: boolean; audio_feedback_volume?: number; sound_theme?: SoundTheme; start_hidden?: boolean; autostart_enabled?: boolean; update_checks_enabled?: boolean; selected_model?: string; always_on_microphone?: boolean; continuous_listening?: boolean; selected_microphone?: string | null; clamshell_microphone?: string | null; selected_output_device?: string | null; translate_to_english?: boolean; selected_language?: string; overlay_position?: OverlayPosition; debug_mode?: boolean; log_level?: LogLevel; custom_words?: string[]; model_unload_timeout?: ModelUnloadTimeout; word_correction_threshold?: number; history_limit?: number; recording_retention_period?: RecordingRetentionPeriod; paste_method?: PasteMethod; clipboard_handling?: ClipboardHandling; auto_submit?: boolean; auto_submit_key?: AutoSubmitKey; post_process_enabled?: boolean; post_process_provider_id?: string; post_process_providers?: PostProcessProvider[]; post_process_api_keys?: SecretMap; post_process_models?: Partial<{ [key in string]: string }>; post_process_prompts?: LLMPrompt[]; post_process_selected_prompt_id?: string | null; mute_while_recording?: boolean; append_trailing_space?: boolean; append_trailing_period?: boolean; app_language?: string; experimental_enabled?: boolean; lazy_stream_close?: boolean; keyboard_implementation?: KeyboardImplementation; show_tray_icon?: boolean; paste_delay_ms?: number; typing_tool?: TypingTool; external_script_path: string | null; custom_filler_words?: string[] | null; whisper_accelerator?: WhisperAcceleratorSetting; ort_accelerator?: OrtAcceleratorSetting; whisper_gpu_device?: number; extra_recording_buffer_ms?: number; appearance_accent_color?: string | null; appearance_background_color?: string | null; appearance_text_color?: string | null; appearance_font_scale?: FontSizeScale; appearance_control_density?: ControlDensity; appearance_color_scheme?: ColorScheme; convert_spoken_numbers?: boolean; convert_spoken_symbols?: boolean }
+export type AppSettings = { bindings: Partial<{ [key in string]: ShortcutBinding }>; push_to_talk: boolean; audio_feedback: boolean; audio_feedback_volume?: number; sound_theme?: SoundTheme; start_hidden?: boolean; autostart_enabled?: boolean; update_checks_enabled?: boolean; selected_model?: string; always_on_microphone?: boolean; continuous_listening?: boolean; selected_microphone?: string | null; clamshell_microphone?: string | null; selected_output_device?: string | null; translate_to_english?: boolean; selected_language?: string; overlay_position?: OverlayPosition; debug_mode?: boolean; log_level?: LogLevel; custom_words?: string[]; model_unload_timeout?: ModelUnloadTimeout; word_correction_threshold?: number; history_limit?: number; recording_retention_period?: RecordingRetentionPeriod; paste_method?: PasteMethod; clipboard_handling?: ClipboardHandling; auto_submit?: boolean; auto_submit_key?: AutoSubmitKey; post_process_enabled?: boolean; post_process_provider_id?: string; post_process_providers?: PostProcessProvider[]; post_process_api_keys?: SecretMap; post_process_models?: Partial<{ [key in string]: string }>; post_process_prompts?: LLMPrompt[]; post_process_selected_prompt_id?: string | null; mute_while_recording?: boolean; append_trailing_space?: boolean; append_trailing_period?: boolean; app_language?: string; experimental_enabled?: boolean; lazy_stream_close?: boolean; keyboard_implementation?: KeyboardImplementation; show_tray_icon?: boolean; paste_delay_ms?: number; typing_tool?: TypingTool; external_script_path: string | null; custom_filler_words?: string[] | null; whisper_accelerator?: WhisperAcceleratorSetting; ort_accelerator?: OrtAcceleratorSetting; whisper_gpu_device?: number; extra_recording_buffer_ms?: number; appearance_accent_color?: string | null; appearance_background_color?: string | null; appearance_text_color?: string | null; appearance_font_scale?: FontSizeScale; appearance_control_density?: ControlDensity; appearance_color_scheme?: ColorScheme; convert_spoken_numbers?: boolean; convert_spoken_symbols?: boolean; post_process_continuous?: boolean; continuous_silence_ms?: number; continuous_min_segment_ms?: number; vad_sensitivity?: number }
 export type AudioDevice = { index: string; name: string; is_default: boolean }
 export type AutoSubmitKey = "enter" | "ctrl_enter" | "cmd_enter"
 export type AvailableAccelerators = { whisper: string[]; ort: string[]; gpu_devices: GpuDeviceOption[] }

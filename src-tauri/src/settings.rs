@@ -492,11 +492,23 @@ pub struct AppSettings {
     #[serde(default)]
     pub appearance_color_scheme: ColorScheme,
     /// Convert spoken number words (e.g. "one two three", "sto dwadzieścia trzy") to digits.
-    #[serde(default)]
+    #[serde(default = "default_convert_spoken_numbers")]
     pub convert_spoken_numbers: bool,
     /// Convert spoken symbol names (e.g. "at", "małpa", "kropka") to punctuation/symbols.
-    #[serde(default)]
+    #[serde(default = "default_convert_spoken_symbols")]
     pub convert_spoken_symbols: bool,
+    /// Apply LLM post-processing to continuous-listening segments (falls back to post_process_enabled when false).
+    #[serde(default)]
+    pub post_process_continuous: bool,
+    /// Silence duration (ms) after speech before flushing a continuous segment.
+    #[serde(default = "default_continuous_silence_ms")]
+    pub continuous_silence_ms: u64,
+    /// Minimum utterance length (ms) for continuous segments.
+    #[serde(default = "default_continuous_min_segment_ms")]
+    pub continuous_min_segment_ms: u64,
+    /// Silero VAD speech probability threshold (0.0–1.0). Lower = more sensitive.
+    #[serde(default = "default_vad_sensitivity")]
+    pub vad_sensitivity: f32,
 }
 
 fn default_model() -> String {
@@ -509,6 +521,26 @@ fn default_always_on_microphone() -> bool {
 
 fn default_continuous_listening() -> bool {
     true
+}
+
+fn default_convert_spoken_numbers() -> bool {
+    true
+}
+
+fn default_convert_spoken_symbols() -> bool {
+    true
+}
+
+fn default_continuous_silence_ms() -> u64 {
+    720
+}
+
+fn default_continuous_min_segment_ms() -> u64 {
+    400
+}
+
+fn default_vad_sensitivity() -> f32 {
+    0.3
 }
 
 fn default_translate_to_english() -> bool {
@@ -834,6 +866,26 @@ pub fn get_default_settings() -> AppSettings {
             current_binding: "escape".to_string(),
         },
     );
+    #[cfg(target_os = "windows")]
+    let default_pause_continuous_shortcut = "f8";
+    #[cfg(target_os = "macos")]
+    let default_pause_continuous_shortcut = "f8";
+    #[cfg(target_os = "linux")]
+    let default_pause_continuous_shortcut = "f8";
+    #[cfg(not(any(target_os = "windows", target_os = "macos", target_os = "linux")))]
+    let default_pause_continuous_shortcut = "f8";
+
+    bindings.insert(
+        "pause_continuous".to_string(),
+        ShortcutBinding {
+            id: "pause_continuous".to_string(),
+            name: "Pause/Resume Continuous Listening".to_string(),
+            description: "Pauses or resumes continuous listening without disabling the feature."
+                .to_string(),
+            default_binding: default_pause_continuous_shortcut.to_string(),
+            current_binding: default_pause_continuous_shortcut.to_string(),
+        },
+    );
 
     AppSettings {
         bindings,
@@ -893,8 +945,12 @@ pub fn get_default_settings() -> AppSettings {
         appearance_font_scale: FontSizeScale::default(),
         appearance_control_density: ControlDensity::default(),
         appearance_color_scheme: ColorScheme::default(),
-        convert_spoken_numbers: false,
-        convert_spoken_symbols: false,
+        convert_spoken_numbers: default_convert_spoken_numbers(),
+        convert_spoken_symbols: default_convert_spoken_symbols(),
+        post_process_continuous: false,
+        continuous_silence_ms: default_continuous_silence_ms(),
+        continuous_min_segment_ms: default_continuous_min_segment_ms(),
+        vad_sensitivity: default_vad_sensitivity(),
     }
 }
 
@@ -1037,6 +1093,21 @@ mod tests {
         let settings = get_default_settings();
         assert!(!settings.auto_submit);
         assert_eq!(settings.auto_submit_key, AutoSubmitKey::Enter);
+    }
+
+    #[test]
+    fn default_settings_enable_spoken_conversions() {
+        let settings = get_default_settings();
+        assert!(settings.convert_spoken_numbers);
+        assert!(settings.convert_spoken_symbols);
+    }
+
+    #[test]
+    fn default_continuous_vad_settings() {
+        let settings = get_default_settings();
+        assert_eq!(settings.continuous_silence_ms, 720);
+        assert_eq!(settings.continuous_min_segment_ms, 400);
+        assert!((settings.vad_sensitivity - 0.3).abs() < f32::EPSILON);
     }
 
     #[test]
