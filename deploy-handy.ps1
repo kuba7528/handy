@@ -31,8 +31,8 @@ function Invoke-AccentIconRegen {
 function Ensure-ReleaseBuild {
     $needsBuild = -not (Test-Path $exe)
     if (-not $needsBuild -and (Test-Path $iconIco)) {
-        if ($iconIco.LastWriteTime -gt (Get-Item $exe).LastWriteTime) {
-            Write-Host "icon.ico is newer than handy.exe — rebuilding..."
+        if ((Get-Item $iconIco).LastWriteTime -gt (Get-Item $exe).LastWriteTime) {
+            Write-Host "icon.ico is newer than handy.exe - rebuilding..."
             $needsBuild = $true
         }
     }
@@ -40,15 +40,25 @@ function Ensure-ReleaseBuild {
     Write-Host "Building Handy release (bun tauri build)..."
     $env:CARGO_TARGET_DIR = $TargetDir
     Push-Location $ProjectRoot
-    try { bun tauri build } finally { Pop-Location }
+    try {
+        bun tauri build
+        if ($LASTEXITCODE -ne 0) { throw "bun tauri build failed with exit code $LASTEXITCODE" }
+    } finally { Pop-Location }
     if (-not (Test-Path $exe)) { throw "Release binary not found at $exe" }
+}
+function Resolve-ReleaseArtifact($name) {
+    $root = Join-Path $release $name
+    if (Test-Path $root) { return $root }
+    $deps = Join-Path $release "deps\$name"
+    if (Test-Path $deps) { return $deps }
+    return $null
 }
 function Copy-PortableArtifacts {
     $items = @("handy.exe", "DirectML.dll", "handy_app_lib.dll")
     if (-not (Test-Path $DestDir)) { New-Item -ItemType Directory -Path $DestDir -Force | Out-Null }
     foreach ($name in $items) {
-        $src = Join-Path $release $name
-        if (-not (Test-Path $src)) { throw "Missing release artifact: $src" }
+        $src = Resolve-ReleaseArtifact $name
+        if (-not $src) { throw "Missing release artifact: $name (looked in $release and deps\)" }
         Copy-Item $src (Join-Path $DestDir $name) -Force
     }
     $resSrc = Join-Path $release "resources"

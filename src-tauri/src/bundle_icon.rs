@@ -25,7 +25,8 @@ fn load_brand_rgba(app: &AppHandle) -> Result<(Vec<u8>, u32, u32), String> {
         .map_err(|e| format!("Failed to resolve brand icon: {e}"))?;
     let img = image::open(&path).map_err(|e| format!("Failed to open brand icon: {e}"))?;
     let rgba = img.to_rgba8();
-    Ok((rgba.into_raw(), rgba.width(), rgba.height()))
+    let (width, height) = (rgba.width(), rgba.height());
+    Ok((rgba.into_raw(), width, height))
 }
 
 fn square_canvas(rgba: Vec<u8>, width: u32, height: u32) -> RgbaImage {

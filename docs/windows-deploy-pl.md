@@ -1,14 +1,15 @@
 # Windows: build i deploy (fork lokalny)
 
-- **Domyślny katalog Cargo (`CARGO_TARGET_DIR`)**: `C:\Users\Kuba\Pobrane\Moj_Handy\h`
+- **Domyślny katalog Cargo (`CARGO_TARGET_DIR`)**: `C:\Users\Kuba\Pobrane\Moj_Handy\h` (cache)
+- **Zalecany przy przebudowie** (krótsza ścieżka, mniej problemów z linkowaniem whisper/MSVC): `C:\ht`
 - **Artefakty release**: `...\Moj_Handy\h\release\` (m.in. `handy.exe`, DLL, `resources\`)
 - **Deploy do portable**: uruchom z katalogu repo:
 
 ```powershell
-.\deploy-handy.ps1
+.\deploy-handy.ps1 -TargetDir C:\ht
 ```
 
-Kopiuje z `Moj_Handy\h\release\` do `Moj_Handy\Handy\My_handy\`.
+Kopiuje z `C:\ht\release\` (lub `Moj_Handy\h\release\`) do `Moj_Handy\Handy\My_handy\`.
 
 ## Długa ścieżka (Whisper / MSVC)
 
