@@ -2,6 +2,8 @@ use crate::settings::{
     get_default_settings, get_settings, write_settings, ColorScheme, ControlDensity, FontSizeScale,
 };
 use crate::tray;
+#[cfg(windows)]
+use crate::bundle_icon;
 use tauri::AppHandle;
 
 fn normalize_color(color: Option<String>) -> Option<String> {
@@ -25,7 +27,26 @@ pub fn change_appearance_accent_color(
     settings.appearance_accent_color = normalize_color(color);
     write_settings(&app, settings);
     tray::refresh_tray_theme(&app);
+    #[cfg(windows)]
+    if let Err(e) = bundle_icon::regenerate_sidecar_icon(&app) {
+        log::warn!("Could not write handy-accent.ico: {e}");
+    }
     Ok(())
+}
+
+/// Write `handy-accent.ico` beside `handy.exe` for shortcuts with the current accent.
+#[cfg(windows)]
+#[tauri::command]
+#[specta::specta]
+pub fn regenerate_bundle_icon(app: AppHandle) -> Result<String, String> {
+    bundle_icon::regenerate_sidecar_icon(&app)
+}
+
+#[cfg(not(windows))]
+#[tauri::command]
+#[specta::specta]
+pub fn regenerate_bundle_icon(_app: AppHandle) -> Result<String, String> {
+    Err("Ikona bundle jest obsługiwana tylko na Windows.".to_string())
 }
 
 #[tauri::command]
@@ -102,5 +123,9 @@ pub fn reset_appearance_settings(app: AppHandle) -> Result<(), String> {
     settings.appearance_color_scheme = defaults.appearance_color_scheme;
     write_settings(&app, settings);
     tray::refresh_tray_theme(&app);
+    #[cfg(windows)]
+    if let Err(e) = bundle_icon::regenerate_sidecar_icon(&app) {
+        log::warn!("Could not write handy-accent.ico: {e}");
+    }
     Ok(())
 }

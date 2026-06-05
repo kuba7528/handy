@@ -37,6 +37,9 @@ pub fn needs_tint(target: (u8, u8, u8)) -> bool {
 
 /// Recolor pink branded pixels to `target`, preserving per-pixel luminance ratios.
 pub fn recolor_rgba(rgba: &mut [u8], target: (u8, u8, u8)) {
+    if target == DEFAULT_ACCENT {
+        return;
+    }
     let (tr, tg, tb) = target;
     let src_lum = relative_luminance(DEFAULT_ACCENT.0, DEFAULT_ACCENT.1, DEFAULT_ACCENT.2);
     if src_lum <= f32::EPSILON {

@@ -4,13 +4,39 @@
 param(
     [string]$TargetDir = "C:\Users\Kuba\Pobrane\Moj_Handy\h",
     [string]$DestDir = "C:\Users\Kuba\Pobrane\Moj_Handy\Handy\My_handy",
-    [string]$ProjectRoot = $PSScriptRoot
+    [string]$ProjectRoot = $PSScriptRoot,
+    [switch]$SkipIconRegen
 )
 $ErrorActionPreference = "Stop"
 $release = Join-Path $TargetDir "release"
 $exe = Join-Path $release "handy.exe"
+$iconIco = Join-Path $ProjectRoot "src-tauri\icons\icon.ico"
+$regenScript = Join-Path $ProjectRoot "scripts\regenerate_app_icon.ps1"
+
+function Invoke-AccentIconRegen {
+    if ($SkipIconRegen) { return }
+    if (-not (Test-Path $regenScript)) {
+        Write-Host "Skipping icon regen (script not found)." -ForegroundColor DarkYellow
+        return
+    }
+    $portableSettings = Join-Path $DestDir "Data\settings_store.json"
+    $settingsArg = @{}
+    if (Test-Path $portableSettings) {
+        $settingsArg["SettingsPath"] = $portableSettings
+    }
+    Write-Host "Regenerating bundle icons from accent settings..."
+    & $regenScript @settingsArg -ProjectRoot $ProjectRoot
+}
+
 function Ensure-ReleaseBuild {
-    if (Test-Path $exe) { return }
+    $needsBuild = -not (Test-Path $exe)
+    if (-not $needsBuild -and (Test-Path $iconIco)) {
+        if ($iconIco.LastWriteTime -gt (Get-Item $exe).LastWriteTime) {
+            Write-Host "icon.ico is newer than handy.exe — rebuilding..."
+            $needsBuild = $true
+        }
+    }
+    if (-not $needsBuild) { return }
     Write-Host "Building Handy release (bun tauri build)..."
     $env:CARGO_TARGET_DIR = $TargetDir
     Push-Location $ProjectRoot
@@ -30,10 +56,16 @@ function Copy-PortableArtifacts {
     if (-not (Test-Path $resSrc)) { throw "Missing resources folder: $resSrc" }
     if (Test-Path $resDst) { Remove-Item $resDst -Recurse -Force }
     Copy-Item $resSrc $resDst -Recurse -Force
+    $sidecarSrc = Join-Path $release "handy-accent.ico"
+    if (Test-Path $sidecarSrc) {
+        Copy-Item $sidecarSrc (Join-Path $DestDir "handy-accent.ico") -Force
+    }
 }
+Invoke-AccentIconRegen
 Ensure-ReleaseBuild
 Get-Process handy -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
 Start-Sleep -Seconds 1
 Copy-PortableArtifacts
 Write-Host "Deployed portable Handy to: $DestDir"
 Write-Host "Run: $(Join-Path $DestDir 'handy.exe')"
+Write-Host "Exe/taskbar icon color follows the last build; handy-accent.ico (if present) can be used for shortcuts."

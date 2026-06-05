@@ -1,5 +1,6 @@
-import React, { useCallback, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { type as osType } from "@tauri-apps/plugin-os";
 import type { ColorScheme, ControlDensity, FontSizeScale } from "@/bindings";
 import { commands } from "@/bindings";
 import { useSettings } from "../../../hooks/useSettings";
@@ -166,6 +167,13 @@ export const AppearanceSettings: React.FC = () => {
   const { getSetting, updateSetting, isUpdating, refreshSettings } =
     useSettings();
   const [isResetting, setIsResetting] = useState(false);
+  const [shortcutIconPath, setShortcutIconPath] = useState<string | null>(null);
+  const [isRegeneratingIcon, setIsRegeneratingIcon] = useState(false);
+  const [isWindows, setIsWindows] = useState(false);
+
+  useEffect(() => {
+    setIsWindows(osType() === "windows");
+  }, []);
 
   const fontScaleOptions: SelectOption[] = useMemo(
     () => [
@@ -231,14 +239,50 @@ export const AppearanceSettings: React.FC = () => {
           />
         </SettingContainer>
 
-        <ColorPicker
-          title={t("settings.appearance.colors.accent.title")}
-          description={t("settings.appearance.colors.accent.description")}
-          value={getSetting("appearance_accent_color")}
-          presets={ACCENT_COLOR_PRESETS}
-          isUpdating={isUpdating("appearance_accent_color")}
-          onChange={(color) => updateSetting("appearance_accent_color", color)}
-        />
+        <div className="flex flex-col gap-2">
+          <ColorPicker
+            title={t("settings.appearance.colors.accent.title")}
+            description={t("settings.appearance.colors.accent.description")}
+            value={getSetting("appearance_accent_color")}
+            presets={ACCENT_COLOR_PRESETS}
+            isUpdating={isUpdating("appearance_accent_color")}
+            onChange={(color) => updateSetting("appearance_accent_color", color)}
+          />
+          <p className="px-4 -mt-1 text-xs text-mid-gray leading-relaxed">
+            {t("settings.appearance.colors.accent.exeIconHint")}
+          </p>
+          {isWindows && (
+              <div className="px-4 flex flex-col gap-1">
+                <Button
+                  variant="secondary"
+                  size="sm"
+                  className="self-start"
+                  disabled={isRegeneratingIcon}
+                  onClick={async () => {
+                    setIsRegeneratingIcon(true);
+                    setShortcutIconPath(null);
+                    try {
+                      const result = await commands.regenerateBundleIcon();
+                      if (result.status === "ok") {
+                        setShortcutIconPath(result.data);
+                      }
+                    } finally {
+                      setIsRegeneratingIcon(false);
+                    }
+                  }}
+                >
+                  {t("settings.appearance.colors.accent.regenerateShortcutIcon")}
+                </Button>
+                {shortcutIconPath && (
+                  <p className="text-xs text-mid-gray break-all">
+                    {t("settings.appearance.colors.accent.shortcutIconSaved", {
+                      path: shortcutIconPath,
+                    })}
+                  </p>
+                )}
+              </div>
+            )}
+        </div>
 
         <ColorPicker
           title={t("settings.appearance.colors.background.title")}

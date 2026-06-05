@@ -618,6 +618,14 @@ async resetAppearanceSettings() : Promise<Result<null, string>> {
     else return { status: "error", error: e  as any };
 }
 },
+async regenerateBundleIcon() : Promise<Result<string, string>> {
+    try {
+    return { status: "ok", data: await TAURI_INVOKE("regenerate_bundle_icon") };
+} catch (e) {
+    if(e instanceof Error) throw e;
+    else return { status: "error", error: e  as any };
+}
+},
 async getAvailableModels() : Promise<Result<ModelInfo[], string>> {
     try {
     return { status: "ok", data: await TAURI_INVOKE("get_available_models") };

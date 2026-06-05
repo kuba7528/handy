@@ -189,7 +189,10 @@
         "resetColor": "Przywróć domyślny kolor",
         "accent": {
           "title": "Kolor akcentu",
-          "description": "Główny kolor interfejsu używany w przyciskach, podświetleniach i logo."
+          "description": "Główny kolor interfejsu używany w przyciskach, podświetleniach i logo.",
+          "exeIconHint": "Okno aplikacji i ikona w zasobniku zmieniają kolor od razu. Ikona pliku handy.exe (Eksplorator, przypięty skrót) pochodzi z kompilacji — aby ją zaktualizować, uruchom scripts\\regenerate_app_icon.ps1 i przebuduj aplikację (np. deploy-handy.ps1). Obok exe zapisywany jest też handy-accent.ico do skrótu z własną ikoną.",
+          "regenerateShortcutIcon": "Odśwież handy-accent.ico",
+          "shortcutIconSaved": "Zapisano ikonę skrótu: {{path}}"
         },
         "background": {
           "title": "Kolor tła",

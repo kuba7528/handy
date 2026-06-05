@@ -171,7 +171,10 @@
         "resetColor": "Reset to default color",
         "accent": {
           "title": "Accent color",
-          "description": "Primary UI color used for buttons, highlights, and the logo."
+          "description": "Primary UI color used for buttons, highlights, and the logo.",
+          "exeIconHint": "The app window and tray icon update immediately. The handy.exe file icon (Explorer, pinned shortcut) is baked in at build time—run scripts\\regenerate_app_icon.ps1 and rebuild (e.g. deploy-handy.ps1) to change it. handy-accent.ico is written next to the exe for custom shortcut icons.",
+          "regenerateShortcutIcon": "Refresh handy-accent.ico",
+          "shortcutIconSaved": "Shortcut icon saved: {{path}}"
         },
         "background": {
           "title": "Background color",

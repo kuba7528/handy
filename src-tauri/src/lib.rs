@@ -19,6 +19,8 @@ mod signal_handle;
 mod transcription_coordinator;
 mod text_postprocess;
 mod icon_tint;
+#[cfg(windows)]
+mod bundle_icon;
 mod tray;
 mod tray_i18n;
 mod utils;
@@ -410,6 +412,7 @@ pub fn run(cli_args: CliArgs) {
             commands::appearance::change_appearance_control_density,
             commands::appearance::change_appearance_color_scheme,
             commands::appearance::reset_appearance_settings,
+            commands::appearance::regenerate_bundle_icon,
             commands::models::get_available_models,
             commands::models::get_model_info,
             commands::models::download_model,
