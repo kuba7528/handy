@@ -48,4 +48,4 @@ if (-not $python) {
 
 & $python.Source @args
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-Write-Host 'Bundle icons updated. Rebuild handy.exe (bun tauri build or deploy-handy.ps1) to embed the new icon.'
+Write-Host 'Bundle icons updated. Rebuild: .\deploy-handy.ps1 (uses subst W: -> Moj_Handy\h, no C:\ root folders).'

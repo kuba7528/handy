@@ -1,25 +1,27 @@
 # Windows: build i deploy (fork lokalny)
 
-- **Domyślny katalog Cargo (`CARGO_TARGET_DIR`)**: `C:\Users\Kuba\Pobrane\Moj_Handy\h` (cache)
-- **Zalecany przy przebudowie** (krótsza ścieżka, mniej problemów z linkowaniem whisper/MSVC): `C:\ht`
+- **Katalog Cargo na dysku (`CARGO_TARGET_DIR` fizycznie)**: `C:\Users\Kuba\Pobrane\Moj_Handy\h`
+- **Przy kompilacji release**: skrypt `deploy-handy.ps1` ustawia `subst W:` na ten folder i buduje z `CARGO_TARGET_DIR=W:\` (krótka ścieżka, bez folderu w korzeniu `C:\`).
 - **Artefakty release**: `...\Moj_Handy\h\release\` (m.in. `handy.exe`, DLL, `resources\`)
 - **Deploy do portable**: uruchom z katalogu repo:
 
 ```powershell
-.\deploy-handy.ps1 -TargetDir C:\ht
+.\deploy-handy.ps1
 ```
 
-Kopiuje z `C:\ht\release\` (lub `Moj_Handy\h\release\`) do `Moj_Handy\Handy\My_handy\`.
+Kopiuje z `Moj_Handy\h\release\` do `Moj_Handy\Handy\My_handy\`.
 
 ## Długa ścieżka (Whisper / MSVC)
 
-Jeśli build pada na limitach ścieżki Windows, użyj krótszego katalogu **w Pobrane** (nie `C:\ht` w korzeniu dysku):
+Jeśli build pada na limitach ścieżki Windows, użyj domyślnego deployu (subst `W:` jest włączany automatycznie). Ręcznie:
 
 ```powershell
-.\deploy-handy.ps1 -TargetDir "C:\Users\Kuba\Pobrane\Moj_Handy\ht"
+subst W: C:\Users\Kuba\Pobrane\Moj_Handy\h
+$env:CARGO_TARGET_DIR = 'W:\'
+bun tauri build
 ```
 
-Nadal unikamy `C:\ht` na dysku C:.
+Nie twórz osobnych folderów build w korzeniu dysku C: — tylko `Moj_Handy\h` (+ opcjonalnie `subst W:`).
 
 ## Ikona pliku exe a kolor akcentu
 
