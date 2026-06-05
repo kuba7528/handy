@@ -1,6 +1,5 @@
 use crate::audio_toolkit::{
-    audio::recorder::ContinuousSegmentConfig, list_input_devices, vad::SmoothedVad, AudioRecorder,
-    SileroVad,
+    list_input_devices, vad::SmoothedVad, AudioRecorder, ContinuousSegmentConfig, SileroVad,
 };
 use crate::helpers::clamshell;
 use crate::settings::{get_settings, AppSettings};

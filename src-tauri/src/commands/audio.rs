@@ -256,10 +256,11 @@ pub fn change_continuous_min_segment_ms_setting(app: AppHandle, ms: u64) -> Resu
 #[specta::specta]
 pub fn change_vad_sensitivity_setting(app: AppHandle, sensitivity: f32) -> Result<(), String> {
     let mut settings = get_settings(&app);
-    settings.vad_sensitivity = sensitivity.clamp(0.05, 0.95);
+    let sensitivity = sensitivity.clamp(0.05, 0.95);
+    settings.vad_sensitivity = sensitivity;
     write_settings(&app, settings);
     let rm = app.state::<Arc<AudioRecordingManager>>();
-    rm.apply_vad_sensitivity(settings.vad_sensitivity)
+    rm.apply_vad_sensitivity(sensitivity)
         .map_err(|e| e.to_string())
 }
 
