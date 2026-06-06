@@ -12,8 +12,8 @@ use crate::text_postprocess::{
 use crate::shortcut;
 use crate::tray::{change_tray_icon, TrayIconState};
 use crate::utils::{
-    self, hide_recording_overlay, show_processing_overlay, show_recording_overlay,
-    show_transcribing_overlay,
+    self, hide_recording_overlay, show_listening_indicator, show_processing_overlay,
+    show_recording_overlay, show_transcribing_overlay,
 };
 use crate::TranscriptionCoordinator;
 use ferrous_opencc::{config::BuiltinConfig, OpenCC};
@@ -498,6 +498,11 @@ pub(crate) async fn process_continuous_segment(app: &AppHandle, samples: Vec<f32
             debug!("Continuous transcription error: {}", err);
         }
     }
+
+    let rm = ah.state::<Arc<AudioRecordingManager>>();
+    if rm.is_continuous() {
+        show_listening_indicator(&ah);
+    }
 }
 
 impl ShortcutAction for TranscribeAction {
@@ -789,7 +794,7 @@ impl ShortcutAction for PauseContinuousAction {
                 error!("Failed to resume continuous listening: {}", e);
                 return;
             }
-            show_recording_overlay(app);
+            show_listening_indicator(app);
             change_tray_icon(app, TrayIconState::Recording);
         } else if rm.is_continuous() {
             rm.pause_continuous_listening();

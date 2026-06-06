@@ -17,6 +17,12 @@ pub fn cancel_operation(app: AppHandle) {
 
 #[tauri::command]
 #[specta::specta]
+pub fn get_listening_status(app: AppHandle) -> String {
+    crate::listening_status::get_listening_status(&app).as_str().to_string()
+}
+
+#[tauri::command]
+#[specta::specta]
 pub fn is_portable() -> bool {
     crate::portable::is_portable()
 }
@@ -224,7 +230,7 @@ pub fn initialize_shortcuts(app: AppHandle) -> Result<(), String> {
                         }
                         let app_ui = app_for_retry.clone();
                         let _ = app_for_retry.run_on_main_thread(move || {
-                            crate::utils::show_recording_overlay(&app_ui);
+                            crate::utils::show_listening_indicator(&app_ui);
                             crate::utils::change_tray_icon(
                                 &app_ui,
                                 crate::tray::TrayIconState::Recording,

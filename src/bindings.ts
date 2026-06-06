@@ -463,6 +463,14 @@ async showMainWindowCommand() : Promise<Result<null, string>> {
 async cancelOperation() : Promise<void> {
     await TAURI_INVOKE("cancel_operation");
 },
+async getListeningStatus() : Promise<Result<string, string>> {
+    try {
+    return { status: "ok", data: await TAURI_INVOKE("get_listening_status") };
+} catch (e) {
+    if(e instanceof Error) throw e;
+    else return { status: "error", error: e  as any };
+}
+},
 async isPortable() : Promise<boolean> {
     return await TAURI_INVOKE("is_portable");
 },

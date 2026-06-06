@@ -703,8 +703,10 @@
     "title": "Application Language",
     "description": "Change the language of the Handy interface"
   },
-  "overlay": {
-    "transcribing": "Transcribing...",
-    "processing": "Processing..."
+  "listeningStatus": {
+    "listening": "Listening",
+    "recording": "Recording",
+    "transcribing": "Transcribing",
+    "processing": "Processing"
   }
 }

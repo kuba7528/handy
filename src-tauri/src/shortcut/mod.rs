@@ -543,15 +543,12 @@ pub fn change_overlay_position_setting(app: AppHandle, position: String) -> Resu
         "top" => OverlayPosition::Top,
         "bottom" => OverlayPosition::Bottom,
         other => {
-            warn!("Invalid overlay position '{}', defaulting to bottom", other);
-            OverlayPosition::Bottom
+            warn!("Invalid overlay position '{}', defaulting to none", other);
+            OverlayPosition::None
         }
     };
     settings.overlay_position = parsed;
     settings::write_settings(&app, settings);
-
-    // Update overlay position without recreating window
-    crate::utils::update_overlay_position(&app);
 
     Ok(())
 }

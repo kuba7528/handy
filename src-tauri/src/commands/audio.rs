@@ -186,7 +186,7 @@ pub fn set_continuous_listening(app: AppHandle, enabled: bool) -> Result<(), Str
     let rm = app.state::<Arc<AudioRecordingManager>>();
     if enabled {
         rm.start_continuous_listening()?;
-        crate::utils::show_recording_overlay(&app);
+        crate::utils::show_listening_indicator(&app);
         crate::utils::change_tray_icon(&app, crate::tray::TrayIconState::Recording);
     } else {
         rm.stop_continuous_listening();
@@ -217,7 +217,7 @@ pub fn pause_continuous_listening(app: AppHandle) -> Result<(), String> {
 pub fn resume_continuous_listening(app: AppHandle) -> Result<(), String> {
     let rm = app.state::<Arc<AudioRecordingManager>>();
     rm.resume_continuous_listening()?;
-    crate::utils::show_recording_overlay(&app);
+    crate::utils::show_listening_indicator(&app);
     crate::utils::change_tray_icon(&app, crate::tray::TrayIconState::Recording);
     crate::tray::update_tray_menu(&app, &crate::tray::TrayIconState::Recording, None);
     Ok(())

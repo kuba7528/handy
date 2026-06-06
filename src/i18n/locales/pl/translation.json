@@ -703,8 +703,10 @@
     "title": "Język aplikacji",
     "description": "Zmień język interfejsu Handy"
   },
-  "overlay": {
-    "transcribing": "Transkrypcja...",
-    "processing": "Przetwarzanie..."
+  "listeningStatus": {
+    "listening": "Nasłuchuję",
+    "recording": "Nagrywanie",
+    "transcribing": "Transkrypcja",
+    "processing": "Przetwarzanie"
   }
 }

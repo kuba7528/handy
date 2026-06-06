@@ -12,7 +12,7 @@ mod helpers;
 mod input;
 mod llm_client;
 mod managers;
-mod overlay;
+mod listening_status;
 pub mod portable;
 mod settings;
 mod shortcut;
@@ -172,6 +172,7 @@ fn initialize_core_logic(app_handle: &AppHandle) {
     app_handle.manage(continuous_queue::ContinuousSegmentQueue::new(
         app_handle.clone(),
     ));
+    app_handle.manage(listening_status::ListeningStatusStore::default());
 
     // Pre-load the selected ASR model in the background so the first transcription
     // is not delayed. Continuous listening also triggers a load, but only after
@@ -319,8 +320,6 @@ fn initialize_core_logic(app_handle: &AppHandle) {
         let _ = autostart_manager.disable();
     }
 
-    // Create the recording overlay window (hidden by default)
-    utils::create_recording_overlay(app_handle);
 }
 
 #[tauri::command]
@@ -409,6 +408,7 @@ pub fn run(cli_args: CliArgs) {
             trigger_update_check,
             show_main_window_command,
             commands::cancel_operation,
+            commands::get_listening_status,
             commands::is_portable,
             commands::get_app_dir_path,
             commands::get_app_settings,

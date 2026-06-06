@@ -9,7 +9,7 @@ use tauri::{AppHandle, Manager};
 // Re-export all utility modules for easy access
 // pub use crate::audio_feedback::*;
 pub use crate::clipboard::*;
-pub use crate::overlay::*;
+pub use crate::listening_status::*;
 pub use crate::tray::*;
 
 /// Centralized cancellation function that can be called from anywhere in the app.

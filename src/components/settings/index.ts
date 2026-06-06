@@ -16,7 +16,6 @@ export { AlwaysOnMicrophone } from "./AlwaysOnMicrophone";
 export { ContinuousListening } from "./ContinuousListening";
 export { PushToTalk } from "./PushToTalk";
 export { AudioFeedback } from "./AudioFeedback";
-export { ShowOverlay } from "./ShowOverlay";
 export { GlobalShortcutInput } from "./GlobalShortcutInput";
 export { HandyKeysShortcutInput } from "./HandyKeysShortcutInput";
 export { ShortcutInput } from "./ShortcutInput";
