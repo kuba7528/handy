@@ -1,6 +1,14 @@
 {
-  "tray": {
-    "settings": "Einstellungen...",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },  "tray": {
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "settings": "Einstellungen...",
     "checkUpdates": "Nach Updates suchen...",
     "copyLastTranscript": "Letzte Transkription kopieren",
     "unloadModel": "Modell entladen",
@@ -9,7 +17,11 @@
     "cancel": "Abbrechen"
   },
   "sidebar": {
-    "general": "Allgemein",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "general": "Allgemein",
     "models": "Modelle",
     "advanced": "Erweitert",
     "postProcessing": "Nachbearbeitung",
@@ -18,95 +30,187 @@
     "about": "Info"
   },
   "onboarding": {
-    "subtitle": "Wähle ein Transkriptionsmodell, um loszulegen",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "subtitle": "Wähle ein Transkriptionsmodell, um loszulegen",
     "recommended": "Empfohlen",
     "download": "Herunterladen",
     "downloading": "Wird heruntergeladen...",
     "customModelDescription": "Nicht offiziell unterstützt",
     "downloadFailed": "Download fehlgeschlagen. Bitte erneut versuchen.",
     "modelCard": {
-      "accuracy": "Genauigkeit",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "accuracy": "Genauigkeit",
       "speed": "Geschwindigkeit"
     },
     "models": {
-      "small": {
-        "name": "Whisper Small",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "small": {
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Whisper Small",
         "description": "Schnell und recht genau."
       },
       "medium": {
-        "name": "Whisper Medium",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Whisper Medium",
         "description": "Gute Genauigkeit, mittlere Geschwindigkeit"
       },
       "turbo": {
-        "name": "Whisper Turbo",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Whisper Turbo",
         "description": "Ausgewogene Genauigkeit und Geschwindigkeit."
       },
       "large": {
-        "name": "Whisper Large",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Whisper Large",
         "description": "Gute Genauigkeit, aber langsam."
       },
       "parakeet-tdt-0.6b-v2": {
-        "name": "Parakeet V2",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Parakeet V2",
         "description": "Nur Englisch. Das beste Modell für englischsprachige Nutzer."
       },
       "parakeet-tdt-0.6b-v3": {
-        "name": "Parakeet V3",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Parakeet V3",
         "description": "Schnell und genau"
       },
       "moonshine-base": {
-        "name": "Moonshine Base",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Moonshine Base",
         "description": "Sehr schnell, nur Englisch. Verarbeitet Akzente gut."
       },
       "moonshine-tiny-streaming-en": {
-        "name": "Moonshine V2 Tiny",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Moonshine V2 Tiny",
         "description": "Ultraschnell, nur Englisch"
       },
       "moonshine-small-streaming-en": {
-        "name": "Moonshine V2 Small",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Moonshine V2 Small",
         "description": "Schnell, nur Englisch. Gute Balance zwischen Geschwindigkeit und Genauigkeit."
       },
       "moonshine-medium-streaming-en": {
-        "name": "Moonshine V2 Medium",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Moonshine V2 Medium",
         "description": "Nur Englisch. Hohe Qualität."
       },
       "breeze-asr": {
-        "name": "Breeze ASR",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Breeze ASR",
         "description": "Optimiert für taiwanesisches Mandarin. Unterstützung für Code-Switching."
       },
       "sense-voice-int8": {
-        "name": "SenseVoice",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "SenseVoice",
         "description": "Sehr schnell. Chinesisch, Englisch, Japanisch, Koreanisch, Kantonesisch."
       },
       "gigaam-v3-e2e-ctc": {
-        "name": "GigaAM v3",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "GigaAM v3",
         "description": "Russische Spracherkennung. Schnell und präzise."
       },
       "canary-180m-flash": {
-        "name": "Canary 180M Flash",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Canary 180M Flash",
         "description": "Sehr schnell. Englisch, Deutsch, Spanisch, Französisch. Unterstützt Übersetzung."
       },
       "canary-1b-v2": {
-        "name": "Canary 1B v2",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Canary 1B v2",
         "description": "Genaue mehrsprachige Erkennung. 25 europäische Sprachen. Unterstützt Übersetzung."
       },
       "cohere-int8": {
-        "name": "Cohere",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Cohere",
         "description": "Ein großes, langsameres, aber sehr genaues mehrsprachiges Modell."
       }
     },
     "errors": {
-      "loadModels": "Verfügbare Modelle konnten nicht geladen werden",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "loadModels": "Verfügbare Modelle konnten nicht geladen werden",
       "downloadModel": "Modell konnte nicht heruntergeladen werden: {{error}}"
     },
     "permissions": {
-      "title": "Berechtigungen erforderlich",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "Berechtigungen erforderlich",
       "description": "Handy benötigt einige Berechtigungen, um richtig zu funktionieren.",
       "microphone": {
-        "title": "Mikrofonzugriff",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Mikrofonzugriff",
         "description": "Erforderlich, um deine Stimme für die Transkription zu hören."
       },
       "accessibility": {
-        "title": "Bedienungshilfen-Zugriff",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Bedienungshilfen-Zugriff",
         "description": "Erforderlich, um transkribierten Text in deine Anwendungen einzugeben."
       },
       "grant": "Berechtigung erteilen",
@@ -114,13 +218,21 @@
       "waiting": "Warten...",
       "allGranted": "Alles bereit!",
       "errors": {
-        "checkFailed": "Berechtigungsprüfung fehlgeschlagen. Bitte erneut versuchen.",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "checkFailed": "Berechtigungsprüfung fehlgeschlagen. Bitte erneut versuchen.",
         "requestFailed": "Berechtigungsanfrage fehlgeschlagen. Bitte erneut versuchen."
       }
     }
   },
   "modelSelector": {
-    "custom": "Benutzerdefiniert",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "custom": "Benutzerdefiniert",
     "active": "Aktiv",
     "switching": "Wechseln...",
     "noModelsAvailable": "Keine Modelle verfügbar",
@@ -140,7 +252,11 @@
     "deleteModel": "{{modelName}} löschen",
     "downloadSpeed": "{{speed}} MB/s",
     "capabilities": {
-      "languageSelection": "Unterstützt mehrere Eingabesprachen",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "languageSelection": "Unterstützt mehrere Eingabesprachen",
       "multiLanguage": "Mehrsprachig",
       "translation": "Kann ins Englische übersetzen",
       "translate": "Ins Englische übersetzen",
@@ -151,12 +267,24 @@
     "cancelDownload": "Download abbrechen"
   },
   "settings": {
-    "modelSettings": {
-      "title": "{{model}}-Einstellungen",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "modelSettings": {
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "{{model}}-Einstellungen",
       "noSettingsNeeded": "Dieses Modell funktioniert automatisch ohne Konfiguration."
     },
     "models": {
-      "title": "Transkriptionsmodelle",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "Transkriptionsmodelle",
       "description": "Wähle ein Transkriptionsmodell aus oder lade zusätzliche Modelle herunter. Verschiedene Modelle bieten unterschiedliche Genauigkeits- und Geschwindigkeitsstufen.",
       "downloaded": "Heruntergeladen",
       "available": "Zum Download verfügbar",
@@ -164,7 +292,11 @@
       "deleteActiveConfirm": "{{modelName}} ist dein aktives Modell. Das Löschen stoppt Transkriptionen, bis du ein neues Modell auswählst. Bist du sicher?",
       "deleteTitle": "Modell löschen",
       "filters": {
-        "all": "Alle",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "all": "Alle",
         "multiLanguage": "Mehrsprachig",
         "translation": "Übersetzung",
         "allLanguages": "Alle Sprachen"
@@ -174,36 +306,68 @@
       "availableModels": "Zum Download verfügbar"
     },
     "general": {
-      "title": "Allgemein",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "Allgemein",
       "shortcut": {
-        "title": "Handy-Tastenkürzel",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Handy-Tastenkürzel",
         "description": "Tastenkürzel für die Sprachaufnahme konfigurieren",
         "loading": "Tastenkürzel werden geladen...",
         "none": "Keine Tastenkürzel konfiguriert",
         "notFound": "Tastenkürzel nicht gefunden",
         "pressKeys": "Tasten drücken...",
         "bindings": {
-          "transcribe": {
-            "name": "Transkriptions-Tastenkürzel",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "transcribe": {
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },            "name": "Transkriptions-Tastenkürzel",
             "description": "Das Tastenkürzel zum Aufnehmen und Transkribieren deiner Stimme."
           },
           "cancel": {
-            "name": "Abbrechen-Tastenkürzel",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },            "name": "Abbrechen-Tastenkürzel",
             "description": "Das Tastenkürzel zum Abbrechen der aktuellen Aufnahme."
           },
           "transcribe_with_post_process": {
-            "name": "Nachbearbeitungs-Tastenkürzel",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },            "name": "Nachbearbeitungs-Tastenkürzel",
             "description": "Optional: Ein dediziertes Tastenkürzel, das immer die KI-Nachbearbeitung auf deine Transkription anwendet."
           }
         },
         "errors": {
-          "restore": "Ursprüngliches Tastenkürzel konnte nicht wiederhergestellt werden",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "restore": "Ursprüngliches Tastenkürzel konnte nicht wiederhergestellt werden",
           "set": "Tastenkürzel konnte nicht gesetzt werden: {{error}}",
           "reset": "Tastenkürzel konnte nicht auf Originalwert zurückgesetzt werden"
         }
       },
       "language": {
-        "title": "Sprache",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Sprache",
         "description": "Wähle die Sprache für die Spracherkennung. Auto erkennt die Sprache automatisch, die Auswahl einer bestimmten Sprache kann die Genauigkeit verbessern.",
         "descriptionUnsupported": "Das Parakeet-Modell erkennt die Sprache automatisch. Keine manuelle Auswahl erforderlich.",
         "searchPlaceholder": "Sprachen suchen...",
@@ -211,91 +375,175 @@
         "auto": "Auto"
       },
       "pushToTalk": {
-        "label": "Push-to-Talk",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "Push-to-Talk",
         "description": "Gedrückt halten zum Aufnehmen, loslassen zum Stoppen"
       }
     },
     "sound": {
-      "title": "Ton",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "Ton",
       "microphone": {
-        "title": "Mikrofon",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Mikrofon",
         "description": "Bevorzugtes Mikrofon auswählen",
         "placeholder": "Mikrofon auswählen...",
         "loading": "Wird geladen..."
       },
       "audioFeedback": {
-        "label": "Audio-Feedback",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "Audio-Feedback",
         "description": "Ton bei Start und Ende der Aufnahme abspielen"
       },
       "outputDevice": {
-        "title": "Ausgabegerät",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Ausgabegerät",
         "description": "Bevorzugtes Audioausgabegerät für Feedback-Töne auswählen",
         "placeholder": "Ausgabegerät auswählen...",
         "loading": "Wird geladen..."
       },
       "volume": {
-        "title": "Lautstärke",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Lautstärke",
         "description": "Lautstärke der Audio-Feedback-Töne anpassen"
       }
     },
     "advanced": {
-      "title": "Erweitert",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "Erweitert",
       "groups": {
-        "app": "App",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "app": "App",
         "output": "Ausgabe",
         "transcription": "Transkription",
         "history": "Verlauf",
         "experimental": "Experimentell"
       },
       "experimentalToggle": {
-        "label": "Experimentelle Funktionen",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "Experimentelle Funktionen",
         "description": "Experimentelle Funktionen aktivieren, die sich noch in Entwicklung befinden."
       },
       "lazyStreamClose": {
-        "label": "Mikrofon zwischen Transkriptionen offen halten",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "Mikrofon zwischen Transkriptionen offen halten",
         "description": "Hält den Mikrofon-Stream nach dem Aufnahmestopp 30 Sekunden lang offen, um die Latenz bei aufeinanderfolgenden Transkriptionen zu verringern. Kann die Bluetooth-Audioqualität beeinträchtigen."
       },
       "acceleration": {
-        "whisper": {
-          "title": "Whisper-Beschleunigung",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "whisper": {
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "Whisper-Beschleunigung",
           "description": "Hardwarebeschleunigung für Whisper-Modelle. Automatisch nutzt GPU falls verfügbar (Metal auf macOS, Vulkan auf Windows/Linux)."
         },
         "ort": {
-          "title": "ONNX-Beschleunigung",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "ONNX-Beschleunigung",
           "description": "Hardwarebeschleunigung für ONNX-Modelle (Parakeet, Canary, Moonshine usw.). DirectML unter Windows ist experimentell. Modelle können bei der Transkription fehlschlagen."
         },
         "gpuDevice": {
-          "title": "GPU-Gerät",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "GPU-Gerät",
           "description": "Wähle die GPU für die Whisper-Inferenz. Auto wählt die dedizierte GPU.",
           "auto": "Auto"
         }
       },
       "startHidden": {
-        "label": "Versteckt starten",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "Versteckt starten",
         "description": "In den Systembereich starten, ohne das Fenster zu öffnen."
       },
       "autostart": {
-        "label": "Beim Start ausführen",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "Beim Start ausführen",
         "description": "Handy automatisch beim Anmelden starten."
       },
       "showTrayIcon": {
-        "label": "Taskleistensymbol anzeigen",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "Taskleistensymbol anzeigen",
         "description": "Das Handy-Symbol in der Taskleiste anzeigen."
       },
       "overlay": {
-        "title": "Overlay-Position",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Overlay-Position",
         "description": "Visuelles Feedback-Overlay während Aufnahme und Transkription anzeigen. Unter Linux wird 'Keine' empfohlen.",
         "options": {
-          "none": "Keine",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "none": "Keine",
           "bottom": "Unten",
           "top": "Oben"
         }
       },
       "pasteMethod": {
-        "title": "Einfügemethode",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Einfügemethode",
         "description": "Wähle, wie Text eingefügt wird. Direkt: simuliert Tippen über Systemeingabe. Keine: überspringt Einfügen, aktualisiert nur Verlauf/Zwischenablage.",
         "options": {
-          "clipboard": "Zwischenablage ({{modifier}}+V)",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "clipboard": "Zwischenablage ({{modifier}}+V)",
           "clipboardCtrlShiftV": "Zwischenablage (Strg+Umschalt+V)",
           "clipboardShiftInsert": "Zwischenablage (Umschalt+Einfg)",
           "direct": "Direkt",
@@ -305,25 +553,49 @@
         "externalScriptPlaceholder": "/pfad/zu/ihrem/skript.sh"
       },
       "typingTool": {
-        "title": "Eingabetool",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Eingabetool",
         "description": "Wähle, welches Linux-Eingabetool für die Direkt-Einfügen-Methode verwendet werden soll. Auto erkennt und verwendet automatisch das beste verfügbare Tool für dein System.",
         "options": {
-          "auto": "Auto (Empfohlen)"
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "auto": "Auto (Empfohlen)"
         }
       },
       "clipboardHandling": {
-        "title": "Zwischenablage-Verhalten",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Zwischenablage-Verhalten",
         "description": "Zwischenablage nicht ändern bewahrt den aktuellen Inhalt nach der Transkription. In Zwischenablage kopieren hinterlässt das Transkriptionsergebnis in der Zwischenablage.",
         "options": {
-          "dontModify": "Zwischenablage nicht ändern",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "dontModify": "Zwischenablage nicht ändern",
           "copyToClipboard": "In Zwischenablage kopieren"
         }
       },
       "autoSubmit": {
-        "title": "Automatisch absenden",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Automatisch absenden",
         "description": "Sendet nach dem Einfügen von Text automatisch die ausgewählte Tastenkombination. Cmd+Enter gilt für macOS, während Windows/Linux Super+Enter verwenden.",
         "options": {
-          "off": "Aus",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "off": "Aus",
           "enter": "Enter",
           "cmdEnter": "Cmd+Enter",
           "superEnter": "Super+Enter",
@@ -331,15 +603,27 @@
         }
       },
       "translateToEnglish": {
-        "label": "Ins Englische übersetzen",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "Ins Englische übersetzen",
         "description": "Sprache aus anderen Sprachen automatisch während der Transkription ins Englische übersetzen.",
         "descriptionUnsupported": "Übersetzung wird vom {{model}}-Modell nicht unterstützt."
       },
       "modelUnload": {
-        "title": "Modell entladen",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Modell entladen",
         "description": "GPU/CPU-Speicher automatisch freigeben, wenn das Modell für die angegebene Zeit nicht verwendet wurde",
         "options": {
-          "never": "Nie",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "never": "Nie",
           "immediately": "Sofort",
           "min2": "Nach 2 Minuten",
           "min5": "Nach 5 Minuten",
@@ -350,7 +634,11 @@
         }
       },
       "customWords": {
-        "title": "Benutzerdefinierte Wörter",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Benutzerdefinierte Wörter",
         "description": "Wörter hinzufügen, die oft falsch gehört oder geschrieben werden. Das System korrigiert automatisch ähnlich klingende Wörter entsprechend deiner Liste.",
         "placeholder": "Wort hinzufügen",
         "add": "Hinzufügen",
@@ -359,34 +647,66 @@
       }
     },
     "postProcessing": {
-      "title": "Nachbearbeitung",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "Nachbearbeitung",
       "hotkey": {
-        "title": "Tastenkürzel"
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Tastenkürzel"
       },
       "api": {
-        "title": "API (OpenAI-kompatibel)",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "API (OpenAI-kompatibel)",
         "provider": {
-          "title": "Anbieter",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "Anbieter",
           "description": "Wähle einen OpenAI-kompatiblen Anbieter."
         },
         "appleIntelligence": {
-          "title": "Apple Intelligence",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "Apple Intelligence",
           "description": "Läuft vollständig auf dem Gerät. Kein API-Schlüssel oder Netzwerkzugriff erforderlich.",
           "requirements": "Erfordert einen Apple Silicon Mac mit macOS Tahoe (26.0) oder neuer. Apple Intelligence muss in den Systemeinstellungen aktiviert sein.",
           "unavailable": "Apple Intelligence ist auf diesem Gerät nicht verfügbar. Erfordert einen Apple Silicon Mac mit macOS Tahoe (26.0) oder neuer und aktiviertem Apple Intelligence in den Systemeinstellungen."
         },
         "baseUrl": {
-          "title": "Basis-URL",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "Basis-URL",
           "description": "API-Basis-URL für den ausgewählten Anbieter. Nur der benutzerdefinierte Anbieter kann bearbeitet werden.",
           "placeholder": "https://api.openai.com/v1"
         },
         "apiKey": {
-          "title": "API-Schlüssel",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "API-Schlüssel",
           "description": "API-Schlüssel für den ausgewählten Anbieter.",
           "placeholder": "sk-..."
         },
         "model": {
-          "title": "Modell",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "Modell",
           "descriptionApple": "Gib ein optionales numerisches Token-Limit an oder behalte die Standard-Gerätevorgabe.",
           "descriptionCustom": "Gib die Modellkennung an, die von deinem benutzerdefinierten Endpunkt erwartet wird.",
           "descriptionDefault": "Wähle ein Modell des ausgewählten Anbieters.",
@@ -397,9 +717,17 @@
         }
       },
       "prompts": {
-        "title": "Prompt",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Prompt",
         "selectedPrompt": {
-          "title": "Ausgewählter Prompt",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "Ausgewählter Prompt",
           "description": "Wähle eine Vorlage zur Verfeinerung von Transkriptionen oder erstelle eine neue. Verwende ${output} im Prompt-Text, um auf das erfasste Transkript zu verweisen."
         },
         "noPrompts": "Keine Prompts verfügbar",
@@ -419,7 +747,11 @@
       }
     },
     "history": {
-      "title": "Verlauf",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "Verlauf",
       "openFolder": "Aufnahmeordner öffnen",
       "loading": "Verlauf wird geladen...",
       "empty": "Noch keine Transkriptionen. Starte eine Aufnahme, um deinen Verlauf aufzubauen!",
@@ -434,34 +766,66 @@
       "transcriptionFailed": "Transkription fehlgeschlagen. Du kannst über das Wiederholen-Symbol erneut transkribieren."
     },
     "debug": {
-      "title": "Debug",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "Debug",
       "logDirectory": {
-        "title": "Log-Verzeichnis",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Log-Verzeichnis",
         "description": "Speicherort der Log-Dateien"
       },
       "logLevel": {
-        "title": "Log-Level",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Log-Level",
         "description": "Ausführlichkeit der Protokollierung festlegen"
       },
       "updateChecks": {
-        "label": "Nach Updates suchen",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "Nach Updates suchen",
         "description": "Automatisch nach neuen Versionen von Handy suchen"
       },
       "soundTheme": {
-        "label": "Sound-Thema",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "Sound-Thema",
         "description": "Sound-Thema für Aufnahme-Start und -Stop-Feedback auswählen"
       },
       "wordCorrectionThreshold": {
-        "title": "Wortkorrektur-Schwelle",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Wortkorrektur-Schwelle",
         "description": "Empfindlichkeit für benutzerdefinierte Wortkorrekturen"
       },
       "historyLimit": {
-        "title": "Verlaufslimit",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Verlaufslimit",
         "description": "Maximale Anzahl der Verlaufseinträge",
         "entries": "Einträge"
       },
       "recordingRetention": {
-        "title": "Aufnahmen automatisch löschen",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Aufnahmen automatisch löschen",
         "description": "Alte Aufnahmen automatisch löschen, um Speicherplatz zu sparen",
         "never": "Nie",
         "preserveLimit": "Neueste {{count}} behalten",
@@ -471,68 +835,132 @@
         "placeholder": "Aufbewahrungszeitraum auswählen..."
       },
       "alwaysOnMicrophone": {
-        "label": "Mikrofon immer aktiv",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "Mikrofon immer aktiv",
         "description": "Mikrofon für schnellere Reaktion aktiv halten"
       },
       "clamshellMicrophone": {
-        "title": "Clamshell-Mikrofon",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Clamshell-Mikrofon",
         "description": "Mikrofon bei geschlossenem Laptop-Deckel"
       },
       "postProcessingToggle": {
-        "label": "Nachbearbeitung",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "Nachbearbeitung",
         "description": "KI-gestützte Textverfeinerung nach der Transkription aktivieren"
       },
       "muteWhileRecording": {
-        "label": "Während Aufnahme stummschalten",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "Während Aufnahme stummschalten",
         "description": "Systemaudio während der Aufnahme stummschalten"
       },
       "appendTrailingSpace": {
-        "label": "Leerzeichen anhängen",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "Leerzeichen anhängen",
         "description": "Leerzeichen nach eingefügter Transkription hinzufügen"
       },
       "keyboardImplementation": {
-        "title": "Tastatur-Implementierung",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Tastatur-Implementierung",
         "description": "Wähle das Backend für Tastaturkürzel.",
         "bindingsReset": "Tastaturkürzel waren inkompatibel und wurden auf die Standardwerte zurückgesetzt"
       },
       "paths": {
-        "appData": "App-Daten:",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "appData": "App-Daten:",
         "models": "Modelle:",
         "settings": "Einstellungen:"
       },
       "pasteDelay": {
-        "title": "Einfügeverzögerung",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Einfügeverzögerung",
         "description": "Verzögerung vor dem Senden des Einfüge-Tastendrucks (in Millisekunden). Erhöhe den Wert, wenn falscher Text eingefügt wird."
       },
       "recordingBuffer": {
-        "title": "Zusätzlicher Aufnahmepuffer",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Zusätzlicher Aufnahmepuffer",
         "description": "Zusätzliche Zeit (in Millisekunden), um nach dem Loslassen der Taste weiter aufzunehmen, um nachlaufendes Audio zu erfassen. 0 = kein zusätzlicher Puffer."
       }
     },
     "about": {
-      "title": "Info",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "Info",
       "version": {
-        "title": "Version",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Version",
         "description": "Aktuelle Version von Handy"
       },
       "appDataDirectory": {
-        "title": "App-Datenverzeichnis",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "App-Datenverzeichnis",
         "description": "Speicherort der Handy-Daten"
       },
       "sourceCode": {
-        "title": "Quellcode",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Quellcode",
         "description": "Quellcode ansehen und beitragen",
         "button": "Auf GitHub ansehen"
       },
       "supportDevelopment": {
-        "title": "Entwicklung unterstützen",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Entwicklung unterstützen",
         "description": "Hilf uns, Handy weiterzuentwickeln",
         "button": "Spenden"
       },
       "acknowledgments": {
-        "title": "Danksagungen",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Danksagungen",
         "whisper": {
-          "title": "Whisper.cpp",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "Whisper.cpp",
           "description": "Hochleistungs-Inferenz des Whisper-Spracherkennungsmodells von OpenAI",
           "details": "Handy verwendet Whisper.cpp für schnelle, lokale Sprach-zu-Text-Verarbeitung. Dank an Georgi Gerganov und die Mitwirkenden für ihre großartige Arbeit."
         }
@@ -540,7 +968,11 @@
     }
   },
   "footer": {
-    "downloadingModel": "Lade {{model}} herunter...",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "downloadingModel": "Lade {{model}} herunter...",
     "checkingUpdates": "Suche nach Updates...",
     "updateAvailable": "Update verfügbar: {{version}}",
     "updateAvailableShort": "Update verfügbar",
@@ -557,7 +989,11 @@
     "portableUpdateButton": "GitHub Releases öffnen"
   },
   "common": {
-    "loading": "Wird geladen...",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "loading": "Wird geladen...",
     "save": "Speichern",
     "cancel": "Abbrechen",
     "reset": "Zurücksetzen",
@@ -579,16 +1015,28 @@
     "noOptionsFound": "Keine Optionen gefunden"
   },
   "accessibility": {
-    "permissionsRequired": "Bedienungshilfen-Berechtigungen erforderlich",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "permissionsRequired": "Bedienungshilfen-Berechtigungen erforderlich",
     "permissionsDescription": "Handy benötigt Bedienungshilfen-Berechtigungen, um transkribierten Text einzugeben.",
     "openSettings": "Systemeinstellungen öffnen",
     "dismiss": "Schließen"
   },
   "errors": {
-    "loadDirectory": "Fehler beim Laden des Verzeichnisses: {{error}}",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "loadDirectory": "Fehler beim Laden des Verzeichnisses: {{error}}",
     "micPermissionDeniedTitle": "Mikrofonzugriff verweigert",
     "micPermissionDenied": {
-      "generic": "Der Mikrofonzugriff wurde vom Betriebssystem verweigert. Bitte erteile die Mikrofonberechtigung in deinen Systemeinstellungen.",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "generic": "Der Mikrofonzugriff wurde vom Betriebssystem verweigert. Bitte erteile die Mikrofonberechtigung in deinen Systemeinstellungen.",
       "windows": "Aktiviere den Mikrofonzugriff unter Einstellungen → Datenschutz und Sicherheit → Mikrofon (einschließlich Desktop-App-Zugriff).",
       "macos": "Erteile den Mikrofonzugriff in Systemeinstellungen → Datenschutz & Sicherheit → Mikrofon.",
       "linux": "Erteile den Mikrofonzugriff in den Sound- oder Datenschutzeinstellungen deines Systems."
@@ -602,11 +1050,19 @@
     "pasteFailed": "Der Text konnte nicht in die aktive Anwendung eingefügt werden."
   },
   "appLanguage": {
-    "title": "Anwendungssprache",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "title": "Anwendungssprache",
     "description": "Sprache der Handy-Oberfläche ändern"
   },
   "overlay": {
-    "transcribing": "Transkribiere...",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "transcribing": "Transkribiere...",
     "processing": "Verarbeite..."
   }
 }

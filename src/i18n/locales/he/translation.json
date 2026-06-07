@@ -1,6 +1,14 @@
 {
-  "tray": {
-    "settings": "הגדרות...",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },  "tray": {
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "settings": "הגדרות...",
     "checkUpdates": "בדוק עדכונים...",
     "copyLastTranscript": "העתק את התמלול האחרון",
     "unloadModel": "פרוק מודל",
@@ -9,7 +17,11 @@
     "cancel": "ביטול"
   },
   "sidebar": {
-    "general": "כללי",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "general": "כללי",
     "models": "מודלים",
     "advanced": "מתקדם",
     "postProcessing": "עיבוד משלים",
@@ -18,95 +30,187 @@
     "about": "אודות"
   },
   "onboarding": {
-    "subtitle": "כדי להתחיל, בחר מודל תמלול",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "subtitle": "כדי להתחיל, בחר מודל תמלול",
     "recommended": "מומלץ",
     "download": "הורדה",
     "downloading": "מוריד...",
     "customModelDescription": "לא נתמך באופן רשמי",
     "downloadFailed": "ההורדה נכשלה. נסה שוב.",
     "modelCard": {
-      "accuracy": "דיוק",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "accuracy": "דיוק",
       "speed": "מהירות"
     },
     "models": {
-      "small": {
-        "name": "Whisper Small",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "small": {
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Whisper Small",
         "description": "מהיר ודי מדויק."
       },
       "medium": {
-        "name": "Whisper Medium",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Whisper Medium",
         "description": "דיוק טוב, מהירות בינונית"
       },
       "turbo": {
-        "name": "Whisper Turbo",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Whisper Turbo",
         "description": "איזון טוב בין דיוק למהירות."
       },
       "large": {
-        "name": "Whisper Large",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Whisper Large",
         "description": "דיוק טוב, אבל איטי."
       },
       "parakeet-tdt-0.6b-v2": {
-        "name": "Parakeet V2",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Parakeet V2",
         "description": "אנגלית בלבד. המודל הטוב ביותר לדוברי אנגלית."
       },
       "parakeet-tdt-0.6b-v3": {
-        "name": "Parakeet V3",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Parakeet V3",
         "description": "מהיר ומדויק"
       },
       "moonshine-base": {
-        "name": "Moonshine Base",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Moonshine Base",
         "description": "מהיר מאוד, אנגלית בלבד. מתמודד היטב עם מבטאים."
       },
       "moonshine-tiny-streaming-en": {
-        "name": "Moonshine V2 Tiny",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Moonshine V2 Tiny",
         "description": "מהיר במיוחד, אנגלית בלבד"
       },
       "moonshine-small-streaming-en": {
-        "name": "Moonshine V2 Small",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Moonshine V2 Small",
         "description": "מהיר, אנגלית בלבד. איזון טוב בין מהירות לדיוק."
       },
       "moonshine-medium-streaming-en": {
-        "name": "Moonshine V2 Medium",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Moonshine V2 Medium",
         "description": "אנגלית בלבד. איכות גבוהה."
       },
       "breeze-asr": {
-        "name": "Breeze ASR",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Breeze ASR",
         "description": "מותאם למנדרינית טאיוואנית. תמיכה במעבר בין שפות."
       },
       "sense-voice-int8": {
-        "name": "SenseVoice",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "SenseVoice",
         "description": "מהיר מאוד. סינית, אנגלית, יפנית, קוריאנית וקנטונזית."
       },
       "gigaam-v3-e2e-ctc": {
-        "name": "GigaAM v3",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "GigaAM v3",
         "description": "זיהוי דיבור ברוסית. מהיר ומדויק."
       },
       "canary-180m-flash": {
-        "name": "Canary 180M Flash",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Canary 180M Flash",
         "description": "מהיר מאוד. אנגלית, גרמנית, ספרדית וצרפתית. תומך בתרגום."
       },
       "canary-1b-v2": {
-        "name": "Canary 1B v2",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Canary 1B v2",
         "description": "רב-לשוני ומדויק. 25 שפות אירופיות. תומך בתרגום."
       },
       "cohere-int8": {
-        "name": "Cohere",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Cohere",
         "description": "מודל גדול, איטי יותר, אך מדויק מאוד ורב-לשוני."
       }
     },
     "errors": {
-      "loadModels": "טעינת המודלים הזמינים נכשלה",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "loadModels": "טעינת המודלים הזמינים נכשלה",
       "downloadModel": "הורדת המודל נכשלה: {{error}}"
     },
     "permissions": {
-      "title": "נדרשות הרשאות",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "נדרשות הרשאות",
       "description": "Handy צריך כמה הרשאות כדי לעבוד כמו שצריך.",
       "microphone": {
-        "title": "גישה למיקרופון",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "גישה למיקרופון",
         "description": "נדרש כדי לשמוע את הקול שלך לצורך תמלול."
       },
       "accessibility": {
-        "title": "גישת נגישות",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "גישת נגישות",
         "description": "נדרש כדי להקליד את הטקסט המתומלל לתוך האפליקציות שלך."
       },
       "grant": "תן הרשאה",
@@ -114,13 +218,21 @@
       "waiting": "ממתין...",
       "allGranted": "הכול מוכן!",
       "errors": {
-        "checkFailed": "בדיקת ההרשאות נכשלה. נסה שוב.",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "checkFailed": "בדיקת ההרשאות נכשלה. נסה שוב.",
         "requestFailed": "בקשת ההרשאה נכשלה. נסה שוב."
       }
     }
   },
   "modelSelector": {
-    "custom": "מותאם אישית",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "custom": "מותאם אישית",
     "active": "פעיל",
     "switching": "מחליף...",
     "noModelsAvailable": "אין מודלים זמינים",
@@ -142,7 +254,11 @@
     "cancel": "ביטול",
     "cancelDownload": "בטל הורדה",
     "capabilities": {
-      "languageSelection": "תומך בכמה שפות קלט",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "languageSelection": "תומך בכמה שפות קלט",
       "singleLanguage": "תומך רק בשפה הזו",
       "multiLanguage": "רב-לשוני",
       "languageOnly": "{{language}} בלבד",
@@ -151,41 +267,81 @@
     }
   },
   "settings": {
-    "modelSettings": {
-      "title": "הגדרות עבור {{model}}",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "modelSettings": {
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "הגדרות עבור {{model}}",
       "noSettingsNeeded": "המודל הזה עובד אוטומטית ולא דורש הגדרה נוספת."
     },
     "general": {
-      "title": "כללי",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "כללי",
       "shortcut": {
-        "title": "קיצורי מקשים של Handy",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "קיצורי מקשים של Handy",
         "description": "הגדר קיצורי מקשים כדי להפעיל הקלטה ותמלול דיבור",
         "loading": "טוען קיצורי מקשים...",
         "none": "לא הוגדרו קיצורי מקשים",
         "notFound": "קיצור הדרך לא נמצא",
         "pressKeys": "לחץ על המקשים...",
         "bindings": {
-          "transcribe": {
-            "name": "קיצור מקשים לתמלול",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "transcribe": {
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },            "name": "קיצור מקשים לתמלול",
             "description": "קיצור המקלדת להקלטה ולתמלול הקול שלך."
           },
           "cancel": {
-            "name": "קיצור מקשים לביטול",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },            "name": "קיצור מקשים לביטול",
             "description": "קיצור המקלדת לביטול ההקלטה הנוכחית."
           },
           "transcribe_with_post_process": {
-            "name": "קיצור לעיבוד משלים",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },            "name": "קיצור לעיבוד משלים",
             "description": "אופציונלי: קיצור מקשים ייעודי שתמיד מפעיל עיבוד AI על התמלול."
           }
         },
         "errors": {
-          "restore": "שחזור קיצור הדרך המקורי נכשל",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "restore": "שחזור קיצור הדרך המקורי נכשל",
           "set": "הגדרת קיצור הדרך נכשלה: {{error}}",
           "reset": "איפוס קיצור הדרך לערך המקורי נכשל"
         }
       },
       "language": {
-        "title": "שפה",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "שפה",
         "description": "בחר את שפת זיהוי הדיבור. מצב אוטומטי יזהה את השפה לבד, בעוד שבחירת שפה מסוימת יכולה לשפר את הדיוק עבורה.",
         "descriptionUnsupported": "מודל Parakeet מזהה את השפה אוטומטית. אין צורך בבחירה ידנית.",
         "searchPlaceholder": "חפש שפות...",
@@ -193,12 +349,20 @@
         "auto": "אוטומטי"
       },
       "pushToTalk": {
-        "label": "לחץ כדי לדבר",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "לחץ כדי לדבר",
         "description": "החזק כדי להקליט, שחרר כדי לעצור"
       }
     },
     "models": {
-      "title": "מודלי תמלול",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "מודלי תמלול",
       "description": "בחר מודל תמלול או הורד מודלים נוספים. מודלים שונים מציעים רמות שונות של דיוק ומהירות.",
       "yourModels": "מודלים שהורדו",
       "availableModels": "זמינים להורדה",
@@ -208,7 +372,11 @@
       "deleteActiveConfirm": "{{modelName}} הוא המודל הפעיל שלך כרגע. מחיקה שלו תעצור את התמלול עד שתבחר מודל חדש. להמשיך?",
       "deleteTitle": "מחיקת מודל",
       "filters": {
-        "all": "הכול",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "all": "הכול",
         "multiLanguage": "רב-לשוני",
         "translation": "תרגום",
         "allLanguages": "כל השפות"
@@ -216,86 +384,166 @@
       "noModelsMatch": "אין מודלים שמתאימים לסינון הזה."
     },
     "sound": {
-      "title": "שמע",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "שמע",
       "microphone": {
-        "title": "מיקרופון",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "מיקרופון",
         "description": "בחר את המיקרופון המועדף עליך",
         "placeholder": "בחר מיקרופון...",
         "loading": "טוען..."
       },
       "audioFeedback": {
-        "label": "משוב קולי",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "משוב קולי",
         "description": "נגן צליל כשההקלטה מתחילה ומסתיימת"
       },
       "outputDevice": {
-        "title": "התקן פלט",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "התקן פלט",
         "description": "בחר את התקן השמע המועדף עליך עבור צלילי המשוב",
         "placeholder": "בחר התקן פלט...",
         "loading": "טוען..."
       },
       "volume": {
-        "title": "עוצמת קול",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "עוצמת קול",
         "description": "כוונן את עוצמת צלילי המשוב"
       }
     },
     "advanced": {
-      "title": "מתקדם",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "מתקדם",
       "groups": {
-        "app": "אפליקציה",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "app": "אפליקציה",
         "output": "פלט",
         "transcription": "תמלול",
         "history": "היסטוריה",
         "experimental": "ניסיוני"
       },
       "experimentalToggle": {
-        "label": "תכונות ניסיוניות",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "תכונות ניסיוניות",
         "description": "הפעל תכונות ניסיוניות שעדיין נמצאות בפיתוח."
       },
       "lazyStreamClose": {
-        "label": "השאר את המיקרופון פתוח בין תמלולים",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "השאר את המיקרופון פתוח בין תמלולים",
         "description": "משאיר את זרם המיקרופון פתוח למשך 30 שניות אחרי סיום ההקלטה, וכך מפחית השהיה בתמלולים רצופים. עשוי לפגוע באיכות שמע Bluetooth בזמן שהאפשרות פעילה."
       },
       "acceleration": {
-        "whisper": {
-          "title": "האצת Whisper",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "whisper": {
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "האצת Whisper",
           "description": "האצת חומרה למודלי Whisper. מצב אוטומטי משתמש ב-GPU אם זמין (Metal ב-macOS, Vulkan ב-Windows/Linux)."
         },
         "ort": {
-          "title": "האצת ONNX",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "האצת ONNX",
           "description": "האצת חומרה למודלי ONNX (Parakeet, Canary, Moonshine ועוד). DirectML ב-Windows הוא ניסיוני. ייתכן שמודלים ייכשלו בתמלול."
         },
         "gpuDevice": {
-          "title": "התקן GPU",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "התקן GPU",
           "description": "בחר באיזה GPU להשתמש עבור הסקת Whisper. מצב אוטומטי בוחר את ה-GPU הייעודי.",
           "auto": "אוטומטי"
         }
       },
       "startHidden": {
-        "label": "התחל מוסתר",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "התחל מוסתר",
         "description": "הפעל לתוך מגש המערכת בלי לפתוח את החלון."
       },
       "autostart": {
-        "label": "הפעל עם עליית המערכת",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "הפעל עם עליית המערכת",
         "description": "הפעל את Handy אוטומטית כשאתה מתחבר למחשב."
       },
       "showTrayIcon": {
-        "label": "הצג אייקון במגש",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "הצג אייקון במגש",
         "description": "הצג את האייקון של Handy במגש המערכת."
       },
       "overlay": {
-        "title": "מיקום שכבת המשוב",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "מיקום שכבת המשוב",
         "description": "הצג שכבת משוב חזותית בזמן הקלטה ותמלול. בלינוקס מומלץ לבחור 'ללא'.",
         "options": {
-          "none": "ללא",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "none": "ללא",
           "bottom": "למטה",
           "top": "למעלה"
         }
       },
       "pasteMethod": {
-        "title": "שיטת הדבקה",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "שיטת הדבקה",
         "description": "בחר איך הטקסט יוכנס. ישיר: מדמה הקלדה דרך קלט המערכת. ללא: מדלג על הדבקה ומעדכן רק היסטוריה/לוח.",
         "options": {
-          "clipboard": "לוח ({{modifier}}+V)",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "clipboard": "לוח ({{modifier}}+V)",
           "clipboardCtrlShiftV": "לוח (Ctrl+Shift+V)",
           "clipboardShiftInsert": "לוח (Shift+Insert)",
           "direct": "ישיר",
@@ -305,25 +553,49 @@
         "externalScriptPlaceholder": "/path/to/your/script.sh"
       },
       "typingTool": {
-        "title": "כלי הקלדה",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "כלי הקלדה",
         "description": "בחר איזה כלי הקלדה בלינוקס ישמש עבור הדבקה ישירה. מצב אוטומטי יזהה וישתמש בכלי המתאים ביותר למערכת שלך.",
         "options": {
-          "auto": "אוטומטי (מומלץ)"
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "auto": "אוטומטי (מומלץ)"
         }
       },
       "clipboardHandling": {
-        "title": "התנהגות הלוח",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "התנהגות הלוח",
         "description": "אל תשנה את הלוח ישמור על תוכן הלוח הנוכחי שלך אחרי התמלול. העתק ללוח ישאיר את תוצאת התמלול בלוח אחרי ההדבקה.",
         "options": {
-          "dontModify": "אל תשנה את הלוח",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "dontModify": "אל תשנה את הלוח",
           "copyToClipboard": "העתק ללוח"
         }
       },
       "autoSubmit": {
-        "title": "שליחה אוטומטית",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "שליחה אוטומטית",
         "description": "שלח אוטומטית את צירוף המקשים שנבחר אחרי הכנסת הטקסט. ב-macOS יופעל Cmd+Enter, וב-Windows/Linux יופעל Super+Enter.",
         "options": {
-          "off": "כבוי",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "off": "כבוי",
           "enter": "Enter",
           "cmdEnter": "Cmd+Enter",
           "superEnter": "Super+Enter",
@@ -331,15 +603,27 @@
         }
       },
       "translateToEnglish": {
-        "label": "תרגם לאנגלית",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "תרגם לאנגלית",
         "description": "תרגם אוטומטית דיבור משפות אחרות לאנגלית בזמן התמלול.",
         "descriptionUnsupported": "המודל {{model}} לא תומך בתרגום."
       },
       "modelUnload": {
-        "title": "פרוק מודל",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "פרוק מודל",
         "description": "שחרר אוטומטית זיכרון GPU/CPU כשהמודל לא היה בשימוש במשך הזמן שנבחר",
         "options": {
-          "never": "אף פעם",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "never": "אף פעם",
           "immediately": "מיידית",
           "min2": "אחרי 2 דקות",
           "min5": "אחרי 5 דקות",
@@ -350,7 +634,11 @@
         }
       },
       "customWords": {
-        "title": "מילים מותאמות אישית",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "מילים מותאמות אישית",
         "description": "הוסף מילים שנשמעות או נכתבות לא נכון לעיתים קרובות במהלך התמלול. המערכת תתקן אוטומטית מילים דומות כך שיתאימו לרשימה שלך.",
         "placeholder": "הוסף מילה",
         "add": "הוסף",
@@ -359,34 +647,66 @@
       }
     },
     "postProcessing": {
-      "title": "עיבוד משלים",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "עיבוד משלים",
       "hotkey": {
-        "title": "קיצור מקשים"
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "קיצור מקשים"
       },
       "api": {
-        "title": "API (תואם OpenAI)",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "API (תואם OpenAI)",
         "provider": {
-          "title": "ספק",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "ספק",
           "description": "בחר ספק שתואם ל-OpenAI."
         },
         "appleIntelligence": {
-          "title": "Apple Intelligence",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "Apple Intelligence",
           "description": "רץ כולו על המכשיר. לא נדרש מפתח API או חיבור רשת.",
           "requirements": "דורש Mac עם Apple Silicon שמריץ macOS Tahoe (26.0) ומעלה. Apple Intelligence חייב להיות מופעל בהגדרות המערכת.",
           "unavailable": "Apple Intelligence לא זמין במכשיר הזה. נדרש Mac עם Apple Silicon שמריץ macOS Tahoe (26.0) ומעלה, עם Apple Intelligence מופעל בהגדרות המערכת."
         },
         "baseUrl": {
-          "title": "Base URL",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "Base URL",
           "description": "כתובת ה-API הבסיסית עבור הספק הנבחר. רק ספק מותאם אישית ניתן לעריכה.",
           "placeholder": "https://api.openai.com/v1"
         },
         "apiKey": {
-          "title": "מפתח API",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "מפתח API",
           "description": "מפתח API עבור הספק הנבחר.",
           "placeholder": "sk-..."
         },
         "model": {
-          "title": "מודל",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "מודל",
           "descriptionApple": "ספק מגבלת טוקנים מספרית אופציונלית או השאר את ברירת המחדל שעל המכשיר.",
           "descriptionCustom": "ספק את מזהה המודל שה-endpoint המותאם שלך מצפה לו.",
           "descriptionDefault": "בחר מודל שהספק הנבחר חושף.",
@@ -397,9 +717,17 @@
         }
       },
       "prompts": {
-        "title": "פרומפט",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "פרומפט",
         "selectedPrompt": {
-          "title": "פרומפט נבחר",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "פרומפט נבחר",
           "description": "בחר תבנית לשיפור התמלול או צור חדשה. השתמש ב-${output} בתוך טקסט הפרומפט כדי להפנות לתמלול שנקלט."
         },
         "noPrompts": "אין פרומפטים זמינים",
@@ -419,7 +747,11 @@
       }
     },
     "history": {
-      "title": "היסטוריה",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "היסטוריה",
       "openFolder": "פתח את תיקיית ההקלטות",
       "loading": "טוען היסטוריה...",
       "empty": "עדיין אין תמלולים. התחל להקליט כדי לבנות את ההיסטוריה שלך!",
@@ -434,34 +766,66 @@
       "transcriptionFailed": "התמלול נכשל. אפשר לתמלל מחדש באמצעות אייקון הניסיון החוזר."
     },
     "debug": {
-      "title": "ניפוי שגיאות",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "ניפוי שגיאות",
       "logDirectory": {
-        "title": "תיקיית לוגים",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "תיקיית לוגים",
         "description": "המיקום שבו נשמרים קבצי הלוג"
       },
       "logLevel": {
-        "title": "רמת לוג",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "רמת לוג",
         "description": "הגדר את רמת הפירוט של הלוגים"
       },
       "updateChecks": {
-        "label": "בדוק עדכונים",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "בדוק עדכונים",
         "description": "בדוק אוטומטית אם קיימות גרסאות חדשות של Handy"
       },
       "soundTheme": {
-        "label": "ערכת צלילים",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "ערכת צלילים",
         "description": "בחר ערכת צלילים להתחלה ולסיום ההקלטה"
       },
       "wordCorrectionThreshold": {
-        "title": "סף תיקון מילים",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "סף תיקון מילים",
         "description": "רגישות לתיקוני מילים מותאמות אישית"
       },
       "historyLimit": {
-        "title": "מגבלת היסטוריה",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "מגבלת היסטוריה",
         "description": "המספר המרבי של רשומות היסטוריה לשמירה",
         "entries": "רשומות"
       },
       "recordingRetention": {
-        "title": "מחיקה אוטומטית של הקלטות",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "מחיקה אוטומטית של הקלטות",
         "description": "מחק הקלטות ישנות אוטומטית כדי לחסוך מקום",
         "never": "אף פעם",
         "preserveLimit": "שמור את {{count}} האחרונות",
@@ -471,68 +835,132 @@
         "placeholder": "בחר משך שמירה..."
       },
       "alwaysOnMicrophone": {
-        "label": "מיקרופון תמיד פעיל",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "מיקרופון תמיד פעיל",
         "description": "השאר את המיקרופון פעיל לתגובה מהירה יותר"
       },
       "clamshellMicrophone": {
-        "title": "מיקרופון במצב clamshell",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "מיקרופון במצב clamshell",
         "description": "המיקרופון שישמש כשהמחשב הנייד סגור"
       },
       "postProcessingToggle": {
-        "label": "עיבוד משלים",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "עיבוד משלים",
         "description": "הפעל שיפור טקסט מבוסס AI אחרי התמלול"
       },
       "muteWhileRecording": {
-        "label": "השתק בזמן הקלטה",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "השתק בזמן הקלטה",
         "description": "השתק את שמע המערכת בזמן הקלטה"
       },
       "appendTrailingSpace": {
-        "label": "הוסף רווח בסוף",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "הוסף רווח בסוף",
         "description": "הוסף רווח אחרי התמלול המודבק"
       },
       "keyboardImplementation": {
-        "title": "מימוש מקלדת",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "מימוש מקלדת",
         "description": "בחר את מנגנון קיצורי המקלדת.",
         "bindingsReset": "קיצורי המקלדת לא היו תואמים ואופסו לברירות המחדל"
       },
       "paths": {
-        "appData": "נתוני אפליקציה:",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "appData": "נתוני אפליקציה:",
         "models": "מודלים:",
         "settings": "הגדרות:"
       },
       "pasteDelay": {
-        "title": "השהיית הדבקה",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "השהיית הדבקה",
         "description": "השהיה לפני שליחת צירוף ההדבקה (במילישניות). הגדל אם טקסט שגוי מודבק."
       },
       "recordingBuffer": {
-        "title": "באפר הקלטה נוסף",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "באפר הקלטה נוסף",
         "description": "זמן נוסף (במילישניות) להמשך הקלטה אחרי שחרור המקש, כדי ללכוד סוף דיבור. 0 = בלי באפר נוסף."
       }
     },
     "about": {
-      "title": "אודות",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "אודות",
       "version": {
-        "title": "גרסה",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "גרסה",
         "description": "הגרסה הנוכחית של Handy"
       },
       "appDataDirectory": {
-        "title": "תיקיית נתוני אפליקציה",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "תיקיית נתוני אפליקציה",
         "description": "המיקום שבו Handy שומר את הנתונים שלו"
       },
       "sourceCode": {
-        "title": "קוד מקור",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "קוד מקור",
         "description": "צפה בקוד המקור ותרום",
         "button": "צפה ב-GitHub"
       },
       "supportDevelopment": {
-        "title": "תמיכה בפיתוח",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "תמיכה בפיתוח",
         "description": "עזור לנו להמשיך לבנות את Handy",
         "button": "תרומה"
       },
       "acknowledgments": {
-        "title": "תודות",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "תודות",
         "whisper": {
-          "title": "Whisper.cpp",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "Whisper.cpp",
           "description": "הסקה מהירה לביצועים גבוהים עבור מודל זיהוי הדיבור Whisper של OpenAI",
           "details": "Handy משתמש ב-Whisper.cpp לתמלול מהיר ומקומי. תודה לעבודה המדהימה של Georgi Gerganov וכל התורמים."
         }
@@ -540,7 +968,11 @@
     }
   },
   "footer": {
-    "downloadingModel": "מוריד את {{model}}...",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "downloadingModel": "מוריד את {{model}}...",
     "checkingUpdates": "בודק עדכונים...",
     "updateAvailable": "יש עדכון זמין: {{version}}",
     "updateAvailableShort": "יש עדכון זמין",
@@ -557,7 +989,11 @@
     "portableUpdateButton": "פתח את GitHub Releases"
   },
   "common": {
-    "loading": "טוען...",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "loading": "טוען...",
     "save": "שמור",
     "cancel": "ביטול",
     "reset": "איפוס",
@@ -579,16 +1015,28 @@
     "noOptionsFound": "לא נמצאו אפשרויות"
   },
   "accessibility": {
-    "permissionsRequired": "נדרשות הרשאות נגישות",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "permissionsRequired": "נדרשות הרשאות נגישות",
     "permissionsDescription": "Handy צריך הרשאות נגישות כדי להקליד את הטקסט המתומלל.",
     "openSettings": "פתח את הגדרות המערכת",
     "dismiss": "סגור"
   },
   "errors": {
-    "loadDirectory": "שגיאה בטעינת תיקייה: {{error}}",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "loadDirectory": "שגיאה בטעינת תיקייה: {{error}}",
     "micPermissionDeniedTitle": "הגישה למיקרופון נדחתה",
     "micPermissionDenied": {
-      "generic": "מערכת ההפעלה חסמה את הגישה למיקרופון. תן הרשאת מיקרופון בהגדרות המערכת.",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "generic": "מערכת ההפעלה חסמה את הגישה למיקרופון. תן הרשאת מיקרופון בהגדרות המערכת.",
       "windows": "הפעל גישה למיקרופון ב-Settings > Privacy & security > Microphone, כולל גישה לאפליקציות שולחן עבודה.",
       "macos": "תן גישה למיקרופון ב-System Settings > Privacy & Security > Microphone.",
       "linux": "תן גישה למיקרופון דרך הגדרות השמע או הפרטיות במערכת שלך."
@@ -602,11 +1050,19 @@
     "pasteFailed": "לא ניתן היה להדביק את הטקסט ביישום הפעיל."
   },
   "appLanguage": {
-    "title": "שפת האפליקציה",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "title": "שפת האפליקציה",
     "description": "שנה את שפת הממשק של Handy"
   },
   "overlay": {
-    "transcribing": "מתמלל...",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "transcribing": "מתמלל...",
     "processing": "מעבד..."
   }
 }

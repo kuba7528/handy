@@ -1,6 +1,14 @@
 {
-  "tray": {
-    "settings": "Ayarlar...",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },  "tray": {
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "settings": "Ayarlar...",
     "checkUpdates": "Güncellemeleri Kontrol Et...",
     "copyLastTranscript": "Son transkripti kopyala",
     "unloadModel": "Modeli boşalt",
@@ -9,7 +17,11 @@
     "cancel": "İptal"
   },
   "sidebar": {
-    "general": "Genel",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "general": "Genel",
     "models": "Modeller",
     "advanced": "Gelişmiş",
     "postProcessing": "Son İşlem",
@@ -18,95 +30,187 @@
     "about": "Hakkında"
   },
   "onboarding": {
-    "subtitle": "Başlamak için bir transkripsiyon modeli seçin",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "subtitle": "Başlamak için bir transkripsiyon modeli seçin",
     "recommended": "Önerilen",
     "download": "İndir",
     "downloading": "İndiriliyor...",
     "customModelDescription": "Resmi olarak desteklenmiyor",
     "downloadFailed": "İndirme başarısız oldu. Lütfen tekrar deneyin.",
     "modelCard": {
-      "accuracy": "doğruluk",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "accuracy": "doğruluk",
       "speed": "hız"
     },
     "models": {
-      "small": {
-        "name": "Whisper Small",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "small": {
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Whisper Small",
         "description": "Hızlı ve oldukça doğru."
       },
       "medium": {
-        "name": "Whisper Medium",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Whisper Medium",
         "description": "İyi doğruluk, orta hız."
       },
       "turbo": {
-        "name": "Whisper Turbo",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Whisper Turbo",
         "description": "Dengeli doğruluk ve hız."
       },
       "large": {
-        "name": "Whisper Large",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Whisper Large",
         "description": "İyi doğruluk, ancak yavaş."
       },
       "parakeet-tdt-0.6b-v2": {
-        "name": "Parakeet V2",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Parakeet V2",
         "description": "Yalnızca İngilizce. İngilizce konuşanlar için en iyi model."
       },
       "parakeet-tdt-0.6b-v3": {
-        "name": "Parakeet V3",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Parakeet V3",
         "description": "Hızlı ve doğru."
       },
       "moonshine-base": {
-        "name": "Moonshine Base",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Moonshine Base",
         "description": "Çok hızlı, yalnızca İngilizce. Aksanları iyi işler."
       },
       "moonshine-tiny-streaming-en": {
-        "name": "Moonshine V2 Tiny",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Moonshine V2 Tiny",
         "description": "Ultra hızlı, yalnızca İngilizce"
       },
       "moonshine-small-streaming-en": {
-        "name": "Moonshine V2 Small",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Moonshine V2 Small",
         "description": "Hızlı, yalnızca İngilizce. Hız ve doğruluk arasında iyi denge."
       },
       "moonshine-medium-streaming-en": {
-        "name": "Moonshine V2 Medium",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Moonshine V2 Medium",
         "description": "Yalnızca İngilizce. Yüksek kalite."
       },
       "breeze-asr": {
-        "name": "Breeze ASR",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Breeze ASR",
         "description": "Tayvan Mandarin Çincesi için optimize edilmiş. Dil değiştirme desteği."
       },
       "sense-voice-int8": {
-        "name": "SenseVoice",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "SenseVoice",
         "description": "Çok hızlı. Çince, İngilizce, Japonca, Korece, Kantonca."
       },
       "gigaam-v3-e2e-ctc": {
-        "name": "GigaAM v3",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "GigaAM v3",
         "description": "Rusça konuşma tanıma. Hızlı ve doğru."
       },
       "canary-180m-flash": {
-        "name": "Canary 180M Flash",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Canary 180M Flash",
         "description": "Çok hızlı. İngilizce, Almanca, İspanyolca, Fransızca. Çeviri desteği."
       },
       "canary-1b-v2": {
-        "name": "Canary 1B v2",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Canary 1B v2",
         "description": "Doğru çok dilli. 25 Avrupa dili. Çeviri desteği."
       },
       "cohere-int8": {
-        "name": "Cohere",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Cohere",
         "description": "Büyük, daha yavaş, ancak çok doğru çok dilli bir model."
       }
     },
     "errors": {
-      "loadModels": "Mevcut modeller yüklenemedi",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "loadModels": "Mevcut modeller yüklenemedi",
       "downloadModel": "Model indirilemedi: {{error}}"
     },
     "permissions": {
-      "title": "İzinler Gerekli",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "İzinler Gerekli",
       "description": "Handy'nin düzgün çalışabilmesi için birkaç izne ihtiyacı var.",
       "microphone": {
-        "title": "Mikrofon Erişimi",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Mikrofon Erişimi",
         "description": "Sesinizi transkripsiyon için alabilmek için gereklidir."
       },
       "accessibility": {
-        "title": "Erişilebilirlik Erişimi",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Erişilebilirlik Erişimi",
         "description": "Transkribe edilen metni uygulamalarınıza yazabilmek için gereklidir."
       },
       "grant": "İzin Ver",
@@ -114,13 +218,21 @@
       "waiting": "Bekleniyor...",
       "allGranted": "Her şey hazır!",
       "errors": {
-        "checkFailed": "İzinler kontrol edilemedi. Lütfen tekrar deneyin.",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "checkFailed": "İzinler kontrol edilemedi. Lütfen tekrar deneyin.",
         "requestFailed": "İzin isteği başarısız oldu. Lütfen tekrar deneyin."
       }
     }
   },
   "modelSelector": {
-    "custom": "Özel",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "custom": "Özel",
     "active": "Aktif",
     "noModelsAvailable": "Kullanılabilir model yok",
     "verifying": "{{modelName}} doğrulanıyor...",
@@ -140,7 +252,11 @@
     "switching": "Değiştiriliyor...",
     "downloadSpeed": "{{speed}} MB/s",
     "capabilities": {
-      "languageSelection": "Birden fazla giriş dilini destekler",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "languageSelection": "Birden fazla giriş dilini destekler",
       "multiLanguage": "Çok dilli",
       "translation": "İngilizce'ye çevirebilir",
       "translate": "İngilizce'ye çevir",
@@ -151,12 +267,24 @@
     "cancelDownload": "İndirmeyi iptal et"
   },
   "settings": {
-    "modelSettings": {
-      "title": "{{model}} Ayarları",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "modelSettings": {
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "{{model}} Ayarları",
       "noSettingsNeeded": "Bu model yapılandırma gerektirmeden otomatik olarak çalışır."
     },
     "models": {
-      "title": "Transkripsiyon Modelleri",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "Transkripsiyon Modelleri",
       "description": "Bir transkripsiyon modeli seçin veya ek modeller indirin. Farklı modeller değişen doğruluk ve hız seviyeleri sunar.",
       "downloaded": "İndirildi",
       "available": "İndirilebilir",
@@ -164,7 +292,11 @@
       "deleteActiveConfirm": "{{modelName}} aktif modelinizdir. Silmek, yeni bir model seçene kadar transkripsiyonları durduracaktır. Emin misiniz?",
       "deleteTitle": "Modeli Sil",
       "filters": {
-        "all": "Tümü",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "all": "Tümü",
         "multiLanguage": "Çok dilli",
         "translation": "Çeviri",
         "allLanguages": "Tüm Diller"
@@ -174,36 +306,68 @@
       "availableModels": "İndirilebilir"
     },
     "general": {
-      "title": "Genel",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "Genel",
       "shortcut": {
-        "title": "Handy Kısayolları",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Handy Kısayolları",
         "description": "Sesle yazma kaydını başlatmak için klavye kısayollarını yapılandırın",
         "loading": "Kısayollar yükleniyor...",
         "none": "Kısayol yapılandırılmadı",
         "notFound": "Kısayol bulunamadı",
         "pressKeys": "Tuşlara basın...",
         "bindings": {
-          "transcribe": {
-            "name": "Transkripsiyon Kısayolu",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "transcribe": {
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },            "name": "Transkripsiyon Kısayolu",
             "description": "Sesinizi kaydetmek ve metne dönüştürmek için klavye kısayolu."
           },
           "cancel": {
-            "name": "İptal Kısayolu",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },            "name": "İptal Kısayolu",
             "description": "Mevcut kaydı iptal etmek için klavye kısayolu."
           },
           "transcribe_with_post_process": {
-            "name": "Son İşlem Kısayolu",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },            "name": "Son İşlem Kısayolu",
             "description": "İsteğe bağlı: Transkripsiyonunuza her zaman AI son işleme uygulayan özel bir kısayol tuşu."
           }
         },
         "errors": {
-          "restore": "Orijinal kısayol geri yüklenemedi",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "restore": "Orijinal kısayol geri yüklenemedi",
           "set": "Kısayol ayarlanamadı: {{error}}",
           "reset": "Kısayol orijinal değerine sıfırlanamadı"
         }
       },
       "language": {
-        "title": "Dil",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Dil",
         "description": "Konuşma tanıma dilini seçin. 'Otomatik' seçeneği dili kendisi belirler, ancak belirli bir dil seçmek o dildeki doğruluğu artırabilir.",
         "descriptionUnsupported": "Parakeet modeli dili otomatik algılar. Manuel seçim gerekmez.",
         "searchPlaceholder": "Dil ara...",
@@ -211,91 +375,175 @@
         "auto": "Otomatik"
       },
       "pushToTalk": {
-        "label": "Bas Konuş",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "Bas Konuş",
         "description": "Kaydetmek için basılı tutun, durdurmak için bırakın"
       }
     },
     "sound": {
-      "title": "Ses",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "Ses",
       "microphone": {
-        "title": "Mikrofon",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Mikrofon",
         "description": "Tercih ettiğiniz mikrofon cihazını seçin",
         "placeholder": "Mikrofon seçin...",
         "loading": "Yükleniyor..."
       },
       "audioFeedback": {
-        "label": "Sesli Geri Bildirim",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "Sesli Geri Bildirim",
         "description": "Kayıt başladığında ve bittiğinde ses çalar"
       },
       "outputDevice": {
-        "title": "Çıkış Cihazı",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Çıkış Cihazı",
         "description": "Geri bildirim sesleri için ses çıkış cihazını seçin",
         "placeholder": "Çıkış cihazı seçin...",
         "loading": "Yükleniyor..."
       },
       "volume": {
-        "title": "Ses Seviyesi",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Ses Seviyesi",
         "description": "Sesli geri bildirimlerin ses seviyesini ayarlayın"
       }
     },
     "advanced": {
-      "title": "Gelişmiş",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "Gelişmiş",
       "groups": {
-        "app": "Uygulama",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "app": "Uygulama",
         "output": "Çıktı",
         "transcription": "Transkripsiyon",
         "history": "Geçmiş",
         "experimental": "Deneysel"
       },
       "experimentalToggle": {
-        "label": "Deneysel Özellikler",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "Deneysel Özellikler",
         "description": "Hala geliştirme aşamasında olan deneysel özellikleri etkinleştir."
       },
       "lazyStreamClose": {
-        "label": "Transkripsiyonlar arasında mikrofonu açık tut",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "Transkripsiyonlar arasında mikrofonu açık tut",
         "description": "Kayıt durdurulduktan sonra mikrofon akışını 30 saniye açık tutar, ardışık transkripsiyonlarda gecikmeyi azaltır. Etkinken Bluetooth ses kalitesini düşürebilir."
       },
       "acceleration": {
-        "whisper": {
-          "title": "Whisper Hızlandırma",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "whisper": {
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "Whisper Hızlandırma",
           "description": "Whisper modelleri için donanım hızlandırma. Otomatik mod, mevcutsa GPU kullanır (macOS'ta Metal, Windows/Linux'ta Vulkan)."
         },
         "ort": {
-          "title": "ONNX Hızlandırma",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "ONNX Hızlandırma",
           "description": "ONNX modelleri için donanım hızlandırma (Parakeet, Canary, Moonshine vb.). Windows'ta DirectML deneyseldir. Modeller transkripsiyon yapamayabilir."
         },
         "gpuDevice": {
-          "title": "GPU Aygıtı",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "GPU Aygıtı",
           "description": "Whisper çıkarımı için hangi GPU'nun kullanılacağını seçin. Otomatik, özel GPU'yu seçer.",
           "auto": "Otomatik"
         }
       },
       "startHidden": {
-        "label": "Gizli Başlat",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "Gizli Başlat",
         "description": "Pencereyi açmadan sistem tepsisinde başlatır."
       },
       "autostart": {
-        "label": "Başlangıçta Çalıştır",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "Başlangıçta Çalıştır",
         "description": "Bilgisayara giriş yaptığınızda Handy otomatik olarak başlatılır."
       },
       "showTrayIcon": {
-        "label": "Tepsi simgesini göster",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "Tepsi simgesini göster",
         "description": "Handy simgesini sistem tepsisinde göster."
       },
       "overlay": {
-        "title": "Overlay Konumu",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Overlay Konumu",
         "description": "Kayıt ve transkripsiyon sırasında görsel geri bildirim kaplamasını gösterir. Linux'ta 'Yok' önerilir.",
         "options": {
-          "none": "Yok",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "none": "Yok",
           "bottom": "Alt",
           "top": "Üst"
         }
       },
       "pasteMethod": {
-        "title": "Yapıştırma Yöntemi",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Yapıştırma Yöntemi",
         "description": "Metnin nasıl ekleneceğini seçin. Doğrudan: sistem girişiyle yazmayı simüle eder. Yok: yapıştırmayı atlar, sadece geçmişi/panoyu günceller.",
         "options": {
-          "clipboard": "Pano ({{modifier}}+V)",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "clipboard": "Pano ({{modifier}}+V)",
           "clipboardCtrlShiftV": "Pano (Ctrl+Shift+V)",
           "clipboardShiftInsert": "Pano (Shift+Insert)",
           "direct": "Doğrudan",
@@ -305,25 +553,49 @@
         "externalScriptPlaceholder": "/dosya/yolu/betik.sh"
       },
       "typingTool": {
-        "title": "Yazma Aracı",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Yazma Aracı",
         "description": "Doğrudan yapıştırma yöntemi için hangi Linux yazma aracının kullanılacağını seçin. Auto, sisteminiz için mevcut en iyi aracı otomatik olarak algılar ve kullanır.",
         "options": {
-          "auto": "Auto (Önerilen)"
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "auto": "Auto (Önerilen)"
         }
       },
       "clipboardHandling": {
-        "title": "Pano Yönetimi",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Pano Yönetimi",
         "description": "Panoyu Değiştirme, transkripsiyon sonrası mevcut pano içeriğini korur. Panoya Kopyala ise yapıştırma işleminden sonra transkripsiyon sonucunu panoda bırakır.",
         "options": {
-          "dontModify": "Panoyu Değiştirme",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "dontModify": "Panoyu Değiştirme",
           "copyToClipboard": "Panoya Kopyala"
         }
       },
       "autoSubmit": {
-        "title": "Otomatik Gönder",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Otomatik Gönder",
         "description": "Metin eklendikten sonra seçilen tuş kombinasyonunu otomatik olarak gönderir. macOS'ta Cmd+Enter, Windows/Linux'ta Super+Enter geçerlidir.",
         "options": {
-          "off": "Kapalı",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "off": "Kapalı",
           "enter": "Enter",
           "cmdEnter": "Cmd+Enter",
           "superEnter": "Super+Enter",
@@ -331,15 +603,27 @@
         }
       },
       "translateToEnglish": {
-        "label": "İngilizceye Çevir",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "İngilizceye Çevir",
         "description": "Transkripsiyon sırasında diğer dillerden İngilizceye otomatik olarak çevirir.",
         "descriptionUnsupported": "Çeviri {{model}} modeli tarafından desteklenmiyor."
       },
       "modelUnload": {
-        "title": "Modeli Boşalt",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Modeli Boşalt",
         "description": "Belirtilen süre boyunca kullanılmadığında modelin GPU/CPU belleğini otomatik olarak serbest bırakır.",
         "options": {
-          "never": "Asla",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "never": "Asla",
           "immediately": "Hemen",
           "min2": "2 dakika sonra",
           "min5": "5 dakika sonra",
@@ -350,7 +634,11 @@
         }
       },
       "customWords": {
-        "title": "Özel Kelimeler",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Özel Kelimeler",
         "description": "Transkripsiyon sırasında sıkça yanlış duyulan veya yanlış yazılan kelimeleri ekleyin. Sistem, benzer sesli kelimeleri listenize göre otomatik olarak düzeltir.",
         "placeholder": "Kelime ekle",
         "add": "Ekle",
@@ -359,34 +647,66 @@
       }
     },
     "postProcessing": {
-      "title": "Son İşlem",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "Son İşlem",
       "hotkey": {
-        "title": "Kısayol Tuşu"
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Kısayol Tuşu"
       },
       "api": {
-        "title": "API (OpenAI Uyumlu)",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "API (OpenAI Uyumlu)",
         "provider": {
-          "title": "Sağlayıcı",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "Sağlayıcı",
           "description": "OpenAI uyumlu bir sağlayıcı seçin."
         },
         "appleIntelligence": {
-          "title": "Apple Intelligence",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "Apple Intelligence",
           "description": "Tamamen cihaz üzerinde çalışır. API anahtarı veya ağ erişimi gerekmez.",
           "requirements": "macOS Tahoe (26.0) veya üzeri çalıştıran bir Apple Silicon Mac gerektirir. Sistem Ayarları'nda Apple Intelligence etkin olmalıdır.",
           "unavailable": "Apple Intelligence bu cihazda kullanılamıyor. macOS Tahoe (26.0) veya üzeri ve Sistem Ayarları'nda Apple Intelligence etkin olan bir Apple Silicon Mac gerektirir."
         },
         "baseUrl": {
-          "title": "Temel URL",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "Temel URL",
           "description": "Seçili sağlayıcı için API temel URL'si. Yalnızca özel sağlayıcı düzenlenebilir.",
           "placeholder": "https://api.openai.com/v1"
         },
         "apiKey": {
-          "title": "API Anahtarı",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "API Anahtarı",
           "description": "Seçili sağlayıcı için API anahtarı.",
           "placeholder": "sk-..."
         },
         "model": {
-          "title": "Model",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "Model",
           "descriptionApple": "İsteğe bağlı bir sayısal token sınırı belirleyin veya varsayılan cihaz içi ön ayarı kullanın.",
           "descriptionCustom": "Özel uç noktanızın beklediği model tanımlayıcısını girin.",
           "descriptionDefault": "Seçili sağlayıcının sunduğu bir modeli seçin.",
@@ -397,9 +717,17 @@
         }
       },
       "prompts": {
-        "title": "Prompt",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Prompt",
         "selectedPrompt": {
-          "title": "Seçili Prompt",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "Seçili Prompt",
           "description": "Transkripsiyonları iyileştirmek için bir şablon seçin veya yeni bir tane oluşturun. Yakalanan transkripte referans vermek için prompt metni içinde ${output} kullanın."
         },
         "noPrompts": "Kullanılabilir prompt yok",
@@ -419,7 +747,11 @@
       }
     },
     "history": {
-      "title": "Geçmiş",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "Geçmiş",
       "openFolder": "Kayıtlar Klasörünü Aç",
       "loading": "Geçmiş yükleniyor...",
       "empty": "Henüz transkripsiyon yok. Geçmişinizi oluşturmak için kayda başlayın!",
@@ -434,34 +766,66 @@
       "transcriptionFailed": "Transkripsiyon başarısız oldu. Yeniden deneme simgesini kullanarak tekrar yazıya dökebilirsiniz."
     },
     "debug": {
-      "title": "Hata Ayıklama",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "Hata Ayıklama",
       "logDirectory": {
-        "title": "Log Dizini",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Log Dizini",
         "description": "Log dosyalarının saklandığı konum"
       },
       "logLevel": {
-        "title": "Log Seviyesi",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Log Seviyesi",
         "description": "Loglamanın ayrıntı düzeyini ayarla"
       },
       "updateChecks": {
-        "label": "Güncellemeleri Kontrol Et",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "Güncellemeleri Kontrol Et",
         "description": "Handy için yeni sürümleri otomatik olarak kontrol eder"
       },
       "soundTheme": {
-        "label": "Ses Teması",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "Ses Teması",
         "description": "Kayıt başlangıç ve bitişi için sesli geri bildirim temasını seçin"
       },
       "wordCorrectionThreshold": {
-        "title": "Kelime Düzeltme Eşiği",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Kelime Düzeltme Eşiği",
         "description": "Özel kelime düzeltmeleri için hassasiyet"
       },
       "historyLimit": {
-        "title": "Geçmiş Limiti",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Geçmiş Limiti",
         "description": "Saklanacak maksimum geçmiş kaydı sayısı",
         "entries": "kayıt"
       },
       "recordingRetention": {
-        "title": "Kayıtları Otomatik Sil",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Kayıtları Otomatik Sil",
         "description": "Alan tasarrufu için eski kayıtları otomatik olarak siler",
         "never": "Asla",
         "preserveLimit": "Son {{count}} kaydı tut",
@@ -471,68 +835,132 @@
         "placeholder": "Saklama süresi seçin..."
       },
       "alwaysOnMicrophone": {
-        "label": "Mikrofon Her Zaman Açık",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "Mikrofon Her Zaman Açık",
         "description": "Daha hızlı yanıt için mikrofonu aktif tutar"
       },
       "clamshellMicrophone": {
-        "title": "Kapalı Kapak Mikrofonu",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Kapalı Kapak Mikrofonu",
         "description": "Dizüstü bilgisayar kapağı kapalıyken kullanılacak mikrofon"
       },
       "postProcessingToggle": {
-        "label": "Son İşlem",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "Son İşlem",
         "description": "Transkripsiyon sonrası yapay zekâ destekli metin iyileştirmeyi etkinleştirir"
       },
       "muteWhileRecording": {
-        "label": "Kayıt Sırasında Sessize Al",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "Kayıt Sırasında Sessize Al",
         "description": "Kayıt sırasında sistem sesini kapatır"
       },
       "appendTrailingSpace": {
-        "label": "Sonuna Boşluk Ekle",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "Sonuna Boşluk Ekle",
         "description": "Yapıştırılan transkripsiyondan sonra boşluk ekler"
       },
       "keyboardImplementation": {
-        "title": "Klavye Uygulaması",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Klavye Uygulaması",
         "description": "Klavye kısayolları için kullanılacak altyapıyı seçin.",
         "bindingsReset": "Klavye kısayolları uyumsuzdu ve varsayılan ayarlara sıfırlandı"
       },
       "paths": {
-        "appData": "Uygulama Verileri:",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "appData": "Uygulama Verileri:",
         "models": "Modeller:",
         "settings": "Ayarlar:"
       },
       "pasteDelay": {
-        "title": "Yapıştırma gecikmesi",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Yapıştırma gecikmesi",
         "description": "Yapıştırma tuşu göndermeden önce gecikme (milisaniye cinsinden). Yanlış metin yapıştırılıyorsa artırın."
       },
       "recordingBuffer": {
-        "title": "Ekstra kayıt tamponu",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Ekstra kayıt tamponu",
         "description": "Tuşu bıraktıktan sonra arka plandaki sesi yakalamak için kaydı sürdürme süresi (milisaniye). 0 = ekstra tampon yok."
       }
     },
     "about": {
-      "title": "Hakkında",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "Hakkında",
       "version": {
-        "title": "Sürüm",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Sürüm",
         "description": "Handy'nin mevcut sürümü"
       },
       "appDataDirectory": {
-        "title": "Uygulama Veri Dizini",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Uygulama Veri Dizini",
         "description": "Handy'nin verilerini sakladığı konum"
       },
       "sourceCode": {
-        "title": "Kaynak Kodu",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Kaynak Kodu",
         "description": "Kaynak kodunu görüntüle ve katkıda bulun",
         "button": "GitHub'da Görüntüle"
       },
       "supportDevelopment": {
-        "title": "Geliştirmeyi Destekle",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Geliştirmeyi Destekle",
         "description": "Handy'yi geliştirmeye devam etmemize yardımcı olun",
         "button": "Bağış Yap"
       },
       "acknowledgments": {
-        "title": "Teşekkürler",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Teşekkürler",
         "whisper": {
-          "title": "Whisper.cpp",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "Whisper.cpp",
           "description": "OpenAI'nin Whisper otomatik konuşma tanıma modelinin yüksek performanslı çıkarımı",
           "details": "Handy, hızlı ve yerel konuşmadan metne dönüştürme için Whisper.cpp kullanır. Georgi Gerganov ve katkıda bulunanların harika çalışmaları için teşekkür ederiz."
         }
@@ -540,7 +968,11 @@
     }
   },
   "footer": {
-    "downloadingModel": "{{model}} indiriliyor...",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "downloadingModel": "{{model}} indiriliyor...",
     "checkingUpdates": "Güncellemeler kontrol ediliyor...",
     "updateAvailable": "Güncelleme mevcut: {{version}}",
     "updateAvailableShort": "Güncelleme mevcut",
@@ -557,7 +989,11 @@
     "portableUpdateButton": "Open GitHub Releases"
   },
   "common": {
-    "loading": "Yükleniyor...",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "loading": "Yükleniyor...",
     "save": "Kaydet",
     "cancel": "İptal",
     "reset": "Sıfırla",
@@ -579,16 +1015,28 @@
     "noOptionsFound": "Seçenek bulunamadı"
   },
   "accessibility": {
-    "permissionsRequired": "Erişilebilirlik İzinleri Gerekli",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "permissionsRequired": "Erişilebilirlik İzinleri Gerekli",
     "permissionsDescription": "Handy, transkribe edilen metni yazabilmek için erişilebilirlik izinlerine ihtiyaç duyar.",
     "openSettings": "Sistem Ayarlarını Aç",
     "dismiss": "Yoksay"
   },
   "errors": {
-    "loadDirectory": "Dizin yüklenirken hata oluştu: {{error}}",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "loadDirectory": "Dizin yüklenirken hata oluştu: {{error}}",
     "micPermissionDeniedTitle": "Mikrofon erişimi reddedildi",
     "micPermissionDenied": {
-      "generic": "Mikrofon erişimi işletim sistemi tarafından reddedildi. Lütfen sistem ayarlarından mikrofon iznini verin.",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "generic": "Mikrofon erişimi işletim sistemi tarafından reddedildi. Lütfen sistem ayarlarından mikrofon iznini verin.",
       "windows": "Ayarlar → Gizlilik ve güvenlik → Mikrofon (masaüstü uygulama erişimi dahil) bölümünden mikrofon erişimini etkinleştirin.",
       "macos": "Sistem Ayarları → Gizlilik ve Güvenlik → Mikrofon bölümünden mikrofon erişimini verin.",
       "linux": "Sisteminizin ses veya gizlilik ayarlarından mikrofon erişimini verin."
@@ -602,11 +1050,19 @@
     "pasteFailed": "Metin etkin uygulamaya yapıştırılamadı."
   },
   "appLanguage": {
-    "title": "Uygulama Dili",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "title": "Uygulama Dili",
     "description": "Handy arayüzünün dilini değiştirin"
   },
   "overlay": {
-    "transcribing": "Transkribe ediliyor...",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "transcribing": "Transkribe ediliyor...",
     "processing": "İşleniyor..."
   }
 }

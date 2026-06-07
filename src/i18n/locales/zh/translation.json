@@ -1,6 +1,14 @@
 {
-  "tray": {
-    "settings": "设置...",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },  "tray": {
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "settings": "设置...",
     "checkUpdates": "检查更新...",
     "copyLastTranscript": "复制最新转录",
     "unloadModel": "卸载模型",
@@ -9,7 +17,11 @@
     "cancel": "取消"
   },
   "sidebar": {
-    "general": "通用",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "general": "通用",
     "models": "模型",
     "advanced": "高级",
     "postProcessing": "后处理",
@@ -18,95 +30,187 @@
     "about": "关于"
   },
   "onboarding": {
-    "subtitle": "请选择一个转录模型以开始使用",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "subtitle": "请选择一个转录模型以开始使用",
     "recommended": "推荐",
     "download": "下载",
     "downloading": "下载中...",
     "customModelDescription": "非官方支持",
     "downloadFailed": "下载失败。请重试。",
     "modelCard": {
-      "accuracy": "准确度",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "accuracy": "准确度",
       "speed": "速度"
     },
     "models": {
-      "small": {
-        "name": "Whisper Small",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "small": {
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Whisper Small",
         "description": "快速且相当准确。"
       },
       "medium": {
-        "name": "Whisper Medium",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Whisper Medium",
         "description": "准确度高，速度适中"
       },
       "turbo": {
-        "name": "Whisper Turbo",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Whisper Turbo",
         "description": "准确度和速度均衡。"
       },
       "large": {
-        "name": "Whisper Large",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Whisper Large",
         "description": "准确度高，但速度较慢。"
       },
       "parakeet-tdt-0.6b-v2": {
-        "name": "Parakeet V2",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Parakeet V2",
         "description": "仅支持英语。英语用户的最佳模型。"
       },
       "parakeet-tdt-0.6b-v3": {
-        "name": "Parakeet V3",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Parakeet V3",
         "description": "快速且准确"
       },
       "moonshine-base": {
-        "name": "Moonshine Base",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Moonshine Base",
         "description": "非常快速，仅支持英语。口音处理良好。"
       },
       "moonshine-tiny-streaming-en": {
-        "name": "Moonshine V2 Tiny",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Moonshine V2 Tiny",
         "description": "超快速，仅支持英语"
       },
       "moonshine-small-streaming-en": {
-        "name": "Moonshine V2 Small",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Moonshine V2 Small",
         "description": "快速，仅支持英语。速度与准确度的良好平衡。"
       },
       "moonshine-medium-streaming-en": {
-        "name": "Moonshine V2 Medium",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Moonshine V2 Medium",
         "description": "仅支持英语。高质量。"
       },
       "breeze-asr": {
-        "name": "Breeze ASR",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Breeze ASR",
         "description": "针对台湾国语优化。支持语码转换。"
       },
       "sense-voice-int8": {
-        "name": "SenseVoice",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "SenseVoice",
         "description": "非常快速。支持中文、英语、日语、韩语、粤语。"
       },
       "gigaam-v3-e2e-ctc": {
-        "name": "GigaAM v3",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "GigaAM v3",
         "description": "俄语语音识别。快速且准确。"
       },
       "canary-180m-flash": {
-        "name": "Canary 180M Flash",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Canary 180M Flash",
         "description": "非常快速。支持英语、德语、西班牙语、法语。支持翻译。"
       },
       "canary-1b-v2": {
-        "name": "Canary 1B v2",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Canary 1B v2",
         "description": "准确的多语言模型。25种欧洲语言。支持翻译。"
       },
       "cohere-int8": {
-        "name": "Cohere",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Cohere",
         "description": "大型模型，速度较慢，但多语言识别非常准确。"
       }
     },
     "errors": {
-      "loadModels": "无法加载可用模型",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "loadModels": "无法加载可用模型",
       "downloadModel": "模型下载失败: {{error}}"
     },
     "permissions": {
-      "title": "需要权限",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "需要权限",
       "description": "Handy 需要一些权限才能正常工作。",
       "microphone": {
-        "title": "麦克风访问",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "麦克风访问",
         "description": "需要听取您的语音进行转录。"
       },
       "accessibility": {
-        "title": "辅助功能访问",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "辅助功能访问",
         "description": "需要将转录文本输入到您的应用程序中。"
       },
       "grant": "授予权限",
@@ -114,13 +218,21 @@
       "waiting": "等待中...",
       "allGranted": "全部完成！",
       "errors": {
-        "checkFailed": "检查权限失败。请重试。",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "checkFailed": "检查权限失败。请重试。",
         "requestFailed": "请求权限失败。请重试。"
       }
     }
   },
   "modelSelector": {
-    "custom": "自定义",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "custom": "自定义",
     "active": "活跃",
     "switching": "切换中...",
     "noModelsAvailable": "没有可用的模型",
@@ -140,7 +252,11 @@
     "deleteModel": "删除 {{modelName}}",
     "downloadSpeed": "{{speed}} MB/s",
     "capabilities": {
-      "languageSelection": "支持多种输入语言",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "languageSelection": "支持多种输入语言",
       "multiLanguage": "多语言",
       "translation": "可翻译为英语",
       "translate": "翻译为英语",
@@ -151,12 +267,24 @@
     "cancelDownload": "取消下载"
   },
   "settings": {
-    "modelSettings": {
-      "title": "{{model}} 设置",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "modelSettings": {
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "{{model}} 设置",
       "noSettingsNeeded": "此模型自动运行，无需配置。"
     },
     "models": {
-      "title": "转录模型",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "转录模型",
       "description": "选择转录模型或下载其他模型。不同模型提供不同的准确度和速度。",
       "downloaded": "已下载",
       "available": "可下载",
@@ -164,7 +292,11 @@
       "deleteActiveConfirm": "{{modelName}} 是您当前使用的模型。删除后将停止转录，直到您选择新的模型。确定要删除吗？",
       "deleteTitle": "删除模型",
       "filters": {
-        "all": "全部",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "all": "全部",
         "multiLanguage": "多语言",
         "translation": "翻译",
         "allLanguages": "所有语言"
@@ -174,36 +306,68 @@
       "availableModels": "可供下载"
     },
     "general": {
-      "title": "通用",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "通用",
       "shortcut": {
-        "title": "Handy 快捷键",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Handy 快捷键",
         "description": "配置启动语音转文字录制的键盘快捷键",
         "loading": "加载快捷键中...",
         "none": "未配置快捷键",
         "notFound": "未找到快捷键",
         "pressKeys": "请按键...",
         "bindings": {
-          "transcribe": {
-            "name": "转录快捷键",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "transcribe": {
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },            "name": "转录快捷键",
             "description": "用于录制和转录语音的键盘快捷键。"
           },
           "cancel": {
-            "name": "取消快捷键",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },            "name": "取消快捷键",
             "description": "用于取消当前录制的键盘快捷键。"
           },
           "transcribe_with_post_process": {
-            "name": "后处理快捷键",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },            "name": "后处理快捷键",
             "description": "可选：一个专用快捷键，始终对您的转录应用 AI 后处理。"
           }
         },
         "errors": {
-          "restore": "无法恢复原始快捷键",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "restore": "无法恢复原始快捷键",
           "set": "无法设置快捷键: {{error}}",
           "reset": "无法将快捷键重置为原始值"
         }
       },
       "language": {
-        "title": "语言",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "语言",
         "description": "选择语音识别的语言。自动将自动确定语言，选择特定语言可以提高该语言的准确度。",
         "descriptionUnsupported": "Parakeet 模型会自动检测语言，无需手动选择。",
         "searchPlaceholder": "搜索语言...",
@@ -211,91 +375,175 @@
         "auto": "自动"
       },
       "pushToTalk": {
-        "label": "按住说话",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "按住说话",
         "description": "按住录制，松开停止"
       }
     },
     "sound": {
-      "title": "声音",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "声音",
       "microphone": {
-        "title": "麦克风",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "麦克风",
         "description": "选择您偏好的麦克风设备",
         "placeholder": "选择麦克风...",
         "loading": "加载中..."
       },
       "audioFeedback": {
-        "label": "音频反馈",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "音频反馈",
         "description": "录制开始和停止时播放声音"
       },
       "outputDevice": {
-        "title": "输出设备",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "输出设备",
         "description": "选择用于反馈声音的音频输出设备",
         "placeholder": "选择输出设备...",
         "loading": "加载中..."
       },
       "volume": {
-        "title": "音量",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "音量",
         "description": "调整音频反馈的音量"
       }
     },
     "advanced": {
-      "title": "高级",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "高级",
       "groups": {
-        "app": "应用",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "app": "应用",
         "output": "输出",
         "transcription": "转录",
         "history": "历史",
         "experimental": "实验性"
       },
       "experimentalToggle": {
-        "label": "实验性功能",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "实验性功能",
         "description": "启用仍在开发中的实验性功能。"
       },
       "lazyStreamClose": {
-        "label": "在转录之间保持麦克风开启",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "在转录之间保持麦克风开启",
         "description": "录音停止后保持麦克风流开启30秒，减少连续转录时的延迟。激活时可能会降低蓝牙音频质量。"
       },
       "acceleration": {
-        "whisper": {
-          "title": "Whisper 加速",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "whisper": {
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "Whisper 加速",
           "description": "Whisper 模型的硬件加速。自动模式在可用时使用 GPU（macOS 上使用 Metal，Windows/Linux 上使用 Vulkan）。"
         },
         "ort": {
-          "title": "ONNX 加速",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "ONNX 加速",
           "description": "ONNX 模型的硬件加速（Parakeet、Canary、Moonshine 等）。Windows 上的 DirectML 为实验性功能。模型可能无法正常转录。"
         },
         "gpuDevice": {
-          "title": "GPU 设备",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "GPU 设备",
           "description": "选择用于 Whisper 推理的 GPU。自动选择独立 GPU。",
           "auto": "自动"
         }
       },
       "startHidden": {
-        "label": "隐藏启动",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "隐藏启动",
         "description": "启动到系统托盘而不打开窗口。"
       },
       "autostart": {
-        "label": "开机启动",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "开机启动",
         "description": "登录计算机时自动启动 Handy。"
       },
       "showTrayIcon": {
-        "label": "显示托盘图标",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "显示托盘图标",
         "description": "在系统托盘中显示 Handy 图标。"
       },
       "overlay": {
-        "title": "悬浮窗位置",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "悬浮窗位置",
         "description": "在录制和转录期间显示可视反馈悬浮窗。在 Linux 上建议选择「无」。",
         "options": {
-          "none": "无",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "none": "无",
           "bottom": "底部",
           "top": "顶部"
         }
       },
       "pasteMethod": {
-        "title": "粘贴方式",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "粘贴方式",
         "description": "选择文字插入方式。直接：通过系统输入模拟打字。无：跳过粘贴，仅更新历史记录/剪贴板。",
         "options": {
-          "clipboard": "剪贴板 ({{modifier}}+V)",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "clipboard": "剪贴板 ({{modifier}}+V)",
           "clipboardCtrlShiftV": "剪贴板 (Ctrl+Shift+V)",
           "clipboardShiftInsert": "剪贴板 (Shift+Insert)",
           "direct": "直接",
@@ -305,25 +553,49 @@
         "externalScriptPlaceholder": "/path/to/your/script.sh"
       },
       "typingTool": {
-        "title": "输入工具",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "输入工具",
         "description": "选择在直接粘贴方式下使用的 Linux 输入工具。Auto 会自动检测并使用系统中可用的最佳工具。",
         "options": {
-          "auto": "Auto（推荐）"
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "auto": "Auto（推荐）"
         }
       },
       "clipboardHandling": {
-        "title": "剪贴板处理",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "剪贴板处理",
         "description": "不修改剪贴板将在转录后保留当前剪贴板内容。复制到剪贴板将在粘贴后将转录结果留在剪贴板中。",
         "options": {
-          "dontModify": "不修改剪贴板",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "dontModify": "不修改剪贴板",
           "copyToClipboard": "复制到剪贴板"
         }
       },
       "autoSubmit": {
-        "title": "自动提交",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "自动提交",
         "description": "在文本插入后自动发送所选的按键组合。macOS 上使用 Cmd+Enter，Windows/Linux 上使用 Super+Enter。",
         "options": {
-          "off": "关闭",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "off": "关闭",
           "enter": "Enter",
           "cmdEnter": "Cmd+Enter",
           "superEnter": "Super+Enter",
@@ -331,15 +603,27 @@
         }
       },
       "translateToEnglish": {
-        "label": "翻译为英语",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "翻译为英语",
         "description": "在转录过程中自动将其他语言的语音翻译为英语。",
         "descriptionUnsupported": "{{model}} 模型不支持翻译功能。"
       },
       "modelUnload": {
-        "title": "卸载模型",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "卸载模型",
         "description": "当模型在指定时间内未使用时自动释放 GPU/CPU 内存",
         "options": {
-          "never": "从不",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "never": "从不",
           "immediately": "立即",
           "min2": "2 分钟后",
           "min5": "5 分钟后",
@@ -350,7 +634,11 @@
         }
       },
       "customWords": {
-        "title": "自定义词汇",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "自定义词汇",
         "description": "添加经常被误听或拼写错误的词汇。系统将自动将发音相似的词汇修正为您列表中的词汇。",
         "placeholder": "添加词汇",
         "add": "添加",
@@ -359,34 +647,66 @@
       }
     },
     "postProcessing": {
-      "title": "后处理",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "后处理",
       "hotkey": {
-        "title": "快捷键"
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "快捷键"
       },
       "api": {
-        "title": "API（兼容 OpenAI）",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "API（兼容 OpenAI）",
         "provider": {
-          "title": "提供商",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "提供商",
           "description": "选择一个兼容 OpenAI 的提供商。"
         },
         "appleIntelligence": {
-          "title": "Apple Intelligence",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "Apple Intelligence",
           "description": "完全在设备上运行。无需 API 密钥或网络访问。",
           "requirements": "需要运行 macOS Tahoe（26.0）或更高版本的 Apple Silicon Mac。必须在系统设置中启用 Apple Intelligence。",
           "unavailable": "Apple Intelligence 在此设备上不可用。需要运行 macOS Tahoe（26.0）或更高版本的 Apple Silicon Mac，并在系统设置中启用 Apple Intelligence。"
         },
         "baseUrl": {
-          "title": "基础 URL",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "基础 URL",
           "description": "所选提供商的 API 基础 URL。仅自定义提供商可编辑。",
           "placeholder": "https://api.openai.com/v1"
         },
         "apiKey": {
-          "title": "API 密钥",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "API 密钥",
           "description": "所选提供商的 API 密钥。",
           "placeholder": "sk-..."
         },
         "model": {
-          "title": "模型",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "模型",
           "descriptionApple": "提供可选的数字令牌限制或保持默认的设备预设。",
           "descriptionCustom": "提供自定义端点期望的模型标识符。",
           "descriptionDefault": "选择所选提供商提供的模型。",
@@ -397,9 +717,17 @@
         }
       },
       "prompts": {
-        "title": "提示词",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "提示词",
         "selectedPrompt": {
-          "title": "已选提示词",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "已选提示词",
           "description": "选择用于优化转录的模板或创建新模板。在提示词文本中使用 ${output} 来引用捕获的转录。"
         },
         "noPrompts": "没有可用的提示词",
@@ -419,7 +747,11 @@
       }
     },
     "history": {
-      "title": "历史记录",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "历史记录",
       "openFolder": "打开录音文件夹",
       "loading": "加载历史记录中...",
       "empty": "还没有转录记录。开始录制以建立您的历史记录！",
@@ -434,34 +766,66 @@
       "transcriptionFailed": "转录失败。您可以使用重试图标重新转录。"
     },
     "debug": {
-      "title": "调试",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "调试",
       "logDirectory": {
-        "title": "日志目录",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "日志目录",
         "description": "日志文件的存储位置"
       },
       "logLevel": {
-        "title": "日志级别",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "日志级别",
         "description": "设置日志的详细程度"
       },
       "updateChecks": {
-        "label": "检查更新",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "检查更新",
         "description": "自动检查 Handy 的新版本"
       },
       "soundTheme": {
-        "label": "声音主题",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "声音主题",
         "description": "选择录制开始和停止反馈的声音主题"
       },
       "wordCorrectionThreshold": {
-        "title": "词汇修正阈值",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "词汇修正阈值",
         "description": "自定义词汇修正的灵敏度"
       },
       "historyLimit": {
-        "title": "历史记录上限",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "历史记录上限",
         "description": "保留的最大历史条目数",
         "entries": "条"
       },
       "recordingRetention": {
-        "title": "自动删除录音",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "自动删除录音",
         "description": "自动删除旧录音以节省空间",
         "never": "从不",
         "preserveLimit": "保留最新 {{count}} 条",
@@ -471,68 +835,132 @@
         "placeholder": "选择保留期限..."
       },
       "alwaysOnMicrophone": {
-        "label": "麦克风常开",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "麦克风常开",
         "description": "保持麦克风活跃以获得更快的响应"
       },
       "clamshellMicrophone": {
-        "title": "合盖麦克风",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "合盖麦克风",
         "description": "笔记本电脑盖子关闭时使用的麦克风"
       },
       "postProcessingToggle": {
-        "label": "后处理",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "后处理",
         "description": "启用转录后的 AI 文本优化"
       },
       "muteWhileRecording": {
-        "label": "录制时静音",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "录制时静音",
         "description": "录制期间静音系统音频"
       },
       "appendTrailingSpace": {
-        "label": "追加尾部空格",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "追加尾部空格",
         "description": "在粘贴的转录后添加空格"
       },
       "keyboardImplementation": {
-        "title": "键盘实现",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "键盘实现",
         "description": "选择键盘快捷键的后端。",
         "bindingsReset": "键盘快捷键不兼容，已重置为默认值"
       },
       "paths": {
-        "appData": "应用数据:",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "appData": "应用数据:",
         "models": "模型:",
         "settings": "设置:"
       },
       "pasteDelay": {
-        "title": "粘贴延迟",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "粘贴延迟",
         "description": "发送粘贴按键前的延迟（毫秒）。如果粘贴了错误的文本，请增加此值。"
       },
       "recordingBuffer": {
-        "title": "额外录音缓冲",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "额外录音缓冲",
         "description": "放开按键后继续录音的额外时间（毫秒），以捕捉尾音。0 = 无额外缓冲。"
       }
     },
     "about": {
-      "title": "关于",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "关于",
       "version": {
-        "title": "版本",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "版本",
         "description": "Handy 的当前版本"
       },
       "appDataDirectory": {
-        "title": "应用数据目录",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "应用数据目录",
         "description": "Handy 存储数据的位置"
       },
       "sourceCode": {
-        "title": "源代码",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "源代码",
         "description": "查看源代码并贡献",
         "button": "在 GitHub 上查看"
       },
       "supportDevelopment": {
-        "title": "支持开发",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "支持开发",
         "description": "帮助我们继续开发 Handy",
         "button": "捐赠"
       },
       "acknowledgments": {
-        "title": "致谢",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "致谢",
         "whisper": {
-          "title": "Whisper.cpp",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "Whisper.cpp",
           "description": "OpenAI Whisper 自动语音识别模型的高性能推理",
           "details": "Handy 使用 Whisper.cpp 进行快速的本地语音转文字处理。感谢 Georgi Gerganov 和贡献者们的出色工作。"
         }
@@ -540,7 +968,11 @@
     }
   },
   "footer": {
-    "downloadingModel": "正在下载 {{model}}...",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "downloadingModel": "正在下载 {{model}}...",
     "checkingUpdates": "检查更新中...",
     "updateAvailable": "有可用更新: {{version}}",
     "updateAvailableShort": "有可用更新",
@@ -557,7 +989,11 @@
     "portableUpdateButton": "Open GitHub Releases"
   },
   "common": {
-    "loading": "加载中...",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "loading": "加载中...",
     "save": "保存",
     "cancel": "取消",
     "reset": "重置",
@@ -579,16 +1015,28 @@
     "noOptionsFound": "未找到选项"
   },
   "accessibility": {
-    "permissionsRequired": "需要辅助功能权限",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "permissionsRequired": "需要辅助功能权限",
     "permissionsDescription": "Handy 需要辅助功能权限才能输入转录的文字。",
     "openSettings": "打开系统设置",
     "dismiss": "关闭"
   },
   "errors": {
-    "loadDirectory": "加载目录时出错: {{error}}",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "loadDirectory": "加载目录时出错: {{error}}",
     "micPermissionDeniedTitle": "麦克风访问被拒绝",
     "micPermissionDenied": {
-      "generic": "操作系统拒绝了麦克风访问。请在系统设置中授予麦克风权限。",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "generic": "操作系统拒绝了麦克风访问。请在系统设置中授予麦克风权限。",
       "windows": "在设置 → 隐私和安全性 → 麦克风（包括桌面应用访问）中启用麦克风访问。",
       "macos": "在系统设置 → 隐私与安全性 → 麦克风中授予麦克风访问权限。",
       "linux": "在系统的声音或隐私设置中授予麦克风访问权限。"
@@ -602,11 +1050,19 @@
     "pasteFailed": "无法将文本粘贴到当前活动的应用程序中。"
   },
   "appLanguage": {
-    "title": "应用语言",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "title": "应用语言",
     "description": "更改 Handy 界面的语言"
   },
   "overlay": {
-    "transcribing": "正在转录...",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "transcribing": "正在转录...",
     "processing": "处理中..."
   }
 }

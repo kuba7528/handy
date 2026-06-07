@@ -18,6 +18,7 @@ import { useAppearanceTheme } from "./hooks/useAppearanceTheme";
 import { useSettingsStore } from "./stores/settingsStore";
 import { commands } from "@/bindings";
 import { getLanguageDirection, initializeRTL } from "@/lib/utils/rtl";
+import TitleBar from "./components/TitleBar";
 
 type OnboardingStep = "accessibility" | "model" | "done";
 
@@ -222,54 +223,63 @@ function App() {
     setOnboardingStep("done");
   };
 
-  // Still checking onboarding status
-  if (onboardingStep === null) {
-    return null;
-  }
+  const renderBody = () => {
+    if (onboardingStep === null) {
+      return null;
+    }
 
-  if (onboardingStep === "accessibility") {
-    return <AccessibilityOnboarding onComplete={handleAccessibilityComplete} />;
-  }
+    if (onboardingStep === "accessibility") {
+      return (
+        <AccessibilityOnboarding onComplete={handleAccessibilityComplete} />
+      );
+    }
 
-  if (onboardingStep === "model") {
-    return <Onboarding onModelSelected={handleModelSelected} />;
-  }
+    if (onboardingStep === "model") {
+      return <Onboarding onModelSelected={handleModelSelected} />;
+    }
+
+    return (
+      <>
+        <Toaster
+          theme="system"
+          toastOptions={{
+            unstyled: true,
+            classNames: {
+              toast:
+                "bg-background border border-mid-gray/20 rounded-lg shadow-lg px-4 py-3 flex items-center gap-3 text-sm",
+              title: "font-medium",
+              description: "text-mid-gray",
+            },
+          }}
+        />
+        <div className="flex-1 flex overflow-hidden min-h-0">
+          <Sidebar
+            activeSection={currentSection}
+            onSectionChange={setCurrentSection}
+          />
+          <div className="flex-1 flex flex-col overflow-hidden">
+            <div className="flex-1 overflow-y-auto">
+              <div className="flex flex-col items-center p-4 gap-4">
+                <AccessibilityPermissions />
+                {renderSettingsContent(currentSection)}
+              </div>
+            </div>
+          </div>
+        </div>
+        <Footer />
+      </>
+    );
+  };
 
   return (
     <div
       dir={direction}
-      className="h-screen flex flex-col select-none cursor-default"
+      className="h-screen flex flex-col select-none cursor-default bg-background"
     >
-      <Toaster
-        theme="system"
-        toastOptions={{
-          unstyled: true,
-          classNames: {
-            toast:
-              "bg-background border border-mid-gray/20 rounded-lg shadow-lg px-4 py-3 flex items-center gap-3 text-sm",
-            title: "font-medium",
-            description: "text-mid-gray",
-          },
-        }}
-      />
-      {/* Main content area that takes remaining space */}
-      <div className="flex-1 flex overflow-hidden">
-        <Sidebar
-          activeSection={currentSection}
-          onSectionChange={setCurrentSection}
-        />
-        {/* Scrollable content area */}
-        <div className="flex-1 flex flex-col overflow-hidden">
-          <div className="flex-1 overflow-y-auto">
-            <div className="flex flex-col items-center p-4 gap-4">
-              <AccessibilityPermissions />
-              {renderSettingsContent(currentSection)}
-            </div>
-          </div>
-        </div>
+      <TitleBar />
+      <div className="flex flex-1 flex-col min-h-0 overflow-hidden">
+        {renderBody()}
       </div>
-      {/* Fixed footer at bottom */}
-      <Footer />
     </div>
   );
 }

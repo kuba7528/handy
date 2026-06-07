@@ -1,6 +1,14 @@
 {
-  "tray": {
-    "settings": "Настройки...",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },  "tray": {
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "settings": "Настройки...",
     "checkUpdates": "Проверить обновления...",
     "copyLastTranscript": "Скопировать последнюю транскрипцию",
     "unloadModel": "Выгрузить модель",
@@ -9,7 +17,11 @@
     "cancel": "Отмена"
   },
   "sidebar": {
-    "general": "Общие",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "general": "Общие",
     "models": "Модели",
     "advanced": "Продвинутые",
     "postProcessing": "Постобработка",
@@ -18,95 +30,187 @@
     "about": "О программе"
   },
   "onboarding": {
-    "subtitle": "Для начала выберите модель транскрипции",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "subtitle": "Для начала выберите модель транскрипции",
     "recommended": "Рекомендуется",
     "download": "Скачать",
     "downloading": "Загрузка...",
     "customModelDescription": "Официально не поддерживается",
     "downloadFailed": "Загрузка не удалась. Пожалуйста, попробуйте снова.",
     "modelCard": {
-      "accuracy": "точность",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "accuracy": "точность",
       "speed": "скорость"
     },
     "models": {
-      "small": {
-        "name": "Whisper Small",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "small": {
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Whisper Small",
         "description": "Быстрая и достаточно точная."
       },
       "medium": {
-        "name": "Whisper Medium",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Whisper Medium",
         "description": "Хорошая точность, средняя скорость."
       },
       "turbo": {
-        "name": "Whisper Turbo",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Whisper Turbo",
         "description": "Сбалансированная точность и скорость."
       },
       "large": {
-        "name": "Whisper Large",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Whisper Large",
         "description": "Хорошая точность, но медленная."
       },
       "parakeet-tdt-0.6b-v2": {
-        "name": "Parakeet V2",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Parakeet V2",
         "description": "Только английский. Лучшая модель для англоговорящих."
       },
       "parakeet-tdt-0.6b-v3": {
-        "name": "Parakeet V3",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Parakeet V3",
         "description": "Быстрая и точная"
       },
       "moonshine-base": {
-        "name": "Moonshine Base",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Moonshine Base",
         "description": "Очень быстрая, только английский. Хорошо справляется с акцентами."
       },
       "moonshine-tiny-streaming-en": {
-        "name": "Moonshine V2 Tiny",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Moonshine V2 Tiny",
         "description": "Сверхбыстрая, только английский"
       },
       "moonshine-small-streaming-en": {
-        "name": "Moonshine V2 Small",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Moonshine V2 Small",
         "description": "Быстрая, только английский. Хороший баланс скорости и точности."
       },
       "moonshine-medium-streaming-en": {
-        "name": "Moonshine V2 Medium",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Moonshine V2 Medium",
         "description": "Только английский. Высокое качество."
       },
       "breeze-asr": {
-        "name": "Breeze ASR",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Breeze ASR",
         "description": "Оптимизирована для тайваньского мандаринского. Поддержка переключения языков."
       },
       "sense-voice-int8": {
-        "name": "SenseVoice",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "SenseVoice",
         "description": "Очень быстрая. Китайский, английский, японский, корейский, кантонский."
       },
       "gigaam-v3-e2e-ctc": {
-        "name": "GigaAM v3",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "GigaAM v3",
         "description": "Распознавание русской речи. Быстро и точно."
       },
       "canary-180m-flash": {
-        "name": "Canary 180M Flash",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Canary 180M Flash",
         "description": "Очень быстрая. Английский, немецкий, испанский, французский. Поддержка перевода."
       },
       "canary-1b-v2": {
-        "name": "Canary 1B v2",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Canary 1B v2",
         "description": "Точная многоязычная. 25 европейских языков. Поддержка перевода."
       },
       "cohere-int8": {
-        "name": "Cohere",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Cohere",
         "description": "Большая, медленная, но очень точная многоязычная модель."
       }
     },
     "errors": {
-      "loadModels": "Не удалось загрузить доступные модели.",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "loadModels": "Не удалось загрузить доступные модели.",
       "downloadModel": "Не удалось загрузить модель: {{error}}."
     },
     "permissions": {
-      "title": "Требуются разрешения",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "Требуются разрешения",
       "description": "Handy требуются некоторые разрешения для корректной работы.",
       "microphone": {
-        "title": "Доступ к микрофону",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Доступ к микрофону",
         "description": "Необходим для прослушивания вашего голоса для транскрипции."
       },
       "accessibility": {
-        "title": "Доступ к универсальному доступу",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Доступ к универсальному доступу",
         "description": "Необходим для ввода расшифрованного текста в ваши приложения."
       },
       "grant": "Предоставить разрешение",
@@ -114,13 +218,21 @@
       "waiting": "Ожидание...",
       "allGranted": "Всё готово!",
       "errors": {
-        "checkFailed": "Не удалось проверить разрешения. Пожалуйста, попробуйте снова.",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "checkFailed": "Не удалось проверить разрешения. Пожалуйста, попробуйте снова.",
         "requestFailed": "Не удалось запросить разрешение. Пожалуйста, попробуйте снова."
       }
     }
   },
   "modelSelector": {
-    "custom": "Пользовательская",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "custom": "Пользовательская",
     "active": "Активный",
     "switching": "Переключение...",
     "noModelsAvailable": "Нет доступных моделей",
@@ -140,7 +252,11 @@
     "deleteModel": "Удалить {{modelName}}",
     "downloadSpeed": "{{speed}} МБ/с",
     "capabilities": {
-      "languageSelection": "Поддерживает несколько языков ввода",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "languageSelection": "Поддерживает несколько языков ввода",
       "multiLanguage": "Многоязычная",
       "translation": "Может переводить на английский",
       "translate": "Перевод на английский",
@@ -151,12 +267,24 @@
     "cancelDownload": "Отменить загрузку"
   },
   "settings": {
-    "modelSettings": {
-      "title": "Настройки {{model}}",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "modelSettings": {
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "Настройки {{model}}",
       "noSettingsNeeded": "Эта модель работает автоматически без необходимости настройки."
     },
     "models": {
-      "title": "Модели транскрипции",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "Модели транскрипции",
       "description": "Выберите модель транскрипции или загрузите дополнительные модели. Разные модели предлагают разные уровни точности и скорости.",
       "downloaded": "Загружено",
       "available": "Доступные для загрузки",
@@ -164,7 +292,11 @@
       "deleteActiveConfirm": "{{modelName}} — ваша активная модель. Удаление остановит транскрипцию, пока вы не выберете новую модель. Вы уверены?",
       "deleteTitle": "Удалить модель",
       "filters": {
-        "all": "Все",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "all": "Все",
         "multiLanguage": "Многоязычные",
         "translation": "Перевод",
         "allLanguages": "Все языки"
@@ -174,36 +306,68 @@
       "availableModels": "Доступны для загрузки"
     },
     "general": {
-      "title": "Общие",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "Общие",
       "shortcut": {
-        "title": "Ярлыки Handy",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Ярлыки Handy",
         "description": "Настройте сочетания клавиш для запуска записи речи в текст",
         "loading": "Загрузка ярлыков...",
         "none": "Ярлыки не настроены",
         "notFound": "Ярлык не найден",
         "pressKeys": "Нажимайте клавиши...",
         "bindings": {
-          "transcribe": {
-            "name": "Горячая клавиша транскрипции",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "transcribe": {
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },            "name": "Горячая клавиша транскрипции",
             "description": "Сочетание клавиш для записи и транскрибирования вашего голоса."
           },
           "cancel": {
-            "name": "Горячая клавиша отмены",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },            "name": "Горячая клавиша отмены",
             "description": "Сочетание клавиш для отмены текущей записи."
           },
           "transcribe_with_post_process": {
-            "name": "Горячая клавиша постобработки",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },            "name": "Горячая клавиша постобработки",
             "description": "Специальное сочетание клавиш для ИИ-постобработки вашей транскрипции."
           }
         },
         "errors": {
-          "restore": "Не удалось восстановить исходный ярлык",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "restore": "Не удалось восстановить исходный ярлык",
           "set": "Не удалось установить ярлык: {{error}}",
           "reset": "Не удалось сбросить ярлык до исходного значения"
         }
       },
       "language": {
-        "title": "Язык",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Язык",
         "description": "Выберите язык для распознавания речи. «Авто» автоматически определит язык, а выбор конкретного языка может повысить точность определения этого языка.",
         "descriptionUnsupported": "Модель Parakeet автоматически определяет язык. Ручной выбор не требуется.",
         "searchPlaceholder": "Поиск языков...",
@@ -211,91 +375,175 @@
         "auto": "Авто"
       },
       "pushToTalk": {
-        "label": "Нажми и говори",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "Нажми и говори",
         "description": "Удерживайте, чтобы записать, отпустите, чтобы остановить"
       }
     },
     "sound": {
-      "title": "Звук",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "Звук",
       "microphone": {
-        "title": "Микрофон",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Микрофон",
         "description": "Выберите предпочитаемое устройство ввода звука",
         "placeholder": "Выбрать микрофон...",
         "loading": "Загрузка..."
       },
       "audioFeedback": {
-        "label": "Обратная звуковая связь",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "Обратная звуковая связь",
         "description": "Воспроизведение звука при запуске и остановке записи"
       },
       "outputDevice": {
-        "title": "Устройство вывода",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Устройство вывода",
         "description": "Выберите предпочитаемое устройство вывода звука для звуков обратной связи",
         "placeholder": "Выберите устройство вывода...",
         "loading": "Загрузка..."
       },
       "volume": {
-        "title": "Громкость",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Громкость",
         "description": "Отрегулируйте громкость звуков обратной связи"
       }
     },
     "advanced": {
-      "title": "Продвинутые",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "Продвинутые",
       "groups": {
-        "app": "Приложение",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "app": "Приложение",
         "output": "Вывод",
         "transcription": "Транскрипция",
         "history": "История",
         "experimental": "Экспериментальное"
       },
       "experimentalToggle": {
-        "label": "Экспериментальные функции",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "Экспериментальные функции",
         "description": "Включить экспериментальные функции, которые находятся в разработке."
       },
       "lazyStreamClose": {
-        "label": "Оставлять микрофон включённым между транскрипциями",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "Оставлять микрофон включённым между транскрипциями",
         "description": "Оставляет поток микрофона открытым в течение 30 секунд после остановки записи, уменьшая задержку при последовательных транскрипциях. Может ухудшить качество звука Bluetooth."
       },
       "acceleration": {
-        "whisper": {
-          "title": "Ускорение Whisper",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "whisper": {
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "Ускорение Whisper",
           "description": "Аппаратное ускорение для моделей Whisper. Автоматический режим использует GPU при наличии (Metal на macOS, Vulkan на Windows/Linux)."
         },
         "ort": {
-          "title": "Ускорение ONNX",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "Ускорение ONNX",
           "description": "Аппаратное ускорение для моделей ONNX (Parakeet, Canary, Moonshine и др.). DirectML на Windows является экспериментальным. Модели могут не выполнять транскрипцию."
         },
         "gpuDevice": {
-          "title": "Устройство GPU",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "Устройство GPU",
           "description": "Выберите GPU для инференса Whisper. Авто выбирает выделенный GPU.",
           "auto": "Авто"
         }
       },
       "startHidden": {
-        "label": "Скрыть при запуске",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "Скрыть при запуске",
         "description": "Запускать в системный трей, не открывая окно."
       },
       "autostart": {
-        "label": "Запускать при старте",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "Запускать при старте",
         "description": "Автоматически запускать Handy при входе в систему."
       },
       "showTrayIcon": {
-        "label": "Показать значок в трее",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "Показать значок в трее",
         "description": "Отображать значок Handy в системном трее."
       },
       "overlay": {
-        "title": "Позиция индикатора",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Позиция индикатора",
         "description": "Отображение индикатора визуальной обратной связи во время записи и транскрипции. В Linux рекомендуется выбрать «Нет».",
         "options": {
-          "none": "Нет",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "none": "Нет",
           "bottom": "Снизу",
           "top": "Сверху"
         }
       },
       "pasteMethod": {
-        "title": "Метод вставки",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Метод вставки",
         "description": "Выбрать способ вставки текста. Прямой: имитирует набор текста через системный ввод. Нет: пропуск вставки, обновление только истории/буфера обмена.",
         "options": {
-          "clipboard": "Буфер обмена ({{modifier}}+V)",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "clipboard": "Буфер обмена ({{modifier}}+V)",
           "clipboardCtrlShiftV": "Буфер обмена (Ctrl+Shift+V)",
           "clipboardShiftInsert": "Буфер обмена (Shift+Insert)",
           "direct": "Прямой",
@@ -305,25 +553,49 @@
         "externalScriptPlaceholder": "/path/to/your/script.sh"
       },
       "typingTool": {
-        "title": "Инструмент ввода",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Инструмент ввода",
         "description": "Выберите, какой инструмент ввода в Linux использовать для метода прямой вставки. Auto автоматически определит и использует лучший доступный инструмент для вашей системы.",
         "options": {
-          "auto": "Auto (Рекомендуется)"
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "auto": "Auto (Рекомендуется)"
         }
       },
       "clipboardHandling": {
-        "title": "Обработка буфера обмена",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Обработка буфера обмена",
         "description": "Функция «Не изменять буфер обмена» сохраняет текущее содержимое буфера обмена после транскрипции. Копировать в буфер обмена оставляет результат транскрипции в буфере обмена после вставки.",
         "options": {
-          "dontModify": "Не изменять буфер обмена",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "dontModify": "Не изменять буфер обмена",
           "copyToClipboard": "Копировать в буфер обмена"
         }
       },
       "autoSubmit": {
-        "title": "Автоматическая отправка",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Автоматическая отправка",
         "description": "Автоматически отправляет выбранную комбинацию клавиш после вставки текста. Cmd+Enter применяется на macOS, а Windows/Linux используют Super+Enter.",
         "options": {
-          "off": "Выкл.",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "off": "Выкл.",
           "enter": "Enter",
           "cmdEnter": "Cmd+Enter",
           "superEnter": "Super+Enter",
@@ -331,15 +603,27 @@
         }
       },
       "translateToEnglish": {
-        "label": "Перевести на английский",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "Перевести на английский",
         "description": "Автоматически переводить речь с других языков на английский во время транскрипции.",
         "descriptionUnsupported": "Перевод не поддерживается моделью {{model}}."
       },
       "modelUnload": {
-        "title": "Выгрузить модель",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Выгрузить модель",
         "description": "Автоматически освобождать память, если модель не использовалась в течение указанного времени.",
         "options": {
-          "never": "Никогда",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "never": "Никогда",
           "immediately": "Немедленно",
           "min2": "Через 2 минуты",
           "min5": "Через 5 минут",
@@ -350,7 +634,11 @@
         }
       },
       "customWords": {
-        "title": "Пользовательский словарь",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Пользовательский словарь",
         "description": "Добавить слова, которые часто неправильно слышатся или пишутся с ошибками во время транскрипции. Система автоматически исправит похожие по звучанию слова, чтобы они соответствовали вашему списку.",
         "placeholder": "Добавить слово",
         "add": "Добавить",
@@ -359,34 +647,66 @@
       }
     },
     "postProcessing": {
-      "title": "Постобработка",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "Постобработка",
       "hotkey": {
-        "title": "Горячая клавиша"
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Горячая клавиша"
       },
       "api": {
-        "title": "API (совместимый с OpenAI)",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "API (совместимый с OpenAI)",
         "provider": {
-          "title": "Поставщик",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "Поставщик",
           "description": "Выберите поставщика, совместимого с OpenAI."
         },
         "appleIntelligence": {
-          "title": "Apple Интеллект",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "Apple Интеллект",
           "description": "Полностью работает на устройстве. Никакой ключ API или доступ к сети не требуется.",
           "requirements": "Требуется Apple Silicon Mac под управлением macOS Tahoe (26.0) или более поздней версии. Apple Intelligence должен быть включен в настройках системы.",
           "unavailable": "Apple Intelligence недоступен на этом устройстве. Требуется Apple Silicon Mac под управлением macOS Tahoe (26.0) или более поздней версии с включенным Apple Intelligence в настройках системы."
         },
         "baseUrl": {
-          "title": "Базовый URL",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "Базовый URL",
           "description": "Базовый URL-адрес API для выбранного провайдера. Редактировать можно только настраиваемого поставщика.",
           "placeholder": "https://api.openai.com/v1"
         },
         "apiKey": {
-          "title": "API-ключ",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "API-ключ",
           "description": "API-ключ для выбранного провайдера.",
           "placeholder": "sk-..."
         },
         "model": {
-          "title": "Модель",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "Модель",
           "descriptionApple": "Укажите дополнительный числовой лимит токенов или сохраните настройки по умолчанию, установленные на устройстве.",
           "descriptionCustom": "Укажите идентификатор модели, ожидаемый вашей пользовательской конечной точкой.",
           "descriptionDefault": "Выберите модель, предоставляемую выбранным поставщиком.",
@@ -397,9 +717,17 @@
         }
       },
       "prompts": {
-        "title": "Запрос к модели",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Запрос к модели",
         "selectedPrompt": {
-          "title": "Выберите запрос",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "Выберите запрос",
           "description": "Выберите запрос для постобработки транскрипции или создайте новый. Используйте ${output} внутри текста запроса для ссылки на записанную транскрипцию."
         },
         "noPrompts": "Нет доступных запросов",
@@ -419,7 +747,11 @@
       }
     },
     "history": {
-      "title": "История",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "История",
       "openFolder": "Открыть папку с записями",
       "loading": "Загрузка истории...",
       "empty": "Транскрипций пока нет. Начните запись, чтобы создать свою историю!",
@@ -434,34 +766,66 @@
       "transcriptionFailed": "Транскрипция не удалась. Вы можете перетранскрибировать, используя значок повтора."
     },
     "debug": {
-      "title": "Отлаживать",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "Отлаживать",
       "logDirectory": {
-        "title": "Каталог журналов",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Каталог журналов",
         "description": "Место хранения файлов журналов"
       },
       "logLevel": {
-        "title": "Уровень журнала",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Уровень журнала",
         "description": "Установите уровень детализации журнала"
       },
       "updateChecks": {
-        "label": "Проверять наличие обновлений",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "Проверять наличие обновлений",
         "description": "Автоматически проверять наличие новых версий Handy"
       },
       "soundTheme": {
-        "label": "Звуковая тема",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "Звуковая тема",
         "description": "Выберите звуковую тему для начала и остановки записи обратной связи."
       },
       "wordCorrectionThreshold": {
-        "title": "Порог исправления слов",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Порог исправления слов",
         "description": "Чувствительность к пользовательским исправлениям слов"
       },
       "historyLimit": {
-        "title": "Размер истории",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Размер истории",
         "description": "Максимальное количество записей истории, которые можно сохранить",
         "entries": "записи"
       },
       "recordingRetention": {
-        "title": "Автоматическое удаление записей",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Автоматическое удаление записей",
         "description": "Автоматически удалять старые записи для экономии места",
         "never": "Никогда",
         "preserveLimit": "Хранить последние {{count}}",
@@ -471,68 +835,132 @@
         "placeholder": "Выберите срок хранения..."
       },
       "alwaysOnMicrophone": {
-        "label": "Всегда включенный микрофон",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "Всегда включенный микрофон",
         "description": "Держите микрофон активным для более быстрого ответа"
       },
       "clamshellMicrophone": {
-        "title": "Раскладной микрофон",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Раскладной микрофон",
         "description": "Микрофон для использования при закрытой крышке ноутбука"
       },
       "postProcessingToggle": {
-        "label": "Постобработка",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "Постобработка",
         "description": "Включить уточнение текста с помощью искусственного интеллекта после транскрипции"
       },
       "muteWhileRecording": {
-        "label": "Отключить звук во время записи",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "Отключить звук во время записи",
         "description": "Отключение звука системы во время записи"
       },
       "appendTrailingSpace": {
-        "label": "Добавить пробел",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "Добавить пробел",
         "description": "Добавить пробел после вставленной транскрипции"
       },
       "keyboardImplementation": {
-        "title": "Реализация клавиатуры",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Реализация клавиатуры",
         "description": "Выберите бэкенд для клавиатурных сочетаний.",
         "bindingsReset": "Клавиатурные сочетания были несовместимы и сброшены к значениям по умолчанию"
       },
       "paths": {
-        "appData": "Данные приложения:",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "appData": "Данные приложения:",
         "models": "Модели:",
         "settings": "Настройки:"
       },
       "pasteDelay": {
-        "title": "Задержка вставки",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Задержка вставки",
         "description": "Задержка перед отправкой нажатия клавиши вставки (в миллисекундах). Увеличьте, если вставляется неправильный текст."
       },
       "recordingBuffer": {
-        "title": "Дополнительный буфер записи",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Дополнительный буфер записи",
         "description": "Дополнительное время (в миллисекундах) для продолжения записи после отпускания клавиши, чтобы захватить завершающий звук. 0 = без дополнительного буфера."
       }
     },
     "about": {
-      "title": "О программе",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "О программе",
       "version": {
-        "title": "Версия",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Версия",
         "description": "Текущая версия Handy"
       },
       "appDataDirectory": {
-        "title": "Каталог данных приложения",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Каталог данных приложения",
         "description": "Место, где Handy хранит свои данные"
       },
       "sourceCode": {
-        "title": "Исходный код",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Исходный код",
         "description": "Просмотреть исходный код и внести свой вклад",
         "button": "Посмотреть на GitHub"
       },
       "supportDevelopment": {
-        "title": "Поддержка развития",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Поддержка развития",
         "description": "Помогите нам продолжать развитие Handy",
         "button": "Поддержать"
       },
       "acknowledgments": {
-        "title": "Благодарности",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Благодарности",
         "whisper": {
-          "title": "Whisper.cpp",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "Whisper.cpp",
           "description": "Высокопроизводительная модель автоматического распознавания речи OpenAI Whisper",
           "details": "Handy использует Whisper.cpp для быстрого локального преобразования речи в текст. Спасибо великолепной работе Георгия Герганова и участников."
         }
@@ -540,7 +968,11 @@
     }
   },
   "footer": {
-    "downloadingModel": "Загрузка {{model}}...",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "downloadingModel": "Загрузка {{model}}...",
     "checkingUpdates": "Проверяем наличие обновлений...",
     "updateAvailable": "Доступно обновление: {{version}}",
     "updateAvailableShort": "Доступно обновление",
@@ -557,7 +989,11 @@
     "portableUpdateButton": "Open GitHub Releases"
   },
   "common": {
-    "loading": "Загрузка...",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "loading": "Загрузка...",
     "save": "Сохранять",
     "cancel": "Отмена",
     "reset": "Перезагрузить",
@@ -579,16 +1015,28 @@
     "noOptionsFound": "Вариантов не найдено"
   },
   "accessibility": {
-    "permissionsRequired": "Требуются разрешения на доступ",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "permissionsRequired": "Требуются разрешения на доступ",
     "permissionsDescription": "Handy необходимы разрешения на доступ для ввода расшифрованного текста.",
     "openSettings": "Открыть настройки системы",
     "dismiss": "Увольнять"
   },
   "errors": {
-    "loadDirectory": "Ошибка загрузки каталога: {{error}}.",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "loadDirectory": "Ошибка загрузки каталога: {{error}}.",
     "micPermissionDeniedTitle": "Доступ к микрофону запрещён",
     "micPermissionDenied": {
-      "generic": "Доступ к микрофону был запрещён операционной системой. Предоставьте разрешение на использование микрофона в настройках системы.",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "generic": "Доступ к микрофону был запрещён операционной системой. Предоставьте разрешение на использование микрофона в настройках системы.",
       "windows": "Включите доступ к микрофону в Параметры → Конфиденциальность и безопасность → Микрофон (включая доступ классических приложений).",
       "macos": "Предоставьте доступ к микрофону в Системные настройки → Конфиденциальность и безопасность → Микрофон.",
       "linux": "Предоставьте доступ к микрофону в настройках звука или конфиденциальности вашей системы."
@@ -602,11 +1050,19 @@
     "pasteFailed": "Не удалось вставить текст в активное приложение."
   },
   "appLanguage": {
-    "title": "Язык приложения",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "title": "Язык приложения",
     "description": "Изменить язык интерфейса Handy"
   },
   "overlay": {
-    "transcribing": "Расшифровка...",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "transcribing": "Расшифровка...",
     "processing": "Обработка..."
   }
 }

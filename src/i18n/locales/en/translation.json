@@ -1,4 +1,9 @@
 {
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },
   "tray": {
     "settings": "Settings...",
     "checkUpdates": "Check for Updates...",
@@ -245,7 +250,8 @@
       },
       "pushToTalk": {
         "label": "Push To Talk",
-        "description": "Hold to record, release to stop"
+        "description": "Hold to record, release to stop",
+        "disabledByContinuous": "Unavailable while continuous listening is enabled — the microphone stays open for automatic transcription."
       },
       "continuousListening": {
         "label": "Continuous Listening",

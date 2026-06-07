@@ -1,6 +1,14 @@
 {
-  "tray": {
-    "settings": "Настройки...",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },  "tray": {
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "settings": "Настройки...",
     "checkUpdates": "Проверка за актуализации...",
     "copyLastTranscript": "Копиране на последния транскрипт",
     "unloadModel": "Разтоварване на модела",
@@ -9,7 +17,11 @@
     "cancel": "Отказ"
   },
   "sidebar": {
-    "general": "Общи",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "general": "Общи",
     "models": "Модели",
     "advanced": "Разширени",
     "postProcessing": "Постобработка",
@@ -18,95 +30,187 @@
     "about": "За приложението"
   },
   "onboarding": {
-    "subtitle": "За да започнете, изберете модел за транскрипция",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "subtitle": "За да започнете, изберете модел за транскрипция",
     "recommended": "Препоръчан",
     "download": "Изтегляне",
     "downloading": "Изтегля се...",
     "customModelDescription": "Не се поддържа официално",
     "downloadFailed": "Изтеглянето не бе успешно. Опитайте отново.",
     "modelCard": {
-      "accuracy": "точност",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "accuracy": "точност",
       "speed": "скорост"
     },
     "models": {
-      "small": {
-        "name": "Whisper Small",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "small": {
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Whisper Small",
         "description": "Бърз и доста точен."
       },
       "medium": {
-        "name": "Whisper Medium",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Whisper Medium",
         "description": "Добра точност, средна скорост."
       },
       "turbo": {
-        "name": "Whisper Turbo",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Whisper Turbo",
         "description": "Баланс между точност и скорост."
       },
       "large": {
-        "name": "Whisper Large",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Whisper Large",
         "description": "Добра точност, но по-бавен."
       },
       "parakeet-tdt-0.6b-v2": {
-        "name": "Parakeet V2",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Parakeet V2",
         "description": "Само английски. Най-добрият модел за носители на английски."
       },
       "parakeet-tdt-0.6b-v3": {
-        "name": "Parakeet V3",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Parakeet V3",
         "description": "Бърз и точен."
       },
       "moonshine-base": {
-        "name": "Moonshine Base",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Moonshine Base",
         "description": "Много бърз, само английски. Добре обработва акценти."
       },
       "moonshine-tiny-streaming-en": {
-        "name": "Moonshine V2 Tiny",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Moonshine V2 Tiny",
         "description": "Ултрабърз, само английски."
       },
       "moonshine-small-streaming-en": {
-        "name": "Moonshine V2 Small",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Moonshine V2 Small",
         "description": "Бърз, само английски. Добър баланс между скорост и точност."
       },
       "moonshine-medium-streaming-en": {
-        "name": "Moonshine V2 Medium",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Moonshine V2 Medium",
         "description": "Само английски. Високо качество."
       },
       "breeze-asr": {
-        "name": "Breeze ASR",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Breeze ASR",
         "description": "Оптимизиран за тайвански мандарин. Поддръжка на смесване на езици."
       },
       "sense-voice-int8": {
-        "name": "SenseVoice",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "SenseVoice",
         "description": "Много бърз. Китайски, английски, японски, корейски, кантонски."
       },
       "gigaam-v3-e2e-ctc": {
-        "name": "GigaAM v3",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "GigaAM v3",
         "description": "Разпознаване на руска реч. Бърз и точен."
       },
       "canary-180m-flash": {
-        "name": "Canary 180M Flash",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Canary 180M Flash",
         "description": "Много бърз. Английски, немски, испански, френски. Поддържа превод."
       },
       "canary-1b-v2": {
-        "name": "Canary 1B v2",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Canary 1B v2",
         "description": "Точен многоезичен. 25 европейски езика. Поддържа превод."
       },
       "cohere-int8": {
-        "name": "Cohere",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Cohere",
         "description": "Голям, по-бавен, но много точен многоезичен модел."
       }
     },
     "errors": {
-      "loadModels": "Неуспешно зареждане на наличните модели",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "loadModels": "Неуспешно зареждане на наличните модели",
       "downloadModel": "Неуспешно изтегляне на модела: {{error}}"
     },
     "permissions": {
-      "title": "Необходими разрешения",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "Необходими разрешения",
       "description": "Handy се нуждае от няколко разрешения, за да работи правилно.",
       "microphone": {
-        "title": "Достъп до микрофон",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Достъп до микрофон",
         "description": "Необходим е, за да чуе гласа ви при транскрипция."
       },
       "accessibility": {
-        "title": "Достъп за достъпност",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Достъп за достъпност",
         "description": "Необходим е, за да въвежда транскрибирания текст във вашите приложения."
       },
       "grant": "Даване на разрешение",
@@ -114,13 +218,21 @@
       "waiting": "Изчакване...",
       "allGranted": "Готово!",
       "errors": {
-        "checkFailed": "Проверката на разрешенията не бе успешна. Опитайте отново.",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "checkFailed": "Проверката на разрешенията не бе успешна. Опитайте отново.",
         "requestFailed": "Заявката за разрешение не бе успешна. Опитайте отново."
       }
     }
   },
   "modelSelector": {
-    "custom": "Персонализиран",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "custom": "Персонализиран",
     "active": "Активен",
     "switching": "Превключване...",
     "noModelsAvailable": "Няма налични модели",
@@ -142,7 +254,11 @@
     "cancel": "Отказ",
     "cancelDownload": "Отказ на изтеглянето",
     "capabilities": {
-      "languageSelection": "Поддържа няколко входни езика",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "languageSelection": "Поддържа няколко входни езика",
       "singleLanguage": "Поддържа само този език",
       "multiLanguage": "Многоезичен",
       "languageOnly": "Само {{language}}",
@@ -151,41 +267,81 @@
     }
   },
   "settings": {
-    "modelSettings": {
-      "title": "Настройки на {{model}}",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "modelSettings": {
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "Настройки на {{model}}",
       "noSettingsNeeded": "Този модел работи автоматично без нужда от конфигурация."
     },
     "general": {
-      "title": "Общи",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "Общи",
       "shortcut": {
-        "title": "Бързи клавиши на Handy",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Бързи клавиши на Handy",
         "description": "Настройте клавишни комбинации за стартиране на запис за реч към текст",
         "loading": "Зареждане на бързите клавиши...",
         "none": "Няма настроени бързи клавиши",
         "notFound": "Бързият клавиш не е намерен",
         "pressKeys": "Натиснете клавишите...",
         "bindings": {
-          "transcribe": {
-            "name": "Бърз клавиш за транскрипция",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "transcribe": {
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },            "name": "Бърз клавиш за транскрипция",
             "description": "Клавишната комбинация за запис и транскрибиране на гласа ви."
           },
           "cancel": {
-            "name": "Бърз клавиш за отказ",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },            "name": "Бърз клавиш за отказ",
             "description": "Клавишната комбинация за отмяна на текущия запис."
           },
           "transcribe_with_post_process": {
-            "name": "Бърз клавиш за постобработка",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },            "name": "Бърз клавиш за постобработка",
             "description": "По избор: отделна комбинация, която винаги прилага ИИ постобработка върху транскрипцията."
           }
         },
         "errors": {
-          "restore": "Неуспешно възстановяване на оригиналния бърз клавиш",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "restore": "Неуспешно възстановяване на оригиналния бърз клавиш",
           "set": "Неуспешно задаване на бързия клавиш: {{error}}",
           "reset": "Неуспешно нулиране на бързия клавиш към първоначалната стойност"
         }
       },
       "language": {
-        "title": "Език",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Език",
         "description": "Изберете езика за разпознаване на реч. „Автоматично“ определя езика сам, а изборът на конкретен език може да подобри точността за него.",
         "descriptionUnsupported": "Моделът Parakeet автоматично открива езика. Ръчен избор не е необходим.",
         "searchPlaceholder": "Търсене на езици...",
@@ -193,12 +349,20 @@
         "auto": "Автоматично"
       },
       "pushToTalk": {
-        "label": "Натискане за говорене",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "Натискане за говорене",
         "description": "Задръжте за запис, пуснете за спиране"
       }
     },
     "models": {
-      "title": "Модели за транскрипция",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "Модели за транскрипция",
       "description": "Изберете модел за транскрипция или изтеглете допълнителни. Различните модели предлагат различна точност и скорост.",
       "yourModels": "Изтеглени модели",
       "availableModels": "Налични за изтегляне",
@@ -208,7 +372,11 @@
       "deleteActiveConfirm": "{{modelName}} е вашият активен модел. Изтриването му ще спре транскрипциите, докато не изберете нов модел. Сигурни ли сте?",
       "deleteTitle": "Изтриване на модел",
       "filters": {
-        "all": "Всички",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "all": "Всички",
         "multiLanguage": "Многоезични",
         "translation": "Превод",
         "allLanguages": "Всички езици"
@@ -216,86 +384,166 @@
       "noModelsMatch": "Няма модели, отговарящи на този филтър."
     },
     "sound": {
-      "title": "Звук",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "Звук",
       "microphone": {
-        "title": "Микрофон",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Микрофон",
         "description": "Изберете предпочитано микрофонно устройство",
         "placeholder": "Изберете микрофон...",
         "loading": "Зареждане..."
       },
       "audioFeedback": {
-        "label": "Звукова обратна връзка",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "Звукова обратна връзка",
         "description": "Възпроизвеждане на звук при старт и край на записа"
       },
       "outputDevice": {
-        "title": "Изходно устройство",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Изходно устройство",
         "description": "Изберете предпочитано изходно аудио устройство за звуци за обратна връзка",
         "placeholder": "Изберете изходно устройство...",
         "loading": "Зареждане..."
       },
       "volume": {
-        "title": "Сила на звука",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Сила на звука",
         "description": "Регулирайте силата на звуците за обратна връзка"
       }
     },
     "advanced": {
-      "title": "Разширени",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "Разширени",
       "groups": {
-        "app": "Приложение",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "app": "Приложение",
         "output": "Изход",
         "transcription": "Транскрипция",
         "history": "История",
         "experimental": "Експериментални"
       },
       "experimentalToggle": {
-        "label": "Експериментални функции",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "Експериментални функции",
         "description": "Включване на експериментални функции, които са още в разработка."
       },
       "lazyStreamClose": {
-        "label": "Държане на микрофона отворен между транскрипции",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "Държане на микрофона отворен между транскрипции",
         "description": "Държи потокът от микрофона отворен 30 секунди след спиране на записа, което намалява забавянето при поредни транскрипции. Може да влоши качеството на Bluetooth аудио, докато е активно."
       },
       "acceleration": {
-        "whisper": {
-          "title": "Ускорение за Whisper",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "whisper": {
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "Ускорение за Whisper",
           "description": "Хардуерно ускорение за моделите Whisper. „Автоматично“ използва GPU при наличност (Metal на macOS, Vulkan на Windows/Linux)."
         },
         "ort": {
-          "title": "Ускорение за ONNX",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "Ускорение за ONNX",
           "description": "Хардуерно ускорение за ONNX модели (Parakeet, Canary, Moonshine и др.). DirectML на Windows е експериментален. Моделите може да не транскрибират."
         },
         "gpuDevice": {
-          "title": "GPU устройство",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "GPU устройство",
           "description": "Изберете кой GPU да се използва за Whisper. Автоматично избира специализирания GPU.",
           "auto": "Автоматично"
         }
       },
       "startHidden": {
-        "label": "Стартиране скрито",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "Стартиране скрито",
         "description": "Стартиране в системната област без отваряне на прозореца."
       },
       "autostart": {
-        "label": "Стартиране със системата",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "Стартиране със системата",
         "description": "Автоматично стартиране на Handy при влизане в профила ви."
       },
       "showTrayIcon": {
-        "label": "Икона в системната област",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "Икона в системната област",
         "description": "Показване на иконата на Handy в системната област."
       },
       "overlay": {
-        "title": "Позиция на наслагването",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Позиция на наслагването",
         "description": "Показване на визуална обратна връзка при запис и транскрипция. На Linux се препоръчва „Няма“.",
         "options": {
-          "none": "Няма",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "none": "Няма",
           "bottom": "Долу",
           "top": "Горе"
         }
       },
       "pasteMethod": {
-        "title": "Начин на поставяне",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Начин на поставяне",
         "description": "Изберете как се вмъква текстът. Директно: симулира писане чрез системния вход. Няма: пропуска поставянето, актуализира само историята/клипборда.",
         "options": {
-          "clipboard": "Клипборд ({{modifier}}+V)",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "clipboard": "Клипборд ({{modifier}}+V)",
           "clipboardCtrlShiftV": "Клипборд (Ctrl+Shift+V)",
           "clipboardShiftInsert": "Клипборд (Shift+Insert)",
           "direct": "Директно",
@@ -305,25 +553,49 @@
         "externalScriptPlaceholder": "/път/към/вашия/script.sh"
       },
       "typingTool": {
-        "title": "Инструмент за писане",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Инструмент за писане",
         "description": "Изберете кой Linux инструмент за писане да се използва при директно поставяне. „Автоматично“ открива и използва най-подходящия за вашата система.",
         "options": {
-          "auto": "Автоматично (препоръчително)"
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "auto": "Автоматично (препоръчително)"
         }
       },
       "clipboardHandling": {
-        "title": "Работа с клипборда",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Работа с клипборда",
         "description": "„Без промяна на клипборда“ запазва съдържанието на клипборда след транскрипция. „Копиране в клипборда“ оставя резултата в клипборда след поставяне.",
         "options": {
-          "dontModify": "Без промяна на клипборда",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "dontModify": "Без промяна на клипборда",
           "copyToClipboard": "Копиране в клипборда"
         }
       },
       "autoSubmit": {
-        "title": "Автоматично изпращане",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Автоматично изпращане",
         "description": "Автоматично изпращане на избраната клавишна комбинация след вмъкване на текста. Cmd+Enter важи за macOS, а Windows/Linux използват Super+Enter.",
         "options": {
-          "off": "Изкл.",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "off": "Изкл.",
           "enter": "Enter",
           "cmdEnter": "Cmd+Enter",
           "superEnter": "Super+Enter",
@@ -331,15 +603,27 @@
         }
       },
       "translateToEnglish": {
-        "label": "Превод на английски",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "Превод на английски",
         "description": "Автоматичен превод на реч от други езици на английски по време на транскрипция.",
         "descriptionUnsupported": "Моделът {{model}} не поддържа превод."
       },
       "modelUnload": {
-        "title": "Разтоварване на модела",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Разтоварване на модела",
         "description": "Автоматично освобождаване на памет на GPU/CPU, ако моделът не е използван за зададеното време",
         "options": {
-          "never": "Никога",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "never": "Никога",
           "immediately": "Веднага",
           "min2": "След 2 минути",
           "min5": "След 5 минути",
@@ -350,7 +634,11 @@
         }
       },
       "customWords": {
-        "title": "Персонализирани думи",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Персонализирани думи",
         "description": "Добавете думи, които често се чуват или изписват грешно при транскрипция. Системата автоматично ще коригира близки по звучене думи според вашия списък.",
         "placeholder": "Добавете дума",
         "add": "Добавяне",
@@ -359,34 +647,66 @@
       }
     },
     "postProcessing": {
-      "title": "Постобработка",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "Постобработка",
       "hotkey": {
-        "title": "Бърз клавиш"
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Бърз клавиш"
       },
       "api": {
-        "title": "API (съвместим с OpenAI)",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "API (съвместим с OpenAI)",
         "provider": {
-          "title": "Доставчик",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "Доставчик",
           "description": "Изберете доставчик, съвместим с OpenAI."
         },
         "appleIntelligence": {
-          "title": "Apple Intelligence",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "Apple Intelligence",
           "description": "Работи изцяло на устройството. Не са нужни API ключ или мрежов достъп.",
           "requirements": "Изисква Mac с Apple Silicon и macOS Tahoe (26.0) или по-нова. Apple Intelligence трябва да е включена в Системните настройки.",
           "unavailable": "Apple Intelligence не е налична на това устройство. Необходим е Mac с Apple Silicon и macOS Tahoe (26.0) или по-нова с включена Apple Intelligence в Системните настройки."
         },
         "baseUrl": {
-          "title": "Базов URL",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "Базов URL",
           "description": "Базов API URL за избрания доставчик. Редактируем е само при персонализиран доставчик.",
           "placeholder": "https://api.openai.com/v1"
         },
         "apiKey": {
-          "title": "API ключ",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "API ключ",
           "description": "API ключ за избрания доставчик.",
           "placeholder": "sk-..."
         },
         "model": {
-          "title": "Модел",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "Модел",
           "descriptionApple": "Задайте по избор числен лимит на токени или запазете стандартната настройка на устройството.",
           "descriptionCustom": "Въведете идентификатора на модела, очакван от вашия персонализиран краен адрес.",
           "descriptionDefault": "Изберете модел, предлаган от избрания доставчик.",
@@ -397,9 +717,17 @@
         }
       },
       "prompts": {
-        "title": "Подкана",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Подкана",
         "selectedPrompt": {
-          "title": "Избрана подкана",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "Избрана подкана",
           "description": "Изберете шаблон за подобряване на транскрипции или създайте нов. Използвайте ${output} в текста на подканата, за да препратите към уловения транскрипт."
         },
         "noPrompts": "Няма налични подкани",
@@ -419,7 +747,11 @@
       }
     },
     "history": {
-      "title": "История",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "История",
       "openFolder": "Отваряне на папката с записи",
       "loading": "Зареждане на историята...",
       "empty": "Все още няма транскрипции. Започнете запис, за да изградите история!",
@@ -434,34 +766,66 @@
       "transcriptionFailed": "Транскрипцията не бе успешна. Можете да опитате отново с иконата за повторен опит."
     },
     "debug": {
-      "title": "Отстраняване",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "Отстраняване",
       "logDirectory": {
-        "title": "Папка с логове",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Папка с логове",
         "description": "Мястото, където се съхраняват лог файловете"
       },
       "logLevel": {
-        "title": "Ниво на логване",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Ниво на логване",
         "description": "Задаване на подробността на логовете"
       },
       "updateChecks": {
-        "label": "Проверка за актуализации",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "Проверка за актуализации",
         "description": "Автоматична проверка за нови версии на Handy"
       },
       "soundTheme": {
-        "label": "Звукова тема",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "Звукова тема",
         "description": "Избор на звукова тема за сигнал при старт и край на записа"
       },
       "wordCorrectionThreshold": {
-        "title": "Праг за корекция на думи",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Праг за корекция на думи",
         "description": "Чувствителност при корекция на персонализирани думи"
       },
       "historyLimit": {
-        "title": "Лимит на историята",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Лимит на историята",
         "description": "Максимален брой записи в историята за пазене",
         "entries": "записа"
       },
       "recordingRetention": {
-        "title": "Автоматично изтриване на записи",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Автоматично изтриване на записи",
         "description": "Автоматично изтриване на стари записи за пестене на място",
         "never": "Никога",
         "preserveLimit": "Запазване на последните {{count}}",
@@ -471,68 +835,132 @@
         "placeholder": "Изберете период на съхранение..."
       },
       "alwaysOnMicrophone": {
-        "label": "Постоянно активен микрофон",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "Постоянно активен микрофон",
         "description": "Държане на микрофона активен за по-бърз отговор"
       },
       "clamshellMicrophone": {
-        "title": "Микрофон при затворен капак",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Микрофон при затворен капак",
         "description": "Микрофон за използване, когато капакът на лаптопа е затворен"
       },
       "postProcessingToggle": {
-        "label": "Постобработка",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "Постобработка",
         "description": "Включване на подобряване на текста с ИИ след транскрипция"
       },
       "muteWhileRecording": {
-        "label": "Заглушаване при запис",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "Заглушаване при запис",
         "description": "Заглушаване на системния звук по време на запис"
       },
       "appendTrailingSpace": {
-        "label": "Интервал в края",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "Интервал в края",
         "description": "Добавяне на интервал след поставената транскрипция"
       },
       "keyboardImplementation": {
-        "title": "Реализация на клавиатурата",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Реализация на клавиатурата",
         "description": "Избор на бекенд за глобалните бързи клавиши.",
         "bindingsReset": "Бързите клавиши бяха несъвместими и са нулирани към подразбираните"
       },
       "paths": {
-        "appData": "Данни на приложението:",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "appData": "Данни на приложението:",
         "models": "Модели:",
         "settings": "Настройки:"
       },
       "pasteDelay": {
-        "title": "Забавяне при поставяне",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Забавяне при поставяне",
         "description": "Забавяне преди симулацията на поставяне (в милисекунди). Увеличете, ако се поставя грешен текст."
       },
       "recordingBuffer": {
-        "title": "Допълнителен буфер на записа",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Допълнителен буфер на записа",
         "description": "Допълнително време (в милисекунди) за запис след пускане на клавиша, за да се улови краят на аудиото. 0 = без допълнителен буфер."
       }
     },
     "about": {
-      "title": "За приложението",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "За приложението",
       "version": {
-        "title": "Версия",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Версия",
         "description": "Текуща версия на Handy"
       },
       "appDataDirectory": {
-        "title": "Папка с данни на приложението",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Папка с данни на приложението",
         "description": "Мястото, където Handy съхранява данните си"
       },
       "sourceCode": {
-        "title": "Изходен код",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Изходен код",
         "description": "Преглед на изходния код и принос",
         "button": "Вижте в GitHub"
       },
       "supportDevelopment": {
-        "title": "Подкрепете разработката",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Подкрепете разработката",
         "description": "Помогнете ни да продължим да развиваме Handy",
         "button": "Дарение"
       },
       "acknowledgments": {
-        "title": "Благодарности",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Благодарности",
         "whisper": {
-          "title": "Whisper.cpp",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "Whisper.cpp",
           "description": "Високопроизводително изпълнение на автоматичния модел за разпознаване на реч Whisper на OpenAI",
           "details": "Handy използва Whisper.cpp за бързо локално реч-към-текст. Благодарности на Georgi Gerganov и сътрудниците за отличната работа."
         }
@@ -540,7 +968,11 @@
     }
   },
   "footer": {
-    "downloadingModel": "Изтегляне на {{model}}...",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "downloadingModel": "Изтегляне на {{model}}...",
     "checkingUpdates": "Проверка за актуализации...",
     "updateAvailable": "Налична актуализация: {{version}}",
     "updateAvailableShort": "Налична актуализация",
@@ -557,7 +989,11 @@
     "portableUpdateButton": "Отвори GitHub Releases"
   },
   "common": {
-    "loading": "Зареждане...",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "loading": "Зареждане...",
     "save": "Запазване",
     "cancel": "Отказ",
     "reset": "Нулиране",
@@ -579,16 +1015,28 @@
     "noOptionsFound": "Няма намерени опции"
   },
   "accessibility": {
-    "permissionsRequired": "Необходими са разрешения за достъпност",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "permissionsRequired": "Необходими са разрешения за достъпност",
     "permissionsDescription": "Handy се нуждае от разрешения за достъпност, за да въвежда транскрибирания текст.",
     "openSettings": "Отваряне на системните настройки",
     "dismiss": "Затваряне"
   },
   "errors": {
-    "loadDirectory": "Грешка при зареждане на папката: {{error}}",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "loadDirectory": "Грешка при зареждане на папката: {{error}}",
     "micPermissionDeniedTitle": "Достъпът до микрофона е отказан",
     "micPermissionDenied": {
-      "generic": "Операционната система отказа достъп до микрофона. Моля, дайте разрешение за микрофон в системните настройки.",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "generic": "Операционната система отказа достъп до микрофона. Моля, дайте разрешение за микрофон в системните настройки.",
       "windows": "Включете достъп до микрофона в Настройки → Поверителност и сигурност → Микрофон (включително за настолни приложения).",
       "macos": "Дайте достъп до микрофона в Системни настройки → Поверителност и сигурност → Микрофон.",
       "linux": "Дайте достъп до микрофона в настройките за звук или поверителност на системата."
@@ -602,11 +1050,19 @@
     "pasteFailed": "Текстът не можа да бъде поставен в активното приложение."
   },
   "appLanguage": {
-    "title": "Език на приложението",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "title": "Език на приложението",
     "description": "Промяна на езика на интерфейса на Handy"
   },
   "overlay": {
-    "transcribing": "Транскрибиране...",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "transcribing": "Транскрибиране...",
     "processing": "Обработка..."
   }
 }

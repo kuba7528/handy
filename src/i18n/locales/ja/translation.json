@@ -1,6 +1,14 @@
 {
-  "tray": {
-    "settings": "設定...",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },  "tray": {
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "settings": "設定...",
     "checkUpdates": "アップデートを確認...",
     "copyLastTranscript": "最新の文字起こしをコピー",
     "unloadModel": "モデルをアンロード",
@@ -9,7 +17,11 @@
     "cancel": "キャンセル"
   },
   "sidebar": {
-    "general": "一般",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "general": "一般",
     "models": "モデル",
     "advanced": "詳細設定",
     "postProcessing": "後処理",
@@ -18,95 +30,187 @@
     "about": "概要"
   },
   "onboarding": {
-    "subtitle": "開始するには、文字起こしモデルを選択してください",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "subtitle": "開始するには、文字起こしモデルを選択してください",
     "recommended": "おすすめ",
     "download": "ダウンロード",
     "downloading": "ダウンロード中...",
     "customModelDescription": "公式サポート対象外",
     "downloadFailed": "ダウンロードに失敗しました。もう一度お試しください。",
     "modelCard": {
-      "accuracy": "精度",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "accuracy": "精度",
       "speed": "速度"
     },
     "models": {
-      "small": {
-        "name": "Whisper Small",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "small": {
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Whisper Small",
         "description": "高速でそこそこ正確。"
       },
       "medium": {
-        "name": "Whisper Medium",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Whisper Medium",
         "description": "良好な精度、中程度の速度"
       },
       "turbo": {
-        "name": "Whisper Turbo",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Whisper Turbo",
         "description": "精度と速度のバランスが良い。"
       },
       "large": {
-        "name": "Whisper Large",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Whisper Large",
         "description": "良好な精度、ただし低速。"
       },
       "parakeet-tdt-0.6b-v2": {
-        "name": "Parakeet V2",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Parakeet V2",
         "description": "英語のみ。英語話者に最適なモデル。"
       },
       "parakeet-tdt-0.6b-v3": {
-        "name": "Parakeet V3",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Parakeet V3",
         "description": "高速で正確"
       },
       "moonshine-base": {
-        "name": "Moonshine Base",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Moonshine Base",
         "description": "非常に高速、英語のみ。アクセントにも対応。"
       },
       "moonshine-tiny-streaming-en": {
-        "name": "Moonshine V2 Tiny",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Moonshine V2 Tiny",
         "description": "超高速、英語のみ"
       },
       "moonshine-small-streaming-en": {
-        "name": "Moonshine V2 Small",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Moonshine V2 Small",
         "description": "高速、英語のみ。速度と精度のバランスが良い。"
       },
       "moonshine-medium-streaming-en": {
-        "name": "Moonshine V2 Medium",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Moonshine V2 Medium",
         "description": "英語のみ。高品質。"
       },
       "breeze-asr": {
-        "name": "Breeze ASR",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Breeze ASR",
         "description": "台湾華語に最適化。コードスイッチングに対応。"
       },
       "sense-voice-int8": {
-        "name": "SenseVoice",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "SenseVoice",
         "description": "非常に高速。中国語、英語、日本語、韓国語、広東語。"
       },
       "gigaam-v3-e2e-ctc": {
-        "name": "GigaAM v3",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "GigaAM v3",
         "description": "ロシア語音声認識。高速かつ高精度。"
       },
       "canary-180m-flash": {
-        "name": "Canary 180M Flash",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Canary 180M Flash",
         "description": "非常に高速。英語、ドイツ語、スペイン語、フランス語。翻訳対応。"
       },
       "canary-1b-v2": {
-        "name": "Canary 1B v2",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Canary 1B v2",
         "description": "高精度な多言語対応。25のヨーロッパ言語。翻訳対応。"
       },
       "cohere-int8": {
-        "name": "Cohere",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "name": "Cohere",
         "description": "大型で低速ですが、非常に高精度な多言語モデル。"
       }
     },
     "errors": {
-      "loadModels": "利用可能なモデルの読み込みに失敗しました",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "loadModels": "利用可能なモデルの読み込みに失敗しました",
       "downloadModel": "モデルのダウンロードに失敗しました: {{error}}"
     },
     "permissions": {
-      "title": "権限が必要です",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "権限が必要です",
       "description": "Handyが正常に動作するにはいくつかの権限が必要です。",
       "microphone": {
-        "title": "マイクへのアクセス",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "マイクへのアクセス",
         "description": "文字起こしのためにあなたの声を聞くために必要です。"
       },
       "accessibility": {
-        "title": "アクセシビリティへのアクセス",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "アクセシビリティへのアクセス",
         "description": "アプリケーションに文字起こしテキストを入力するために必要です。"
       },
       "grant": "権限を許可",
@@ -114,13 +218,21 @@
       "waiting": "待機中...",
       "allGranted": "準備完了！",
       "errors": {
-        "checkFailed": "権限の確認に失敗しました。もう一度お試しください。",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "checkFailed": "権限の確認に失敗しました。もう一度お試しください。",
         "requestFailed": "権限のリクエストに失敗しました。もう一度お試しください。"
       }
     }
   },
   "modelSelector": {
-    "custom": "カスタム",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "custom": "カスタム",
     "active": "アクティブ",
     "switching": "切替中...",
     "noModelsAvailable": "利用可能なモデルがありません",
@@ -140,7 +252,11 @@
     "deleteModel": "{{modelName}}を削除",
     "downloadSpeed": "{{speed}} MB/s",
     "capabilities": {
-      "languageSelection": "複数の入力言語をサポート",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "languageSelection": "複数の入力言語をサポート",
       "multiLanguage": "多言語",
       "translation": "英語への翻訳が可能",
       "translate": "英語に翻訳",
@@ -151,12 +267,24 @@
     "cancelDownload": "ダウンロードをキャンセル"
   },
   "settings": {
-    "modelSettings": {
-      "title": "{{model}} 設定",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "modelSettings": {
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "{{model}} 設定",
       "noSettingsNeeded": "このモデルは設定不要で自動的に動作します。"
     },
     "models": {
-      "title": "転写モデル",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "転写モデル",
       "description": "転写モデルを選択するか、追加のモデルをダウンロードします。異なるモデルは精度と速度のレベルが異なります。",
       "downloaded": "ダウンロード済み",
       "available": "ダウンロード可能",
@@ -164,7 +292,11 @@
       "deleteActiveConfirm": "{{modelName}}は現在使用中のモデルです。削除すると、新しいモデルを選択するまで文字起こしが停止します。本当に削除しますか？",
       "deleteTitle": "モデルを削除",
       "filters": {
-        "all": "すべて",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "all": "すべて",
         "multiLanguage": "多言語",
         "translation": "翻訳",
         "allLanguages": "すべての言語"
@@ -174,36 +306,68 @@
       "availableModels": "ダウンロード可能"
     },
     "general": {
-      "title": "一般",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "一般",
       "shortcut": {
-        "title": "Handyショートカット",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "Handyショートカット",
         "description": "音声録音を開始するキーボードショートカットを設定",
         "loading": "ショートカットを読み込み中...",
         "none": "ショートカットが設定されていません",
         "notFound": "ショートカットが見つかりません",
         "pressKeys": "キーを押してください...",
         "bindings": {
-          "transcribe": {
-            "name": "文字起こしショートカット",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "transcribe": {
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },            "name": "文字起こしショートカット",
             "description": "音声を録音して文字起こしするためのキーボードショートカット。"
           },
           "cancel": {
-            "name": "キャンセルショートカット",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },            "name": "キャンセルショートカット",
             "description": "現在の録音をキャンセルするためのキーボードショートカット。"
           },
           "transcribe_with_post_process": {
-            "name": "後処理ホットキー",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },            "name": "後処理ホットキー",
             "description": "オプション：文字起こしに常にAI後処理を適用する専用ホットキー。"
           }
         },
         "errors": {
-          "restore": "元のショートカットを復元できませんでした",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "restore": "元のショートカットを復元できませんでした",
           "set": "ショートカットを設定できませんでした: {{error}}",
           "reset": "ショートカットを元の値にリセットできませんでした"
         }
       },
       "language": {
-        "title": "言語",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "言語",
         "description": "音声認識の言語を選択してください。自動を選択すると言語を自動的に判定します。特定の言語を選択すると、その言語の精度が向上する場合があります。",
         "descriptionUnsupported": "Parakeetモデルは言語を自動的に検出します。手動選択は不要です。",
         "searchPlaceholder": "言語を検索...",
@@ -211,91 +375,175 @@
         "auto": "自動"
       },
       "pushToTalk": {
-        "label": "プッシュトゥトーク",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "プッシュトゥトーク",
         "description": "押し続けて録音、離して停止"
       }
     },
     "sound": {
-      "title": "サウンド",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "サウンド",
       "microphone": {
-        "title": "マイク",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "マイク",
         "description": "使用するマイクデバイスを選択",
         "placeholder": "マイクを選択...",
         "loading": "読み込み中..."
       },
       "audioFeedback": {
-        "label": "音声フィードバック",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "音声フィードバック",
         "description": "録音の開始と停止時にサウンドを再生"
       },
       "outputDevice": {
-        "title": "出力デバイス",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "出力デバイス",
         "description": "フィードバックサウンド用の音声出力デバイスを選択",
         "placeholder": "出力デバイスを選択...",
         "loading": "読み込み中..."
       },
       "volume": {
-        "title": "音量",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "音量",
         "description": "音声フィードバックの音量を調整"
       }
     },
     "advanced": {
-      "title": "詳細設定",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "詳細設定",
       "groups": {
-        "app": "アプリ",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "app": "アプリ",
         "output": "出力",
         "transcription": "文字起こし",
         "history": "履歴",
         "experimental": "実験的"
       },
       "experimentalToggle": {
-        "label": "実験的機能",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "実験的機能",
         "description": "まだ開発中の実験的機能を有効にします。"
       },
       "lazyStreamClose": {
-        "label": "文字起こし間でマイクを開いたままにする",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "文字起こし間でマイクを開いたままにする",
         "description": "録音停止後30秒間マイクストリームを開いたままにし、連続した文字起こしの遅延を軽減します。Bluetooth音声品質に影響する場合があります。"
       },
       "acceleration": {
-        "whisper": {
-          "title": "Whisper アクセラレーション",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "whisper": {
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "Whisper アクセラレーション",
           "description": "Whisper モデルのハードウェアアクセラレーション。自動モードでは利用可能な場合 GPU を使用します（macOS では Metal、Windows/Linux では Vulkan）。"
         },
         "ort": {
-          "title": "ONNX アクセラレーション",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "ONNX アクセラレーション",
           "description": "ONNX モデルのハードウェアアクセラレーション（Parakeet、Canary、Moonshine など）。Windows の DirectML は実験的です。モデルの文字起こしに失敗する場合があります。"
         },
         "gpuDevice": {
-          "title": "GPUデバイス",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "GPUデバイス",
           "description": "Whisper推論に使用するGPUを選択します。自動は専用GPUを選択します。",
           "auto": "自動"
         }
       },
       "startHidden": {
-        "label": "非表示で起動",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "非表示で起動",
         "description": "ウィンドウを開かずにシステムトレイに起動。"
       },
       "autostart": {
-        "label": "起動時に実行",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "起動時に実行",
         "description": "コンピューターにログインしたときにHandyを自動的に起動。"
       },
       "showTrayIcon": {
-        "label": "トレイアイコンを表示",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "トレイアイコンを表示",
         "description": "システムトレイにHandyのアイコンを表示します。"
       },
       "overlay": {
-        "title": "オーバーレイ位置",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "オーバーレイ位置",
         "description": "録音と文字起こし中に視覚的なフィードバックオーバーレイを表示。Linuxでは「なし」を推奨。",
         "options": {
-          "none": "なし",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "none": "なし",
           "bottom": "下",
           "top": "上"
         }
       },
       "pasteMethod": {
-        "title": "貼り付け方法",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "貼り付け方法",
         "description": "テキストの挿入方法を選択。直接：システム入力でタイピングをシミュレート。なし：貼り付けをスキップし、履歴/クリップボードのみ更新。",
         "options": {
-          "clipboard": "クリップボード ({{modifier}}+V)",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "clipboard": "クリップボード ({{modifier}}+V)",
           "clipboardCtrlShiftV": "クリップボード (Ctrl+Shift+V)",
           "clipboardShiftInsert": "クリップボード (Shift+Insert)",
           "direct": "直接",
@@ -305,25 +553,49 @@
         "externalScriptPlaceholder": "/path/to/your/script.sh"
       },
       "typingTool": {
-        "title": "タイピングツール",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "タイピングツール",
         "description": "直接貼り付け方式で使用する Linux のタイピングツールを選択します。Auto は自動的に最適なツールを検出して使用します。",
         "options": {
-          "auto": "Auto（推奨）"
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "auto": "Auto（推奨）"
         }
       },
       "clipboardHandling": {
-        "title": "クリップボードの処理",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "クリップボードの処理",
         "description": "クリップボードを変更しないを選択すると、文字起こし後も現在のクリップボード内容が保持されます。クリップボードにコピーを選択すると、貼り付け後も文字起こし結果がクリップボードに残ります。",
         "options": {
-          "dontModify": "クリップボードを変更しない",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "dontModify": "クリップボードを変更しない",
           "copyToClipboard": "クリップボードにコピー"
         }
       },
       "autoSubmit": {
-        "title": "自動送信",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "自動送信",
         "description": "テキスト挿入後に選択したキーの組み合わせを自動的に送信します。macOSではCmd+Enter、Windows/LinuxではSuper+Enterが適用されます。",
         "options": {
-          "off": "オフ",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "off": "オフ",
           "enter": "Enter",
           "cmdEnter": "Cmd+Enter",
           "superEnter": "Super+Enter",
@@ -331,15 +603,27 @@
         }
       },
       "translateToEnglish": {
-        "label": "英語に翻訳",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "英語に翻訳",
         "description": "文字起こし中に他の言語から英語に自動的に翻訳。",
         "descriptionUnsupported": "翻訳は{{model}}モデルではサポートされていません。"
       },
       "modelUnload": {
-        "title": "モデルのアンロード",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "モデルのアンロード",
         "description": "指定時間モデルが使用されていない場合、GPU/CPUメモリを自動的に解放",
         "options": {
-          "never": "しない",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "never": "しない",
           "immediately": "即座に",
           "min2": "2分後",
           "min5": "5分後",
@@ -350,7 +634,11 @@
         }
       },
       "customWords": {
-        "title": "カスタム単語",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "カスタム単語",
         "description": "よく誤認識または誤入力される単語を追加します。システムは自動的に類似した発音の単語をリストに合わせて修正します。",
         "placeholder": "単語を追加",
         "add": "追加",
@@ -359,34 +647,66 @@
       }
     },
     "postProcessing": {
-      "title": "後処理",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "後処理",
       "hotkey": {
-        "title": "ホットキー"
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "ホットキー"
       },
       "api": {
-        "title": "API（OpenAI互換）",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "API（OpenAI互換）",
         "provider": {
-          "title": "プロバイダー",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "プロバイダー",
           "description": "OpenAI互換のプロバイダーを選択。"
         },
         "appleIntelligence": {
-          "title": "Apple Intelligence",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "Apple Intelligence",
           "description": "完全にデバイス上で動作。APIキーやネットワークアクセスは不要。",
           "requirements": "macOS Tahoe（26.0）以降を実行するApple Silicon Macが必要です。システム設定でApple Intelligenceを有効にする必要があります。",
           "unavailable": "このデバイスではApple Intelligenceを利用できません。macOS Tahoe（26.0）以降を実行し、システム設定でApple Intelligenceが有効になっているApple Silicon Macが必要です。"
         },
         "baseUrl": {
-          "title": "ベースURL",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "ベースURL",
           "description": "選択したプロバイダーのAPIベースURL。カスタムプロバイダーのみ編集可能。",
           "placeholder": "https://api.openai.com/v1"
         },
         "apiKey": {
-          "title": "APIキー",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "APIキー",
           "description": "選択したプロバイダーのAPIキー。",
           "placeholder": "sk-..."
         },
         "model": {
-          "title": "モデル",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "モデル",
           "descriptionApple": "オプションの数値トークン制限を指定するか、デフォルトのオンデバイスプリセットを使用。",
           "descriptionCustom": "カスタムエンドポイントが期待するモデル識別子を指定。",
           "descriptionDefault": "選択したプロバイダーが提供するモデルを選択。",
@@ -397,9 +717,17 @@
         }
       },
       "prompts": {
-        "title": "プロンプト",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "プロンプト",
         "selectedPrompt": {
-          "title": "選択したプロンプト",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "選択したプロンプト",
           "description": "文字起こしを改善するテンプレートを選択するか、新しく作成します。プロンプトテキスト内で${output}を使用して、キャプチャした文字起こしを参照します。"
         },
         "noPrompts": "プロンプトがありません",
@@ -419,7 +747,11 @@
       }
     },
     "history": {
-      "title": "履歴",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "履歴",
       "openFolder": "録音フォルダを開く",
       "loading": "履歴を読み込み中...",
       "empty": "まだ文字起こしがありません。録音を開始して履歴を作成しましょう！",
@@ -434,34 +766,66 @@
       "transcriptionFailed": "文字起こしに失敗しました。リトライアイコンを使用して再文字起こしできます。"
     },
     "debug": {
-      "title": "デバッグ",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "デバッグ",
       "logDirectory": {
-        "title": "ログディレクトリ",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "ログディレクトリ",
         "description": "ログファイルの保存場所"
       },
       "logLevel": {
-        "title": "ログレベル",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "ログレベル",
         "description": "ログの詳細度を設定"
       },
       "updateChecks": {
-        "label": "アップデートを確認",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "アップデートを確認",
         "description": "Handyの新しいバージョンを自動的にチェック"
       },
       "soundTheme": {
-        "label": "サウンドテーマ",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "サウンドテーマ",
         "description": "録音開始・停止フィードバックのサウンドテーマを選択"
       },
       "wordCorrectionThreshold": {
-        "title": "単語修正しきい値",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "単語修正しきい値",
         "description": "カスタム単語修正の感度"
       },
       "historyLimit": {
-        "title": "履歴上限",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "履歴上限",
         "description": "保持する履歴エントリーの最大数",
         "entries": "件"
       },
       "recordingRetention": {
-        "title": "録音の自動削除",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "録音の自動削除",
         "description": "古い録音を自動的に削除して容量を節約",
         "never": "しない",
         "preserveLimit": "最新{{count}}件を保持",
@@ -471,68 +835,132 @@
         "placeholder": "保持期間を選択..."
       },
       "alwaysOnMicrophone": {
-        "label": "マイク常時オン",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "マイク常時オン",
         "description": "より速い応答のためにマイクをアクティブに保つ"
       },
       "clamshellMicrophone": {
-        "title": "クラムシェルマイク",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "クラムシェルマイク",
         "description": "ノートパソコンの蓋を閉じたときに使用するマイク"
       },
       "postProcessingToggle": {
-        "label": "後処理",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "後処理",
         "description": "文字起こし後のAIによるテキスト改善を有効化"
       },
       "muteWhileRecording": {
-        "label": "録音中にミュート",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "録音中にミュート",
         "description": "録音中にシステムオーディオをミュート"
       },
       "appendTrailingSpace": {
-        "label": "末尾にスペースを追加",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "label": "末尾にスペースを追加",
         "description": "貼り付けた文字起こしの後にスペースを追加"
       },
       "keyboardImplementation": {
-        "title": "キーボード実装",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "キーボード実装",
         "description": "キーボードショートカットのバックエンドを選択してください。",
         "bindingsReset": "キーボードショートカットに互換性がなかったため、デフォルトにリセットされました"
       },
       "paths": {
-        "appData": "アプリデータ:",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "appData": "アプリデータ:",
         "models": "モデル:",
         "settings": "設定:"
       },
       "pasteDelay": {
-        "title": "貼り付け遅延",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "貼り付け遅延",
         "description": "貼り付けキー送信前の遅延（ミリ秒）。間違ったテキストが貼り付けられる場合は増やしてください。"
       },
       "recordingBuffer": {
-        "title": "追加録音バッファ",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "追加録音バッファ",
         "description": "キーを離した後に録音を続ける追加時間（ミリ秒）。末尾の音声を捕捉するため。0 = 追加バッファなし。"
       }
     },
     "about": {
-      "title": "概要",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "title": "概要",
       "version": {
-        "title": "バージョン",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "バージョン",
         "description": "Handyの現在のバージョン"
       },
       "appDataDirectory": {
-        "title": "アプリデータディレクトリ",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "アプリデータディレクトリ",
         "description": "Handyがデータを保存する場所"
       },
       "sourceCode": {
-        "title": "ソースコード",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "ソースコード",
         "description": "ソースコードを見て貢献する",
         "button": "GitHubで見る"
       },
       "supportDevelopment": {
-        "title": "開発を支援",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "開発を支援",
         "description": "Handyの開発を支援してください",
         "button": "寄付する"
       },
       "acknowledgments": {
-        "title": "謝辞",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },        "title": "謝辞",
         "whisper": {
-          "title": "Whisper.cpp",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },          "title": "Whisper.cpp",
           "description": "OpenAIのWhisper自動音声認識モデルの高性能推論",
           "details": "Handyは高速でローカルな音声からテキストへの変換にWhisper.cppを使用しています。Georgi Gerganov氏と貢献者の皆様の素晴らしい仕事に感謝します。"
         }
@@ -540,7 +968,11 @@
     }
   },
   "footer": {
-    "downloadingModel": "{{model}}をダウンロード中...",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "downloadingModel": "{{model}}をダウンロード中...",
     "checkingUpdates": "アップデートを確認中...",
     "updateAvailable": "アップデートあり: {{version}}",
     "updateAvailableShort": "アップデートあり",
@@ -557,7 +989,11 @@
     "portableUpdateButton": "Open GitHub Releases"
   },
   "common": {
-    "loading": "読み込み中...",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "loading": "読み込み中...",
     "save": "保存",
     "cancel": "キャンセル",
     "reset": "リセット",
@@ -579,16 +1015,28 @@
     "noOptionsFound": "オプションが見つかりません"
   },
   "accessibility": {
-    "permissionsRequired": "アクセシビリティ権限が必要です",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "permissionsRequired": "アクセシビリティ権限が必要です",
     "permissionsDescription": "Handyが文字起こしテキストを入力するには、アクセシビリティ権限が必要です。",
     "openSettings": "システム設定を開く",
     "dismiss": "閉じる"
   },
   "errors": {
-    "loadDirectory": "ディレクトリの読み込みエラー: {{error}}",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "loadDirectory": "ディレクトリの読み込みエラー: {{error}}",
     "micPermissionDeniedTitle": "マイクへのアクセスが拒否されました",
     "micPermissionDenied": {
-      "generic": "オペレーティングシステムによりマイクへのアクセスが拒否されました。システム設定でマイクの許可を付与してください。",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },      "generic": "オペレーティングシステムによりマイクへのアクセスが拒否されました。システム設定でマイクの許可を付与してください。",
       "windows": "設定 → プライバシーとセキュリティ → マイク（デスクトップアプリのアクセスを含む）でマイクへのアクセスを有効にしてください。",
       "macos": "システム設定 → プライバシーとセキュリティ → マイクでマイクへのアクセスを許可してください。",
       "linux": "システムのサウンドまたはプライバシー設定でマイクへのアクセスを許可してください。"
@@ -602,11 +1050,19 @@
     "pasteFailed": "アクティブなアプリケーションにテキストを貼り付けられませんでした。"
   },
   "appLanguage": {
-    "title": "アプリケーション言語",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "title": "アプリケーション言語",
     "description": "Handyインターフェースの言語を変更"
   },
   "overlay": {
-    "transcribing": "文字起こし中...",
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimize",
+    "close": "Close"
+  },    "transcribing": "文字起こし中...",
     "processing": "処理中..."
   }
 }

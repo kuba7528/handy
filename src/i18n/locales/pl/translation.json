@@ -1,4 +1,9 @@
 {
+  "window": {
+    "title": "Handy",
+    "minimize": "Minimalizuj",
+    "close": "Zamknij"
+  },
   "tray": {
     "settings": "Ustawienia...",
     "checkUpdates": "Sprawdź aktualizacje...",
@@ -263,7 +268,8 @@
       },
       "pushToTalk": {
         "label": "Push To Talk",
-        "description": "Przytrzymaj, aby nagrywać, puść, aby zatrzymać"
+        "description": "Przytrzymaj, aby nagrywać, puść, aby zatrzymać",
+        "disabledByContinuous": "Niedostępne przy włączonym ciągłym nasłuchiwaniu — mikrofon pozostaje otwarty do automatycznej transkrypcji."
       },
       "continuousListening": {
         "label": "Ciągłe nasłuchiwanie",
