@@ -710,6 +710,10 @@
     "description": "Change the language of the Handy interface"
   },
   "listeningStatus": {
+    "compactMode": {
+      "enter": "Double-click to enter compact mode",
+      "exit": "Double-click to restore the full window"
+    },
     "listening": "Listening",
     "recording": "Recording",
     "transcribing": "Transcribing",

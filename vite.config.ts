@@ -21,6 +21,7 @@ export default defineConfig(async () => ({
     rollupOptions: {
       input: {
         main: resolve(__dirname, "index.html"),
+        "listening-pill": resolve(__dirname, "listening-pill.html"),
       },
     },
   },

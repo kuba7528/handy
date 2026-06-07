@@ -471,6 +471,25 @@ async getListeningStatus() : Promise<Result<string, string>> {
     else return { status: "error", error: e  as any };
 }
 },
+async enterListeningCompactMode() : Promise<Result<null, string>> {
+    try {
+    return { status: "ok", data: await TAURI_INVOKE("enter_listening_compact_mode") };
+} catch (e) {
+    if(e instanceof Error) throw e;
+    else return { status: "error", error: e  as any };
+}
+},
+async exitListeningCompactMode() : Promise<Result<null, string>> {
+    try {
+    return { status: "ok", data: await TAURI_INVOKE("exit_listening_compact_mode") };
+} catch (e) {
+    if(e instanceof Error) throw e;
+    else return { status: "error", error: e  as any };
+}
+},
+async isListeningCompactMode() : Promise<boolean> {
+    return await TAURI_INVOKE("is_listening_compact_mode");
+},
 async isPortable() : Promise<boolean> {
     return await TAURI_INVOKE("is_portable");
 },

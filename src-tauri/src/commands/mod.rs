@@ -23,6 +23,24 @@ pub fn get_listening_status(app: AppHandle) -> String {
 
 #[tauri::command]
 #[specta::specta]
+pub fn enter_listening_compact_mode(app: AppHandle) -> Result<(), String> {
+    crate::listening_compact::enter_listening_compact_mode(&app)
+}
+
+#[tauri::command]
+#[specta::specta]
+pub fn exit_listening_compact_mode(app: AppHandle) -> Result<(), String> {
+    crate::listening_compact::exit_listening_compact_mode(&app)
+}
+
+#[tauri::command]
+#[specta::specta]
+pub fn is_listening_compact_mode() -> bool {
+    crate::listening_compact::is_compact_mode()
+}
+
+#[tauri::command]
+#[specta::specta]
 pub fn is_portable() -> bool {
     crate::portable::is_portable()
 }

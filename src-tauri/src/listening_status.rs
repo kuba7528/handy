@@ -50,7 +50,11 @@ pub fn set_listening_status(app_handle: &AppHandle, status: ListeningStatus) {
     if let Some(store) = app_handle.try_state::<ListeningStatusStore>() {
         *store.0.lock().unwrap() = status;
     }
-    let _ = app_handle.emit("listening-status", status.as_str());
+    emit_listening_event(app_handle, "listening-status", status.as_str());
+
+    if status == ListeningStatus::Idle && crate::listening_compact::is_compact_mode() {
+        let _ = crate::listening_compact::exit_listening_compact_mode(app_handle);
+    }
 }
 
 pub fn get_listening_status(app_handle: &AppHandle) -> ListeningStatus {
@@ -100,10 +104,20 @@ pub fn emit_levels(app_handle: &AppHandle, levels: &Vec<f32>) {
     }
     LAST_LEVEL_EMIT_MS.store(now_ms, Ordering::Relaxed);
 
-    // Target the main window explicitly — the recording overlay WebView was removed.
+    emit_listening_event(app_handle, "mic-level", levels);
+}
+
+fn emit_listening_event<T: Clone + serde::Serialize>(
+    app_handle: &AppHandle,
+    event: &str,
+    payload: T,
+) {
     if let Some(window) = app_handle.get_webview_window("main") {
-        let _ = window.emit("mic-level", levels.clone());
-    } else {
-        let _ = app_handle.emit("mic-level", levels);
+        let _ = window.emit(event, payload.clone());
+    }
+    if let Some(pill) =
+        app_handle.get_webview_window(crate::listening_compact::LISTENING_PILL_LABEL)
+    {
+        let _ = pill.emit(event, payload);
     }
 }

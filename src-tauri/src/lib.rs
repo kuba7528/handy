@@ -12,6 +12,7 @@ mod helpers;
 mod input;
 mod llm_client;
 mod managers;
+mod listening_compact;
 mod listening_status;
 pub mod portable;
 mod settings;
@@ -89,7 +90,7 @@ fn build_console_filter() -> env_filter::Filter {
     builder.build()
 }
 
-fn show_main_window(app: &AppHandle) {
+pub fn show_main_window(app: &AppHandle) {
     if let Some(main_window) = app.get_webview_window("main") {
         if let Err(e) = main_window.unminimize() {
             log::error!("Failed to unminimize webview window: {}", e);
@@ -409,6 +410,9 @@ pub fn run(cli_args: CliArgs) {
             show_main_window_command,
             commands::cancel_operation,
             commands::get_listening_status,
+            commands::enter_listening_compact_mode,
+            commands::exit_listening_compact_mode,
+            commands::is_listening_compact_mode,
             commands::is_portable,
             commands::get_app_dir_path,
             commands::get_app_settings,

@@ -713,6 +713,10 @@
     "listening": "Nasłuchuję",
     "recording": "Nagrywanie",
     "transcribing": "Transkrypcja",
-    "processing": "Przetwarzanie"
+    "processing": "Przetwarzanie",
+    "compactMode": {
+      "enter": "Kliknij dwukrotnie, aby włączyć tryb kompaktowy",
+      "exit": "Kliknij dwukrotnie, aby wrócić do pełnego okna"
+    }
   }
 }
