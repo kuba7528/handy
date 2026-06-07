@@ -715,8 +715,9 @@
     "transcribing": "Transkrypcja",
     "processing": "Przetwarzanie",
     "compactMode": {
-      "enter": "Kliknij dwukrotnie, aby włączyć tryb kompaktowy",
-      "exit": "Kliknij dwukrotnie, aby wrócić do pełnego okna"
+      "enter": "Kliknij lub kliknij dwukrotnie, aby włączyć tryb kompaktowy",
+      "exit": "Kliknij lub kliknij dwukrotnie, aby wrócić do pełnego okna",
+      "drag": "Przeciągnij, aby przesunąć pigułkę"
     }
   }
 }

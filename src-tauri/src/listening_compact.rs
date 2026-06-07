@@ -15,19 +15,24 @@ pub fn enter_listening_compact_mode(app: &AppHandle) -> Result<(), String> {
         return Ok(());
     }
 
-    if let Some(main) = app.get_webview_window("main") {
-        let _ = main.hide();
-    }
-
     ensure_pill_window(app)?;
     if let Some(pill) = app.get_webview_window(LISTENING_PILL_LABEL) {
-        center_window(&pill)?;
-        let _ = pill.show();
-        let _ = pill.set_focus();
+        if let Err(e) = center_window(&pill) {
+            log::warn!("Failed to center listening pill window: {e}");
+        }
+        pill.show().map_err(|e| e.to_string())?;
+        pill.set_focus().map_err(|e| e.to_string())?;
+    } else {
+        return Err("Listening pill window was not created".to_string());
+    }
+
+    if let Some(main) = app.get_webview_window("main") {
+        main.hide().map_err(|e| e.to_string())?;
     }
 
     COMPACT_MODE.store(true, Ordering::Relaxed);
     let _ = app.emit("listening-compact-mode", true);
+    log::info!("Entered listening compact mode");
     Ok(())
 }
 

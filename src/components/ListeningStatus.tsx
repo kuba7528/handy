@@ -174,15 +174,26 @@ const ListeningStatus: React.FC<ListeningStatusProps> = ({
     return () => window.cancelAnimationFrame(frame);
   }, [status]);
 
+  const compactClickTimerRef = useRef<ReturnType<typeof setTimeout> | null>(
+    null,
+  );
+
+  useEffect(() => {
+    return () => {
+      if (compactClickTimerRef.current) {
+        clearTimeout(compactClickTimerRef.current);
+      }
+    };
+  }, []);
+
   const handleEnterCompactMode = async () => {
     if (onEnterCompactMode) {
       onEnterCompactMode();
       return;
     }
-    try {
-      await commands.enterListeningCompactMode();
-    } catch (e) {
-      console.warn("Failed to enter compact mode:", e);
+    const result = await commands.enterListeningCompactMode();
+    if (result.status === "error") {
+      console.warn("Failed to enter compact mode:", result.error);
     }
   };
 
@@ -191,20 +202,40 @@ const ListeningStatus: React.FC<ListeningStatusProps> = ({
       onExitCompactMode();
       return;
     }
-    try {
-      await commands.exitListeningCompactMode();
-    } catch (e) {
-      console.warn("Failed to exit compact mode:", e);
+    const result = await commands.exitListeningCompactMode();
+    if (result.status === "error") {
+      console.warn("Failed to exit compact mode:", result.error);
     }
   };
 
-  const handleDoubleClick = (event: React.MouseEvent<HTMLDivElement>) => {
-    if (event.button !== 0) return;
+  const triggerCompactAction = () => {
     if (variant === "pill") {
       void handleExitCompactMode();
     } else {
       void handleEnterCompactMode();
     }
+  };
+
+  const handleCompactClick = (event: React.MouseEvent<HTMLElement>) => {
+    if (event.button !== 0) return;
+    event.stopPropagation();
+    if (compactClickTimerRef.current) {
+      clearTimeout(compactClickTimerRef.current);
+    }
+    compactClickTimerRef.current = setTimeout(() => {
+      compactClickTimerRef.current = null;
+      triggerCompactAction();
+    }, 280);
+  };
+
+  const handleDoubleClick = (event: React.MouseEvent<HTMLElement>) => {
+    if (event.button !== 0) return;
+    event.stopPropagation();
+    if (compactClickTimerRef.current) {
+      clearTimeout(compactClickTimerRef.current);
+      compactClickTimerRef.current = null;
+    }
+    triggerCompactAction();
   };
 
   if (status === "idle") {
@@ -239,18 +270,8 @@ const ListeningStatus: React.FC<ListeningStatusProps> = ({
       <MicrophoneIcon width={18} height={18} className={iconClassName} />
     );
 
-  return (
-    <div
-      data-tauri-drag-region={isPill ? true : undefined}
-      className={`flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/80 border border-mid-gray/30 text-logo-primary ${
-        isPill ? "cursor-grab active:cursor-grabbing select-none" : "cursor-default"
-      }`}
-      role="status"
-      aria-live="polite"
-      aria-label={statusLabel}
-      title={compactHint}
-      onDoubleClick={handleDoubleClick}
-    >
+  const statusBody = (
+    <>
       <div className="flex items-center shrink-0">{icon}</div>
 
       <div className="flex items-center gap-2 min-w-0">
@@ -274,7 +295,8 @@ const ListeningStatus: React.FC<ListeningStatusProps> = ({
           type="button"
           data-tauri-drag-region={false}
           className="flex items-center justify-center w-6 h-6 rounded-full shrink-0 hover:bg-logo-primary/20 transition-colors text-logo-primary"
-          onClick={() => {
+          onClick={(event) => {
+            event.stopPropagation();
             commands.cancelOperation();
           }}
           aria-label={t("common.cancel")}
@@ -282,6 +304,50 @@ const ListeningStatus: React.FC<ListeningStatusProps> = ({
           <CancelIcon />
         </button>
       )}
+    </>
+  );
+
+  if (isPill) {
+    return (
+      <div
+        className="flex items-center gap-1.5 px-1.5 py-1.5 rounded-full bg-black/80 border border-mid-gray/30 text-logo-primary select-none"
+        role="status"
+        aria-live="polite"
+        aria-label={statusLabel}
+        title={compactHint}
+      >
+        <div
+          data-tauri-drag-region
+          className="flex items-center justify-center w-5 h-8 shrink-0 cursor-grab active:cursor-grabbing rounded-full text-text/50 hover:text-text/80"
+          aria-hidden="true"
+          title={t("listeningStatus.compactMode.drag")}
+        >
+          <span className="text-xs leading-none tracking-widest">⋮⋮</span>
+        </div>
+        <div
+          className="flex items-center gap-2 min-w-0 cursor-pointer"
+          data-tauri-drag-region={false}
+          onClick={handleCompactClick}
+          onDoubleClick={handleDoubleClick}
+        >
+          {statusBody}
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div
+      className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/80 border border-mid-gray/30 text-logo-primary cursor-pointer"
+      role="status"
+      aria-live="polite"
+      aria-label={statusLabel}
+      title={compactHint}
+      data-tauri-drag-region={false}
+      onClick={handleCompactClick}
+      onDoubleClick={handleDoubleClick}
+    >
+      {statusBody}
     </div>
   );
 };

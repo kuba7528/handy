@@ -48,7 +48,10 @@ const ListeningPillApp: React.FC = () => {
 
   const handleExitCompactMode = async () => {
     try {
-      await commands.exitListeningCompactMode();
+      const result = await commands.exitListeningCompactMode();
+      if (result.status === "error") {
+        console.warn("Failed to exit compact mode:", result.error);
+      }
     } catch (e) {
       console.warn("Failed to exit compact mode:", e);
     }

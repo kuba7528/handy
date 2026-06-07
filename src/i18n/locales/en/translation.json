@@ -711,8 +711,9 @@
   },
   "listeningStatus": {
     "compactMode": {
-      "enter": "Double-click to enter compact mode",
-      "exit": "Double-click to restore the full window"
+      "enter": "Click or double-click to enter compact mode",
+      "exit": "Click or double-click to restore the full window",
+      "drag": "Drag to move the pill"
     },
     "listening": "Listening",
     "recording": "Recording",
