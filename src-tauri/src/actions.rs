@@ -429,6 +429,7 @@ pub(crate) async fn process_continuous_segment(app: &AppHandle, samples: Vec<f32
     }
 
     let ah = app.clone();
+    show_transcribing_overlay(&ah);
     let tm = Arc::clone(&app.state::<Arc<TranscriptionManager>>());
     let hm = Arc::clone(&app.state::<Arc<HistoryManager>>());
     let post_process = continuous_post_process_enabled(&get_settings(app));

@@ -7,12 +7,19 @@ import { CancelIcon, MicrophoneIcon, TranscriptionIcon } from "./icons";
 type Status = "idle" | "listening" | "recording" | "transcribing" | "processing";
 
 const BAR_COUNT = 9;
+const LEVEL_BAR_COUNT = 16;
 
 const ListeningStatus: React.FC = () => {
   const { t } = useTranslation();
   const [status, setStatus] = useState<Status>("idle");
   const [levels, setLevels] = useState<number[]>(Array(BAR_COUNT).fill(0));
   const smoothedLevelsRef = useRef<number[]>(Array(BAR_COUNT).fill(0));
+  const statusRef = useRef<Status>("idle");
+  const idlePhaseRef = useRef(0);
+
+  useEffect(() => {
+    statusRef.current = status;
+  }, [status]);
 
   useEffect(() => {
     let cancelled = false;
@@ -38,7 +45,8 @@ const ListeningStatus: React.FC = () => {
       const unlistenLevel = await listen<number[]>("mic-level", (event) => {
         const newLevels = event.payload;
         const smoothed = smoothedLevelsRef.current.map((prev, i) => {
-          const target = newLevels[i] || 0;
+          const sourceIndex = Math.floor((i * LEVEL_BAR_COUNT) / BAR_COUNT);
+          const target = newLevels[sourceIndex] ?? newLevels[i] ?? 0;
           return prev * 0.7 + target * 0.3;
         });
         smoothedLevelsRef.current = smoothed;
@@ -61,6 +69,29 @@ const ListeningStatus: React.FC = () => {
       cleanup?.();
     };
   }, []);
+
+  useEffect(() => {
+    if (status !== "listening") {
+      return;
+    }
+
+    let frame = 0;
+    const animateIdleBars = () => {
+      const maxLevel = Math.max(...smoothedLevelsRef.current, 0);
+      if (statusRef.current === "listening" && maxLevel < 0.04) {
+        idlePhaseRef.current += 0.08;
+        const idleLevels = Array.from({ length: BAR_COUNT }, (_, i) => {
+          const wave = Math.sin(idlePhaseRef.current + i * 0.55) * 0.5 + 0.5;
+          return 0.08 + wave * 0.12;
+        });
+        setLevels(idleLevels);
+      }
+      frame = window.requestAnimationFrame(animateIdleBars);
+    };
+
+    frame = window.requestAnimationFrame(animateIdleBars);
+    return () => window.cancelAnimationFrame(frame);
+  }, [status]);
 
   if (status === "idle") {
     return null;
@@ -97,15 +128,15 @@ const ListeningStatus: React.FC = () => {
 
       <div className="flex items-center gap-2 min-w-0">
         {showLevelBars ? (
-          <div className="flex items-end justify-center gap-0.5 h-5">
+          <div className="flex items-end justify-center gap-[3px] h-6">
             {levels.map((v, i) => (
               <div
                 key={i}
-                className="w-1 rounded-sm bg-accent/90"
+                className="w-1.5 rounded-sm bg-accent/90"
                 style={{
                   height: `${Math.min(20, 4 + Math.pow(v, 0.7) * 16)}px`,
-                  opacity: Math.max(0.25, v * 1.7),
-                  transition: "height 60ms ease-out, opacity 120ms ease-out",
+                  opacity: Math.max(0.35, v * 1.7),
+                  transition: "height 80ms linear, opacity 120ms ease-out",
                 }}
               />
             ))}

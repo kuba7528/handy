@@ -474,6 +474,22 @@ mod tests {
     }
 }
 
+fn rms_level_buckets(samples: &[f32], bucket_count: usize) -> Vec<f32> {
+    if samples.is_empty() {
+        return vec![0.0; bucket_count];
+    }
+
+    let rms = (samples.iter().map(|s| s * s).sum::<f32>() / samples.len() as f32).sqrt();
+    let base = (rms * 12.0).clamp(0.0, 1.0);
+
+    (0..bucket_count)
+        .map(|i| {
+            let wave = 0.65 + 0.35 * (((i as f32 + 1.0) * 1.7).sin().abs());
+            (base * wave).clamp(0.0, 1.0)
+        })
+        .collect()
+}
+
 fn run_consumer(
     in_sample_rate: u32,
     vad: Option<Arc<Mutex<Box<dyn vad::VoiceActivityDetector>>>>,
@@ -547,9 +563,12 @@ fn run_consumer(
         };
 
         // ---------- spectrum processing ---------------------------------- //
-        if let Some(buckets) = visualizer.feed(&raw) {
-            if let Some(cb) = &level_cb {
+        if let Some(cb) = &level_cb {
+            if let Some(buckets) = visualizer.feed(&raw) {
                 cb(buckets);
+            } else {
+                // FFT needs a full window; keep the footer meter responsive with RMS.
+                cb(rms_level_buckets(&raw, BUCKETS));
             }
         }
 

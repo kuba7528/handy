@@ -1,6 +1,11 @@
 use crate::managers::audio::AudioRecordingManager;
+use std::sync::atomic::{AtomicU64, Ordering};
 use std::sync::{Arc, Mutex};
+use std::time::{SystemTime, UNIX_EPOCH};
 use tauri::{AppHandle, Emitter, Manager};
+
+const LEVEL_EMIT_INTERVAL_MS: u64 = 33;
+static LAST_LEVEL_EMIT_MS: AtomicU64 = AtomicU64::new(0);
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum ListeningStatus {
@@ -85,5 +90,20 @@ pub fn hide_recording_overlay(app_handle: &AppHandle) {
 }
 
 pub fn emit_levels(app_handle: &AppHandle, levels: &Vec<f32>) {
-    let _ = app_handle.emit("mic-level", levels);
+    let now_ms = SystemTime::now()
+        .duration_since(UNIX_EPOCH)
+        .map(|d| d.as_millis() as u64)
+        .unwrap_or(0);
+    let last = LAST_LEVEL_EMIT_MS.load(Ordering::Relaxed);
+    if now_ms.saturating_sub(last) < LEVEL_EMIT_INTERVAL_MS {
+        return;
+    }
+    LAST_LEVEL_EMIT_MS.store(now_ms, Ordering::Relaxed);
+
+    // Target the main window explicitly — the recording overlay WebView was removed.
+    if let Some(window) = app_handle.get_webview_window("main") {
+        let _ = window.emit("mic-level", levels.clone());
+    } else {
+        let _ = app_handle.emit("mic-level", levels);
+    }
 }

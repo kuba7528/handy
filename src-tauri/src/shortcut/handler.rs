@@ -3,7 +3,7 @@
 //! This module contains the common logic for handling shortcut events,
 //! used by both the Tauri and handy-keys implementations.
 
-use log::warn;
+use log::{debug, warn};
 use std::sync::Arc;
 use tauri::{AppHandle, Manager};
 
@@ -36,12 +36,17 @@ pub fn handle_shortcut_event(
 
     // Transcribe bindings are handled by the coordinator.
     if is_transcribe_binding(binding_id) {
-        // While continuous listening owns the microphone, manual transcribe
-        // shortcuts are no-ops to avoid fighting over the recorder.
+        // While continuous listening owns the microphone, manual transcribe / PTT
+        // shortcuts are ignored so they never fight over the recorder or block
+        // continuous VAD segmentation.
         if app
             .try_state::<Arc<AudioRecordingManager>>()
             .map_or(false, |rm| rm.is_continuous())
         {
+            debug!(
+                "Ignoring transcribe shortcut '{}' while continuous listening is active",
+                binding_id
+            );
             return;
         }
         if let Some(coordinator) = app.try_state::<TranscriptionCoordinator>() {

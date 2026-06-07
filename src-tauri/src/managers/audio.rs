@@ -3,8 +3,10 @@ use crate::audio_toolkit::{
 };
 use crate::helpers::clamshell;
 use crate::settings::{get_settings, AppSettings};
+use crate::tray::TrayIconState;
 use crate::utils;
-use log::{debug, error, info};
+use crate::TranscriptionCoordinator;
+use log::{debug, error, info, warn};
 use std::sync::atomic::{AtomicU64, Ordering};
 use std::sync::{Arc, Mutex};
 use std::time::{Duration, Instant};
@@ -226,23 +228,62 @@ impl AudioRecordingManager {
             false
         };
 
-        let device_name = if use_clamshell_mic {
-            settings.clamshell_microphone.as_ref().unwrap()
+        let configured_name = if use_clamshell_mic {
+            settings.clamshell_microphone.as_deref()
         } else {
-            settings.selected_microphone.as_ref()?
+            settings.selected_microphone.as_deref()
         };
 
-        // Find the device by name
-        match list_input_devices() {
-            Ok(devices) => devices
-                .into_iter()
-                .find(|d| d.name == *device_name)
-                .map(|d| d.device),
-            Err(e) => {
-                debug!("Failed to list devices, using default: {}", e);
-                None
+        if let Some(device_name) = configured_name {
+            match list_input_devices() {
+                Ok(devices) => {
+                    if let Some(device) = devices.into_iter().find(|d| d.name == device_name) {
+                        return Some(device.device);
+                    }
+                    warn!(
+                        "Configured microphone '{}' not found; falling back to system default",
+                        device_name
+                    );
+                }
+                Err(e) => {
+                    debug!("Failed to list devices, using default: {}", e);
+                }
             }
         }
+
+        None
+    }
+
+    /// Stop a manual (PTT / toggle) recording so continuous listening can own the mic.
+    pub fn cancel_manual_recording(&self) -> bool {
+        let binding_id = {
+            let state = self.state.lock().unwrap();
+            match &*state {
+                RecordingState::Recording { binding_id } if binding_id != CONTINUOUS_BINDING_ID => {
+                    binding_id.clone()
+                }
+                _ => return false,
+            }
+        };
+
+        info!("Cancelling manual recording ({binding_id}) for continuous listening");
+        let mut state = self.state.lock().unwrap();
+        *state = RecordingState::Idle;
+        drop(state);
+
+        if let Some(rec) = self.recorder.lock().unwrap().as_ref() {
+            let _ = rec.stop();
+        }
+        *self.is_recording.lock().unwrap() = false;
+
+        utils::hide_recording_overlay(&self.app_handle);
+        utils::change_tray_icon(&self.app_handle, TrayIconState::Idle);
+
+        if let Some(coordinator) = self.app_handle.try_state::<TranscriptionCoordinator>() {
+            coordinator.notify_cancel(true);
+        }
+
+        true
     }
 
     fn schedule_lazy_close(&self) {
@@ -486,6 +527,8 @@ impl AudioRecordingManager {
     /// the user disables the feature). Detected utterances are delivered through
     /// the recorder's segment callback.
     pub fn start_continuous_listening(&self) -> Result<(), String> {
+        self.cancel_manual_recording();
+
         let mut state = self.state.lock().unwrap();
 
         if *self.continuous.lock().unwrap() {
@@ -516,6 +559,8 @@ impl AudioRecordingManager {
                 binding_id: CONTINUOUS_BINDING_ID.to_string(),
             };
             info!("Continuous listening started");
+            drop(state);
+            utils::show_listening_indicator(&self.app_handle);
             Ok(())
         } else {
             Err("Recorder not available".to_string())
