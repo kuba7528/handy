@@ -117,6 +117,59 @@ pub fn show_main_window(app: &AppHandle) {
     );
 }
 
+fn main_window_tray_available(app: &AppHandle) -> bool {
+    let settings = get_settings(app);
+    settings.show_tray_icon && !app.state::<CliArgs>().no_tray
+}
+
+fn notify_main_window_hidden(app: &AppHandle) {
+    let _ = app.emit("main-window-hidden", main_window_tray_available(app));
+}
+
+pub fn minimize_main_window(app: &AppHandle) -> Result<(), String> {
+    let main = app
+        .get_webview_window("main")
+        .ok_or_else(|| "Main window not found".to_string())?;
+    main.minimize().map_err(|e| {
+        let message = format!("Failed to minimize main window: {e}");
+        log::error!("{message}");
+        message
+    })
+}
+
+pub fn hide_main_window_to_tray(app: &AppHandle) -> Result<(), String> {
+    let main = app
+        .get_webview_window("main")
+        .ok_or_else(|| "Main window not found".to_string())?;
+    main.hide().map_err(|e| {
+        let message = format!("Failed to hide main window: {e}");
+        log::error!("{message}");
+        message
+    })?;
+
+    #[cfg(target_os = "macos")]
+    {
+        if main_window_tray_available(app) {
+            if let Err(e) = app.set_activation_policy(tauri::ActivationPolicy::Accessory) {
+                log::error!("Failed to set activation policy: {}", e);
+            }
+        }
+    }
+
+    notify_main_window_hidden(app);
+    Ok(())
+}
+
+fn handle_main_window_close_requested(window: &tauri::Window) {
+    if window.label() != "main" {
+        return;
+    }
+
+    if let Err(e) = hide_main_window_to_tray(window.app_handle()) {
+        let _ = window.app_handle().emit("main-window-hide-failed", e);
+    }
+}
+
 #[allow(unused_variables)]
 fn should_force_show_permissions_window(app: &AppHandle) -> bool {
     #[cfg(target_os = "windows")]
@@ -342,6 +395,18 @@ fn show_main_window_command(app: AppHandle) -> Result<(), String> {
     Ok(())
 }
 
+#[tauri::command]
+#[specta::specta]
+fn minimize_main_window_command(app: AppHandle) -> Result<(), String> {
+    minimize_main_window(&app)
+}
+
+#[tauri::command]
+#[specta::specta]
+fn hide_main_window_to_tray_command(app: AppHandle) -> Result<(), String> {
+    hide_main_window_to_tray(&app)
+}
+
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run(cli_args: CliArgs) {
     // Detect portable mode before anything else
@@ -408,6 +473,8 @@ pub fn run(cli_args: CliArgs) {
             shortcut::handy_keys::stop_handy_keys_recording,
             trigger_update_check,
             show_main_window_command,
+            minimize_main_window_command,
+            hide_main_window_to_tray_command,
             commands::cancel_operation,
             commands::get_listening_status,
             commands::enter_listening_compact_mode,
@@ -570,6 +637,7 @@ pub fn run(cli_args: CliArgs) {
                     .inner_size(680.0, 570.0)
                     .min_inner_size(680.0, 570.0)
                     .resizable(true)
+                    .minimizable(true)
                     .maximizable(false)
                     .decorations(false)
                     .visible(false);
@@ -638,25 +706,11 @@ pub fn run(cli_args: CliArgs) {
         })
         .on_window_event(|window, event| match event {
             tauri::WindowEvent::CloseRequested { api, .. } => {
-                api.prevent_close();
-                let _res = window.hide();
-
-                #[cfg(target_os = "macos")]
-                {
-                    let settings = get_settings(&window.app_handle());
-                    let tray_visible =
-                        settings.show_tray_icon && !window.app_handle().state::<CliArgs>().no_tray;
-                    if tray_visible {
-                        // Tray is available: hide the dock icon, app lives in the tray
-                        let res = window
-                            .app_handle()
-                            .set_activation_policy(tauri::ActivationPolicy::Accessory);
-                        if let Err(e) = res {
-                            log::error!("Failed to set activation policy: {}", e);
-                        }
-                    }
-                    // No tray: keep the dock icon visible so the user can reopen
+                if window.label() != "main" {
+                    return;
                 }
+                api.prevent_close();
+                handle_main_window_close_requested(window);
             }
             tauri::WindowEvent::ThemeChanged(theme) => {
                 log::info!("Theme changed to: {:?}", theme);

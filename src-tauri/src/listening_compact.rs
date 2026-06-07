@@ -6,6 +6,13 @@ pub const LISTENING_PILL_LABEL: &str = "listening_pill";
 
 static COMPACT_MODE: AtomicBool = AtomicBool::new(false);
 
+fn emit_compact_mode_error(app: &AppHandle, message: impl Into<String>) -> String {
+    let message = message.into();
+    log::error!("Listening compact mode error: {message}");
+    let _ = app.emit("listening-compact-mode-error", message.clone());
+    message
+}
+
 pub fn is_compact_mode() -> bool {
     COMPACT_MODE.load(Ordering::Relaxed)
 }
@@ -15,19 +22,28 @@ pub fn enter_listening_compact_mode(app: &AppHandle) -> Result<(), String> {
         return Ok(());
     }
 
-    ensure_pill_window(app)?;
+    ensure_pill_window(app).map_err(|e| emit_compact_mode_error(app, e))?;
     if let Some(pill) = app.get_webview_window(LISTENING_PILL_LABEL) {
         if let Err(e) = center_window(&pill) {
             log::warn!("Failed to center listening pill window: {e}");
         }
-        pill.show().map_err(|e| e.to_string())?;
-        pill.set_focus().map_err(|e| e.to_string())?;
+        pill.show().map_err(|e| {
+            emit_compact_mode_error(app, format!("Failed to show pill window: {e}"))
+        })?;
+        pill.set_focus().map_err(|e| {
+            emit_compact_mode_error(app, format!("Failed to focus pill window: {e}"))
+        })?;
     } else {
-        return Err("Listening pill window was not created".to_string());
+        return Err(emit_compact_mode_error(
+            app,
+            "Listening pill window was not created",
+        ));
     }
 
     if let Some(main) = app.get_webview_window("main") {
-        main.hide().map_err(|e| e.to_string())?;
+        main.hide().map_err(|e| {
+            emit_compact_mode_error(app, format!("Failed to hide main window: {e}"))
+        })?;
     }
 
     COMPACT_MODE.store(true, Ordering::Relaxed);
@@ -77,7 +93,9 @@ fn ensure_pill_window(app: &AppHandle) -> Result<(), String> {
         builder = builder.data_directory(data_dir.join("webview-pill"));
     }
 
-    builder.build().map_err(|e| e.to_string())?;
+    builder.build().map_err(|e| {
+        emit_compact_mode_error(app, format!("Failed to create pill window: {e}"))
+    })?;
     Ok(())
 }
 

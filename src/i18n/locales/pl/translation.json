@@ -2,7 +2,12 @@
   "window": {
     "title": "Handy",
     "minimize": "Minimalizuj",
-    "close": "Zamknij"
+    "close": "Ukryj do zasobnika",
+    "closeTitle": "Ukryj okno (aplikacja działa w zasobniku)",
+    "minimizeFailed": "Nie udało się zminimalizować okna",
+    "hideToTrayFailed": "Nie udało się ukryć okna",
+    "hiddenToTray": "Okno ukryte",
+    "hiddenToTrayHint": "Handy nadal działa w zasobniku systemowym. Aby całkowicie zamknąć aplikację, użyj menu zasobnika → Zamknij aplikację."
   },
   "tray": {
     "settings": "Ustawienia...",
@@ -10,7 +15,7 @@
     "copyLastTranscript": "Kopiuj ostatnią transkrypcję",
     "unloadModel": "Zwolnij model",
     "model": "Model",
-    "quit": "Zamknij",
+    "quit": "Zamknij aplikację",
     "cancel": "Anuluj",
     "pauseContinuous": "Pauza",
     "resumeContinuous": "Wznów"
@@ -717,7 +722,9 @@
     "compactMode": {
       "enter": "Kliknij lub kliknij dwukrotnie, aby włączyć tryb kompaktowy",
       "exit": "Kliknij lub kliknij dwukrotnie, aby wrócić do pełnego okna",
-      "drag": "Przeciągnij, aby przesunąć pigułkę"
+      "drag": "Przeciągnij, aby przesunąć pigułkę",
+      "errorEnter": "Nie udało się włączyć trybu kompaktowego",
+      "errorExit": "Nie udało się przywrócić pełnego okna"
     }
   }
 }

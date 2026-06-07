@@ -2,7 +2,12 @@
   "window": {
     "title": "Handy",
     "minimize": "Minimize",
-    "close": "Close"
+    "close": "Hide to tray",
+    "closeTitle": "Hide window (app keeps running in the tray)",
+    "minimizeFailed": "Could not minimize the window",
+    "hideToTrayFailed": "Could not hide the window",
+    "hiddenToTray": "Window hidden",
+    "hiddenToTrayHint": "Handy is still running in the system tray. To fully quit, use the tray menu → Quit application."
   },
   "tray": {
     "settings": "Settings...",
@@ -10,7 +15,7 @@
     "copyLastTranscript": "Copy Last Transcript",
     "unloadModel": "Unload Model",
     "model": "Model",
-    "quit": "Quit",
+    "quit": "Quit application",
     "cancel": "Cancel",
     "pauseContinuous": "Pause",
     "resumeContinuous": "Resume"
@@ -713,7 +718,9 @@
     "compactMode": {
       "enter": "Click or double-click to enter compact mode",
       "exit": "Click or double-click to restore the full window",
-      "drag": "Drag to move the pill"
+      "drag": "Drag to move the pill",
+      "errorEnter": "Could not enter compact mode",
+      "errorExit": "Could not restore the full window"
     },
     "listening": "Listening",
     "recording": "Recording",

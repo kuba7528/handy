@@ -1,6 +1,7 @@
 import { listen } from "@tauri-apps/api/event";
 import React, { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { toast } from "sonner";
 import { commands } from "@/bindings";
 import { CancelIcon, MicrophoneIcon, TranscriptionIcon } from "./icons";
 
@@ -193,7 +194,9 @@ const ListeningStatus: React.FC<ListeningStatusProps> = ({
     }
     const result = await commands.enterListeningCompactMode();
     if (result.status === "error") {
-      console.warn("Failed to enter compact mode:", result.error);
+      toast.error(t("listeningStatus.compactMode.errorEnter"), {
+        description: String(result.error),
+      });
     }
   };
 
@@ -204,7 +207,9 @@ const ListeningStatus: React.FC<ListeningStatusProps> = ({
     }
     const result = await commands.exitListeningCompactMode();
     if (result.status === "error") {
-      console.warn("Failed to exit compact mode:", result.error);
+      toast.error(t("listeningStatus.compactMode.errorExit"), {
+        description: String(result.error),
+      });
     }
   };
 

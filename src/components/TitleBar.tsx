@@ -1,7 +1,8 @@
 import { useCallback, useRef, useState, type ReactNode } from "react";
 import { useTranslation } from "react-i18next";
-import { getCurrentWebviewWindow } from "@tauri-apps/api/webviewWindow";
+import { toast } from "sonner";
 import { Minus, X } from "lucide-react";
+import { commands } from "@/bindings";
 import { useOsType } from "@/hooks/useOsType";
 import { Tooltip } from "./ui/Tooltip";
 
@@ -35,6 +36,7 @@ function ControlButton({
       <button
         ref={buttonRef}
         type="button"
+        data-tauri-drag-region={false}
         aria-label={label}
         title={label}
         onClick={onClick}
@@ -57,28 +59,44 @@ function ControlButton({
 
 function WindowControls() {
   const { t } = useTranslation();
-  const appWindow = getCurrentWebviewWindow();
 
-  const minimize = useCallback(() => {
-    void appWindow.minimize();
-  }, [appWindow]);
+  const minimize = useCallback(async () => {
+    const result = await commands.minimizeMainWindowCommand();
+    if (result.status === "error") {
+      toast.error(t("window.minimizeFailed"), {
+        description: String(result.error),
+      });
+    }
+  }, [t]);
 
-  const close = useCallback(() => {
-    void appWindow.close();
-  }, [appWindow]);
+  const close = useCallback(async () => {
+    const result = await commands.hideMainWindowToTrayCommand();
+    if (result.status === "error") {
+      toast.error(t("window.hideToTrayFailed"), {
+        description: String(result.error),
+      });
+    }
+  }, [t]);
 
   return (
-    <div className="flex shrink-0 items-stretch">
+    <div
+      className="relative z-20 flex shrink-0 items-stretch"
+      data-tauri-drag-region={false}
+    >
       <ControlButton
         action="minimize"
         label={t("window.minimize")}
-        onClick={minimize}
+        onClick={() => {
+          void minimize();
+        }}
         icon={<Minus className="h-3.5 w-3.5" strokeWidth={2.25} />}
       />
       <ControlButton
         action="close"
-        label={t("window.close")}
-        onClick={close}
+        label={t("window.closeTitle")}
+        onClick={() => {
+          void close();
+        }}
         icon={<X className="h-3.5 w-3.5" strokeWidth={2.25} />}
       />
     </div>
@@ -103,7 +121,7 @@ export default function TitleBar() {
   );
 
   return (
-    <header className="flex h-8 shrink-0 items-stretch border-b border-mid-gray/20 bg-background">
+    <header className="relative z-10 flex h-8 shrink-0 items-stretch border-b border-mid-gray/20 bg-background">
       {controlsOnLeft ? (
         <>
           {controls}

@@ -126,6 +126,34 @@ function App() {
     };
   }, [t]);
 
+  useEffect(() => {
+    const unlistenHidden = listen<boolean>("main-window-hidden", (event) => {
+      if (event.payload) {
+        toast.info(t("window.hiddenToTray"), {
+          description: t("window.hiddenToTrayHint"),
+        });
+      }
+    });
+    const unlistenHideFailed = listen<string>("main-window-hide-failed", (event) => {
+      toast.error(t("window.hideToTrayFailed"), {
+        description: event.payload,
+      });
+    });
+    const unlistenCompactError = listen<string>(
+      "listening-compact-mode-error",
+      (event) => {
+        toast.error(t("listeningStatus.compactMode.errorEnter"), {
+          description: event.payload,
+        });
+      },
+    );
+    return () => {
+      unlistenHidden.then((fn) => fn());
+      unlistenHideFailed.then((fn) => fn());
+      unlistenCompactError.then((fn) => fn());
+    };
+  }, [t]);
+
   // Listen for model loading failures and show a toast
   useEffect(() => {
     const unlisten = listen<ModelStateEvent>("model-state-changed", (event) => {
