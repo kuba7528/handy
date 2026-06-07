@@ -175,18 +175,6 @@ const ListeningStatus: React.FC<ListeningStatusProps> = ({
     return () => window.cancelAnimationFrame(frame);
   }, [status]);
 
-  const compactClickTimerRef = useRef<ReturnType<typeof setTimeout> | null>(
-    null,
-  );
-
-  useEffect(() => {
-    return () => {
-      if (compactClickTimerRef.current) {
-        clearTimeout(compactClickTimerRef.current);
-      }
-    };
-  }, []);
-
   const handleEnterCompactMode = async () => {
     if (onEnterCompactMode) {
       onEnterCompactMode();
@@ -221,25 +209,9 @@ const ListeningStatus: React.FC<ListeningStatusProps> = ({
     }
   };
 
-  const handleCompactClick = (event: React.MouseEvent<HTMLElement>) => {
+  const handleCompactDoubleClick = (event: React.MouseEvent<HTMLElement>) => {
     if (event.button !== 0) return;
     event.stopPropagation();
-    if (compactClickTimerRef.current) {
-      clearTimeout(compactClickTimerRef.current);
-    }
-    compactClickTimerRef.current = setTimeout(() => {
-      compactClickTimerRef.current = null;
-      triggerCompactAction();
-    }, 280);
-  };
-
-  const handleDoubleClick = (event: React.MouseEvent<HTMLElement>) => {
-    if (event.button !== 0) return;
-    event.stopPropagation();
-    if (compactClickTimerRef.current) {
-      clearTimeout(compactClickTimerRef.current);
-      compactClickTimerRef.current = null;
-    }
     triggerCompactAction();
   };
 
@@ -298,8 +270,8 @@ const ListeningStatus: React.FC<ListeningStatusProps> = ({
       {status === "recording" && (
         <button
           type="button"
-          data-tauri-drag-region={false}
-          className="flex items-center justify-center w-6 h-6 rounded-full shrink-0 hover:bg-logo-primary/20 transition-colors text-logo-primary"
+          data-tauri-drag-region="false"
+          className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-logo-primary transition-colors hover:bg-logo-primary/20"
           onClick={(event) => {
             event.stopPropagation();
             commands.cancelOperation();
@@ -322,18 +294,17 @@ const ListeningStatus: React.FC<ListeningStatusProps> = ({
         title={compactHint}
       >
         <div
-          data-tauri-drag-region
-          className="flex items-center justify-center w-5 h-8 shrink-0 cursor-grab active:cursor-grabbing rounded-full text-text/50 hover:text-text/80"
+          data-tauri-drag-region="true"
+          className="flex h-8 w-5 shrink-0 cursor-grab items-center justify-center rounded-full text-text/50 hover:text-text/80 active:cursor-grabbing"
           aria-hidden="true"
           title={t("listeningStatus.compactMode.drag")}
         >
           <span className="text-xs leading-none tracking-widest">⋮⋮</span>
         </div>
         <div
-          className="flex items-center gap-2 min-w-0 cursor-pointer"
-          data-tauri-drag-region={false}
-          onClick={handleCompactClick}
-          onDoubleClick={handleDoubleClick}
+          className="flex min-w-0 cursor-default items-center gap-2"
+          data-tauri-drag-region="false"
+          onDoubleClick={handleCompactDoubleClick}
         >
           {statusBody}
         </div>
@@ -343,14 +314,13 @@ const ListeningStatus: React.FC<ListeningStatusProps> = ({
 
   return (
     <div
-      className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/80 border border-mid-gray/30 text-logo-primary cursor-pointer"
+      className="flex cursor-default items-center gap-2 rounded-full border border-mid-gray/30 bg-black/80 px-3 py-1.5 text-logo-primary"
       role="status"
       aria-live="polite"
       aria-label={statusLabel}
       title={compactHint}
-      data-tauri-drag-region={false}
-      onClick={handleCompactClick}
-      onDoubleClick={handleDoubleClick}
+      data-tauri-drag-region="false"
+      onDoubleClick={handleCompactDoubleClick}
     >
       {statusBody}
     </div>

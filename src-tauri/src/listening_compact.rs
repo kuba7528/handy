@@ -24,12 +24,12 @@ pub fn enter_listening_compact_mode(app: &AppHandle) -> Result<(), String> {
 
     ensure_pill_window(app).map_err(|e| emit_compact_mode_error(app, e))?;
     if let Some(pill) = app.get_webview_window(LISTENING_PILL_LABEL) {
-        if let Err(e) = center_window(&pill) {
-            log::warn!("Failed to center listening pill window: {e}");
-        }
         pill.show().map_err(|e| {
             emit_compact_mode_error(app, format!("Failed to show pill window: {e}"))
         })?;
+        if let Err(e) = center_window(&pill) {
+            log::warn!("Failed to center listening pill window: {e}");
+        }
         pill.set_focus().map_err(|e| {
             emit_compact_mode_error(app, format!("Failed to focus pill window: {e}"))
         })?;
@@ -108,7 +108,10 @@ fn center_window(window: &tauri::WebviewWindow) -> Result<(), String> {
 
     let monitor_size = monitor.size();
     let monitor_pos = monitor.position();
-    let window_size = window.outer_size().map_err(|e| e.to_string())?;
+    let window_size = window
+        .outer_size()
+        .or_else(|_| window.inner_size())
+        .map_err(|e| e.to_string())?;
 
     let x = monitor_pos.x + (monitor_size.width as i32 - window_size.width as i32) / 2;
     let y = monitor_pos.y + (monitor_size.height as i32 - window_size.height as i32) / 2;

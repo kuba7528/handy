@@ -2,6 +2,9 @@
   "window": {
     "title": "Handy",
     "minimize": "Minimalizuj",
+    "maximize": "Maksymalizuj",
+    "restore": "Przywróć rozmiar okna",
+    "maximizeFailed": "Nie udało się zmienić rozmiaru okna",
     "close": "Ukryj do zasobnika",
     "closeTitle": "Ukryj okno (aplikacja działa w zasobniku)",
     "minimizeFailed": "Nie udało się zminimalizować okna",
@@ -720,8 +723,8 @@
     "transcribing": "Transkrypcja",
     "processing": "Przetwarzanie",
     "compactMode": {
-      "enter": "Kliknij lub kliknij dwukrotnie, aby włączyć tryb kompaktowy",
-      "exit": "Kliknij lub kliknij dwukrotnie, aby wrócić do pełnego okna",
+      "enter": "Kliknij dwukrotnie, aby włączyć tryb kompaktowy",
+      "exit": "Kliknij dwukrotnie, aby wrócić do pełnego okna",
       "drag": "Przeciągnij, aby przesunąć pigułkę",
       "errorEnter": "Nie udało się włączyć trybu kompaktowego",
       "errorExit": "Nie udało się przywrócić pełnego okna"

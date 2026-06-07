@@ -2,6 +2,9 @@
   "window": {
     "title": "Handy",
     "minimize": "Minimize",
+    "maximize": "Maximize",
+    "restore": "Restore window size",
+    "maximizeFailed": "Could not change window size",
     "close": "Hide to tray",
     "closeTitle": "Hide window (app keeps running in the tray)",
     "minimizeFailed": "Could not minimize the window",
@@ -716,8 +719,8 @@
   },
   "listeningStatus": {
     "compactMode": {
-      "enter": "Click or double-click to enter compact mode",
-      "exit": "Click or double-click to restore the full window",
+      "enter": "Double-click to enter compact mode",
+      "exit": "Double-click to restore the full window",
       "drag": "Drag to move the pill",
       "errorEnter": "Could not enter compact mode",
       "errorExit": "Could not restore the full window"
