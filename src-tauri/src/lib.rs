@@ -638,7 +638,8 @@ pub fn run(cli_args: CliArgs) {
                     .min_inner_size(680.0, 570.0)
                     .resizable(true)
                     .minimizable(true)
-                    .maximizable(false)
+                    .maximizable(true)
+                    .closable(true)
                     .decorations(false)
                     .visible(false);
 
